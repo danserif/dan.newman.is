@@ -236,7 +236,7 @@ a.github, a.github:visited { color: #f54d27; }
 a.linkedin, a.linkedin:visited { color: #0571a6; }
 a.facebook, a.facebook:visited { color: #3b5999; }
 
-a.xero, a.xero:visited { color: #00a3d3; }
+/* a.xero, a.xero:visited { color: #00a3d3; } */
 a.koordinates, a.koordinates:visited { color: #32ad00; }
 a.wellington, a.wellington:visited { color: #cc9900; }
 
@@ -254,12 +254,12 @@ a.pinterest:hover { color: #952627; }
 a.letterboxd:hover { color: #4fa723; }
 /* a.cargo:hover { color: #077b5e; } */
 /* a.tumblr:hover { color: #2a4763; } */
-a.medium:hover { color: #468c54;}
+/* a.medium:hover { color: #468c54;} */
 a.github:hover { color: #df4725; }
 a.linkedin:hover { color: #044f75; }
 a.facebook:hover { color: #293e6b; }
 
-a.xero:hover { color: #006b8b; }
+/* a.xero:hover { color: #006b8b; } */
 a.koordinates:hover { color: #298e00; }
 a.wellington:hover { color: #8f6b00; }
 
@@ -267,7 +267,7 @@ a.site:hover { color: #fff; }
 
 
 /* CUSTOM LAYOUT */
-.intro { max-width: 440px; padding: 8% 4%; }
+.intro { max-width: 460px; padding: 8% 4%; }
 
 /* .logo { height: 84px; width: 70px; padding: 0px 0px 40px 0px; background: url(/filing/images/danserif_icon_black.png) no-repeat top left; text-indent: -999px; display: block; } */
 
