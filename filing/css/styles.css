@@ -231,13 +231,14 @@ a.pinterest, a.pinterest:visited { color: #d43638; }
 a.letterboxd, a.letterboxd:visited { color: #66cc33; }
 /* a.cargo, a.cargo:visited { color: #0aaf86; } */
 /* a.tumblr, a.tumblr:visited { color: #3a5876; } */
-a.medium, a.medium:visited { color: #57ad68; }
+/* a.medium, a.medium:visited { color: #57ad68; } */
 a.github, a.github:visited { color: #f54d27; }
 a.linkedin, a.linkedin:visited { color: #0571a6; }
 a.facebook, a.facebook:visited { color: #3b5999; }
 
 /* a.xero, a.xero:visited { color: #00a3d3; } */
-a.koordinates, a.koordinates:visited { color: #32ad00; }
+/* a.koordinates, a.koordinates:visited { color: #32ad00; } */ 
+a.springload, a.springload:visited { color: #67aa51; }
 a.wellington, a.wellington:visited { color: #cc9900; }
 
 a.site, a.site:visited { color: #ccc; }
@@ -260,7 +261,8 @@ a.linkedin:hover { color: #044f75; }
 a.facebook:hover { color: #293e6b; }
 
 /* a.xero:hover { color: #006b8b; } */
-a.koordinates:hover { color: #298e00; }
+/* a.koordinates:hover { color: #298e00; } */
+a.springload:hover { color: #558c43; }
 a.wellington:hover { color: #8f6b00; }
 
 a.site:hover { color: #fff; }
