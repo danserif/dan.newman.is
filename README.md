@@ -1,4 +1,2 @@
-danserif.github.io
+dan.newman.is
 ==================
-
-Site
