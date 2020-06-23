@@ -699,8 +699,88 @@ footer {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
+@media only screen and (max-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
+
+  .container {
+    margin: 20px 20px;
+  }
+  .anchor {
+    display: none;
+  }
+  .URL {
+    padding-right: 25%;
+  }
+
+  header {
+    padding-top: 55vh;
+  }
+  h1 {
+    font-size: 70px;
+    line-height: 74px;
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  h3 {
+    font-size: 18px;
+    line-height: 28px;
+    padding: 10px 0 10px 0;
+  }
+  h2 br {
+    display: none;
+  }
+  p.intro {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .images {
+    max-width: 1800px;
+    float: none;
+    padding: 140px 0 70px 0;
+  }
+
+  .image {
+    float: none;
+    padding-right: 10px;
+    width: 100%;
+  }
+
+  .dan {
+    width: 100%;
+  }
+  .ada {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  h2 br {
+    display: none;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .anchor {
+    display: none;
+  }
+  h1 {
+    font-size: 70px;
+    line-height: 74px;
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  h3 {
+    font-size: 18px;
+    line-height: 28px;
+    padding: 10px 0 10px 0;
+  }
+  p.intro {
+    font-size: 18px;
+    line-height: 28px;
+  }
 }
 
 /* ==|== non-semantic helper classes ========================================
