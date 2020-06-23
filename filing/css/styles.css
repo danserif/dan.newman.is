@@ -594,11 +594,6 @@ header {
   padding-top: 65vh;
 }
 
-header a:hover {
-  opacity: 1;
-  text-decoration: none;
-}
-
 h1 {
   font-weight: bold;
   font-size: 140px;
@@ -661,6 +656,10 @@ section ul {
 p.socials {
   max-width: 800px;
   padding: 20px 0 20px 0;
+}
+p.socials a:hover {
+  opacity: 1;
+  text-decoration: none;
 }
 
 p.caption {
