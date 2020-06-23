@@ -713,7 +713,7 @@ footer {
   }
 
   header {
-    padding-top: 55vh;
+    padding-top: 35vh;
   }
   h1 {
     font-size: 70px;
@@ -721,11 +721,11 @@ footer {
   }
   h2 {
     font-size: 18px;
-    line-height: 28px;
+    line-height: 24px;
   }
   h3 {
     font-size: 18px;
-    line-height: 28px;
+    line-height: 24px;
     padding: 10px 0 10px 0;
   }
   h2 br {
@@ -733,7 +733,7 @@ footer {
   }
   p.intro {
     font-size: 18px;
-    line-height: 28px;
+    line-height: 24px;
   }
   .images {
     max-width: 1800px;
@@ -770,16 +770,16 @@ footer {
   }
   h2 {
     font-size: 18px;
-    line-height: 28px;
+    line-height: 24px;
   }
   h3 {
     font-size: 18px;
-    line-height: 28px;
+    line-height: 24px;
     padding: 10px 0 10px 0;
   }
   p.intro {
     font-size: 18px;
-    line-height: 28px;
+    line-height: 24px;
   }
 }
 
