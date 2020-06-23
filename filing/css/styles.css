@@ -557,7 +557,7 @@ a.spotify:hover {
 }
 
 a.springload:hover {
-  color: #57bd84;
+  color: #0daa57;
 }
 
 a.twitter:hover {
@@ -582,13 +582,16 @@ nav a:hover {
 
 .URL {
   text-transform: uppercase;
-  padding-right: 10%;
+  padding-right: 15%;
+}
+.anchor {
+  float: right;
+  padding-right: 15%;
 }
 
 header {
   max-width: 1200px;
   padding-top: 65vh;
-  padding-bottom: 25vh;
 }
 
 header a:hover {
@@ -612,9 +615,16 @@ h2 {
 }
 h3 {
   font-weight: bold;
+  font-size: 28px;
+  line-height: 38px;
+  padding: 20px 0 20px 0;
+  margin: 0;
+}
+h4 {
+  font-weight: bold;
   font-size: 10px;
   line-height: 20px;
-  padding: 40px 0 0 0;
+  padding: 20px 0 0 0;
   margin: 0;
   text-transform: uppercase;
 }
@@ -626,18 +636,18 @@ section {
 section ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 20px 0;
 }
 
 .images {
   max-width: 1800px;
   float: left;
-  padding: 0 0 40px 0;
+  padding: 25vh 0 140px 0;
 }
 
 .image {
   float: left;
-  padding-right: 20px;
+  padding-right: 10px;
   width: 100%;
 }
 
@@ -656,7 +666,23 @@ p.socials {
 p.caption {
   font-weight: bold;
   font-size: 10px;
-  padding: 5px 0 10px 0;
+  padding: 5px 0 0 0;
+}
+p.intro {
+  font-size: 28px;
+  line-height: 38px;
+  padding-bottom: 20px;
+}
+
+blockquote {
+  border-left: 2px solid #ffffff;
+  padding-left: 20px;
+  margin: 0;
+}
+
+hr {
+  margin: 40px 0 20px 0;
+  border-top: 1px solid #1a1a1a;
 }
 
 .opacity {

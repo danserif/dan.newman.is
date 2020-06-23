@@ -1,15 +1,15 @@
 <!doctype html>
 
-<html class="no-js" lang="en">
+<html lang="en">
 
   <head>
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>Dan Newman &mdash; Creative Director, Designer, &amp; Front-end Developer Intern</title>
+    <title>Dan Newman</title>
 
-    <meta name="description" content="Dan Newman is a Creative Director from Te Whanganui-a-Tara / Wellington, Aotearoa / New Zealand."/>
+    <meta name="description" content="Dan Newman is a Creative Director, Designer, &amp; Front-end Intern at Springload from Te Whanganui-a-Tara / Wellington, Aotearoa / New Zealand."/>
 
     <meta name="author" content="Dan Newman"/>
     <meta name="copyright" content="Copyright Dan Newman, 2020"/>
@@ -27,15 +27,19 @@
     <div class="container">
 
       <nav>
-        <a class="URL" href="/#intro" title="You Are Here">dan.newman.is &darr;</a>
-        <a href=" https://www.twitter.com/danserif" title="Tweet. Tweet. Tweet.">@danserif &rarr;</a>
+        <a class="URL" href="/#intro" title="You. Are. Here.">dan.newman.is
+          <!--&darr;-->
+        </a>
+        <a href=" https://www.twitter.com/danserif" title="Tweet. Tweet. Tweet.">@danserif &rarr;
+        </a>
+        <a class="anchor" href="/#about" title="Me. Me. Me.">About</a>
+        <a class="anchor" href="/#work" title="Werk. Werk. Werk.">Work</a>
       </nav>
 
       <header>
         <h1 id="intro">Kia ora. Hello.</h1>
         <h2>I’m Dan Newman, a Creative Director at
-          <a class="springload" href="https://springload.co.nz" title="Werk. Werk. Werk.">Springload</a>
-          from
+          <a class="springload" href="https://springload.co.nz" title="Work. Work. Work.">Springload</a>, from
           <br/>Te Whanganui-a-Tara / Wellington, Aotearoa / New Zealand.</h2>
 
         <p class="socials">You can normally find me tweeting on
@@ -55,55 +59,144 @@
 
       </header>
 
+      <!-- WORK -->
       <section class="images">
+        <h3 id="work">Work</h3>
+        <div class="image ada">
+          <img srcset="/filing/images/klim-homepage.png 1x, /filing/images/klim-homepage-2x.png 2x" style="width:100%" alt="Homepage">
+          <p class="caption">Klim &mdash; Homepage</p>
+
+        </div>
         <div class="image dan">
-          <img srcset="/filing/images/dan-newman.png 1x, /filing/images/dan-newman-2x.png 2x" style="width:100%" alt="Dan, Human">
+          <img srcset="/filing/images/klim-specimen.png 1x,
+      /filing/images/klim-specimen-2x.png 2x" style="width:100%" alt="Specimen">
+          <p class="caption">Klim &mdash; Specimen</a>
+        </div>
+      </section>
+
+      <section>
+        <h4>Information</h4>
+        <p class="intro">
+          <a href="https://klim.co.nz" title="Fonts. Fonts. Fonts.">Klim</a>
+          recently launched a completely redesigned website to put the designer at the heart of the type browsing, buying, and learning experience. An integral part of the redesign is
+          <a href="https://klim.co.nz/retail-fonts/soehne/">Söhne</a>, a collection of new typefaces described as “the memory of Akzidenz-Grotesk framed through the reality of Helvetica”.</p>
+        <p>Inspiration for the redesign came from mainly places, but primarily classic Swiss design principles as well as practitioners
+          <a href="https://en.wikipedia.org/wiki/Josef_Müller-Brockmann" title="🇨🇭">Josef Müller-Brockmann</a>, Wim Crouwel, Romek Marber and Karl Gerstner.</p>
+        <p>Inspecting the browser console reveals an homage to Josef Müller-Brockmann’s book
+          <em>
+            <a href="https://www.niggli.ch/en/grid-systems-in-graphic-design.html" title="📙">Grid Systems in Graphic Design</a>
+          </em>. Ctrl+Alt+Shift+g displays the underlying grid of the site, and on type specimen pages you can toggle page colour by the icon in the navigation or with Ctrl+Alt+Shift+t. Experimenting with these commands results in recreating the book cover.</p>
+        <p>The site better showcases the breadth of Klim’s work in type design, but also the foundry’s gallery exhibitions and typeface identity work – the collaborations, publications, goods, colours, photography, animations and videos that have been
+          employed to take type to wider audiences.</p>
+        <p>Type specimen generation is randomised each time a page loads based on a set of defined rules for how type should be displayed, finding unique words, sentences, and paragraphs. Each time someone returns they’re seeing a different specimen.</p>
+        <p>Speaking of specimens, after much hard work it has been humbling to see the response and feedback from the design community.</p>
+        <blockquote>
+          <p>"The Söhne type specimen from @klimtypefoundry is a delight. A masterclass in considered interaction design, usefulness, and inspiration.”
+            <br/>
+            &mdash;
+            <a href="https://twitter.com/markboulton/status/1199065671025475584?s=20">Mark Boulton</a>
+          </p>
+        </blockquote>
+        <p>Finally, under the hood there is a statically-generated Gatsby Web App front-end and a GraphQL API back-end as well as a custom e-commerce experience that connects with Stripe for transactions, Django for managing fonts and orders, and Wagtail for
+          content management.</p>
+        <hr>
+      </section>
+
+      <section>
+        <h4>Credits</h4>
+        <ul>
+          <li>Kris Sowersby
+            <span class="opacity">(Client)</span></li>
+          <li>Dan Newman, Zak Brown
+            <span class="opacity">(Design)</span></li>
+          <li>Peter Dekkers, Mitch Ryan, Katie Day, Dean Oemcke, Juliet Brown, Matthew Holloway, Eugene Dementiev, Calin Dale
+            <span class="opacity">(Development)</span></li>
+          <li>
+            <a href="https://dia.tv">DIA</a>,
+            <a href="http://www.altgroup.net">Alt Group</a>
+            <span class="opacity">(Collaborators)</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>Awards & Recognition</h4>
+        <ul>
+          <li>Certificate of Typographic Excellence from the Type Directors Club
+            <span class="opacity">(2020)</span>
+          </li>
+          <li>D&AD Shortlist: Digital Design / Digital Products
+            <span class="opacity">(2020)</span></li>
+          <li>Webby Award Nominee
+            <span class="opacity">(2020)</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>Featured</h4>
+        <p>
+          <a href="https://www.itsnicethat.com/articles/klim-dia-sohne-graphic-design-101219">It's Nice That</a>, Communication Arts, Muzli By InVision,
+          <a href="https://eyeondesign.aiga.org/a-modern-sans-serif-infused-with-the-spirit-of-the-nyc-subway/">AIGA: Eye On Design</a>, Creative Boom, AGI, The FWA, CSSDSGN, CSS Tricks, CSS Winner, CSS Boutique, Type Wolf, The Gallery, Httpster, The FWA, Awwwards, SiteInspire, North East,
+          <a href="https://the-brandidentity.com/feed/klim-type-foundry-launches-new-typeface-sohne-kinetic-films-dia/">The Brand Identity</a>, Mindsparkle Mag, UI Jar, Design Assembly, Crafted By Code</p>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="images">
+        <h3 id="about">About</h3>
+        <div class="image dan">
+          <img srcset="/filing/images/dan-newman.png 1x, /filing/images/dan-newman-2x.png 2x" style="width:100%" title="Human" alt="Dan, Human">
           <p class="caption">Newman, Dan</p>
         </div>
         <div class="image ada">
-          <img srcset="/filing/images/ada.png 1x, /filing/images/ada-2x.png 2x" style="width:100%" alt="Ada, Labradoodle">
+          <img srcset="/filing/images/ada.png 1x, /filing/images/ada-2x.png 2x" style="width:100%" title="Dog" alt="Ada, Dog">
           <p class="caption">Labradoodle, Ada</a>
         </div>
       </section>
 
       <section>
-        <h3>About</h3>
-        <p>I currently live in
-          <a href="https://en.wikipedia.org/wiki/Miramar,_New_Zealand">Miramar / Te Motu Kairangi</a>
-          and work at
-          <a href="https://www.springload.co.nz">Springload</a>, an independent design company, who work with wonderful clients like ACC, DIA,
-          <a href="https://klim.co.nz">Klim Type Foundry</a>, and NZ On Air. We're a team of 70-ish (plus a dog or two).</p>
+        <h4>Information</h4>
+        <p class="intro">I currently live in Miramar / Te Motu Kairangi and lead a talented team of
+          <a href="https://www.springload.co.nz/people/#experience" title="Wireframe Wranglers & Aliteration Artisans.">pragmatic problem solvers</a>
+          at
+          <a href="https://www.springload.co.nz" title="Work. Work. Work.">Springload</a>, an independent design and development agency. We’re a team of 70-ish (plus a dog or two) who work with wonderful clients like ACC, DIA,
+          <a href="https://klim.co.nz" title="Fonts. Fonts. Fonts.">Klim Type Foundry</a>, Te Papa Tongarewa, and NZ On Air.</p>
 
         <p>Previously I was Head of Design at
-          <a href="https://koordinates.com">Koordinates</a>
+          <a href="https://koordinates.com" title="🗺">Koordinates</a>
           where I obsessed over contours, maps and geospatial data from the likes of LINZ and Stats NZ. With the team in Wellington, Auckland and Edinburgh, we helped people around the world “Discover Earth’s Data”, or more close to home, the Wellington Wind
           Zones (it’s called the ‘windy city’ for a reason) and the Tsunami Evacuation Zones (it’s scarily on top of a major fault line).</p>
 
         <p>Prior to Koordinates I was Creative Director at
-          <a href="https://xero.com">Xero</a>
+          <a href="https://xero.com" title="📈">Xero</a>
           where I led the design of xero.com, Xerocon, and all things brand. With a team spread around the world in New Zealand, Australia, England and the United States, we helped convince hundreds of thousands of small businesses to “Try Xero for Free”.</p>
 
         <p>Before all that, I designed skeuomorphic mobile and tablet applications for clients like The Economist, Al Jazeera, and American Express at
-          <a href="https://tigerspike.com">Tigerspike</a>
+          <a href="https://tigerspike.com" title="🏢">Tigerspike</a>
           in London. Even longer before that, I was creating websites for clothing made from
-          <a href="https://www.icebreaker.com">merino sheep</a>
+          <a href="https://www.icebreaker.com" title="🐑">merino sheep</a>
           and interactives for museums with
-          <a href="https://www.tepapa.govt.nz">colossal squids</a>
-          whilst at
-          <a href="https://flightless.co.nz">Flightless</a>
-          in Wellington. Finally, right back at the beginning I ran a little design company, The D.A., whilst studying in Whanganui.</p>
+          <a href="https://www.tepapa.govt.nz" title="🦑">colossal squids</a>
+          while at
+          <a href="https://flightless.co.nz" title="🦚">Flightless</a>
+          in Wellington. Finally, right back at the beginning I ran a little design company, The D.A., while studying in Whanganui.</p>
 
-        <p>I’m a member of the Green Party, Forrest & Bird, and part of the 1% Collective.</p>
+        <p>I have a Masters Degree in Computer Graphic Design from the Whanganui School of Design and the University of Waikato where I also gained a scholarship to study as a visiting researcher at FH Oberösterreich in Austria and Nottingham University in
+          England.</p>
 
         <p>I’ve previously been a judge for the
-          <a href="https://bestawards.co.nz">Best Awards</a>, I’ve also been a guest lecturer for universities, and a mentor/advisor helping startups.</p>
+          <a href="https://bestawards.co.nz" title="🏆">Best Awards</a>, I’ve also been a guest lecturer for universities, and I’m a member of the Green Party, Forrest & Bird, and donate to the
+          <a href="https://www.onepercentcollective.org" title="💵">1% Collective</a>.</p>
+
+        <p>When I’m not working, I'm most likely taking photos on my
+          <a href="https://instagram.com/danserif" title="📱">iPhone</a>
+          &
+          <a href="https://photos.danserif.com" title="📸">GF1</a>, walking my fantastic floof, Ada, or perpetually weeding my garden.</p>
 
         <p>I still use capital letters and full stops.</p>
-
+        <hr>
       </section>
 
       <section>
-        <h3>Work</h3>
+        <h4>Work</h4>
         <ul>
           <li>Springload, Creative Director
             <span class="opacity">(2017—Present)</span></li>
@@ -125,7 +218,7 @@
       </section>
 
       <section>
-        <h3>Education</h3>
+        <h4>Education</h4>
         <ul>
           <li>Whanganui School of Design & Waikato University, Masters Degree
             <span class="opacity">(2001—2006)</span></li>
@@ -136,7 +229,7 @@
       </section>
 
       <section>
-        <h3>Talks</h3>
+        <h4>Talks</h4>
         <ul>
           <!--<li>Under The Hood, Design Assembly <span class="opacity">(2020)</span> </li>-->
           <li>Pioneer, Creative Mornings
@@ -152,11 +245,13 @@
           <li>Design Decisions, Design Meetup
             <span class="opacity">(2012)</span></li>
         </ul>
-        <!--<p> <span class="opacity">Interested in hearing a few words and seeing a few pictures.</span> <a href="mailto:dan@newman.is">Get in touch</a>.</p>-->
+        <p>
+          <span class="opacity">Interested in hearing a few words and seeing a few pictures.</span>
+          <a href="mailto:dan@newman.is">Get in touch</a>.</p>
       </section>
 
       <section>
-        <h3>Details</h3>
+        <h4>Details</h4>
         <ul>
           <li>Written in
             <a href="https://ia.net/writer">iA Writer</a>.</li>
@@ -179,31 +274,15 @@
 
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-33585420-1"></script>
     <script>
-      window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')
-    </script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-    <script src="/filing/js/plugins.js"></script>
-    <script src="/filing/js/script.js"></script>
-
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-33585420-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function () {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = (
-          'https:' == document.location.protocol
-            ? 'https://ssl'
-            : 'http://www'
-        ) + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-      })();
+      gtag('config', 'UA-33585420-1');
     </script>
 
   </body>
