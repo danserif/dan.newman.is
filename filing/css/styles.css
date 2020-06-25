@@ -567,8 +567,9 @@ a.twitter:hover {
 /* CUSTOM STYLES */
 
 .container {
-  margin: 20px 40px;
+  margin: 30px 40px;
 }
+
 .container p {
   margin: 0 0 20px 0;
 }
@@ -576,6 +577,7 @@ a.twitter:hover {
 nav a {
   text-decoration: none;
 }
+
 nav a:hover {
   opacity: 0.5;
 }
@@ -591,7 +593,7 @@ nav a:hover {
 
 header {
   max-width: 1200px;
-  padding-top: 65vh;
+  padding-top: 33%;
 }
 
 header a:hover {
@@ -606,6 +608,7 @@ h1 {
   padding: 0 0 10px 0;
   margin: 0;
 }
+
 h2 {
   font-weight: normal;
   font-size: 42px;
@@ -613,6 +616,7 @@ h2 {
   padding: 0 0 10px 0;
   margin: 0;
 }
+
 h3 {
   font-weight: bold;
   font-size: 28px;
@@ -620,6 +624,7 @@ h3 {
   padding: 20px 0 20px 0;
   margin: 0;
 }
+
 h4 {
   font-weight: bold;
   font-size: 10px;
@@ -640,22 +645,24 @@ section ul {
 }
 
 .images {
-  max-width: 1800px;
-  float: left;
+  max-width: 1680px;
   padding: 25vh 0 140px 0;
 }
 
-.image {
-  float: left;
-  padding-right: 10px;
-  width: 100%;
+.row {
+  display: flex;
 }
 
-.dan {
-  width: 60%;
+.column-60 {
+  flex: 60%;
+  max-width: 1040px;
+  padding-right: 15px;
 }
-.ada {
-  width: 30%;
+
+.column-40 {
+  flex: 40%;
+  max-width: 615px;
+  padding-right: 15px;
 }
 
 p.socials {
@@ -673,6 +680,7 @@ p.caption {
   font-size: 10px;
   padding: 5px 0 0 0;
 }
+
 p.intro {
   font-size: 28px;
   line-height: 38px;
@@ -704,87 +712,70 @@ footer {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (max-width: 35em) {
+@media only screen and (max-width: 900px) {
   /* Style adjustments for viewports that meet the condition */
 
   .container {
     margin: 20px 20px;
   }
+
   .anchor {
     display: none;
   }
+
   .URL {
     padding-right: 25%;
   }
 
   header {
-    padding-top: 35vh;
+    padding-top: 90%;
   }
+
   h1 {
     font-size: 70px;
     line-height: 74px;
   }
+
   h2 {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 28px;
   }
+
   h3 {
     font-size: 18px;
     line-height: 24px;
     padding: 10px 0 10px 0;
   }
+
   h2 br {
     display: none;
   }
+
   p.intro {
     font-size: 18px;
     line-height: 24px;
   }
+
   .images {
-    max-width: 1800px;
-    float: none;
     padding: 140px 0 70px 0;
   }
 
-  .image {
-    float: none;
-    padding-right: 10px;
-    width: 100%;
+  .row {
+    display: block;
   }
 
-  .dan {
-    width: 100%;
+  .column-60 {
+    flex: 100%;
   }
-  .ada {
-    width: 100%;
+
+  .column-40 {
+    flex: 100%;
   }
 }
 
 @media only screen and (max-width: 1140px) {
   h2 br {
     display: none;
-  }
-}
-@media only screen and (max-width: 900px) {
-  .anchor {
-    display: none;
-  }
-  h1 {
-    font-size: 70px;
-    line-height: 74px;
-  }
-  h2 {
-    font-size: 18px;
-    line-height: 24px;
-  }
-  h3 {
-    font-size: 18px;
-    line-height: 24px;
-    padding: 10px 0 10px 0;
-  }
-  p.intro {
-    font-size: 18px;
-    line-height: 24px;
   }
 }
 
