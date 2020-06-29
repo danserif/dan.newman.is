@@ -681,8 +681,6 @@ a.email:hover {
 }
 
 p.caption {
-  font-weight: bold;
-  font-size: 10px;
   padding: 5px 0 0 0;
 }
 
@@ -781,6 +779,15 @@ footer {
 @media only screen and (max-width: 1140px) {
   h2 br {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .images {
+    max-width: 1440px;
+  }
+  .column-40 {
+    max-width: 520px;
   }
 }
 
