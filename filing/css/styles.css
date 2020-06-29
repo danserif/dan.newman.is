@@ -745,8 +745,8 @@ footer {
   }
 
   h3 {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 28px;
     padding: 10px 0 10px 0;
   }
 
@@ -769,10 +769,12 @@ footer {
 
   .column-60 {
     flex: 100%;
+    padding: 0;
   }
 
   .column-40 {
     flex: 100%;
+    padding: 0;
   }
 }
 
