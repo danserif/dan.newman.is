@@ -794,9 +794,6 @@ footer {
 }
 
 @media only screen and (max-width: 570px) {
-  header {
-    padding-top: 80%;
-  }
   h1 {
     line-height: 70px;
   }
