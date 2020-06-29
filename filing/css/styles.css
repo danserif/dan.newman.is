@@ -793,6 +793,19 @@ footer {
   }
 }
 
+@media only screen and (max-width: 570px) {
+  header {
+    padding-top: 80%;
+  }
+  h1 {
+    line-height: 70px;
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.
    ========================================================================== */
