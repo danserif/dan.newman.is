@@ -776,6 +776,9 @@ footer {
     flex: 100%;
     padding: 0;
   }
+  .hide {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 1140px) {
@@ -938,30 +941,38 @@ footer {
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("/filing/fonts/Inter-Regular.woff2?v=3.13") format("woff2"),
-    url("/filing/fonts/Inter-Regular.woff?v=3.13") format("woff");
+  src: url("/filing/fonts/Inter-Regular.woff2?v=3.13")
+      format("woff2"),
+    url("/filing/fonts/Inter-Regular.woff?v=3.13")
+      format("woff");
 }
 @font-face {
   font-family: "Inter";
   font-style: italic;
   font-weight: 400;
   font-display: block;
-  src: url("/filing/fonts/Inter-Italic.woff2?v=3.13") format("woff2"),
-    url("/filing/fonts/Inter-Italic.woff?v=3.13") format("woff");
+  src: url("/filing/fonts/Inter-Italic.woff2?v=3.13")
+      format("woff2"),
+    url("/filing/fonts/Inter-Italic.woff?v=3.13")
+      format("woff");
 }
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-display: block;
-  src: url("/filing/fonts/Inter-Bold.woff2?v=3.13") format("woff2"),
-    url("/filing/fonts/Inter-Bold.woff?v=3.13") format("woff");
+  src: url("/filing/fonts/Inter-Bold.woff2?v=3.13")
+      format("woff2"),
+    url("/filing/fonts/Inter-Bold.woff?v=3.13")
+      format("woff");
 }
 @font-face {
   font-family: "Inter";
   font-style: italic;
   font-weight: 700;
   font-display: block;
-  src: url("/filing/fonts/Inter-BoldItalic.woff2?v=3.13") format("woff2"),
-    url("/filing/fonts/Inter-BoldItalic.woff?v=3.13") format("woff");
+  src: url("/filing/fonts/Inter-BoldItalic.woff2?v=3.13")
+      format("woff2"),
+    url("/filing/fonts/Inter-BoldItalic.woff?v=3.13")
+      format("woff");
 }
