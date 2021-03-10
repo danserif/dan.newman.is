@@ -583,7 +583,7 @@ section ul {
 }
 
 .report ul.categories {
-  padding: 40px 0 80px 0;
+  padding: 40px 0 160px 0;
 }
 
 .report ul.categories a {
@@ -688,7 +688,7 @@ footer {
 }
 
 .report .category {
-  padding: 100px 0 100px 0;
+  padding: 20px 0 180px 0;
 }
 
 .report .data {
@@ -1028,7 +1028,7 @@ footer {
   font-display: block;
   src: url("/filing/fonts/Inter-Regular.woff2?v=3.13")
       format("woff2"),
-    url("/filing/fonts/Inter-Regular.woff?v=3.13")
+    url("file:///Users/dan/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Regular.woff?v=3.13")
       format("woff");
 }
 @font-face {
