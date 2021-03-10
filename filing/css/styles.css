@@ -1028,7 +1028,7 @@ footer {
   font-display: block;
   src: url("/filing/fonts/Inter-Regular.woff2?v=3.13")
       format("woff2"),
-    url("file:///Users/dan/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Regular.woff?v=3.13")
+    url("/filing/fonts/Inter-Regular.woff?v=3.13")
       format("woff");
 }
 @font-face {
