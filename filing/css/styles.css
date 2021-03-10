@@ -188,10 +188,11 @@ small {
 /* Position subscript and superscript content without affecting line-height: h5bp.com/k */
 sub,
 sup {
-  font-size: 75%;
+  font-size: 65%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
+  opacity: 0.5;
 }
 sup {
   top: -0.5em;
@@ -411,119 +412,6 @@ td {
 
 /* CUSTOM LINK COLOURS */
 
-/* a.dribbble,
-a.dribbble:visited {
-  color: #ea4c89;
-}
-a.dribbble:hover {
-  color: #a43560;
-}
-
-a.facebook,
-a.facebook:visited {
-  color: #3b5999;
-}
-a.facebook:hover {
-  color: #293e6b;
-}
-
-a.github,
-a.github:visited {
-  color: #f54d27;
-}
-a.github:hover {
-  color: #df4725;
-}
-
-a.instagram,
-a.instagram:visited {
-  color: #517fa4;
-}
-a.instagram:hover {
-  color: #395973;
-}
-
-a.letterboxd,
-a.letterboxd:visited {
-  color: #66cc33;
-}
-a.letterboxd:hover {
-  color: #4fa723;
-}
-
-a.linkedin,
-a.linkedin:visited {
-  color: #0571a6;
-}
-a.linkedin:hover {
-  color: #044f75;
-}
-
-a.pinterest,
-a.pinterest:visited {
-  color: #d43638;
-}
-a.pinterest:hover {
-  color: #952627;
-}
-
-a.spotify,
-a.spotify:visited {
-  color: #2ebd59;
-}
-a.spotify:hover {
-  color: #19933d;
-}
-a.springload,
-a.springload:visited {
-  color: #558c43;
-}
-a.springload:hover {
-  color: #67aa51;
-}
-
-a.twitter,
-a.twitter:visited {
-  color: #0099ff;
-}
-a.twitter:hover {
-  color: #0079a6;
-}*/
-
-/* a.cargo, a.cargo:visited { color: #0aaf86; } */
-/* a.exposure, a.exposure:visited { color: #acacac; } */
-/* a.foursquare, a.foursquare:visited { color: #0072b1; } */
-/* a.medium, a.medium:visited { color: #57ad68; } */
-/* a.rdio, a.rdio:visited { color: #008fd5; } */
-/* a.tumblr, a.tumblr:visited { color: #3a5876; } */
-
-/* a.xero, a.xero:visited { color: #00a3d3; } */
-/* a.koordinates, a.koordinates:visited { color: #32ad00; } */
-/* a.springload, a.springload:visited { color: #67aa51; } */
-/*a.wellington,
-a.wellington:visited {
-  color: #cc9900;
-}
-a.wellington:hover {
-  color: #8f6b00;
-}*/
-
-/* a.foursquare:hover { color: #00507c; } */
-/* a.rdio:hover { color: #007ebc; } */
-
-/* a.exposure:hover { color: #9a9a9a; } */
-
-/* a.cargo:hover { color: #077b5e; } */
-/* a.tumblr:hover { color: #2a4763; } */
-/* a.medium:hover { color: #468c54;} */
-
-/* a.xero:hover { color: #006b8b; } */
-/* a.koordinates:hover { color: #298e00; } */
-/*a.springload:hover { color: #558c43; } */
-/*a.springload:hover {
-  color: #67aa51;
-}*/
-
 a.dribbble:hover {
   color: #ea4c89;
 }
@@ -579,12 +467,13 @@ body {
   margin: 0 0 20px 0;
 }
 
-nav a {
+nav a, p a.alt {
   text-decoration: none;
 }
 
-nav a:hover {
+nav a:hover, p a.alt:hover {
   opacity: 0.5;
+  text-decoration: none;
 }
 
 .URL {
@@ -601,13 +490,32 @@ header {
   padding-top: 33%;
 }
 
+.report header {
+  background-image: url("/filing/images/2020.png");
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: contain;
+  max-width: 100%;
+  padding-top: 30%;
+  padding-bottom: 30px;
+  margin-bottom: 300px;
+}
+
+.report header p {
+  font-weight: 300;
+  font-size: 42px;
+  line-height: 58px;
+  padding-top: 20px;
+  max-width: 1740px;
+}
+
 header a:hover {
   opacity: 1;
   text-decoration: none;
 }
 
 h1 {
-  font-weight: bold;
+  font-weight: 900;
   font-size: 140px;
   line-height: 150px;
   padding: 0 0 10px 0;
@@ -615,22 +523,29 @@ h1 {
 }
 
 h2 {
-  font-weight: normal;
+  font-weight: 300;
   font-size: 42px;
-  line-height: 50px;
+  line-height: 52px;
   padding: 0 0 10px 0;
   margin: 0;
 }
 
+.report h2 {
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 66px;
+  padding: 200px 0 30px 0;
+}
+
 h3 {
   font-weight: bold;
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 42px;
+  line-height: 52px;
   padding: 20px 0 20px 0;
   margin: 0;
 }
 
-h4 {
+h4, h5 {
   font-weight: bold;
   font-size: 10px;
   line-height: 18px;
@@ -639,14 +554,40 @@ h4 {
   text-transform: uppercase;
 }
 
+.report h4 {
+  font-size: 28px;
+  padding: 50px 0 20px 0;
+  text-transform: none;
+}
+
+.report h3 sup, .report h4 sup {
+  font-weight: normal;
+}
+
 section {
   max-width: 620px;
+}
+
+.report section {
+  max-width: 1680px;
+}
+
+.report section p, .report section blockquote, .report section hr {
+  max-width: 780px;
 }
 
 section ul {
   list-style: none;
   padding: 0;
   margin: 0 0 20px 0;
+}
+
+.report ul.categories {
+  padding: 40px 0 80px 0;
+}
+
+.report ul.categories a {
+  padding-left: 4px;
 }
 
 .images {
@@ -675,9 +616,30 @@ p.socials {
   padding: 20px 0 20px 0;
 }
 
-a.email:hover {
+.featured {
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 38px;
+  max-width: 1120px;
+  padding: 25vh 0 140px 0;
+}
+
+.featured a:hover, a.email:hover, .report header p a:hover {
   opacity: 0.5;
   text-decoration: underline;
+}
+.report header p a {
+  text-decoration: none;
+  border-bottom: 1px solid #FFFFFF;
+}
+.report header p a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid 0.5;
+}
+
+p.small {
+  font-size: 14px;
+  padding-top: 10px;
 }
 
 p.caption {
@@ -687,18 +649,26 @@ p.caption {
 p.intro {
   font-size: 28px;
   line-height: 36px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 blockquote {
   border-left: 2px solid #ffffff;
-  padding-left: 20px;
+  padding: 0 0 0 20px;
   margin: 0;
 }
 
 hr {
   margin: 40px 0 20px 0;
   border-top: 1px solid #1a1a1a;
+}
+
+.featured hr {
+  margin: 0px 0 20px 0;
+}
+
+.report hr {
+  margin: 20px 0 30px 0;
 }
 
 .opacity {
@@ -709,75 +679,74 @@ footer {
   padding: 40px 0 20px 0;
 }
 
+/* Dannual Report */
+
+.report .emoji {
+  font-size: 42px;
+  line-height: 52px;
+  padding: 20px 0 0 0;
+}
+
+.report .category {
+  padding: 100px 0 100px 0;
+}
+
+.report .data {
+  padding: 60px 0 60px 0;
+}
+
+.report .data div {
+  font-size: 20px;
+  padding: 0 0 10px 0;
+}
+
+.report .name {
+  padding: 20px 0 40px 0;
+}
+
+.report .name img {
+  padding: 0 15px 0 0;
+}
+
+.report .name p.caption {
+  padding-top: 30px;
+  line-height: 18px;
+}
+
+.report .data span {
+  padding-right: 2px;
+}
+
+
 /* ==|== media queries ======================================================
    EXAMPLE Media Query for Responsive Design.
    This example overrides the primary ('mobile first') styles
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (max-width: 900px) {
-  /* Style adjustments for viewports that meet the condition */
-
-  .container {
-    margin: 20px 20px;
-  }
-
-  .anchor {
-    display: none;
-  }
-
-  .URL {
-    padding-right: 25%;
-  }
-
-  header {
-    padding-top: 90%;
-  }
-
-  h1 {
-    font-size: 70px;
-    line-height: 74px;
-  }
-
-  h2 {
-    font-size: 20px;
-    line-height: 28px;
-  }
-
-  h3 {
-    font-size: 20px;
-    line-height: 28px;
-    padding: 10px 0 10px 0;
-  }
-
-  h2 br {
-    display: none;
-  }
-
-  p.intro {
-    font-size: 18px;
-    line-height: 24px;
-  }
-
+@media only screen and (max-width: 1680px) {
   .images {
-    padding: 140px 0 70px 0;
+    max-width: 1440px;
   }
-
-  .row {
-    display: block;
-  }
-
-  .column-60 {
-    flex: 100%;
-    padding: 0;
-  }
-
   .column-40 {
-    flex: 100%;
-    padding: 0;
+    max-width: 520px;
   }
-  .hide {
-    display: none;
+  .report header {
+    background: none;
+    padding-top: 33%;
+    margin-bottom: 200px;
+  }
+  .report header h1 {
+    font-size: 126px;
+    line-height: 136px;
+  }
+  .report header p {
+    max-width: 1420px;
+    font-size: 28px;
+    line-height: 38px;
+  }
+  .report section {
+    max-width: 1420px;
   }
 }
 
@@ -787,20 +756,113 @@ footer {
   }
 }
 
-@media only screen and (max-width: 1680px) {
-  .images {
-    max-width: 1440px;
+@media only screen and (max-width: 900px) {
+  .container {
+    margin: 20px 20px;
+  }
+  .anchor {
+    display: none;
+  }
+  .URL {
+    padding-right: 25%;
+  }
+  header {
+    padding-top: 90%;
+  }
+  .report header {
+    padding-top: 90%;
+    margin: 0;
+  }
+  h1 {
+    font-size: 70px;
+    line-height: 74px;
+  }
+  .report header h1 {
+    font-size: 70px;
+    line-height: 80px;
+  }
+  .report h2 {
+    font-size: 28px;
+    line-height: 38px;
+    padding: 60px 0 10px 0;
+  }
+  h2, h3, .report header p {
+    font-size: 20px;
+    line-height: 28px;
+    padding: 10px 0 10px 0;
+  }
+  h2 br {
+    display: none;
+  }
+  .report h3 {
+    font-size: 20px;
+    line-height: 28px;
+    padding: 10px 0 20px 0;
+  }
+  .report h4 {
+    font-size: 14px;
+    padding: 20px 0 10px 0;
+  }
+  p.intro {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .report p.intro {
+    padding: 0;
+  }
+  .featured {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .images, .featured {
+    padding: 140px 0 70px 0;
+  }
+  .featured hr {
+    margin: 0px 0 5px 0;
+  }
+  .row {
+    display: block;
+  }
+  .column-60 {
+    flex: 100%;
+    padding: 0;
   }
   .column-40 {
-    max-width: 520px;
+    flex: 100%;
+    padding: 0;
+  }
+  .hide {
+    display: none;
+  }
+  .report ul.categories{
+    padding: 20px 0 40px 0;
+  }
+  .report .category {
+    padding: 40px 0 20px 0;
+  }
+  .report .data {
+    padding: 20px 0 20px 0;
+  }
+  .report .data div {
+    font-size: 10px;
+    padding: 0 0 10px 0;
+  }
+  .report .emoji {
+    font-size: 28px;
+    line-height: 28px;
+    padding: 10px 0 0 0;
+  }
+  .report hr {
+    margin: 10px 0 10px 0;
   }
 }
 
 @media only screen and (max-width: 320px) {
-  h1 {
-    line-height: 70px;
+  h1, .report header h1 {
+    font-size: 56px;
+    line-height: 66px;
   }
-  h2 {
+  h2, .report h2 {
     font-size: 18px;
     line-height: 24px;
   }
@@ -936,6 +998,29 @@ footer {
    Fonts: Inter by Rasmus Andersson
    ========================================================================== */
 
+/* Light */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url("/filing/fonts/Inter-Light.woff2?v=3.13")
+      format("woff2"),
+    url("/filing/fonts/Inter-Light.woff?v=3.13")
+      format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 300;
+  font-display: block;
+  src: url("/filing/fonts/Inter-LightItalic.woff2?v=3.13")
+      format("woff2"),
+    url("/filing/fonts/Inter-LightItalic.woff?v=3.13")
+      format("woff");
+}
+
+/* Regular */
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -956,6 +1041,8 @@ footer {
     url("/filing/fonts/Inter-Italic.woff?v=3.13")
       format("woff");
 }
+
+/* Bold */
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -974,5 +1061,27 @@ footer {
   src: url("/filing/fonts/Inter-BoldItalic.woff2?v=3.13")
       format("woff2"),
     url("/filing/fonts/Inter-BoldItalic.woff?v=3.13")
+      format("woff");
+}
+
+/* Black */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("/filing/fonts/Inter-Black.woff2?v=3.13")
+      format("woff2"),
+    url("/filing/fonts/Inter-Black.woff?v=3.13")
+      format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 700;
+  font-display: block;
+  src: url("/filing/fonts/Inter-BlackItalic.woff2?v=3.13")
+      format("woff2"),
+    url("/filing/fonts/Inter-BlackItalic.woff?v=3.13")
       format("woff");
 }
