@@ -448,6 +448,10 @@ a.springload:hover {
   color: #0daa57;
 }
 
+a.stedi:hover {
+  color: #8fd5bd;
+}
+
 a.twitter:hover {
   color: #0099ff;
 }
@@ -518,7 +522,7 @@ h1 {
   font-weight: 900;
   font-size: 140px;
   line-height: 150px;
-  padding: 0 0 10px 0;
+  padding: 10px 0 10px 0;
   margin: 0;
 }
 
@@ -611,7 +615,7 @@ section ul {
   padding-right: 15px;
 }
 
-p.socials {
+p.socials, p.blurb {
   max-width: 800px;
   padding: 20px 0 20px 0;
 }
@@ -620,7 +624,7 @@ p.socials {
   font-weight: 300;
   font-size: 28px;
   line-height: 38px;
-  max-width: 1120px;
+  max-width: 1140px;
   padding: 25vh 0 140px 0;
 }
 
@@ -681,11 +685,31 @@ footer {
 
 /* Dannual Report */
 
-.report .emoji {
+.report .category-emoji {
   font-size: 42px;
   line-height: 52px;
   padding: 20px 0 0 0;
 }
+
+/*.emoji {
+        animation: animateIn 0.5s;
+        -moz-animation: animateIn 0.5s;
+        -webkit-animation: animateIn 0.5s;
+        -o-animation: animateIn 0.5s;
+        animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+        -o-animation-fill-mode: forwards;
+        opacity: 0;
+      }
+      @keyframes animateIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }*/
 
 .report .category {
   padding: 20px 0 180px 0;
@@ -730,6 +754,9 @@ footer {
   }
   .column-40 {
     max-width: 520px;
+  }
+  header {
+    padding-top: 28%;
   }
   .report header {
     background: none;
