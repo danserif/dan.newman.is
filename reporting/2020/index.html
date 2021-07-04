@@ -6,6 +6,9 @@
 - Replace links
 - Remove local links
 - Add content
+- Responsive media queries
+- Update icons
+- Update OG images
 
 -->
 
@@ -22,7 +25,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/filing/css/styles.css">
+    <link rel="stylesheet" href="file:///Users/dan/Documents/GitHub/dan.newman.is/filing/css/styles.css">
 
     <link rel="preload" href="/filing/fonts/Inter-Light.woff2?v=3.13" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="/filing/fonts/Inter-LightItalic.woff2?v=3.13" as="font" type="font/woff2" crossorigin="anonymous">
@@ -76,7 +79,7 @@
         <h1>Dannual Report. 2020.</h1>
         <p>It’s here. The first ever <em>Dannual Report</em>, complete with way more information than you needed to know about me, <a href="/">Dan Newman</a>, my 🐕‍ dog<sup>(1)</sup>, our games of 🎾 fetch<sup>(xx)</sup>, the number of 🌵
           plants<sup>(xx)</sup> I planted, 🥑 avocados<sup>(xx)</sup> I ate, ☕️ coffees<sup>(xx)</sup> and 🍺 beers<sup>(xx)</sup> I drank, 🎬 films<sup>(xx)</sup> and 📺 TV episodes<sup>(xx)</sup> I watched, 🚌 buses<sup>(xx)</sup> and 🚕
-          taxis<sup>(xx)</sup> I caught, and everything else, like the 😷 pandemic<sup>(1)</sup>, that happened in 2020.</p>
+          taxis<sup>(xx)</sup> I caught, and everything else, like the 😷 pandemic<sup>(1)</sup> that happened in 2020.</p>
       </header>
 
       <main>
@@ -84,22 +87,19 @@
         <!-- Introduction -->
         <section>
           <h2>Introduction</h2>
-          <p class="intro">Of all years one could start publishing an annual report about their life, I started in 2020, which turned out to be a year monumentally different than anyone expected.</p>
-          <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-            magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam
-            quaerat voluptatem.</p>
+          <p class="intro">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+            voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+            quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
           <blockquote>
             <p>“Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.”<br /> &mdash; <a href="">Dr. Ashley Bloomfield</a></p>
           </blockquote>
           <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
             officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat
             facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-            voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-            quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
           <div class="name">
-            <img srcset="/filing/images/dan-newman-profile.png 1x, /filing/images/dan-newman-profile-2x.png 2x" align="left" title="Human" alt="Dan, Human">
+            <img srcset="file:///Users/dan/Documents/GitHub/dan.newman.is/filing/images/dan-newman-profile.png 1x, file:///Users/dan/Documents/GitHub/dan.newman.is/filing/images/dan-newman-profile-2x.png 2x" align="left" title="Human"
+              alt="Dan, Human">
             <p class="caption"><strong>Dan Newman</strong> </br>VP Ball Distribution, Ada Inc.</p>
           </div>
         </section>
@@ -108,12 +108,13 @@
         <section>
           <h2>Data</h2>
           <p class="intro">The <em>Dannual Report</em> is based on data tracked in 12 different categories that provide an insight (or TMI) into how I spent 2020. Some of the categories are as trivial as what drinks<sup>(xx)</sup> I had and
-            entertainment<sup>(xx)</sup> I watched, while others document the locations<sup>(209)</sup> I visited and the type of transport<sup>(xx)</sup> I used.</p>
-          <p>All of the data was tracked by submitting a Google Form that instantanously updated results in a Google Spreedsheet. There was sadly no fancy mobile app, just the link to the form saved on my iPhone home screen. Setting up the form was
-            simple, with several checkbox lists the main method of adding data. Additional data points were added as needed in a text input or added to a checkbox list if they became recurring submissions on the form. The form was submitted (xx)
-            times, tracking (xx) data points in 2020.</p>
-          <p>The idea to do a <em>Dannual Report</em> was inspired by <a href="">Nicholas Feltron</a> and his personal <a href="">annual reports</a>. In previous years I’ve used his apps (<a href="">Daytum</a> & <a href="">Reporter</a>) to track my
-            life, first in 2011 while living in London, and sporadically over the years since. This is the first time publishing what will hopefuly be many <em>Dannual Reports</em>.</p>
+            entertainment<sup>(xx)</sup> I watched, while others document the locations<sup>(xx)</sup> I visited and the type of transport<sup>(xx)</sup> I used.</p>
+          <p>All of the data was tracked by submitting a Google Form that instantaneously updated results in a Google Spreedsheet. There was sadly no fancy mobile app, just the link to the form saved on my iPhone home screen. Setting up the form was
+            simple, with several checkbox lists the main method of adding data. Additional data points were added as needed in a text input or added to a checkbox list if they became recurring submissions on the form. The form was submitted xx
+            times, tracking xx data points in 2020. Don’t worry, the rest of this report will be more interesting than this banal explanation of how I tracked the data.</p>
+          <p>The idea to do a <em>Dannual Report</em> was inspired by <a href="http://feltron.com">Nicholas Feltron</a> and his personal <a href="http://feltron.com/FAR14.html">annual reports</a>. In previous years I’ve used his apps (<a
+              href="https://daytum.com">Daytum</a> & <a href="http://reporter-app.com">Reporter</a>) to track my life, first in 2011 while living in London, and sporadically over the years since. This is the first time publishing what will hopefully
+            be many <em>Dannual Reports</em>.</p>
           <p>Use the links below to jump to individual categories or just scroll for an onslaught of numbers and emoji. Enjoy!</p>
           <ul class="categories">
             <li>🗓 <a href="#days">Days</a></li>
@@ -133,34 +134,105 @@
 
         <!-- Days -->
         <section id="days" class="category">
-          <div class="emoji">🗓</div>
+          <div class="category-emoji">🗓</div>
           <h3>Days<sup>(546)*</sup></h3>
           <p class="intro">Starting off with a simple ‘what happened today’ question, this category tracked every day in 2020.</p>
-          <p>At first it was just work, sickness, and holidays being tracked before we started major rennovations which meant builders and painters were coming and going from our house a lot in 2020. There was also a lot more days than expected
-            working from home, as well as a <a href="">lockdown</a>, defining much of the year.</p>
-          <p class="opacity">* Despite appearances, I’m aware of the number of days in a year. For the <em>Dannual Report</em> numerous days were recorded multiple times e.g. to account for renovations, work, and WFH that may have occured on the
-            same day.</p>
+          <p>At first it was just work, sickness, and holidays being tracked before we started major renovations on the house, and in the midst of that had a lockdown, accounting for a lot of days working from home (WFH).</p>
+          <p class="opacity">* Despite appearances, I’m aware of the number of days in a year. For the Dannual Report numerous days were recorded multiple times e.g. to account for renovations, work, and WFH that may have occurred on the same day.
+          </p>
           <div class="data">
-            <h4>Work<sup>(196)</sup></h4>
-            <div data-emoji="💼" data-amount="196" class="space"></div>
-            <h4>WFH<sup>(196)</sup></h4>
-            <div data-emoji="🏠" data-amount="196"></div>
+            <h4>Work<sup>(xx)</sup></h4>
+            <div data-emoji="💼" data-amount="100" class="space"></div>
+            <h4>WFH<sup>(xx)</sup></h4>
+            <div data-emoji="🏠" data-amount="100"></div>
+            <h4>Rennovations<sup>(xx)</sup></h4>
+            <div data-emoji="🚧" data-amount="100"></div>
+            <h4>Lockdown*<sup>(xx)</sup></h4>
+            <div data-emoji="🔒" data-amount="100"></div>
+            <p>* This was more than the number of days New Zealand was in Level 4 and includes several days at Level 2 & 3.</p>
+            <h4>Holidays<sup>(xx)</sup></h4>
+            <div data-emoji="🏝" data-amount="100"></div>
             <h4>Sick*<sup>(9)</sup></h4>
             <div data-emoji="😷" data-amount="9"></div>
             <p>* Not Covid-19.</p>
           </div>
         </section>
 
+        <!-- Locations -->
+        <section id="locations" class="category">
+          <div class="category-emoji">🗺</div>
+          <h3>Locations<sup>(xx)</sup></h3>
+          <p class="intro">Something about locations.</p>
+          <p>More stuff about locations.</p>
+          <div class="data">
+            <h4>Polo Grounds*<sup>(31)</sup></h4>
+            <div data-emoji="🐎" data-amount="31"></div>
+            <p>* Despite the name there’s no horses here, it’s home to the Oriental Rongotai Football Club and where Ada goes for fetch.</p>
+          </div>
+        </section>
+
+        <!-- People -->
+        <section id="people" class="category">
+          <div class="category-emoji">👋</div>
+          <h3>People<sup>(xx)</sup></h3>
+          <p class="intro">Something about people.</p>
+          <p>More stuff about people.</p>
+          <div class="data">
+            <h4>Noush<sup>(xx)</sup></h4>
+            <div data-emoji="👩🏾‍💻" data-amount="100"></div>
+          </div>
+        </section>
+
         <!-- Ada -->
         <section id="ada" class="category">
-          <div class="emoji">🐕</div>
+          <div class="category-emoji">🐕</div>
           <h3>Ada<sup>(371)*</sup></h3>
-          <p class="intro">Something about Ada.</p>
-          <p>More stuff about Ada.</p>
+          <p class="intro">The most floofiest and fabulous pooch is a significant part of our lives, and featured prominently throughout this years dog data.</p>
           <p class="opacity">* There’s only one Ada. This number includes all the data points recorded about the floof.</p>
           <div class="data">
             <h4>Fetch<sup>(338)</sup></h4>
             <div data-emoji="🎾" data-amount="338"></div>
+          </div>
+        </section>
+
+        <!-- Food -->
+        <section id="ada" class="category">
+          <div class="category-emoji">🥑</div>
+          <h3>Food<sup>(371)*</sup></h3>
+          <p class="intro">Something about food.</p>
+          <p>More stuff about food.</p>
+          <p class="opacity">* Somthing pithy about food.</p>
+          <div class="data">
+            <h4>Fetch<sup>(69)</sup></h4>
+            <div data-emoji="🍆" data-amount="69"></div>
+          </div>
+        </section>
+
+        <!-- Drink -->
+        <section id="ada" class="category">
+          <div class="category-emoji">🍹</div>
+          <h3>Drink<sup>(xx)*</sup></h3>
+          <p class="intro">Something about drink.</p>
+          <p>More stuff about drink.</p>
+          <p class="opacity">* Somthing pithy about drink.</p>
+          <div class="data">
+            <h4>Fetch<sup>(69)</sup></h4>
+            <div data-emoji="🍆" data-amount="69"></div>
+          </div>
+        </section>
+
+        <!-- Entertainment -->
+        <section id="ada" class="category">
+          <div class="category-emoji">🎬</div>
+          <h3>Entertainment<sup>(xx)*</sup></h3>
+          <p class="intro">Something about entertainment.</p>
+          <p>More stuff about entertainment.</p>
+          <p class="opacity">* Somthing pithy about entertainment.</p>
+          <div class="data">
+            <h4>Films<sup>(xx)</sup></h4>
+            <div data-emoji="🍿" data-amount="10"></div>
+            <h4>TV<sup>(xx)</sup></h4>
+            <div data-emoji="📺" data-amount="10"></div>
           </div>
         </section>
 
@@ -176,20 +248,21 @@
         <!-- Summary -->
         <section>
           <h2>Summary</h2>
-          <p class="intro">The <a href="">human</a> performed admirably in the second year of dog [aka 2020]. There were many more WFH<sup>(xx)</sup> days spent together than the previous year of human and dog time, which was noted by the increase in
+          <p class="intro">The <a href="https://dan.newman.is/#about">human</a> performed admirably in the second year of dog [aka 2020]. There were many more WFH<sup>(xx)</sup> days spent together than the previous year of human and dog time, which
+            was noted by the increase in
             walks<sup>(xx)</sup> and pats received. However, fetch<sup>(xx)</sup> was not conducted every day and was mentioned to the human on numerous occasions.</p>
           <p>A highlight of the year included joining the Hound Hikes where I met other floofs and ran and ran and ran and ran and ran and then snoozed. Another highlight was visiting the Grandpawrents and staying with them, as well as when they came
             to visit the big stick [aka Christmas tree] and put toys under it for me to unwrap whilst they weren’t watching. At the same time a vary <a href="https://www.instagram.com/ellapriceportraits/">talented colleague</a> of the human drew a <a
               href="https://www.instagram.com/p/CIAd8WqLeRF/">portrait</a> of me. Its like looking in the mirror but it does not move.</p>
-          <p>There was signifcant disrubition to the fetch and food facitlies which was concerning. Several men made loud noises removing walls and windows then left wood around for me. The wood was great, but it was cold so after a very short
-            haircut I got several new floof jackets and jersy’s. The yellow jersy was particually impressive.</p>
+          <p>There was significant distribution to the fetch and food facilities which was concerning. Several men made loud noises removing walls and windows then left wood around for me. The wood was great, but it was cold so after a very short
+            haircut I got several new floof jackets and jerseys. The yellow jersey was particularly impressive.</p>
           <p>It was noted that the humans spent a lot of time listening to something called the <a href="https://www.newsroom.co.nz/the-ashley-bloomfield-show">The Ashley Bloomfield Show</a>. This was often followed by increased human time, so was
-            considerd a good thing, despite them being concerned and anxious at different levels. There was also a lockdown that increased the number of walks significantly.</p>
-          <p>Lowlights were the vet visits and haircuts. I ate something I was not supposed to. My apolgoies.</p>
+            considered a good thing, despite them being concerned and anxious at different levels. There was also a lockdown that increased the number of walks significantly.</p>
+          <p>Lowlights were the vet visits and haircuts. I ate something I was not supposed to. My apologies.</p>
           <p>Finally, visits to the <a href="https://www.springload.co.nz">office</a> to see human friends were limited and could be improved for future years of dog.</p>
           <div class="name">
-            <img srcset="/filing/images/ada-profile.png 1x, /filing/images/ada-profile-2x.png 2x" align="left" title="Dog" alt="Ada, Dog">
-            <p class="caption"><strong>Ada Isaac-Newman</strong> </br>Chief Floof Officer, Fetch Inc.</p>
+            <img srcset="file:///Users/dan/Documents/GitHub/dan.newman.is/filing/images/ada-profile.png 1x, file:///Users/dan/Documents/GitHub/dan.newman.is/filing/images/ada-profile-2x.png 2x" align="left" title="Dog" alt="Ada, Dog">
+            <p class="caption"><strong>Ada Isaac-Newman</strong> </br>Chief Floof Officer, Human Inc.</p>
           </div>
           <hr>
         </section>
@@ -220,9 +293,10 @@
         <section>
           <h5>Details</h5>
           <ul>
-            <li>Recorded in <a href="https://www.google.com/forms/about/">Google Forms</a> & <a href="https://www.google.com/sheets/about/">Sheets</a>.</li>
-            <li>Designed in <a href="https://www.figma.com">Figma</a> & <a href="https://www.apple.com/safari/">Safari</a>.</li>
+            <li>Recorded in <a href="https://www.google.com/forms/about/">Google Forms</a>.</li>
+            <li>Organised in <a href="https://www.notion.so">Notion</a>.</li>
             <li>Written in <a href="https://ia.net/writer">iA Writer</a>.</li>
+            <li>Designed in <a href="https://www.figma.com">Figma</a> & <a href="https://www.apple.com/safari/">Safari</a>.</li>
             <li>Built in <a href="https://atom.io">Atom</a>.</li>
             <li>Hosted on <a href="https://github.com">Github</a>.</li>
             <li>Fonts by <a href="https://rsms.me/inter/">Rasmus Andersson</a>.</li>
@@ -241,7 +315,7 @@
 
   </body>
 
-  <script>
+  <!--<script>
     const statsContainers = document.querySelectorAll("[data-emoji");
     statsContainers.forEach((div) =>
     {
@@ -252,6 +326,25 @@
         const span = document.createElement("span");
         span.appendChild(document.createTextNode(emoji));
         div.appendChild(span);
+      }
+    });
+  </script>-->
+
+  <script>
+    const statsContainers = document.querySelectorAll("[data-emoji");
+    let delay = 0;
+    statsContainers.forEach((div) =>
+    {
+      const emoji = div.dataset.emoji;
+      const amount = parseInt(div.dataset.amount);
+      for (let i = 0; i < amount; i++)
+      {
+        const span = document.createElement("span");
+        span.classList.add("emoji");
+        span.appendChild(document.createTextNode(emoji));
+        div.appendChild(span);
+        span.style.animationDelay = delay + "s";
+        delay += 0.05;
       }
     });
   </script>
