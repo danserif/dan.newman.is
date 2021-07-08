@@ -390,6 +390,7 @@ textarea:invalid {
 table {
   border-collapse: collapse;
   display: block;
+  padding-top: 120px;
   padding-bottom: 60px;
 }
 tr {
@@ -501,6 +502,10 @@ header {
   max-width: 1200px;
   padding-top: 33%;
 }
+/*.work header {
+  max-width: 1680px;
+  padding-top: 40%;
+}*/
 
 .report header {
   background-image: url("/filing/images/2020.png");
@@ -624,7 +629,7 @@ section ul {
 }
 
 p.socials, p.blurb {
-  max-width: 800px;
+  /*max-width: 800px;*/
   padding: 20px 0 20px 0;
 }
 
