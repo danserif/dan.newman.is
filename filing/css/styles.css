@@ -500,12 +500,12 @@ nav a:hover, p a.alt:hover {
 
 header {
   max-width: 1200px;
-  padding-top: 33%;
+  padding-top: 34%;
 }
-/*.work header {
-  max-width: 1680px;
-  padding-top: 40%;
-}*/
+
+.work header {
+  padding-top: 38%;
+}
 
 .report header {
   background-image: url("/filing/images/2020.png");
@@ -771,9 +771,9 @@ footer {
   header {
     padding-top: 28%;
   }
-  .report header {
+  .report header, .work header {
     background: none;
-    padding-top: 33%;
+    padding-top: 32%;
     margin-bottom: 200px;
   }
   .report header h1 {
@@ -809,15 +809,18 @@ footer {
   header {
     padding-top: 90%;
   }
-  .report header {
+  .report header{
     padding-top: 20%;
+    margin: 0;
+  }
+  .work header {
     margin: 0;
   }
   h1 {
     font-size: 70px;
     line-height: 74px;
   }
-  .report header h1 {
+  .report header h1, .work header h1 {
     font-size: 42px;
     line-height: 52px;
   }
@@ -894,6 +897,9 @@ footer {
   }
   .report hr {
     margin: 10px 0 10px 0;
+  }
+  table {
+    padding-top: 60px;
   }
 }
 
