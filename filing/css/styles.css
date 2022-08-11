@@ -24,20 +24,20 @@ header,
 hgroup,
 nav,
 section {
-  display: block;
+	display: block;
 }
 audio,
 canvas,
 video {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
 }
 audio:not([controls]) {
-  display: none;
+	display: none;
 }
 [hidden] {
-  display: none;
+	display: none;
 }
 
 /* =============================================================================
@@ -50,9 +50,9 @@ audio:not([controls]) {
  */
 
 html {
-  font-size: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
 }
 
 html,
@@ -60,16 +60,16 @@ button,
 input,
 select,
 textarea {
-  -webkit-font-smoothing: antialiased;
-  font-family: Inter, sans-serif; /*Helvetica, sans-serif;*/
-  color: #ffffff;
+	-webkit-font-smoothing: antialiased;
+	font-family: Inter, sans-serif; /*Helvetica, sans-serif;*/
+	color: #ffffff;
 }
 
 body {
-  margin: 0;
-  font-size: 0.8em;
-  line-height: 1.6;
-  background-color: #000000;
+	margin: 0;
+	font-size: 0.8em;
+	line-height: 1.6;
+	background-color: #000000;
 }
 
 /*
@@ -79,14 +79,14 @@ body {
  */
 
 ::-moz-selection {
-  background: #ffffff;
-  color: #000000;
-  text-shadow: none;
+	background: #ffffff;
+	color: #000000;
+	text-shadow: none;
 }
 ::selection {
-  background: #ffffff;
-  color: #000000;
-  text-shadow: none;
+	background: #ffffff;
+	color: #000000;
+	text-shadow: none;
 }
 
 /* =============================================================================
@@ -94,19 +94,19 @@ body {
    ========================================================================== */
 
 a {
-  color: #ffffff;
-  outline: none;
-  text-decoration: underline;
+	color: #ffffff;
+	outline: none;
+	text-decoration: underline;
 }
 a:visited {
-  color: #ffffff;
+	color: #ffffff;
 }
 a:hover {
-  color: #ffffff;
-  opacity: 0.5;
+	color: #ffffff;
+	opacity: 0.5;
 }
 a:focus {
-  outline: none;
+	outline: none;
 }
 
 /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
@@ -117,42 +117,42 @@ a:focus {
    ========================================================================== */
 
 abbr[title] {
-  border-bottom: 1px dotted;
+	border-bottom: 1px dotted;
 }
 
 b,
 strong {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 blockquote {
-  margin: 1em 40px;
+	margin: 1em 40px;
 }
 
 dfn {
-  font-style: italic;
+	font-style: italic;
 }
 
 hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
 }
 
 ins {
-  background: #ff9;
-  color: #000;
-  text-decoration: none;
+	background: #ff9;
+	color: #000;
+	text-decoration: none;
 }
 
 mark {
-  background: #ff0;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
+	background: #ff0;
+	color: #000;
+	font-style: italic;
+	font-weight: bold;
 }
 
 /* Redeclare monospace font family: h5bp.com/j */
@@ -160,45 +160,45 @@ pre,
 code,
 kbd,
 samp {
-  font-family: monospace, serif;
-  _font-family: "courier new", monospace;
-  font-size: 1em;
+	font-family: monospace, serif;
+	_font-family: "courier new", monospace;
+	font-size: 1em;
 }
 
 /* Improve readability of pre-formatted text in all browsers */
 pre {
-  white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
 }
 
 q {
-  quotes: none;
+	quotes: none;
 }
 q:before,
 q:after {
-  content: "";
-  content: none;
+	content: "";
+	content: none;
 }
 
 small {
-  font-size: 85%;
+	font-size: 85%;
 }
 
 /* Position subscript and superscript content without affecting line-height: h5bp.com/k */
 sub,
 sup {
-  font-size: 65%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-  opacity: 0.5;
+	font-size: 65%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+	opacity: 0.5;
 }
 sup {
-  top: -0.5em;
+	top: -0.5em;
 }
 sub {
-  bottom: -0.25em;
+	bottom: -0.25em;
 }
 
 /* =============================================================================
@@ -207,18 +207,18 @@ sub {
 
 ul,
 ol {
-  margin: 1em 0;
-  padding: 0 0 0 40px;
+	margin: 1em 0;
+	padding: 0 0 0 40px;
 }
 dd {
-  margin: 0 0 0 40px;
+	margin: 0 0 0 40px;
 }
 nav ul,
 nav ol {
-  list-style: none;
-  list-style-image: none;
-  margin: 0;
-  padding: 0;
+	list-style: none;
+	list-style-image: none;
+	margin: 0;
+	padding: 0;
 }
 
 /* =============================================================================
@@ -231,9 +231,9 @@ nav ol {
  */
 
 img {
-  border: 0;
-  -ms-interpolation-mode: bicubic;
-  vertical-align: middle;
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+	vertical-align: middle;
 }
 
 /*
@@ -241,7 +241,7 @@ img {
  */
 
 svg:not(:root) {
-  overflow: hidden;
+	overflow: hidden;
 }
 
 /* =============================================================================
@@ -249,7 +249,7 @@ svg:not(:root) {
    ========================================================================== */
 
 figure {
-  margin: 0;
+	margin: 0;
 }
 
 /* =============================================================================
@@ -257,17 +257,17 @@ figure {
    ========================================================================== */
 
 form {
-  margin: 0;
+	margin: 0;
 }
 fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
+	border: 0;
+	margin: 0;
+	padding: 0;
 }
 
 /* Indicate that 'label' will shift focus to the associated form element */
 label {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 /*
@@ -276,10 +276,10 @@ label {
  */
 
 legend {
-  border: 0;
-  *margin-left: -7px;
-  padding: 0;
-  white-space: normal;
+	border: 0;
+	*margin-left: -7px;
+	padding: 0;
+	white-space: normal;
 }
 
 /*
@@ -292,10 +292,10 @@ button,
 input,
 select,
 textarea {
-  font-size: 100%;
-  margin: 0;
-  vertical-align: baseline;
-  *vertical-align: middle;
+	font-size: 100%;
+	margin: 0;
+	vertical-align: baseline;
+	*vertical-align: middle;
 }
 
 /*
@@ -304,7 +304,7 @@ textarea {
 
 button,
 input {
-  line-height: normal;
+	line-height: normal;
 }
 
 /*
@@ -317,9 +317,9 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  cursor: pointer;
-  -webkit-appearance: button;
-  *overflow: visible;
+	cursor: pointer;
+	-webkit-appearance: button;
+	*overflow: visible;
 }
 
 /*
@@ -328,7 +328,7 @@ input[type="submit"] {
 
 button[disabled],
 input[disabled] {
-  cursor: default;
+	cursor: default;
 }
 
 /*
@@ -337,20 +337,20 @@ input[disabled] {
 
 input[type="checkbox"],
 input[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-  *width: 13px;
-  *height: 13px;
+	box-sizing: border-box;
+	padding: 0;
+	*width: 13px;
+	*height: 13px;
 }
 input[type="search"] {
-  -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
 }
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
+	-webkit-appearance: none;
 }
 
 /*
@@ -359,8 +359,8 @@ input[type="search"]::-webkit-search-cancel-button {
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
+	border: 0;
+	padding: 0;
 }
 
 /*
@@ -369,9 +369,9 @@ input::-moz-focus-inner {
  */
 
 textarea {
-  overflow: auto;
-  vertical-align: top;
-  resize: vertical;
+	overflow: auto;
+	vertical-align: top;
+	resize: vertical;
 }
 
 /* Colors for form validity */
@@ -380,7 +380,7 @@ textarea:valid {
 }
 input:invalid,
 textarea:invalid {
-  background-color: #f0dddd;
+	background-color: #f0dddd;
 }
 
 /* =============================================================================
@@ -388,31 +388,30 @@ textarea:invalid {
    ========================================================================== */
 
 table {
-  border-collapse: collapse;
-  display: block;
-  padding-top: 120px;
-  padding-bottom: 60px;
+	border-collapse: collapse;
+	display: block;
+	padding-top: 120px;
+	padding-bottom: 60px;
 }
 tr {
-  padding: 0;
-  margin: 0;
+	padding: 0;
+	margin: 0;
 }
 td {
-  vertical-align: top;
-  padding-right: 30px;
-  line-height: 1.4;
+	vertical-align: top;
+	padding-right: 30px;
+	line-height: 1.4;
 }
-
 
 /* =============================================================================
    Chrome Frame Prompt
    ========================================================================== */
 
 .chromeframe {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: black;
-  padding: 0.2em 0;
+	margin: 0.2em 0;
+	background: #ccc;
+	color: black;
+	padding: 0.2em 0;
 }
 
 /* ==|== primary styles =====================================================
@@ -422,286 +421,308 @@ td {
 /* CUSTOM LINK COLOURS */
 
 a.dribbble:hover {
-  color: #ea4c89;
+	color: #ea4c89;
 }
 
 a.facebook:hover {
-  color: #3b5999;
+	color: #3b5999;
 }
 
 a.github:hover {
-  color: #1074e7;
+	color: #1074e7;
 }
 
 a.instagram:hover {
-  color: #517fa4;
+	color: #517fa4;
 }
 
 a.letterboxd:hover {
-  color: #66cc33;
+	color: #66cc33;
 }
 
 a.linkedin:hover {
-  color: #0571a6;
+	color: #0571a6;
 }
 
 a.pinterest:hover {
-  color: #d43638;
+	color: #d43638;
 }
 
 a.spotify:hover {
-  color: #2ebd59;
-}
-
-a.springload:hover {
-  color: #0daa57;
-}
-
-a.stedi:hover {
-  color: #32a17b;
+	color: #2ebd59;
 }
 
 a.twitter:hover {
-  color: #0099ff;
+	color: #0099ff;
 }
 
 /* CUSTOM STYLES */
 
 body {
-  opacity: 0;
-  transition: opacity 5s;
+	opacity: 0;
+	transition: opacity 5s;
 }
 
 .container {
-  margin: 30px 40px;
+	margin: 30px 40px;
 }
 
 .container p {
-  margin: 0 0 20px 0;
+	margin: 0 0 20px 0;
 }
 
-nav a, p a.alt {
-  text-decoration: none;
+nav a,
+p a.alt {
+	font-size: 16px;
+	text-decoration: none;
 }
 
-nav a:hover, p a.alt:hover {
-  opacity: 0.5;
-  text-decoration: none;
+nav a:hover,
+p a.alt:hover {
+	opacity: 0.5;
+	text-decoration: none;
 }
 
 .URL {
-  text-transform: uppercase;
-  padding-right: 15%;
+	text-transform: uppercase;
+	padding-right: 15%;
 }
 .anchor {
-  float: right;
-  padding-right: 15%;
+	float: right;
+	padding-right: 15%;
 }
 
 header {
-  max-width: 1240px;
-  padding-top: 34%;
+	max-width: 1400px;
+	padding-top: 34%;
+}
+
+.arrow a {
+	text-decoration: none;
+	font-size: 24px;
+}
+.arrow a:hover {
+	opacity: 0.5;
 }
 
 .work header {
-  padding-top: 38%;
+	padding-top: 28%;
 }
 
 .report header {
-  background-image: url("/filing/images/2020.png");
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-size: contain;
-  max-width: 100%;
-  padding-top: 30%;
-  padding-bottom: 30px;
-  margin-bottom: 300px;
+	background-image: url("/filing/images/2020.png");
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-size: contain;
+	max-width: 100%;
+	padding-top: 30%;
+	padding-bottom: 30px;
+	margin-bottom: 300px;
 }
 
 .report header p {
-  font-weight: 300;
-  font-size: 42px;
-  line-height: 58px;
-  padding-top: 20px;
-  max-width: 1740px;
+	font-weight: 300;
+	font-size: 42px;
+	line-height: 58px;
+	padding-top: 20px;
+	max-width: 1740px;
 }
 
 header a:hover {
-  opacity: 1;
-  text-decoration: none;
+	opacity: 1;
+	text-decoration: none;
 }
 
 h1 {
-  font-weight: 900;
-  font-size: 140px;
-  line-height: 150px;
-  padding: 10px 0 10px 0;
-  margin: 0;
+	font-weight: 900;
+	font-size: 140px;
+	line-height: 150px;
+	padding: 10px 0 10px 0;
+	margin: 0;
 }
 
 h2 {
-  font-weight: 300;
-  font-size: 42px;
-  line-height: 52px;
-  padding: 0 0 10px 0;
-  margin: 0;
+	font-weight: 300;
+	font-size: 42px;
+	line-height: 52px;
+	padding: 0 0 10px 0;
+	margin: 0;
 }
 
 .report h2 {
-  font-weight: 700;
-  font-size: 56px;
-  line-height: 66px;
-  padding: 200px 0 30px 0;
+	font-weight: 700;
+	font-size: 56px;
+	line-height: 66px;
+	padding: 200px 0 30px 0;
 }
 
 h3 {
-  font-weight: bold;
-  font-size: 42px;
-  line-height: 52px;
-  padding: 20px 0 20px 0;
-  margin: 0;
+	font-weight: bold;
+	font-size: 42px;
+	line-height: 52px;
+	padding: 20px 0 20px 0;
+	margin: 0;
 }
 
-h4, h5 {
-  font-weight: bold;
-  font-size: 10px;
-  line-height: 18px;
-  padding: 20px 0 0 0;
-  margin: 0;
-  text-transform: uppercase;
+h4 {
+	opacity: 0.5;
+}
+
+h4,
+h5 {
+	font-weight: bold;
+	font-size: 10px;
+	line-height: 18px;
+	padding: 20px 0 0 0;
+	margin: 0;
+	text-transform: uppercase;
 }
 
 .report h4 {
-  font-size: 28px;
-  padding: 50px 0 20px 0;
-  text-transform: none;
+	font-size: 28px;
+	padding: 50px 0 20px 0;
+	text-transform: none;
 }
 
-.report h3 sup, .report h4 sup {
-  font-weight: normal;
+.report h3 sup,
+.report h4 sup {
+	font-weight: normal;
 }
 
 section {
-  max-width: 620px;
+	max-width: 620px;
 }
 
 .report section {
-  max-width: 1680px;
+	max-width: 1680px;
 }
 
-.report section p, .report section blockquote, .report section hr {
-  max-width: 780px;
+.report section p,
+.report section blockquote,
+.report section hr {
+	max-width: 780px;
 }
 
 section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px 0;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 20px 0;
 }
 
 .report ul.categories {
-  padding: 40px 0 160px 0;
+	padding: 40px 0 160px 0;
 }
 
 .report ul.categories a {
-  padding-left: 4px;
+	padding-left: 4px;
 }
 
 .images {
-  max-width: 1680px;
-  padding: 25vh 0 140px 0;
+	max-width: 1680px;
+	padding: 25vh 0 140px 0;
 }
 
 .row {
-  display: flex;
+	display: flex;
 }
 
 .column-60 {
-  flex: 60%;
-  max-width: 1040px;
-  padding-right: 15px;
+	flex: 60%;
+	max-width: 1040px;
+	padding-right: 15px;
 }
 
 .column-40 {
-  flex: 40%;
-  max-width: 615px;
-  padding-right: 15px;
+	flex: 40%;
+	max-width: 615px;
+	padding-right: 15px;
 }
 
-p.socials, p.blurb {
-  /*max-width: 800px;*/
-  padding: 20px 0 20px 0;
+p.socials,
+p.blurb {
+	/*max-width: 800px;*/
+	padding: 20px 0 20px 0;
+}
+
+p.employable {
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 24px;
+	padding: 20px 0 20px 0;
+	max-width: 1280px;
 }
 
 .featured {
-  font-weight: 300;
-  font-size: 28px;
-  line-height: 38px;
-  max-width: 1140px;
-  padding: 25vh 0 140px 0;
+	font-weight: 300;
+	font-size: 28px;
+	line-height: 38px;
+	max-width: 1140px;
+	padding: 25vh 0 140px 0;
 }
 
-.featured a:hover, a.email:hover, .report header p a:hover {
-  opacity: 0.5;
-  text-decoration: underline;
+.featured a:hover,
+a.email:hover,
+.report header p a:hover {
+	opacity: 0.5;
+	text-decoration: underline;
 }
 .report header p a {
-  text-decoration: none;
-  border-bottom: 1px solid #FFFFFF;
+	text-decoration: none;
+	border-bottom: 1px solid #ffffff;
 }
 .report header p a:hover {
-  text-decoration: none;
-  border-bottom: 1px solid 0.5;
+	text-decoration: none;
+	border-bottom: 1px solid 0.5;
 }
 
 p.small {
-  font-size: 14px;
-  padding-top: 10px;
+	font-size: 14px;
+	padding-top: 10px;
 }
 
 p.caption {
-  padding: 5px 0 0 0;
+	padding: 5px 0 0 0;
 }
 
 p.intro {
-  font-size: 28px;
-  line-height: 36px;
-  padding-bottom: 10px;
+	font-size: 28px;
+	line-height: 36px;
+	padding-bottom: 10px;
 }
 
 blockquote {
-  border-left: 2px solid #ffffff;
-  padding: 0 0 0 20px;
-  margin: 0;
+	border-left: 2px solid #ffffff;
+	padding: 0 0 0 20px;
+	margin: 0;
 }
 
 hr {
-  margin: 40px 0 20px 0;
-  border-top: 1px solid #1a1a1a;
+	margin: 40px 0 20px 0;
+	border-top: 1px solid #1a1a1a;
 }
 
 .featured hr {
-  margin: 0px 0 20px 0;
+	margin: 0px 0 20px 0;
 }
 
 .report hr {
-  margin: 20px 0 30px 0;
+	margin: 20px 0 30px 0;
 }
 
 .opacity {
-  opacity: 0.5;
+	opacity: 0.5;
 }
 
 footer {
-  padding: 40px 0 20px 0;
+	padding: 40px 0 20px 0;
 }
 
 /* Dannual Report */
 
 .report .category-emoji {
-  font-size: 42px;
-  line-height: 52px;
-  padding: 20px 0 0 0;
+	font-size: 42px;
+	line-height: 52px;
+	padding: 20px 0 0 0;
 }
 
 /*.emoji {
@@ -725,35 +746,34 @@ footer {
       }*/
 
 .report .category {
-  padding: 20px 0 180px 0;
+	padding: 20px 0 180px 0;
 }
 
 .report .data {
-  padding: 60px 0 60px 0;
+	padding: 60px 0 60px 0;
 }
 
 .report .data div {
-  font-size: 20px;
-  padding: 0 0 10px 0;
+	font-size: 20px;
+	padding: 0 0 10px 0;
 }
 
 .report .name {
-  padding: 20px 0 40px 0;
+	padding: 20px 0 40px 0;
 }
 
 .report .name img {
-  padding: 0 15px 0 0;
+	padding: 0 15px 0 0;
 }
 
 .report .name p.caption {
-  padding-top: 30px;
-  line-height: 18px;
+	padding-top: 30px;
+	line-height: 18px;
 }
 
 .report .data span {
-  padding-right: 2px;
+	padding-right: 2px;
 }
-
 
 /* ==|== media queries ======================================================
    EXAMPLE Media Query for Responsive Design.
@@ -762,156 +782,163 @@ footer {
    ========================================================================== */
 
 @media only screen and (max-width: 1680px) {
-  .images {
-    max-width: 1440px;
-  }
-  .column-40 {
-    max-width: 520px;
-  }
-  header {
-    padding-top: 28%;
-  }
-  .report header, .work header {
-    background: none;
-    padding-top: 32%;
-    margin-bottom: 200px;
-  }
-  .report header h1 {
-    font-size: 126px;
-    line-height: 136px;
-  }
-  .report header p {
-    max-width: 1420px;
-    font-size: 28px;
-    line-height: 38px;
-  }
-  .report section {
-    max-width: 1420px;
-  }
+	.images {
+		max-width: 1440px;
+	}
+	.column-40 {
+		max-width: 520px;
+	}
+	header {
+		padding-top: 24%;
+	}
+	.report header,
+	.work header {
+		background: none;
+		padding-top: 32%;
+		margin-bottom: 200px;
+	}
+	.report header h1 {
+		font-size: 126px;
+		line-height: 136px;
+	}
+	.report header p {
+		max-width: 1420px;
+		font-size: 28px;
+		line-height: 38px;
+	}
+	.report section {
+		max-width: 1420px;
+	}
 }
 
 @media only screen and (max-width: 1140px) {
-  h2 br {
-    display: none;
-  }
+	h2 br {
+		display: none;
+	}
 }
 
 @media only screen and (max-width: 900px) {
-  .container {
-    margin: 20px 20px;
-  }
-  .anchor {
-    display: none;
-  }
-  .URL {
-    padding-right: 25%;
-  }
-  header {
-    padding-top: 90%;
-  }
-  .report header{
-    padding-top: 20%;
-    margin: 0;
-  }
-  .work header {
-    margin: 0;
-  }
-  h1 {
-    font-size: 70px;
-    line-height: 74px;
-  }
-  .report header h1, .work header h1 {
-    font-size: 42px;
-    line-height: 52px;
-  }
-  .report h2 {
-    font-size: 28px;
-    line-height: 38px;
-    padding: 60px 0 10px 0;
-  }
-  h2, h3, .report header p {
-    font-size: 20px;
-    line-height: 28px;
-    padding: 10px 0 10px 0;
-  }
-  h2 br {
-    display: none;
-  }
-  .report h3 {
-    font-size: 20px;
-    line-height: 28px;
-    padding: 10px 0 20px 0;
-  }
-  .report h4 {
-    font-size: 14px;
-    padding: 20px 0 10px 0;
-  }
-  p.intro {
-    font-size: 18px;
-    line-height: 24px;
-  }
-  .report p.intro {
-    padding: 0;
-  }
-  .featured {
-    font-size: 20px;
-    line-height: 30px;
-  }
-  .images, .featured {
-    padding: 140px 0 70px 0;
-  }
-  .featured hr {
-    margin: 0px 0 5px 0;
-  }
-  .row {
-    display: block;
-  }
-  .column-60 {
-    flex: 100%;
-    padding: 0;
-  }
-  .column-40 {
-    flex: 100%;
-    padding: 0;
-  }
-  .hide {
-    display: none;
-  }
-  .report ul.categories{
-    padding: 20px 0 40px 0;
-  }
-  .report .category {
-    padding: 40px 0 20px 0;
-  }
-  .report .data {
-    padding: 20px 0 20px 0;
-  }
-  .report .data div {
-    font-size: 10px;
-    padding: 0 0 10px 0;
-  }
-  .report .emoji {
-    font-size: 28px;
-    line-height: 28px;
-    padding: 10px 0 0 0;
-  }
-  .report hr {
-    margin: 10px 0 10px 0;
-  }
-  table {
-    padding-top: 60px;
-  }
+	.container {
+		margin: 20px 20px;
+	}
+	.anchor {
+		display: none;
+	}
+	.URL {
+		padding-right: 25%;
+	}
+	header {
+		padding-top: 90%;
+	}
+	.report header {
+		padding-top: 20%;
+		margin: 0;
+	}
+	.work header {
+		margin: 0;
+	}
+	h1 {
+		font-size: 70px;
+		line-height: 74px;
+	}
+	.report header h1,
+	.work header h1 {
+		font-size: 42px;
+		line-height: 52px;
+	}
+	.report h2 {
+		font-size: 28px;
+		line-height: 38px;
+		padding: 60px 0 10px 0;
+	}
+	h2,
+	h3,
+	.report header p {
+		font-size: 20px;
+		line-height: 28px;
+		padding: 10px 0 10px 0;
+	}
+	h2 br {
+		display: none;
+	}
+	.report h3 {
+		font-size: 20px;
+		line-height: 28px;
+		padding: 10px 0 20px 0;
+	}
+	.report h4 {
+		font-size: 14px;
+		padding: 20px 0 10px 0;
+	}
+	p.intro {
+		font-size: 18px;
+		line-height: 24px;
+	}
+	.report p.intro {
+		padding: 0;
+	}
+	.featured {
+		font-size: 20px;
+		line-height: 30px;
+	}
+	.images,
+	.featured {
+		padding: 140px 0 70px 0;
+	}
+	.featured hr {
+		margin: 0px 0 5px 0;
+	}
+	.row {
+		display: block;
+	}
+	.column-60 {
+		flex: 100%;
+		padding: 0;
+	}
+	.column-40 {
+		flex: 100%;
+		padding: 0;
+	}
+	.hide {
+		display: none;
+	}
+	.report ul.categories {
+		padding: 20px 0 40px 0;
+	}
+	.report .category {
+		padding: 40px 0 20px 0;
+	}
+	.report .data {
+		padding: 20px 0 20px 0;
+	}
+	.report .data div {
+		font-size: 10px;
+		padding: 0 0 10px 0;
+	}
+	.report .emoji {
+		font-size: 28px;
+		line-height: 28px;
+		padding: 10px 0 0 0;
+	}
+	.report hr {
+		margin: 10px 0 10px 0;
+	}
+	table {
+		padding-top: 60px;
+	}
 }
 
 @media only screen and (max-width: 320px) {
-  h1, .report header h1 {
-    font-size: 56px;
-    line-height: 66px;
-  }
-  h2, .report h2 {
-    font-size: 18px;
-    line-height: 24px;
-  }
+	h1,
+	.report header h1 {
+		font-size: 56px;
+		line-height: 66px;
+	}
+	h2,
+	.report h2 {
+		font-size: 18px;
+		line-height: 24px;
+	}
 }
 
 /* ==|== non-semantic helper classes ========================================
@@ -920,65 +947,65 @@ footer {
 
 /* For image replacement */
 .ir {
-  display: block;
-  border: 0;
-  text-indent: -999em;
-  overflow: hidden;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  text-align: left;
-  direction: ltr;
-  *line-height: 0;
+	display: block;
+	border: 0;
+	text-indent: -999em;
+	overflow: hidden;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	text-align: left;
+	direction: ltr;
+	*line-height: 0;
 }
 .ir br {
-  display: none;
+	display: none;
 }
 
 /* Hide from both screenreaders and browsers: h5bp.com/u */
 .hidden {
-  display: none !important;
-  visibility: hidden;
+	display: none !important;
+	visibility: hidden;
 }
 
 /* Hide only visually, but have it available for screenreaders: h5bp.com/v */
 .visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
 }
 
 /* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
 }
 
 /* Hide visually and from screenreaders, but maintain layout */
 .invisible {
-  visibility: hidden;
+	visibility: hidden;
 }
 
 /* Contain floats: h5bp.com/q */
 .clearfix:before,
 .clearfix:after {
-  content: "";
-  display: table;
+	content: "";
+	display: table;
 }
 .clearfix:after {
-  clear: both;
+	clear: both;
 }
 .clearfix {
-  *zoom: 1;
+	*zoom: 1;
 }
 
 /* ==|== print styles =======================================================
@@ -987,57 +1014,57 @@ footer {
    ========================================================================== */
 
 @media print {
-  * {
-    background: transparent !important;
-    color: black !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    filter: none !important;
-    -ms-filter: none !important;
-  } /* Black prints faster: h5bp.com/s */
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-  .ir a:after,
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
-    content: "";
-  } /* Don't show links for images, or javascript/internal links */
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-  thead {
-    display: table-header-group;
-  } /* h5bp.com/t */
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-  img {
-    max-width: 100% !important;
-  }
-  @page {
-    margin: 0.5cm;
-  }
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
+	* {
+		background: transparent !important;
+		color: black !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+		filter: none !important;
+		-ms-filter: none !important;
+	} /* Black prints faster: h5bp.com/s */
+	a,
+	a:visited {
+		text-decoration: underline;
+	}
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+	.ir a:after,
+	a[href^="javascript:"]:after,
+	a[href^="#"]:after {
+		content: "";
+	} /* Don't show links for images, or javascript/internal links */
+	pre,
+	blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+	thead {
+		display: table-header-group;
+	} /* h5bp.com/t */
+	tr,
+	img {
+		page-break-inside: avoid;
+	}
+	img {
+		max-width: 100% !important;
+	}
+	@page {
+		margin: 0.5cm;
+	}
+	p,
+	h2,
+	h3 {
+		orphans: 3;
+		widows: 3;
+	}
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
 }
 
 /* ==|== font styles =====================================================
@@ -1046,88 +1073,72 @@ footer {
 
 /* Light */
 @font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 300;
-  font-display: block;
-  src: url("/filing/fonts/Inter-Light.woff2?v=3.13")
-      format("woff2"),
-    url("/filing/fonts/Inter-Light.woff?v=3.13")
-      format("woff");
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 300;
+	font-display: block;
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Light.woff2?v=3.13") format("woff2"),
+		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Light.woff?v=3.13") format("woff");
 }
 @font-face {
-  font-family: "Inter";
-  font-style: italic;
-  font-weight: 300;
-  font-display: block;
-  src: url("/filing/fonts/Inter-LightItalic.woff2?v=3.13")
-      format("woff2"),
-    url("/filing/fonts/Inter-LightItalic.woff?v=3.13")
-      format("woff");
+	font-family: "Inter";
+	font-style: italic;
+	font-weight: 300;
+	font-display: block;
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-LightItalic.woff2?v=3.13") format("woff2"),
+		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-LightItalic.woff?v=3.13") format("woff");
 }
 
 /* Regular */
 @font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url("/filing/fonts/Inter-Regular.woff2?v=3.13")
-      format("woff2"),
-    url("/filing/fonts/Inter-Regular.woff?v=3.13")
-      format("woff");
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 400;
+	font-display: block;
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Regular.woff2?v=3.13") format("woff2"),
+		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Regular.woff?v=3.13") format("woff");
 }
 @font-face {
-  font-family: "Inter";
-  font-style: italic;
-  font-weight: 400;
-  font-display: block;
-  src: url("/filing/fonts/Inter-Italic.woff2?v=3.13")
-      format("woff2"),
-    url("/filing/fonts/Inter-Italic.woff?v=3.13")
-      format("woff");
+	font-family: "Inter";
+	font-style: italic;
+	font-weight: 400;
+	font-display: block;
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Italic.woff2?v=3.13") format("woff2"),
+		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Italic.woff?v=3.13") format("woff");
 }
 
 /* Bold */
 @font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-display: block;
-  src: url("/filing/fonts/Inter-Bold.woff2?v=3.13")
-      format("woff2"),
-    url("/filing/fonts/Inter-Bold.woff?v=3.13")
-      format("woff");
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 700;
+	font-display: block;
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Bold.woff2?v=3.13") format("woff2"),
+		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Bold.woff?v=3.13") format("woff");
 }
 @font-face {
-  font-family: "Inter";
-  font-style: italic;
-  font-weight: 700;
-  font-display: block;
-  src: url("/filing/fonts/Inter-BoldItalic.woff2?v=3.13")
-      format("woff2"),
-    url("/filing/fonts/Inter-BoldItalic.woff?v=3.13")
-      format("woff");
+	font-family: "Inter";
+	font-style: italic;
+	font-weight: 700;
+	font-display: block;
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-BoldItalic.woff2?v=3.13") format("woff2"),
+		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-BoldItalic.woff?v=3.13") format("woff");
 }
 
 /* Black */
 @font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 900;
-  font-display: block;
-  src: url("/filing/fonts/Inter-Black.woff2?v=3.13")
-      format("woff2"),
-    url("/filing/fonts/Inter-Black.woff?v=3.13")
-      format("woff");
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 900;
+	font-display: block;
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Black.woff2?v=3.13") format("woff2"),
+		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Black.woff?v=3.13") format("woff");
 }
 @font-face {
-  font-family: "Inter";
-  font-style: italic;
-  font-weight: 700;
-  font-display: block;
-  src: url("/filing/fonts/Inter-BlackItalic.woff2?v=3.13")
-      format("woff2"),
-    url("/filing/fonts/Inter-BlackItalic.woff?v=3.13")
-      format("woff");
+	font-family: "Inter";
+	font-style: italic;
+	font-weight: 700;
+	font-display: block;
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-BlackItalic.woff2?v=3.13") format("woff2"),
+		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-BlackItalic.woff?v=3.13") format("woff");
 }
