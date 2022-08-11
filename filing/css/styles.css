@@ -493,7 +493,7 @@ p a.alt:hover {
 }
 
 header {
-	max-width: 1400px;
+	max-width: 1280px;
 	padding-top: 34%;
 }
 
@@ -543,8 +543,8 @@ h1 {
 
 h2 {
 	font-weight: 300;
-	font-size: 42px;
-	line-height: 52px;
+	font-size: 40px;
+	line-height: 50px;
 	padding: 0 0 10px 0;
 	margin: 0;
 }
@@ -646,8 +646,8 @@ p.blurb {
 
 p.employable {
 	font-weight: 300;
-	font-size: 16px;
-	line-height: 24px;
+	font-size: 18px;
+	line-height: 26px;
 	padding: 20px 0 20px 0;
 	max-width: 1280px;
 }
@@ -789,7 +789,7 @@ footer {
 		max-width: 520px;
 	}
 	header {
-		padding-top: 24%;
+		padding-top: 60%;
 	}
 	.report header,
 	.work header {
@@ -808,6 +808,11 @@ footer {
 	}
 	.report section {
 		max-width: 1420px;
+	}
+}
+@media only screen and (max-width: 1440px) {
+	header {
+		padding-top: 60%;
 	}
 }
 
