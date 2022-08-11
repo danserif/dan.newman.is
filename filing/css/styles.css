@@ -1077,16 +1077,14 @@ footer {
 	font-style: normal;
 	font-weight: 300;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Light.woff2?v=3.13") format("woff2"),
-		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Light.woff?v=3.13") format("woff");
+	src: url("/filing/fonts/Inter-Light.woff2?v=3.13") format("woff2"), url("/filing/fonts/Inter-Light.woff?v=3.13") format("woff");
 }
 @font-face {
 	font-family: "Inter";
 	font-style: italic;
 	font-weight: 300;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-LightItalic.woff2?v=3.13") format("woff2"),
-		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-LightItalic.woff?v=3.13") format("woff");
+	src: url("/filing/fonts/Inter-LightItalic.woff2?v=3.13") format("woff2"), url("/filing/fonts/Inter-LightItalic.woff?v=3.13") format("woff");
 }
 
 /* Regular */
@@ -1095,16 +1093,14 @@ footer {
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Regular.woff2?v=3.13") format("woff2"),
-		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Regular.woff?v=3.13") format("woff");
+	src: url("/filing/fonts/Inter-Regular.woff2?v=3.13") format("woff2"), url("/filing/fonts/Inter-Regular.woff?v=3.13") format("woff");
 }
 @font-face {
 	font-family: "Inter";
 	font-style: italic;
 	font-weight: 400;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Italic.woff2?v=3.13") format("woff2"),
-		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Italic.woff?v=3.13") format("woff");
+	src: url("/filing/fonts/Inter-Italic.woff2?v=3.13") format("woff2"), url("/filing/fonts/Inter-Italic.woff?v=3.13") format("woff");
 }
 
 /* Bold */
@@ -1113,16 +1109,14 @@ footer {
 	font-style: normal;
 	font-weight: 700;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Bold.woff2?v=3.13") format("woff2"),
-		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Bold.woff?v=3.13") format("woff");
+	src: url("/filing/fonts/Inter-Bold.woff2?v=3.13") format("woff2"), url("/filing/fonts/Inter-Bold.woff?v=3.13") format("woff");
 }
 @font-face {
 	font-family: "Inter";
 	font-style: italic;
 	font-weight: 700;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-BoldItalic.woff2?v=3.13") format("woff2"),
-		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-BoldItalic.woff?v=3.13") format("woff");
+	src: url("/filing/fonts/Inter-BoldItalic.woff2?v=3.13") format("woff2"), url("/filing/fonts/Inter-BoldItalic.woff?v=3.13") format("woff");
 }
 
 /* Black */
@@ -1131,14 +1125,12 @@ footer {
 	font-style: normal;
 	font-weight: 900;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Black.woff2?v=3.13") format("woff2"),
-		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-Black.woff?v=3.13") format("woff");
+	src: url("/filing/fonts/Inter-Black.woff2?v=3.13") format("woff2"), url("/filing/fonts/Inter-Black.woff?v=3.13") format("woff");
 }
 @font-face {
 	font-family: "Inter";
 	font-style: italic;
 	font-weight: 700;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-BlackItalic.woff2?v=3.13") format("woff2"),
-		url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/Inter-BlackItalic.woff?v=3.13") format("woff");
+	src: url("/filing/fonts/Inter-BlackItalic.woff2?v=3.13") format("woff2"), url("/filing/fonts/Inter-BlackItalic.woff?v=3.13") format("woff");
 }
