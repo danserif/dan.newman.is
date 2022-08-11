@@ -426,7 +426,7 @@ body {
 }
 
 .container {
-	margin: 30px 40px;
+	padding: 30px 40px;
 }
 
 .container p {
@@ -781,7 +781,7 @@ a.email:hover,
 
 @media only screen and (max-width: 900px) {
 	.container {
-		margin: 20px 20px;
+		padding: 20px 20px;
 	}
 	.anchor {
 		display: none;
