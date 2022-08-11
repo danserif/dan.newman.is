@@ -61,7 +61,7 @@ input,
 select,
 textarea {
 	-webkit-font-smoothing: antialiased;
-	font-family: Inter, sans-serif; /*Helvetica, sans-serif;*/
+	font-family: Inter, sans-serif;
 	color: #ffffff;
 }
 
@@ -390,8 +390,8 @@ textarea:invalid {
 table {
 	border-collapse: collapse;
 	display: block;
-	padding-top: 120px;
-	padding-bottom: 60px;
+	padding-top: 160px;
+	padding-bottom: 80px;
 }
 tr {
 	padding: 0;
@@ -399,7 +399,7 @@ tr {
 }
 td {
 	vertical-align: top;
-	padding-right: 30px;
+	padding-right: 60px;
 	line-height: 1.4;
 }
 
@@ -417,44 +417,6 @@ td {
 /* ==|== primary styles =====================================================
    Author: Dan Newman
    ========================================================================== */
-
-/* CUSTOM LINK COLOURS */
-
-a.dribbble:hover {
-	color: #ea4c89;
-}
-
-a.facebook:hover {
-	color: #3b5999;
-}
-
-a.github:hover {
-	color: #1074e7;
-}
-
-a.instagram:hover {
-	color: #517fa4;
-}
-
-a.letterboxd:hover {
-	color: #66cc33;
-}
-
-a.linkedin:hover {
-	color: #0571a6;
-}
-
-a.pinterest:hover {
-	color: #d43638;
-}
-
-a.spotify:hover {
-	color: #2ebd59;
-}
-
-a.twitter:hover {
-	color: #0099ff;
-}
 
 /* CUSTOM STYLES */
 
@@ -487,6 +449,7 @@ p a.alt:hover {
 	text-transform: uppercase;
 	padding-right: 15%;
 }
+
 .anchor {
 	float: right;
 	padding-right: 15%;
@@ -494,43 +457,20 @@ p a.alt:hover {
 
 header {
 	max-width: 1280px;
-	padding-top: 34%;
+	padding-top: 65vh;
+}
+
+.work header {
+	padding-top: 50vh;
 }
 
 .arrow a {
 	text-decoration: none;
 	font-size: 24px;
 }
+
 .arrow a:hover {
 	opacity: 0.5;
-}
-
-.work header {
-	padding-top: 28%;
-}
-
-.report header {
-	background-image: url("/filing/images/2020.png");
-	background-repeat: no-repeat;
-	background-position: left bottom;
-	background-size: contain;
-	max-width: 100%;
-	padding-top: 30%;
-	padding-bottom: 30px;
-	margin-bottom: 300px;
-}
-
-.report header p {
-	font-weight: 300;
-	font-size: 42px;
-	line-height: 58px;
-	padding-top: 20px;
-	max-width: 1740px;
-}
-
-header a:hover {
-	opacity: 1;
-	text-decoration: none;
 }
 
 h1 {
@@ -549,23 +489,12 @@ h2 {
 	margin: 0;
 }
 
-.report h2 {
-	font-weight: 700;
-	font-size: 56px;
-	line-height: 66px;
-	padding: 200px 0 30px 0;
-}
-
 h3 {
 	font-weight: bold;
 	font-size: 42px;
 	line-height: 52px;
 	padding: 20px 0 20px 0;
 	margin: 0;
-}
-
-h4 {
-	opacity: 0.5;
 }
 
 h4,
@@ -578,43 +507,19 @@ h5 {
 	text-transform: uppercase;
 }
 
-.report h4 {
-	font-size: 28px;
-	padding: 50px 0 20px 0;
-	text-transform: none;
-}
-
-.report h3 sup,
-.report h4 sup {
-	font-weight: normal;
+h4 {
+	opacity: 0.5;
 }
 
 section {
 	max-width: 620px;
 }
 
-.report section {
-	max-width: 1680px;
-}
-
-.report section p,
-.report section blockquote,
-.report section hr {
-	max-width: 780px;
-}
-
-section ul {
+section ul,
+footer ul {
 	list-style: none;
 	padding: 0;
 	margin: 0 0 20px 0;
-}
-
-.report ul.categories {
-	padding: 40px 0 160px 0;
-}
-
-.report ul.categories a {
-	padding-left: 4px;
 }
 
 .images {
@@ -624,6 +529,11 @@ section ul {
 
 .row {
 	display: flex;
+}
+
+.column-100 {
+	flex: 100%;
+	padding-right: 15px;
 }
 
 .column-60 {
@@ -638,9 +548,7 @@ section ul {
 	padding-right: 15px;
 }
 
-p.socials,
 p.blurb {
-	/*max-width: 800px;*/
 	padding: 20px 0 20px 0;
 }
 
@@ -650,34 +558,6 @@ p.employable {
 	line-height: 26px;
 	padding: 20px 0 20px 0;
 	max-width: 1280px;
-}
-
-.featured {
-	font-weight: 300;
-	font-size: 28px;
-	line-height: 38px;
-	max-width: 1140px;
-	padding: 25vh 0 140px 0;
-}
-
-.featured a:hover,
-a.email:hover,
-.report header p a:hover {
-	opacity: 0.5;
-	text-decoration: underline;
-}
-.report header p a {
-	text-decoration: none;
-	border-bottom: 1px solid #ffffff;
-}
-.report header p a:hover {
-	text-decoration: none;
-	border-bottom: 1px solid 0.5;
-}
-
-p.small {
-	font-size: 14px;
-	padding-top: 10px;
 }
 
 p.caption {
@@ -701,14 +581,6 @@ hr {
 	border-top: 1px solid #1a1a1a;
 }
 
-.featured hr {
-	margin: 0px 0 20px 0;
-}
-
-.report hr {
-	margin: 20px 0 30px 0;
-}
-
 .opacity {
 	opacity: 0.5;
 }
@@ -719,11 +591,84 @@ footer {
 
 /* Dannual Report */
 
+/*.report header {
+	background-image: url("/filing/images/2020.png");
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-size: contain;
+	max-width: 100%;
+	padding-top: 30%;
+	padding-bottom: 30px;
+	margin-bottom: 300px;
+}
+
+.report header p {
+	font-weight: 300;
+	font-size: 42px;
+	line-height: 58px;
+	padding-top: 20px;
+	max-width: 1740px;
+}
+
+.report h2 {
+	font-weight: 700;
+	font-size: 56px;
+	line-height: 66px;
+	padding: 200px 0 30px 0;
+}
+
+.report h4 {
+	font-size: 28px;
+	padding: 50px 0 20px 0;
+	text-transform: none;
+	opacity: 1;
+}
+
+.report h3 sup,
+.report h4 sup {
+	font-weight: normal;
+}
+
+.featured {
+	font-weight: 300;
+	font-size: 28px;
+	line-height: 38px;
+	max-width: 1140px;
+	padding: 25vh 0 140px 0;
+}
+
+.report section {
+	max-width: 1680px;
+}
+
+.report section p,
+.report section blockquote,
+.report section hr {
+	max-width: 780px;
+}
+
+.featured a:hover,
+a.email:hover,
+.report header p a:hover {
+	opacity: 0.5;
+	text-decoration: underline;
+}
+
+.report header p a {
+	text-decoration: none;
+	border-bottom: 1px solid #ffffff;
+}
+
+.report header p a:hover {
+	text-decoration: none;
+	border-bottom: 1px solid 0.5;
+}
+
 .report .category-emoji {
 	font-size: 42px;
 	line-height: 52px;
 	padding: 20px 0 0 0;
-}
+}*/
 
 /*.emoji {
         animation: animateIn 0.5s;
@@ -745,7 +690,7 @@ footer {
         }
       }*/
 
-.report .category {
+/*.report .category {
 	padding: 20px 0 180px 0;
 }
 
@@ -766,6 +711,14 @@ footer {
 	padding: 0 15px 0 0;
 }
 
+.report ul.categories {
+	padding: 40px 0 160px 0;
+}
+
+.report ul.categories a {
+	padding-left: 4px;
+}
+
 .report .name p.caption {
 	padding-top: 30px;
 	line-height: 18px;
@@ -775,6 +728,14 @@ footer {
 	padding-right: 2px;
 }
 
+.featured hr {
+	margin: 0px 0 20px 0;
+}
+
+.report hr {
+	margin: 20px 0 30px 0;
+}*/
+
 /* ==|== media queries ======================================================
    EXAMPLE Media Query for Responsive Design.
    This example overrides the primary ('mobile first') styles
@@ -782,17 +743,19 @@ footer {
    ========================================================================== */
 
 @media only screen and (max-width: 1680px) {
+	header {
+		padding-top: 45vh;
+	}
+	.work header {
+		padding-top: 55vh;
+	}
 	.images {
 		max-width: 1440px;
 	}
 	.column-40 {
 		max-width: 520px;
 	}
-	header {
-		padding-top: 60%;
-	}
-	.report header,
-	.work header {
+	/*	.report header {
 		background: none;
 		padding-top: 32%;
 		margin-bottom: 200px;
@@ -808,17 +771,11 @@ footer {
 	}
 	.report section {
 		max-width: 1420px;
-	}
+	}*/
 }
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1460px) {
 	header {
-		padding-top: 60%;
-	}
-}
-
-@media only screen and (max-width: 1140px) {
-	h2 br {
-		display: none;
+		padding-top: 40vh;
 	}
 }
 
@@ -833,21 +790,27 @@ footer {
 		padding-right: 25%;
 	}
 	header {
-		padding-top: 90%;
-	}
-	.report header {
-		padding-top: 20%;
-		margin: 0;
+		padding-top: 40vh;
 	}
 	.work header {
-		margin: 0;
+		padding-top: 55vh;
 	}
+	/*.report header {
+		padding-top: 20%;
+		margin: 0;
+	}*/
+	/*.work header {
+		margin: 0;
+	}*/
 	h1 {
 		font-size: 70px;
 		line-height: 74px;
 	}
-	.report header h1,
 	.work header h1 {
+		font-size: 38px;
+		line-height: 48px;
+	}
+	.report header h1 {
 		font-size: 42px;
 		line-height: 52px;
 	}
@@ -862,9 +825,6 @@ footer {
 		font-size: 20px;
 		line-height: 28px;
 		padding: 10px 0 10px 0;
-	}
-	h2 br {
-		display: none;
 	}
 	.report h3 {
 		font-size: 20px;
@@ -895,6 +855,10 @@ footer {
 	}
 	.row {
 		display: block;
+	}
+	.column-100 {
+		flex: 100%;
+		padding: 0;
 	}
 	.column-60 {
 		flex: 100%;
@@ -930,6 +894,9 @@ footer {
 	}
 	table {
 		padding-top: 60px;
+	}
+	td {
+		padding-right: 40px;
 	}
 }
 
