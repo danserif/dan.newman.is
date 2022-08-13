@@ -62,7 +62,7 @@ input,
 select,
 textarea {
 	-webkit-font-smoothing: antialiased;
-	font-family: Inter, sans-serif;
+	font-family: /*Söhne,*/ Inter, sans-serif;
 	color: #ffffff;
 }
 
@@ -70,7 +70,7 @@ body {
 	margin: 0;
 	font-size: 0.8em;
 	line-height: 1.6;
-	background-color: #000000;
+	background-color: #060606;
 }
 
 /*
@@ -95,16 +95,16 @@ body {
    ========================================================================== */
 
 a {
-	color: #ffffff;
+	color: #dddddd;
 	outline: none;
 	text-decoration: underline;
 }
 a:visited {
-	color: #ffffff;
+	color: #dddddd;
 }
 a:hover {
-	color: #ffffff;
-	opacity: 0.5;
+	color: #dddddd;
+	opacity: 0.4;
 }
 a:focus {
 	outline: none;
@@ -193,7 +193,7 @@ sup {
 	line-height: 0;
 	position: relative;
 	vertical-align: baseline;
-	opacity: 0.5;
+	opacity: 0.4;
 }
 sup {
 	top: -0.5em;
@@ -391,8 +391,8 @@ textarea:invalid {
 table {
 	border-collapse: collapse;
 	display: block;
-	padding-top: 160px;
-	padding-bottom: 80px;
+	padding-top: 120px;
+	padding-bottom: 60px;
 }
 tr {
 	padding: 0;
@@ -434,6 +434,10 @@ body {
 	margin: 0 0 20px 0;
 }
 
+p {
+	color: #dddddd;
+}
+
 nav a,
 p a.alt {
 	font-size: 16px;
@@ -442,7 +446,7 @@ p a.alt {
 
 nav a:hover,
 p a.alt:hover {
-	opacity: 0.5;
+	opacity: 0.4;
 	text-decoration: none;
 }
 
@@ -457,8 +461,8 @@ p a.alt:hover {
 }
 
 header {
-	max-width: 1280px;
-	padding-top: 65vh;
+	max-width: 1220px;
+	padding-top: 60vh;
 }
 
 .work header {
@@ -471,14 +475,14 @@ header {
 }
 
 .arrow a:hover {
-	opacity: 0.5;
+	opacity: 0.4;
 }
 
 h1 {
 	font-weight: 900;
-	font-size: 140px;
-	line-height: 150px;
-	padding: 10px 0 10px 0;
+	font-size: 160px;
+	line-height: 160px;
+	padding: 20px 0 20px 0;
 	margin: 0;
 }
 
@@ -509,7 +513,7 @@ h5 {
 }
 
 h4 {
-	opacity: 0.5;
+	opacity: 0.2;
 }
 
 section {
@@ -572,8 +576,8 @@ p.intro {
 }
 
 blockquote {
-	border-left: 2px solid #ffffff;
-	padding: 0 0 0 20px;
+	border-left: 1px solid rgb(221, 221, 221, 0.2);
+	padding: 0 20px 0 20px;
 	margin: 0;
 }
 
@@ -582,8 +586,22 @@ hr {
 	border-top: 1px solid #1a1a1a;
 }
 
+hr.large {
+	margin: 60px 0 30px 0;
+	border-top: 1px solid #1a1a1a;
+	opacity: 0.8;
+}
+
 .opacity {
-	opacity: 0.5;
+	opacity: 0.4;
+}
+
+.hover {
+	text-decoration: none;
+}
+
+.uppercase {
+	text-transform: uppercase;
 }
 
 footer {
@@ -745,7 +763,7 @@ a.email:hover,
 
 @media only screen and (max-width: 1680px) {
 	header {
-		padding-top: 45vh;
+		padding-top: 40vh;
 	}
 	.work header {
 		padding-top: 55vh;
@@ -776,7 +794,7 @@ a.email:hover,
 }
 @media only screen and (max-width: 1460px) {
 	header {
-		padding-top: 40vh;
+		padding-top: 30vh;
 	}
 }
 
