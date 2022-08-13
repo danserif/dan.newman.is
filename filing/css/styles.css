@@ -604,8 +604,13 @@ hr.large {
 	text-transform: uppercase;
 }
 
+.quote {
+	padding-top: 8px;
+	display: inline-block;
+}
+
 footer {
-	padding: 40px 0 20px 0;
+	padding: 40px 0 0 0;
 }
 
 /* Dannual Report */
