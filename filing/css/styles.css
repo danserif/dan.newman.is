@@ -430,6 +430,14 @@ body {
 	padding: 30px 40px;
 }
 
+.home .container {
+	background-image: url("/filing/images/wellington-map.jpg");
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-size: contain;
+	max-width: 100%;
+}
+
 .container p {
 	margin: 0 0 20px 0;
 }
@@ -610,7 +618,7 @@ hr.large {
 }
 
 footer {
-	padding: 40px 0 0 0;
+	padding: 60px 0 0 0;
 }
 
 /* Dannual Report */
@@ -1073,7 +1081,7 @@ a.email:hover,
 	font-style: normal;
 	font-weight: 300;
 	font-display: block;
-	src: url("/filing/fonts/soehne-leicht.woff2") format("woff2");
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/soehne-leicht.woff2") format("woff2");
 }
 
 /* Regular | Buch */
@@ -1082,7 +1090,7 @@ a.email:hover,
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
-	src: url("/filing/fonts/soehne-buch.woff2") format("woff2");
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/soehne-buch.woff2") format("woff2");
 }
 
 /* Bold | Dreiviertelfett */
@@ -1091,5 +1099,5 @@ a.email:hover,
 	font-style: normal;
 	font-weight: 700;
 	font-display: block;
-	src: url("/filing/fonts/soehne-dreiviertelfett.woff2") format("woff2");
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/soehne-dreiviertelfett.woff2") format("woff2");
 }
