@@ -1081,7 +1081,7 @@ a.email:hover,
 	font-style: normal;
 	font-weight: 300;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/soehne-leicht.woff2") format("woff2");
+	src: url("/filing/fonts/soehne-leicht.woff2") format("woff2");
 }
 
 /* Regular | Buch */
@@ -1090,7 +1090,7 @@ a.email:hover,
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/soehne-buch.woff2") format("woff2");
+	src: url("/filing/fonts/soehne-buch.woff2") format("woff2");
 }
 
 /* Bold | Dreiviertelfett */
@@ -1099,5 +1099,5 @@ a.email:hover,
 	font-style: normal;
 	font-weight: 700;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/soehne-dreiviertelfett.woff2") format("woff2");
+	src: url("/filing/fonts/soehne-dreiviertelfett.woff2") format("woff2");
 }
