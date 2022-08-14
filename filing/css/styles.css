@@ -5,8 +5,6 @@
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
  *
- * Detailed information about this CSS: h5bp.com/css
- *
  * ==|== normalize ==========================================================
  */
 
@@ -46,7 +44,7 @@ audio:not([controls]) {
 
 /*
  * 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
- * 2. Prevent iOS text size adjust on device orientation change, without disabling user zoom: h5bp.com/g
+ * 2. Prevent iOS text size adjust on device orientation change, without disabling user zoom
  */
 
 html {
@@ -74,9 +72,8 @@ body {
 }
 
 /*
- * Remove text-shadow in selection highlight: h5bp.com/i
+ * Remove text-shadow in selection highlight
  * These selection declarations have to be separate
- * Also: hot pink! (or customize the background color to match your design)
  */
 
 ::-moz-selection {
@@ -109,9 +106,6 @@ a:hover {
 a:focus {
 	outline: none;
 }
-
-/* Improve readability when focused and hovered in all browsers: h5bp.com/h */
-/*a:hover, a:active { outline: 0; }*/
 
 /* =============================================================================
    Typography
@@ -156,7 +150,7 @@ mark {
 	font-weight: bold;
 }
 
-/* Redeclare monospace font family: h5bp.com/j */
+/* Redeclare monospace font family */
 pre,
 code,
 kbd,
@@ -186,7 +180,7 @@ small {
 	font-size: 85%;
 }
 
-/* Position subscript and superscript content without affecting line-height: h5bp.com/k */
+/* Position subscript and superscript content without affecting line-height */
 sub,
 sup {
 	font-size: 65%;
@@ -227,8 +221,8 @@ nav ol {
    ========================================================================== */
 
 /*
- * 1. Improve image quality when scaled in IE7: h5bp.com/d
- * 2. Remove the gap between images and borders on image containers: h5bp.com/i/440
+ * 1. Improve image quality when scaled in IE7
+ * 2. Remove the gap between images and borders on image containers
  */
 
 img {
@@ -355,7 +349,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 /*
- * Remove inner padding and border in FF3/4: h5bp.com/l
+ * Remove inner padding and border in FF3/4
  */
 
 button::-moz-focus-inner,
@@ -561,9 +555,9 @@ footer ul {
 	padding-right: 15px;
 }
 
-p.blurb {
+/*p.blurb {
 	padding: 20px 0 20px 0;
-}
+}*/
 
 p.employable {
 	font-weight: 300;
@@ -621,153 +615,6 @@ footer {
 	padding: 60px 0 0 0;
 }
 
-/* Dannual Report */
-
-/*.report header {
-	background-image: url("/filing/images/2020.png");
-	background-repeat: no-repeat;
-	background-position: left bottom;
-	background-size: contain;
-	max-width: 100%;
-	padding-top: 30%;
-	padding-bottom: 30px;
-	margin-bottom: 300px;
-}
-
-.report header p {
-	font-weight: 300;
-	font-size: 42px;
-	line-height: 58px;
-	padding-top: 20px;
-	max-width: 1740px;
-}
-
-.report h2 {
-	font-weight: 700;
-	font-size: 56px;
-	line-height: 66px;
-	padding: 200px 0 30px 0;
-}
-
-.report h4 {
-	font-size: 28px;
-	padding: 50px 0 20px 0;
-	text-transform: none;
-	opacity: 1;
-}
-
-.report h3 sup,
-.report h4 sup {
-	font-weight: normal;
-}
-
-.featured {
-	font-weight: 300;
-	font-size: 28px;
-	line-height: 38px;
-	max-width: 1140px;
-	padding: 25vh 0 140px 0;
-}
-
-.report section {
-	max-width: 1680px;
-}
-
-.report section p,
-.report section blockquote,
-.report section hr {
-	max-width: 780px;
-}
-
-.featured a:hover,
-a.email:hover,
-.report header p a:hover {
-	opacity: 0.5;
-	text-decoration: underline;
-}
-
-.report header p a {
-	text-decoration: none;
-	border-bottom: 1px solid #ffffff;
-}
-
-.report header p a:hover {
-	text-decoration: none;
-	border-bottom: 1px solid 0.5;
-}
-
-.report .category-emoji {
-	font-size: 42px;
-	line-height: 52px;
-	padding: 20px 0 0 0;
-}*/
-
-/*.emoji {
-        animation: animateIn 0.5s;
-        -moz-animation: animateIn 0.5s;
-        -webkit-animation: animateIn 0.5s;
-        -o-animation: animateIn 0.5s;
-        animation-fill-mode: forwards;
-        -moz-animation-fill-mode: forwards;
-        -webkit-animation-fill-mode: forwards;
-        -o-animation-fill-mode: forwards;
-        opacity: 0;
-      }
-      @keyframes animateIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }*/
-
-/*.report .category {
-	padding: 20px 0 180px 0;
-}
-
-.report .data {
-	padding: 60px 0 60px 0;
-}
-
-.report .data div {
-	font-size: 20px;
-	padding: 0 0 10px 0;
-}
-
-.report .name {
-	padding: 20px 0 40px 0;
-}
-
-.report .name img {
-	padding: 0 15px 0 0;
-}
-
-.report ul.categories {
-	padding: 40px 0 160px 0;
-}
-
-.report ul.categories a {
-	padding-left: 4px;
-}
-
-.report .name p.caption {
-	padding-top: 30px;
-	line-height: 18px;
-}
-
-.report .data span {
-	padding-right: 2px;
-}
-
-.featured hr {
-	margin: 0px 0 20px 0;
-}
-
-.report hr {
-	margin: 20px 0 30px 0;
-}*/
-
 /* ==|== media queries ======================================================
    EXAMPLE Media Query for Responsive Design.
    This example overrides the primary ('mobile first') styles
@@ -784,26 +631,6 @@ a.email:hover,
 	.images {
 		max-width: 1440px;
 	}
-	.column-40 {
-		max-width: 520px;
-	}
-	/*	.report header {
-		background: none;
-		padding-top: 32%;
-		margin-bottom: 200px;
-	}
-	.report header h1 {
-		font-size: 126px;
-		line-height: 136px;
-	}
-	.report header p {
-		max-width: 1420px;
-		font-size: 28px;
-		line-height: 38px;
-	}
-	.report section {
-		max-width: 1420px;
-	}*/
 }
 @media only screen and (max-width: 1460px) {
 	header {
@@ -827,20 +654,9 @@ a.email:hover,
 	header {
 		padding-top: 35vh;
 	}
-	p.employable {
-		font-size: 14px;
-		line-height: 22px;
-	}
 	.work header {
 		padding-top: 55vh;
 	}
-	/*.report header {
-		padding-top: 20%;
-		margin: 0;
-	}*/
-	/*.work header {
-		margin: 0;
-	}*/
 	h1 {
 		font-size: 70px;
 		line-height: 74px;
@@ -849,51 +665,27 @@ a.email:hover,
 		font-size: 38px;
 		line-height: 48px;
 	}
-	.report header h1 {
-		font-size: 42px;
-		line-height: 52px;
-	}
-	.report h2 {
-		font-size: 28px;
-		line-height: 38px;
-		padding: 60px 0 10px 0;
-	}
 	h2,
-	h3,
-	.report header p {
+	h3 {
 		font-size: 20px;
 		line-height: 28px;
 		padding: 10px 0 10px 0;
+		max-width: 615px;
 	}
-	.report h3 {
-		font-size: 20px;
-		line-height: 28px;
-		padding: 10px 0 20px 0;
-	}
-	.report h4 {
+	p.employable {
 		font-size: 14px;
-		padding: 20px 0 10px 0;
+		line-height: 22px;
 	}
 	p.intro {
 		font-size: 18px;
 		line-height: 24px;
 	}
-	.report p.intro {
-		padding: 0;
-	}
-	.featured {
-		font-size: 20px;
-		line-height: 30px;
-	}
-	.images,
-	.featured {
+	.images {
 		padding: 140px 0 70px 0;
-	}
-	.featured hr {
-		margin: 0px 0 5px 0;
 	}
 	.row {
 		display: block;
+		max-width: 615px;
 	}
 	.column-100 {
 		flex: 100%;
@@ -910,27 +702,6 @@ a.email:hover,
 	.hide {
 		display: none;
 	}
-	.report ul.categories {
-		padding: 20px 0 40px 0;
-	}
-	.report .category {
-		padding: 40px 0 20px 0;
-	}
-	.report .data {
-		padding: 20px 0 20px 0;
-	}
-	.report .data div {
-		font-size: 10px;
-		padding: 0 0 10px 0;
-	}
-	.report .emoji {
-		font-size: 28px;
-		line-height: 28px;
-		padding: 10px 0 0 0;
-	}
-	.report hr {
-		margin: 10px 0 10px 0;
-	}
 	table {
 		padding-top: 60px;
 	}
@@ -940,13 +711,11 @@ a.email:hover,
 }
 
 @media only screen and (max-width: 320px) {
-	h1,
-	.report header h1 {
+	h1 {
 		font-size: 56px;
 		line-height: 66px;
 	}
-	h2,
-	.report h2 {
+	h2 {
 		font-size: 18px;
 		line-height: 24px;
 	}
@@ -972,13 +741,13 @@ a.email:hover,
 	display: none;
 }
 
-/* Hide from both screenreaders and browsers: h5bp.com/u */
+/* Hide from both screenreaders and browsers */
 .hidden {
 	display: none !important;
 	visibility: hidden;
 }
 
-/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+/* Hide only visually, but have it available for screenreaders */
 .visuallyhidden {
 	border: 0;
 	clip: rect(0 0 0 0);
@@ -990,7 +759,7 @@ a.email:hover,
 	width: 1px;
 }
 
-/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
 	clip: auto;
@@ -1021,7 +790,7 @@ a.email:hover,
 
 /* ==|== print styles =======================================================
    Print styles.
-   Inlined to avoid required HTTP connection: h5bp.com/r
+   Inlined to avoid required HTTP connection
    ========================================================================== */
 
 @media print {
@@ -1055,7 +824,7 @@ a.email:hover,
 	}
 	thead {
 		display: table-header-group;
-	} /* h5bp.com/t */
+	}
 	tr,
 	img {
 		page-break-inside: avoid;
