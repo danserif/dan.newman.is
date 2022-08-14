@@ -117,7 +117,7 @@ abbr[title] {
 
 b,
 strong {
-	font-weight: bold;
+	font-weight: 700;
 }
 
 blockquote {
@@ -386,7 +386,7 @@ table {
 	border-collapse: collapse;
 	display: block;
 	padding-top: 120px;
-	padding-bottom: 60px;
+	padding-bottom: 80px;
 }
 tr {
 	padding: 0;
@@ -440,26 +440,24 @@ p {
 	color: #dddddd;
 }
 
-nav a,
-p a.alt {
+nav a {
 	font-size: 16px;
 	text-decoration: none;
 }
 
-nav a:hover,
-p a.alt:hover {
+nav a:hover {
 	opacity: 0.4;
 	text-decoration: none;
 }
 
 .URL {
 	text-transform: uppercase;
-	padding-right: 15%;
+	margin-right: 15%;
 }
 
 .anchor {
 	float: right;
-	padding-right: 15%;
+	margin-right: 15%;
 }
 
 header {
@@ -486,6 +484,9 @@ h1 {
 	line-height: 160px;
 	padding: 20px 0 20px 0;
 	margin: 0;
+}
+.work h1 {
+	font-size: 140px;
 }
 
 h2 {
@@ -664,6 +665,7 @@ footer {
 	.work header h1 {
 		font-size: 38px;
 		line-height: 48px;
+		padding-bottom: 0px;
 	}
 	h2,
 	h3 {
