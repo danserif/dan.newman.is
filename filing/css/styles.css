@@ -815,6 +815,9 @@ a.email:hover,
 	.container {
 		padding: 20px 20px;
 	}
+	.home .container {
+		background-image: none;
+	}
 	.anchor {
 		display: none;
 	}
@@ -822,7 +825,11 @@ a.email:hover,
 		padding-right: 25%;
 	}
 	header {
-		padding-top: 40vh;
+		padding-top: 35vh;
+	}
+	p.employable {
+		font-size: 14px;
+		line-height: 22px;
 	}
 	.work header {
 		padding-top: 55vh;
