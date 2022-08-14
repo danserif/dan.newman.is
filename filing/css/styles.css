@@ -419,17 +419,16 @@ body {
 	opacity: 0;
 	transition: opacity 5s;
 }
-
-.container {
-	padding: 30px 40px;
-}
-
-.home .container {
+body.home {
 	background-image: url("/filing/images/wellington-map.jpg");
 	background-repeat: no-repeat;
 	background-position: left top;
 	background-size: contain;
 	max-width: 100%;
+}
+
+.container {
+	padding: 30px 40px;
 }
 
 .container p {
@@ -637,20 +636,24 @@ footer {
 	header {
 		padding-top: 30vh;
 	}
+	.work h1 {
+		font-size: 100px;
+		line-height: 110px;
+	}
 }
 
 @media only screen and (max-width: 900px) {
+	body.home {
+		background-image: none;
+	}
 	.container {
 		padding: 20px 20px;
-	}
-	.home .container {
-		background-image: none;
 	}
 	.anchor {
 		display: none;
 	}
 	.URL {
-		padding-right: 25%;
+		margin-right: 25%;
 	}
 	header {
 		padding-top: 35vh;
@@ -705,7 +708,7 @@ footer {
 		display: none;
 	}
 	table {
-		padding-top: 60px;
+		padding-top: 80px;
 	}
 	td {
 		padding-right: 40px;
