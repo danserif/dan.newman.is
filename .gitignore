@@ -1,2 +1,4 @@
-# OS or Editor folders
+# Mac OS files
 .DS_Store
+# WIP files
+*~
