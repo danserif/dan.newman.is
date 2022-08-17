@@ -415,10 +415,6 @@ td {
 
 /* CUSTOM STYLES */
 
-body {
-	/*opacity: 0;
-	transition: opacity 5s;*/
-}
 .home .container {
 	background-image: url("/filing/images/wellington-location.png"), url("/filing/images/wellington-map-large.jpg");
 	background-repeat: no-repeat;
@@ -555,10 +551,6 @@ footer ul {
 	padding-right: 15px;
 }
 
-/*p.blurb {
-	padding: 20px 0 20px 0;
-}*/
-
 p.employable {
 	font-weight: 300;
 	font-size: 18px;
@@ -569,7 +561,9 @@ p.employable {
 
 p.caption {
 	padding: 5px 0 0 0;
+	line-height: 1.3;
 }
+
 .column-100 p.caption {
 	padding-bottom: 20px;
 }
@@ -612,6 +606,10 @@ hr.large {
 .quote {
 	padding-top: 8px;
 	display: inline-block;
+}
+
+.desktop {
+	display: none;
 }
 
 footer {
@@ -718,6 +716,9 @@ footer {
 	}
 	.hide {
 		display: none;
+	}
+	.desktop {
+		display: inline;
 	}
 	table {
 		padding-top: 80px;
