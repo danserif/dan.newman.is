@@ -419,13 +419,13 @@ body {
 	opacity: 0;
 	transition: opacity 5s;
 }
-.home .container {
-	background-image: url("/filing/images/wellington-location.png"), url("/filing/images/wellington-map-large.jpg");
+/*.home .container {
+	background-image: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/images/wellington-location.png"), url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/images/wellington-map-large.jpg");
 	background-repeat: no-repeat;
 	background-position: right top;
 	background-size: contain;
 	max-width: 100%;
-}
+}*/
 
 .container {
 	padding: 30px 60px 40px 60px;
@@ -625,9 +625,9 @@ footer {
    ========================================================================== */
 
 @media only screen and (max-width: 1680px) {
-	.home .container {
-		background-image: url("/filing/images/wellington-map-small.jpg");
-	}
+	/*.home .container {
+		background-image: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/images/wellington-map-small.jpg");
+	}*/
 	header {
 		padding-top: 40vh;
 	}
