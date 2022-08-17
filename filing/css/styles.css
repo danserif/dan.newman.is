@@ -419,16 +419,16 @@ body {
 	opacity: 0;
 	transition: opacity 5s;
 }
-body.home {
+.home .container {
 	background-image: url("/filing/images/wellington-location.png"), url("/filing/images/wellington-map-large.jpg");
 	background-repeat: no-repeat;
-	background-position: left top;
+	background-position: right top;
 	background-size: contain;
 	max-width: 100%;
 }
 
 .container {
-	padding: 30px 40px;
+	padding: 30px 60px 40px 60px;
 }
 
 .container p {
@@ -570,6 +570,9 @@ p.employable {
 p.caption {
 	padding: 5px 0 0 0;
 }
+.column-100 p.caption {
+	padding-bottom: 20px;
+}
 
 p.intro {
 	font-size: 28px;
@@ -622,7 +625,7 @@ footer {
    ========================================================================== */
 
 @media only screen and (max-width: 1680px) {
-	body.home {
+	.home .container {
 		background-image: url("/filing/images/wellington-map-small.jpg");
 	}
 	header {
