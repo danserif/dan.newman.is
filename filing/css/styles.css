@@ -655,7 +655,7 @@ footer {
 }
 
 @media only screen and (max-width: 900px) {
-	body.home {
+	.home .container {
 		background-image: none;
 	}
 	.container {
