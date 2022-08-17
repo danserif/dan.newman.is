@@ -637,6 +637,12 @@ footer {
 	.images {
 		max-width: 1540px;
 	}
+	.column-60 {
+		flex: 65%;
+	}
+	.column-40 {
+		flex: 35%;
+	}
 }
 @media only screen and (max-width: 1460px) {
 	header {
