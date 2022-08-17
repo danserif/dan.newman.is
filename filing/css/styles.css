@@ -416,8 +416,8 @@ td {
 /* CUSTOM STYLES */
 
 body {
-	opacity: 0;
-	transition: opacity 5s;
+	/*opacity: 0;
+	transition: opacity 5s;*/
 }
 /*.home .container {
 	background-image: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/images/wellington-location.png"), url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/images/wellington-map-large.jpg");
