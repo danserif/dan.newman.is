@@ -415,6 +415,49 @@ td {
 
 /* CUSTOM STYLES */
 
+/* Fixed scrolling panel (WIP)
+
+.home .fixed {
+	position: fixed;
+	background-image: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/images/wellington-location.png"), url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/images/wellington-map-large.jpg");
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-size: contain;
+	margin: auto;
+	width: 100%;
+	padding: 30px 60px 40px 60px;
+}
+.work .fixed {
+	position: relative;
+	max-width: 100%;
+	margin: auto;
+	width: 100%;
+	padding: 30px 60px 0px 60px;
+}
+.home .container,
+.work .container {
+	position: absolute;
+	margin: auto;
+	padding: 0;
+	width: 100%;
+}
+
+.work .container {
+	padding: 0px 60px 40px 60px;
+}
+
+.home main {
+	background-color: #060606;
+	margin-top: 100vh;
+	display: block;
+	padding: 30px 60px 40px 60px;
+}
+.home footer {
+	background-color: #060606;
+}
+
+*/
+
 .home .container {
 	background-image: url("/filing/images/wellington-location.png"), url("/filing/images/wellington-map-large.jpg");
 	background-repeat: no-repeat;
@@ -686,6 +729,9 @@ footer {
 		line-height: 28px;
 		padding: 10px 0 10px 0;
 		max-width: 615px;
+	}
+	.column-100 p.caption {
+		padding-bottom: 0px;
 	}
 	p.employable {
 		font-size: 14px;
