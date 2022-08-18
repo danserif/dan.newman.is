@@ -580,6 +580,7 @@ footer ul {
 .column-100 {
 	flex: 100%;
 	padding-right: 15px;
+	padding-bottom: 45px;
 }
 
 .column-60 {
