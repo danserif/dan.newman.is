@@ -503,6 +503,10 @@ header {
 	padding-top: 60vh;
 }
 
+.home header {
+	padding-bottom: 100px;
+}
+
 .work header {
 	padding-top: 50vh;
 }
@@ -582,6 +586,9 @@ footer ul {
 	padding-right: 15px;
 	padding-bottom: 45px;
 }
+.home .column-100 {
+	padding-bottom: 0px;
+}
 
 .column-60 {
 	flex: 60%;
@@ -611,6 +618,9 @@ p.caption {
 .column-100 p.caption {
 	padding-bottom: 20px;
 }
+.home .column-100 p.caption {
+	padding-bottom: 0px;
+}
 
 p.intro {
 	font-size: 28px;
@@ -630,7 +640,7 @@ hr {
 }
 
 hr.large {
-	margin: 60px 0 30px 0;
+	margin: 50px 0 30px 0;
 	border-top: 1px solid #1a1a1a;
 	opacity: 0.8;
 }
@@ -672,6 +682,9 @@ footer {
 	}
 	header {
 		padding-top: 40vh;
+	}
+	.home header {
+		padding-bottom: 40px;
 	}
 	.work header {
 		padding-top: 55vh;
@@ -772,6 +785,9 @@ footer {
 	}
 	td {
 		padding-right: 40px;
+	}
+	hr.large {
+		margin: 30px 0 30px 0;
 	}
 }
 
