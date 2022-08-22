@@ -419,7 +419,7 @@ td {
 
 .home .fixed {
 	position: fixed;
-	background-image: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/images/wellington-location.png"), url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/images/wellington-map-large.jpg");
+	background-image: url("/filing/images/wellington-location.png"), url("/filing/images/wellington-map-large.jpg");
 	background-repeat: no-repeat;
 	background-position: left top;
 	background-size: contain;
@@ -459,7 +459,7 @@ td {
 */
 
 .home .container {
-	background-image: url("/filing/images/wellington-location.png"), url("/filing/images/wellington-map-large.jpg");
+	background-image: /*url("/filing/images/wellington-location.png"),*/ url("/filing/images/wellington-map-large.jpg");
 	background-repeat: no-repeat;
 	background-position: right top;
 	background-size: contain;
