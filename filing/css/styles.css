@@ -586,7 +586,8 @@ footer ul {
 	padding-right: 15px;
 	padding-bottom: 45px;
 }
-.home .column-100 {
+.home .column-100,
+.team .column-100 {
 	padding-bottom: 0px;
 }
 
@@ -618,7 +619,9 @@ p.caption {
 .column-100 p.caption {
 	padding-bottom: 20px;
 }
-.home .column-100 p.caption {
+
+.home .column-100 p.caption,
+.team .column-100 p.caption {
 	padding-bottom: 0px;
 }
 
