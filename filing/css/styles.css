@@ -370,9 +370,7 @@ textarea {
 }
 
 /* Colors for form validity */
-input:valid,
-textarea:valid {
-}
+
 input:invalid,
 textarea:invalid {
 	background-color: #f0dddd;
@@ -495,7 +493,7 @@ nav a:hover {
 
 .anchor {
 	float: right;
-	margin-right: 15%;
+	margin-right: 10%;
 }
 
 header {
