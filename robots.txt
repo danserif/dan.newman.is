@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dan.newman.is/sitemap.txt
