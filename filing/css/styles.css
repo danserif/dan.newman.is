@@ -779,7 +779,7 @@ footer {
 		padding-top: 15vh;
 	}
 	.work header {
-		padding-top: 50vh;
+		padding-top: 5vh;
 	}
 	.home h1 {
 		font-size: 20px;
@@ -857,7 +857,8 @@ footer {
 		display: inline;
 	}
 	table {
-		padding-top: 80px;
+		padding-top: 60px;
+		padding-bottom: 40px;
 	}
 	td {
 		padding-right: 40px;
