@@ -456,10 +456,11 @@ td {
 
 */
 
-.home .container {
-	background-image: /*url("/filing/images/wellington-location.png"),*/ url("/filing/images/wellington-map-large.jpg");
+.home .container,
+.about .container {
+	background-image:/* url("/filing/images/wellington-location.png"),*/ url("/filing/images/wellington-map.jpg");
 	background-repeat: no-repeat;
-	background-position: right top;
+	background-position: right bottom;
 	background-size: contain;
 	max-width: 100%;
 }
@@ -505,7 +506,8 @@ header {
 	padding-bottom: 100px;
 }
 
-.work header {
+.work header,
+.about header {
 	padding-top: 50vh;
 }
 
@@ -525,7 +527,8 @@ h1 {
 	padding: 20px 0 20px 0;
 	margin: 0;
 }
-.work h1 {
+.work h1,
+.about h1 {
 	font-size: 140px;
 }
 
@@ -685,11 +688,15 @@ footer {
    This example overrides the primary ('mobile first') styles
    Modify as content requires.
    ========================================================================== */
-
-@media only screen and (max-width: 1680px) {
+@media only screen and (max-width: 2000px) {
 	.home .container {
-		background-image: url("/filing/images/wellington-map-small.jpg");
+		background-image: none;
 	}
+	.attribution {
+		display: none;
+	}
+}
+@media only screen and (max-width: 1680px) {
 	header {
 		padding-top: 40vh;
 	}
@@ -720,9 +727,6 @@ footer {
 }
 
 @media only screen and (max-width: 900px) {
-	.home .container {
-		background-image: none;
-	}
 	.container {
 		padding: 20px 20px;
 	}
@@ -784,7 +788,8 @@ footer {
 		flex: 100%;
 		padding: 0;
 	}
-	.hide {
+	.hide,
+	.attribution {
 		display: none;
 	}
 	.desktop {
