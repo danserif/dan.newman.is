@@ -476,8 +476,16 @@ p {
 	color: #dddddd;
 }
 
+nav ul {
+	margin-right: 10%;
+}
+
+nav ul li {
+	display: inline;
+	font-size: 20px;
+}
+
 nav a {
-	font-size: 16px;
 	text-decoration: none;
 	opacity: 0.8;
 }
@@ -494,7 +502,7 @@ nav a:hover {
 
 .anchor {
 	float: right;
-	margin-right: 10%;
+	margin-left: 10%;
 }
 
 .home header {
@@ -755,11 +763,14 @@ footer {
 	.container {
 		padding: 20px 20px;
 	}
+	nav ul li {
+		font-size: 16px;
+	}
 	.anchor {
 		display: none;
 	}
 	.URL {
-		margin-right: 25%;
+		margin-right: 0%;
 	}
 	nav a {
 		opacity: 1;
