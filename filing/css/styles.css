@@ -761,30 +761,39 @@ footer {
 	.URL {
 		margin-right: 25%;
 	}
+	nav a {
+		opacity: 1;
+	}
 	.home header {
 		padding-top: 15vh;
 	}
 	.work header {
 		padding-top: 50vh;
 	}
-	.home h1,
-	.home h2 {
+	.home h1 {
 		font-size: 20px;
 		line-height: 26px;
 		max-width: 900px;
 		padding-bottom: 20px;
+		color: #dddddd;
 	}
 	.home h2 {
 		font-weight: 400;
 		font-size: inherit;
 		line-height: inherit;
+		max-width: 900px;
+		padding-bottom: 20px;
 	}
 	.home header .opacity {
-		opacity: 0.6;
+		opacity: 1;
 	}
 	.home h1 a,
 	.home h2 a {
 		text-decoration: underline;
+		opacity: 1;
+	}
+	.home h2 a {
+		opacity: 0.8;
 	}
 
 	.work h1 {
