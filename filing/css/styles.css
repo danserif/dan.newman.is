@@ -766,7 +766,7 @@ footer {
 		padding: 20px 20px;
 	}
 	nav ul li {
-		font-size: 16px;
+		font-size: 14px;
 	}
 	.anchor {
 		display: none;
@@ -808,6 +808,7 @@ footer {
 	}
 	.home h2 a {
 		opacity: 0.8;
+		text-decoration: underline;
 	}
 	.work h1 {
 		font-size: 38px;
