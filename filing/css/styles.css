@@ -456,11 +456,10 @@ td {
 
 */
 
-.home .container,
-.about .container {
+.home .container {
 	background-image:/* url("/filing/images/wellington-location.png"),*/ url("/filing/images/wellington-map.jpg");
 	background-repeat: no-repeat;
-	background-position: right bottom;
+	background-position: left top;
 	background-size: contain;
 	max-width: 100%;
 }
@@ -480,6 +479,7 @@ p {
 nav a {
 	font-size: 16px;
 	text-decoration: none;
+	opacity: 0.8;
 }
 
 nav a:hover {
@@ -497,17 +497,14 @@ nav a:hover {
 	margin-right: 10%;
 }
 
-header {
-	max-width: 1220px;
-	padding-top: 60vh;
-}
-
 .home header {
+	max-width: 1620px;
+	padding-top: 35vh;
 	padding-bottom: 100px;
 }
 
-.work header,
-.about header {
+.work header {
+	max-width: 1220px;
 	padding-top: 50vh;
 }
 
@@ -522,14 +519,35 @@ header {
 
 h1 {
 	font-weight: 700;
-	font-size: 160px;
-	line-height: 160px;
+	font-size: 50px;
+	line-height: 55px;
 	padding: 20px 0 20px 0;
 	margin: 0;
 }
-.work h1,
-.about h1 {
+
+.home h1,
+.home h2 {
+	font-weight: 700;
+	font-size: 50px;
+	line-height: 55px;
+	padding-bottom: 80px;
+	color: #464646;
+}
+
+.home h1 a,
+.home h2 a {
+	text-decoration: none;
+	opacity: 0.9;
+}
+
+.home h1 a:hover,
+.home h2 a:hover {
+	opacity: 0.4;
+}
+
+.work h1 {
 	font-size: 140px;
+	line-height: 150px;
 }
 
 h2 {
@@ -697,14 +715,18 @@ footer {
 	}
 }
 @media only screen and (max-width: 1680px) {
-	header {
-		padding-top: 40vh;
-	}
 	.home header {
+		padding-top: 20vh;
 		padding-bottom: 40px;
+		max-width: 1280px;
 	}
 	.work header {
 		padding-top: 55vh;
+	}
+	.home h1,
+	.home h2 {
+		font-size: 40px;
+		line-height: 45px;
 	}
 	.images {
 		max-width: 1540px;
@@ -716,9 +738,12 @@ footer {
 		flex: 35%;
 	}
 }
-@media only screen and (max-width: 1460px) {
+@media only screen and (max-width: 1380px) {
 	header {
 		padding-top: 30vh;
+	}
+	.home header .hide {
+		display: none;
 	}
 	.work h1 {
 		font-size: 100px;
@@ -736,17 +761,33 @@ footer {
 	.URL {
 		margin-right: 25%;
 	}
-	header {
-		padding-top: 35vh;
+	.home header {
+		padding-top: 15vh;
 	}
 	.work header {
 		padding-top: 50vh;
 	}
-	h1 {
-		font-size: 70px;
-		line-height: 74px;
+	.home h1,
+	.home h2 {
+		font-size: 20px;
+		line-height: 26px;
+		max-width: 900px;
+		padding-bottom: 20px;
 	}
-	.work header h1 {
+	.home h2 {
+		font-weight: 400;
+		font-size: inherit;
+		line-height: inherit;
+	}
+	.home header .opacity {
+		opacity: 0.6;
+	}
+	.home h1 a,
+	.home h2 a {
+		text-decoration: underline;
+	}
+
+	.work h1 {
 		font-size: 38px;
 		line-height: 48px;
 		padding-bottom: 0px;
