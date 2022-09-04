@@ -778,37 +778,37 @@ footer {
 		opacity: 1;
 	}
 	.home header {
-		padding-top: 15vh;
+		padding-top: 30vh;
 	}
 	.work header {
 		padding-top: 5vh;
 	}
 	.home h1 {
-		font-size: 20px;
-		line-height: 26px;
+		font-size: 28px;
+		line-height: 34px;
 		max-width: 900px;
 		padding-bottom: 20px;
 		color: #dddddd;
 	}
 	.home h2 {
 		font-weight: 400;
-		font-size: inherit;
-		line-height: inherit;
+		font-size: 16px;
+		line-height: 20px;
 		max-width: 900px;
-		padding-bottom: 20px;
 	}
 	.home header .opacity {
 		opacity: 1;
 	}
+	.home header .arrow {
+		padding-top: 40px;
+	}
 	.home h1 a,
 	.home h2 a {
-		text-decoration: underline;
 		opacity: 1;
 	}
 	.home h2 a {
 		opacity: 0.8;
 	}
-
 	.work h1 {
 		font-size: 38px;
 		line-height: 48px;
