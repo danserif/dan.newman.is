@@ -778,7 +778,7 @@ footer {
 		opacity: 1;
 	}
 	.home header {
-		padding-top: 40vh;
+		padding-top: 25vh;
 	}
 	.work header {
 		padding-top: 15vh;
@@ -793,7 +793,7 @@ footer {
 	.home h2 {
 		font-weight: 400;
 		font-size: 16px;
-		line-height: 20px;
+		line-height: 22px;
 		max-width: 900px;
 	}
 	.home header .opacity {
