@@ -752,12 +752,21 @@ footer {
 	header {
 		padding-top: 30vh;
 	}
+	.home header {
+		padding-top: 40vh;
+	}
 	.home header .hide {
 		display: none;
+	}
+	.home header .desktop {
+		display: inline;
 	}
 	.work h1 {
 		font-size: 100px;
 		line-height: 110px;
+	}
+	.home header .arrow {
+		padding-top: 40px;
 	}
 }
 
@@ -798,9 +807,6 @@ footer {
 	}
 	.home header .opacity {
 		opacity: 1;
-	}
-	.home header .arrow {
-		padding-top: 40px;
 	}
 	.home h1 a,
 	.home h2 a {
