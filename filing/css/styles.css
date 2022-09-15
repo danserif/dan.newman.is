@@ -457,7 +457,7 @@ td {
 */
 
 .home .container {
-	background-image:/* url("/filing/images/wellington-location.png"),*/ url("/filing/images/wellington-map.jpg");
+	background-image: url("/filing/images/wellington-map.jpg");
 	background-repeat: no-repeat;
 	background-position: left top;
 	background-size: contain;
