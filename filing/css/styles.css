@@ -705,6 +705,11 @@ hr.large {
 	padding-bottom: 40px;
 }
 
+.ts-logos {
+	background-color: #000000;
+	padding: 20px;
+}
+
 footer {
 	padding: 60px 0 0 0;
 }
