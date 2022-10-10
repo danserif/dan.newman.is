@@ -729,7 +729,7 @@ footer {
 }
 @media only screen and (max-width: 1680px) {
 	.home header {
-		padding-top: 15vh;
+		padding-top: 20vh;
 		padding-bottom: 40px;
 	}
 	.home header h2 .hide {
@@ -742,6 +742,10 @@ footer {
 	.home h2 {
 		font-size: 40px;
 		line-height: 45px;
+		padding-bottom: 40px;
+	}
+	.home h2 {
+		max-width: 1300px;
 	}
 	.images {
 		max-width: 1540px;
