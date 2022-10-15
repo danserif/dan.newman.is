@@ -608,11 +608,17 @@ footer ul {
 	display: flex;
 }
 
+.bonus-row {
+	display: flex;
+	padding-top: 10vh;
+}
+
 .column-100 {
 	flex: 100%;
 	padding-right: 15px;
 	padding-bottom: 45px;
 }
+
 .home .column-100,
 .team .column-100 {
 	padding-bottom: 0px;
@@ -851,7 +857,8 @@ footer {
 	.images {
 		padding: 140px 0 70px 0;
 	}
-	.row {
+	.row,
+	.bonus-row {
 		display: block;
 		max-width: 615px;
 	}
