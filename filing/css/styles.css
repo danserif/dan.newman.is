@@ -66,7 +66,7 @@ textarea {
 
 body {
 	margin: 0;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	line-height: 1.6;
 	background-color: #060606;
 }
@@ -383,8 +383,8 @@ textarea:invalid {
 table {
 	border-collapse: collapse;
 	display: block;
-	padding-top: 120px;
-	padding-bottom: 80px;
+	padding-top: 90px;
+	padding-bottom: 90px;
 }
 tr {
 	padding: 0;
@@ -513,7 +513,7 @@ nav a:hover {
 
 .work header {
 	max-width: 1220px;
-	padding-top: 50vh;
+	padding-top: 45vh;
 }
 
 .arrow a {
@@ -589,7 +589,7 @@ h4 {
 }
 
 section {
-	max-width: 620px;
+	max-width: 680px;
 }
 
 section ul,
@@ -666,7 +666,7 @@ p.intro {
 
 blockquote {
 	border-left: 1px solid rgb(221, 221, 221, 0.2);
-	padding: 0 20px 0 20px;
+	padding: 0 30px 0 20px;
 	margin: 0;
 }
 
@@ -783,9 +783,23 @@ footer {
 	.home header .arrow {
 		padding-top: 40px;
 	}
+	.URL {
+		margin-right: 10%;
+	}
+	.anchor {
+		margin-left: 5%;
+	}
+}
+@media only screen and (max-width: 1000px) {
+	.anchor {
+		display: none;
+	}
 }
 
 @media only screen and (max-width: 900px) {
+	body {
+		font-size: 0.8em;
+	}
 	.container {
 		padding: 20px 20px;
 	}
@@ -802,16 +816,17 @@ footer {
 		opacity: 1;
 	}
 	.home header {
-		padding-top: 25vh;
+		padding-top: 30vh;
 	}
 	.work header {
-		padding-top: 15vh;
+		padding-top: 10vh;
 	}
 	.home h1 {
-		font-size: 28px;
-		line-height: 34px;
+		font-size: 20px;
+		line-height: 26px;
 		max-width: 900px;
 		padding-bottom: 20px;
+		padding-right: 20px;
 		color: #dddddd;
 	}
 	.home h2 {
@@ -826,6 +841,9 @@ footer {
 	.home h1 a,
 	.home h2 a {
 		opacity: 1;
+	}
+	.home h1 a {
+		text-decoration: underline;
 	}
 	.home h2 a {
 		opacity: 0.8;
