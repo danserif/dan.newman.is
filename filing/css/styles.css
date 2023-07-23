@@ -645,7 +645,7 @@ p.employable {
 }
 
 p.caption {
-	padding: 5px 0 0 0;
+	padding: 10px 0 10px 0;
 	line-height: 1.4;
 }
 
@@ -655,7 +655,7 @@ p.caption {
 
 .home .column-100 p.caption,
 .team .column-100 p.caption {
-	padding-bottom: 0px;
+	padding-bottom: 10px;
 }
 
 p.intro {
