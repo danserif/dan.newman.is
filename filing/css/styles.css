@@ -753,6 +753,9 @@ footer {
 	.home h2 {
 		max-width: 1300px;
 	}
+	nav ul {
+		margin-right: 0%;
+	}
 	.images {
 		max-width: 1540px;
 	}
