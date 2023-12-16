@@ -716,7 +716,24 @@ hr.large {
 	padding: 20px;
 }
 
+.smallcaps {
+	font-feature-settings: "c2sc", "smcp";
+}
+
+.logo {
+	padding: 20px 0 20px 0;
+}
+
+.logo svg {
+	width: 80px;
+}
+
+.logo p {
+	padding-top: 10px;
+}
+
 footer {
+	max-width: 680px;
 	padding: 60px 0 0 0;
 }
 
@@ -1088,7 +1105,7 @@ footer {
 
 /* Mono */
 @font-face {
-	font-family: "Berkley Mono";
+	font-family: "Berkeley Mono";
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
