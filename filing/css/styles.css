@@ -726,10 +726,7 @@ hr.large {
 
 .logo svg {
 	width: 80px;
-}
-
-.logo p {
-	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 footer {
