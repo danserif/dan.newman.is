@@ -66,7 +66,7 @@ textarea {
 
 body {
 	margin: 0;
-	font-size: 0.9em;
+	font-size: 16px;
 	line-height: 1.6;
 	background-color: #060606;
 }
@@ -122,6 +122,7 @@ strong {
 
 blockquote {
 	margin: 1em 40px;
+	font-size: 14px;
 }
 
 dfn {
@@ -155,8 +156,8 @@ pre,
 code,
 kbd,
 samp {
-	font-family: "Berkley Mono", monospace, serif;
-	_font-family: "Berkley Mono", "courier new", monospace;
+	font-family: "Berkeley Mono", monospace, serif;
+	_font-family: "Berkeley Mono", "courier new", monospace;
 	font-size: 1em;
 }
 
@@ -385,6 +386,7 @@ table {
 	display: block;
 	padding-top: 90px;
 	padding-bottom: 90px;
+	font-size: 14px;
 }
 tr {
 	padding: 0;
@@ -466,6 +468,8 @@ td {
 
 .container {
 	padding: 30px 60px 40px 60px;
+	/*max-width: 1680px;
+	margin: auto;*/
 }
 
 .container p {
@@ -511,7 +515,8 @@ nav a:hover {
 	padding-bottom: 100px;
 }
 
-.work header {
+.work header,
+.about header {
 	max-width: 1220px;
 	padding-top: 45vh;
 }
@@ -553,7 +558,8 @@ h1 {
 	opacity: 0.4;
 }
 
-.work h1 {
+.work h1,
+.about h1 {
 	font-size: 140px;
 	line-height: 150px;
 }
@@ -597,6 +603,7 @@ footer ul {
 	list-style: none;
 	padding: 0;
 	margin: 0 0 20px 0;
+	font-size: 14px;
 }
 
 .images {
@@ -646,6 +653,7 @@ p.employable {
 
 p.caption {
 	padding: 10px 0 10px 0;
+	font-size: 14px;
 	line-height: 1.4;
 }
 
@@ -711,6 +719,10 @@ hr.large {
 	padding-bottom: 40px;
 }
 
+.archived p {
+	font-size: 14px;
+}
+
 .ts-logos {
 	background-color: #000000;
 	padding: 20px;
@@ -729,9 +741,14 @@ hr.large {
 	padding-bottom: 10px;
 }
 
+.small {
+	font-size: 14px;
+}
+
 footer {
 	max-width: 680px;
 	padding: 60px 0 0 0;
+	font-size: 14px;
 }
 
 /* ==|== media queries ======================================================
@@ -755,7 +772,8 @@ footer {
 	.home header h2 .hide {
 		display: none;
 	}
-	.work header {
+	.work header,
+	.about header {
 		padding-top: 55vh;
 	}
 	.home h1,
@@ -793,7 +811,8 @@ footer {
 	.home header .desktop {
 		display: inline;
 	}
-	.work h1 {
+	.work h1,
+	.about h1 {
 		font-size: 100px;
 		line-height: 110px;
 	}
@@ -835,7 +854,8 @@ footer {
 	.home header {
 		padding-top: 40vh;
 	}
-	.work header {
+	.work header,
+	.about header {
 		padding-top: 8vh;
 	}
 	.home h1 {
@@ -866,7 +886,8 @@ footer {
 		opacity: 0.8;
 		text-decoration: underline;
 	}
-	.work h1 {
+	.work h1,
+	.about h1 {
 		font-size: 38px;
 		line-height: 48px;
 		padding-bottom: 0px;
