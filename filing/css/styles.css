@@ -921,6 +921,11 @@ footer {
 		font-size: 18px;
 		line-height: 24px;
 	}
+	.featured {
+		padding-top: 40px;
+		font-size: 18px;
+		line-height: 1.4em;
+	}
 	.images {
 		padding: 140px 0 70px 0;
 	}
