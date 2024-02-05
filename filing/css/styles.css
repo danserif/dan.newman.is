@@ -598,6 +598,13 @@ section {
 	max-width: 680px;
 }
 
+.featured {
+	max-width: 700px;
+	padding-top: 40px;
+	font-size: 28px;
+	line-height: 36px;
+}
+
 section ul,
 footer ul {
 	list-style: none;
@@ -651,7 +658,8 @@ p.employable {
 	max-width: 1280px;
 }
 
-p.caption {
+p.caption,
+ul.caption {
 	padding: 10px 0 10px 0;
 	font-size: 14px;
 	line-height: 1.4;
@@ -676,6 +684,9 @@ blockquote {
 	border-left: 1px solid rgb(221, 221, 221, 0.2);
 	padding: 0 30px 0 20px;
 	margin: 0;
+}
+blockquote p {
+	opacity: 0.8;
 }
 
 hr {
