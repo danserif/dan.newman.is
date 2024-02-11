@@ -717,7 +717,8 @@ hr.large {
 	display: inline-block;
 }
 
-.desktop {
+.desktop,
+.menu {
 	display: none;
 }
 
@@ -841,6 +842,34 @@ footer {
 	.anchor {
 		display: none;
 	}
+	/* Mobile Menu */
+	.menu .hide {
+		display: none;
+	}
+	.menu {
+		display: inline;
+	}
+	.mobile ul {
+		overflow: hidden;
+		position: relative;
+		margin-top: 20px;
+		padding: 20px 0px 30px 0;
+		border-top: 1px solid #1a1a1a;
+	}
+	.mobile a {
+		display: block;
+		line-height: 1.6em;
+	}
+	.mobile a i.icon {
+		display: block;
+		position: absolute;
+		right: 64px;
+		top: 32px;
+	}
+	.mobile li.logo {
+		padding-top: 80px;
+		display: block;
+	}
 }
 
 @media only screen and (max-width: 900px) {
@@ -861,6 +890,10 @@ footer {
 	}
 	nav a {
 		opacity: 1;
+	}
+	.mobile a i.icon {
+		right: 22px;
+		top: 22px;
 	}
 	.home header {
 		padding-top: 40vh;
