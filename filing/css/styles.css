@@ -898,10 +898,10 @@ footer {
 	.home header {
 		padding-top: 40vh;
 	}
-	/*.work header,
+	.work header,
 	.about header {
 		padding-top: 8vh;
-	}*/
+	}
 	.home h1 {
 		font-size: 20px;
 		line-height: 26px;
