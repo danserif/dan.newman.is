@@ -757,6 +757,17 @@ hr.large {
 	font-size: 14px;
 }
 
+.socials ul li {
+	display: inline;
+}
+.socials ul li a {
+	text-decoration: underline;
+}
+.socials p {
+	padding-top: 20px;
+	margin-bottom: 0px;
+}
+
 footer {
 	max-width: 680px;
 	padding: 60px 0 0 0;
