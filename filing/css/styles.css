@@ -765,6 +765,9 @@ hr.large {
 	padding-top: 20px;
 	margin-bottom: 0px;
 }
+.zero {
+	font-variant-numeric: slashed-zero;
+}
 
 footer {
 	max-width: 680px;
@@ -1185,5 +1188,5 @@ footer {
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
-	src: url("/filing/fonts/berkeley-mono-regular.woff2") format("woff2");
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/berkeley-mono-regular.woff2") format("woff2");
 }
