@@ -1188,5 +1188,5 @@ footer {
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/berkeley-mono-regular.woff2") format("woff2");
+	src: url("/filing/fonts/berkeley-mono-regular.woff2") format("woff2");
 }
