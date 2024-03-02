@@ -669,6 +669,13 @@ ul.caption {
 	padding-bottom: 20px;
 }
 
+p.project {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
 .home .column-100 p.caption,
 .team .column-100 p.caption {
 	padding-bottom: 10px;
