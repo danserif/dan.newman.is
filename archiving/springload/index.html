@@ -26,7 +26,8 @@
 		<link rel="mask-icon" href="https://dan.newman.is/filing/images/icons/safari-pinned-tab.svg" color="#1e1e1e" />
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+		<meta name="theme-color" content="#000000" />
 
 		<meta property="og:title" content="Springload" />
 		<meta property="og:description" content="Agency. Websites. Design. Branding. Presentations. Business Cards. Team. Events. Gin. Kombucha. Tote Bags. Posters. Patterns. Colours." />
@@ -54,13 +55,13 @@
 					<li class="opacity">
 						<a href="/archiving/axiom/" onclick="fathom.trackGoal('X3UAXYRH', 0);" title="🪵"><span class="hide">Currently: </span>Designing Axiom &rarr;</a>
 					</li>
-					<li><a class="anchor" href="mailto:dan@newman.is" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
-					<li><a class="anchor" href="/#employable" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
-					<li><a class="anchor" href="/#archiving" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
+					<li><a class="anchor" href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
+					<li><a class="anchor" href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
+					<li><a class="anchor" href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
 				</ul>
 				<div class="mobile menu">
 					<ul id="menu" class="hide">
-						<li><a href="/#archiving" onclick="fathom.trackGoal('O3KLLTP3', 0);">Work</a></li>
+						<li><a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);">Work</a></li>
 						<li>
 							<a href="/archiving/axiom/"
 								><span class="opacity">&#8985; Axiom <span class="opacity">(WIP)</span></span></a
@@ -70,17 +71,21 @@
 							<a href="/archiving/te-papa/"><span class="opacity">&#8985; Te Papa</span></a>
 						</li>
 						<br />
-						<li><a href="/#employable" onclick="fathom.trackGoal('U6UECOAD', 0);">About</a></li>
-						<li><a href="mailto:dan@newman.is" onclick="fathom.trackGoal('JZGUGKQD', 0);">Contact</a></li>
+						<li><a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);">About</a></li>
+						<li><a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);">Contact</a></li>
 						<br />
 						<li>
-							<a class="hover" href="/imagining/" onclick="fathom.trackGoal('JWBK6JUK', 0);"><span class="opacity">~/imagining</span></a>
+							<a href="/imagining/" onclick="fathom.trackGoal('JWBK6JUK', 0);"><span class="opacity">~/imagining</span></a>
 						</li>
 						<li>
-							<a class="hover" href="/experimenting/" onclick="fathom.trackGoal('7DA3M1EU', 0);"><span class="opacity">~/experimenting</span></a>
+							<a href="/experimenting/" onclick="fathom.trackGoal('7DA3M1EU', 0);"><span class="opacity">~/experimenting</span></a>
 						</li>
 						<li>
-							<a class="hover" href="/archiving/" onclick="fathom.trackGoal('7T4ND1TC', 0);"><span class="opacity">~/archiving</span></a>
+							<a href="/archiving/" onclick="fathom.trackGoal('7T4ND1TC', 0);"><span class="opacity">~/archiving</span></a>
+						</li>
+						<br />
+						<li>
+							<a href="/now/" onclick="fathom.trackEvent('#now');">Now <span class="opacity">(Q1—24) &rarr;</span></a>
 						</li>
 						<li class="logo">
 							<a href="/">
@@ -367,9 +372,9 @@
 				<p class="arrow"><a href="/archiving/springload/#beginning" onclick="fathom.trackGoal('GRB0XXWJ', 0);">&uarr;</a></p>
 				<ul>
 					<li><a href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="Home. Sweet. Home.">Home</a></li>
-					<li><a href="/#archiving" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
-					<li><a href="/#employable" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
-					<li><a href="mailto:dan@newman.is" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
+					<li><a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
+					<li><a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
+					<li><a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
 				</ul>
 				<ul>
 					<li>
@@ -429,7 +434,8 @@
 				</div>
 
 				<p>
-					<a class="hover uppercase" href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="You. Are. Here.">dan.newman.is</a>
+					<a class="hover uppercase" href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="You. Are. Here.">dan.newman.is</a> &nbsp; <span class="opacity">/</span> &nbsp;
+					<a class="hover uppercase" href="/now/" onclick="fathom.trackEvent('#now');">Now &rarr;</a>
 					<br />
 					<span class="opacity">Copyright &copy; 1982—2024.</span>
 				</p>
