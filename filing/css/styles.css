@@ -605,6 +605,12 @@ section {
 	line-height: 36px;
 }
 
+.credit {
+	max-width: 600px;
+	font-size: 20px;
+	line-height: 28px;
+}
+
 section ul,
 footer ul {
 	list-style: none;
@@ -1006,6 +1012,11 @@ footer {
 		padding-top: 40px;
 		font-size: 18px;
 		line-height: 1.4em;
+	}
+	.credit {
+		max-width: 360px;
+		font-size: 14px;
+		line-height: 20px;
 	}
 	.images {
 		padding: 140px 0 70px 0;
