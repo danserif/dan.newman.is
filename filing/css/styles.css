@@ -68,7 +68,7 @@ body {
 	margin: 0;
 	font-size: 16px;
 	line-height: 1.6;
-	background-color: #060606;
+	background-color: #000000;
 }
 
 /*
@@ -415,7 +415,7 @@ td {
 
 /* CUSTOM STYLES */
 
-/* Fixed scrolling panel (WIP)
+/* Fixed scrolling panel (WIP) 
 
 .home .fixed {
 	position: fixed;
@@ -456,7 +456,7 @@ td {
 	background-color: #060606;
 }
 
-*/
+ */
 
 .home .container {
 	background-image: url("/filing/images/wellington-map.jpg");
@@ -634,8 +634,15 @@ footer ul {
 }
 
 .home .column-100,
+.portfolio .column-100,
 .team .column-100 {
 	padding-bottom: 0px;
+}
+
+.column-80 {
+	flex: 80%;
+	max-width: 1280px;
+	padding-right: 15px;
 }
 
 .column-60 {
@@ -647,6 +654,12 @@ footer ul {
 .column-40 {
 	flex: 40%;
 	max-width: 615px;
+	padding-right: 15px;
+}
+
+.column-20 {
+	flex: 20%;
+	max-width: 420px;
 	padding-right: 15px;
 }
 
@@ -677,6 +690,7 @@ p.project {
 }
 
 .home .column-100 p.caption,
+.portfolio .column-100 p.caption,
 .team .column-100 p.caption {
 	padding-bottom: 10px;
 }
@@ -691,7 +705,9 @@ blockquote {
 	border-left: 1px solid rgb(221, 221, 221, 0.2);
 	padding: 0 30px 0 20px;
 	margin: 0;
+	hanging-punctuation: first last;
 }
+
 blockquote p {
 	opacity: 0.8;
 }
@@ -707,8 +723,20 @@ hr.large {
 	opacity: 0.8;
 }
 
+hr.full {
+	margin-right: 10px;
+}
+
 .opacity {
 	opacity: 0.4;
+}
+
+.opacity-dark {
+	opacity: 0.2;
+}
+
+.opacity-light {
+	opacity: 0.6;
 }
 
 .hover {
@@ -772,6 +800,7 @@ hr.large {
 	padding-top: 20px;
 	margin-bottom: 0px;
 }
+
 .zero {
 	font-variant-numeric: slashed-zero;
 }
@@ -990,11 +1019,19 @@ footer {
 		flex: 100%;
 		padding: 0;
 	}
+	.column-80 {
+		flex: 100%;
+		padding: 0;
+	}
 	.column-60 {
 		flex: 100%;
 		padding: 0;
 	}
 	.column-40 {
+		flex: 100%;
+		padding: 0;
+	}
+	.column-20 {
 		flex: 100%;
 		padding: 0;
 	}
