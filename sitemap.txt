@@ -1,4 +1,6 @@
 https://dan.newman.is/
+https://dan.newman.is/informing/
+https://dan.newman.is/designing/
 https://dan.newman.is/archiving/
 https://dan.newman.is/archiving/klim-type-foundry/
 https://dan.newman.is/archiving/stedi/
@@ -8,3 +10,5 @@ https://dan.newman.is/archiving/te-papa/
 https://dan.newman.is/archiving/axiom/
 https://dan.newman.is/experimenting/
 https://dan.newman.is/imagining/
+https://dan.newman.is/contactable/
+https://dan.newman.is/now/
