@@ -459,17 +459,11 @@ td {
  */
 
 .home .container {
-	background-image: url("/filing/images/wellington-map.jpg");
-	background-repeat: no-repeat;
-	background-position: left top;
-	background-size: contain;
 	max-width: 100%;
 }
 
 .container {
 	padding: 30px 60px 40px 60px;
-	/*max-width: 1680px;
-	margin: auto;*/
 }
 
 .container p {
