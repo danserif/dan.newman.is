@@ -1006,6 +1006,9 @@ footer {
 		padding: 10px 0 10px 0;
 		max-width: 615px;
 	}
+	h2.contactable {
+		padding-bottom: 30px;
+	}
 	.column-100 p.caption {
 		padding-bottom: 0px;
 	}
