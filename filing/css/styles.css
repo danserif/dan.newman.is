@@ -876,6 +876,12 @@ footer {
 		font-size: 100px;
 		line-height: 110px;
 	}
+	.work h2,
+	.about h2 {
+		font-size: 30px;
+		line-height: 40px;
+		max-width: 900px;
+	}
 	.home header .arrow {
 		padding-top: 40px;
 	}
@@ -884,6 +890,12 @@ footer {
 	}
 	.anchor {
 		margin-left: 5%;
+	}
+}
+@media only screen and (max-width: 1200px) {
+	.work header,
+	.about header {
+		padding-top: 40vh;
 	}
 }
 @media only screen and (max-width: 1000px) {
@@ -948,7 +960,7 @@ footer {
 	}
 	.work header,
 	.about header {
-		padding-top: 8vh;
+		padding-top: 40vh;
 	}
 	.home h1 {
 		font-size: 20px;
@@ -984,6 +996,8 @@ footer {
 		line-height: 48px;
 		padding-bottom: 0px;
 	}
+	.work h2,
+	.about h2,
 	h2,
 	h3 {
 		font-size: 20px;
