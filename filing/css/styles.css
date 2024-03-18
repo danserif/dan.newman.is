@@ -886,14 +886,18 @@ footer {
 		padding-top: 40px;
 	}
 	.URL {
-		margin-right: 10%;
+		margin-right: 8%;
 	}
 	.anchor {
-		margin-left: 5%;
+		margin-left: 8%;
 	}
 }
 @media only screen and (max-width: 1200px) {
 	/* iPad Header */
+	.home header {
+		max-width: 1000px;
+		padding-top: 35vh;
+	}
 	.work header,
 	.about header {
 		padding-top: 50vh;
