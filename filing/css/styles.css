@@ -893,9 +893,10 @@ footer {
 	}
 }
 @media only screen and (max-width: 1200px) {
+	/* iPad Header */
 	.work header,
 	.about header {
-		padding-top: 40vh;
+		padding-top: 50vh;
 	}
 }
 @media only screen and (max-width: 1000px) {
