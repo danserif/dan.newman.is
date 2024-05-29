@@ -757,6 +757,10 @@ hr.full {
 	display: none;
 }
 
+.tablet {
+	display: none;
+}
+
 .archived {
 	max-width: 620px;
 }
@@ -1066,9 +1070,11 @@ footer {
 	.attribution {
 		display: none;
 	}
-	.desktop {
+	.desktop,
+	.tablet {
 		display: inline;
 	}
+
 	table {
 		padding-top: 50px;
 		padding-bottom: 40px;
