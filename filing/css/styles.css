@@ -753,10 +753,7 @@ hr.full {
 }
 
 .desktop,
-.menu {
-	display: none;
-}
-
+.menu,
 .tablet {
 	display: none;
 }
@@ -867,7 +864,7 @@ footer {
 		padding-top: 30vh;
 	}
 	.home header {
-		padding-top: 40vh;
+		padding-top: 60vh;
 	}
 	.home header .hide {
 		display: none;
@@ -900,7 +897,7 @@ footer {
 	/* iPad Header */
 	.home header {
 		max-width: 1000px;
-		padding-top: 35vh;
+		padding-top: 45vh;
 	}
 	.work header,
 	.about header {
