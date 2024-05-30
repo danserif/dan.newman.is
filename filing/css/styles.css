@@ -864,7 +864,7 @@ footer {
 		padding-top: 30vh;
 	}
 	.home header {
-		padding-top: 60vh;
+		padding-top: 55vh;
 	}
 	.home header .hide {
 		display: none;
@@ -897,7 +897,7 @@ footer {
 	/* iPad Header */
 	.home header {
 		max-width: 1000px;
-		padding-top: 55vh;
+		padding-top: 50vh;
 	}
 	.work header,
 	.about header {
