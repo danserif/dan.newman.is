@@ -388,6 +388,10 @@ table {
 	padding-bottom: 90px;
 	font-size: 14px;
 }
+table.key {
+	padding-top: 0;
+	padding-bottom: 60px;
+}
 tr {
 	padding: 0;
 	margin: 0;
@@ -635,7 +639,7 @@ footer ul {
 
 .home .column-100,
 .portfolio .column-100,
-.team .column-100 {
+.about .column-100 {
 	padding-bottom: 0px;
 }
 
@@ -691,7 +695,7 @@ p.project {
 
 .home .column-100 p.caption,
 .portfolio .column-100 p.caption,
-.team .column-100 p.caption {
+.about .column-100 p.caption {
 	padding-bottom: 10px;
 }
 
