@@ -797,6 +797,10 @@ hr.full {
 	font-size: 14px;
 }
 
+.tiny {
+	font-size: 12px;
+}
+
 .socials ul li {
 	display: inline;
 }
