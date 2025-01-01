@@ -639,7 +639,8 @@ footer ul {
 
 .home .column-100,
 .portfolio .column-100,
-.about .column-100 {
+.about .column-100,
+.wip .column-100 {
 	padding-bottom: 0px;
 }
 
@@ -1268,7 +1269,7 @@ footer {
 }
 
 /* ==|== font styles =====================================================
-   Fonts: Berkley Mono by Berkeley Graphics
+   Fonts: Berkley Mono by U.S. Graphics
    ========================================================================== */
 
 /* Mono */
@@ -1277,5 +1278,5 @@ footer {
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
-	src: url("/filing/fonts/berkeley-mono-regular.woff2") format("woff2");
+	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/berkeley-mono-regular.woff2") format("woff2");
 }
