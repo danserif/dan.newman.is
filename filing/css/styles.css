@@ -794,6 +794,10 @@ hr.full {
 	padding-bottom: 10px;
 }
 
+.large {
+	font-size: 24px;
+}
+
 .small {
 	font-size: 14px;
 }
@@ -809,6 +813,17 @@ hr.full {
 .socials p {
 	padding-top: 20px;
 	margin-bottom: 0px;
+}
+
+.feed,
+.feed ul {
+	font-size: 12px;
+	font-family: "Berkeley Mono", monospace, serif;
+}
+
+.feed {
+	max-width: 480px;
+	padding-bottom: 60px;
 }
 
 .zero {
@@ -1278,5 +1293,5 @@ footer {
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
-	src: url("file:///Users/danserif/Documents/GitHub/dan.newman.is/filing/fonts/berkeley-mono-regular.woff2") format("woff2");
+	src: url("/filing/fonts/berkeley-mono-regular.woff2") format("woff2");
 }
