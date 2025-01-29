@@ -858,9 +858,6 @@ footer {
 		padding-top: 20vh;
 		padding-bottom: 40px;
 	}
-	.home header h2 .hide {
-		display: none;
-	}
 	.work header,
 	.about header {
 		padding-top: 55vh;
