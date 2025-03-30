@@ -1175,6 +1175,9 @@ footer {
 	.subscribe {
 		padding: 12px 16px 12px 16px;
 	}
+	.form p span.large {
+		font-size: 20px;
+	}
 }
 
 @media only screen and (max-width: 320px) {
