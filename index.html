@@ -19,7 +19,7 @@
 			}
 		</script>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 		<link rel="stylesheet" href="/filing/css/styles.css" />
 
@@ -178,21 +178,37 @@
 							<a href="https://danserif.com/newsletter/" onclick="fathom.trackGoal('Newsletter', 0);">
 								<img srcset="/filing/gifs/tdu-montage.gif" style="width: 100%; aspect-ratio: 1665 / 937" alt="[TDU]" />
 							</a>
-							<p class="caption mono">
-								<a class="hover" href="https://danserif.com/newsletter/" onclick="fathom.trackGoal('Newsletter', 0);"
-									><span class="uppercase">The Danserif Update</span> <span class="opacity">[TDU]</span><br />
-									<span class="opacity">&#8985; <span class="opacity-light">https://</span>danserif.com<span class="opacity-light">/</span>newsletter</span></a
+							<!-- FORM -->
+							<div class="form">
+								<p>
+									<a class="hover" href="https://danserif.com/newsletter/" onclick="fathom.trackGoal('Newsletter', 0);"
+										><span class="uppercase large">The Danserif Update</span> <span class="opacity large">[TDU]</span><br />
+										<span class="opacity">&#8985; <span class="opacity-light">https://</span>danserif.com<span class="opacity-light">/</span>newsletter</span></a
+									>
+								</p>
+								<p>An infrequently emailed update about life, work, design, branding, typography, photography, ASCII, AI, lists, and the Internet.</p>
+								<form
+									action="https://buttondown.com/api/emails/embed-subscribe/danserif"
+									method="post"
+									target="popupwindow"
+									onsubmit="window.open('https://buttondown.com/danserif', 'popupwindow')"
+									onclick="fathom.trackEvent('Subscribe', 0);"
+									class="embeddable-buttondown-form"
 								>
-								<br />
-								<br />
-								<span class="opacity-light">
-									An infrequently emailed update about life, work, design, branding,<br class="hide" />
-									typography, photography, ASCII, AI, lists, and the Internet.</span
-								>
-							</p>
-							<p class="caption mono">
-								<a class="hover highlight" href="https://danserif.com/newsletter/" onclick="fathom.trackGoal('Newsletter', 0);">Subscribe &rarr;</a>
-							</p>
+									<input class="email" type="email" name="email" id="bd-email" placeholder="Email" />
+									<input class="subscribe" type="submit" value="Subscribe" />
+								</form>
+								<div class="disclaimer">
+									<p class="opacity-light">
+										Add
+										<a href="mailto:newsletter@danserif.com" title="📧" class="hover"
+											><span class="opacity-light">newsletter</span> <span class="opacity">[at]</span> <span class="opacity-light">danserif</span> <span class="opacity">[dot]</span>
+											<span class="opacity-light">com</span></a
+										>
+										to your contacts so my emails dont’t end up in spam, and remember to opt in! <span class="opacity-light">\m/</span>
+									</p>
+								</div>
+							</div>
 						</div>
 						<div class="column-20">
 							<ul class="mono tiny">
@@ -212,13 +228,13 @@
 								<li><span class="opacity">12</span> <span class="opacity">0% [</span> █ █ █ ▄ <span class="opacity">_ ] 100%</span></li>
 								<li><span class="opacity">13</span> <span class="opacity"><</span>HTML<span class="opacity">/></span> <span class="opacity">+</span> CSS<span class="opacity">{}</span></li>
 								<li class="uppercase"><span class="opacity">14</span> Video Cassette <span class="opacity">D-120</span></li>
-								<li><span class="opacity">15</span> <span class="opacity">Platform:</span> Buttondown</li>
+								<li><span class="opacity">15</span> <span class="opacity">Tool:</span> Buttondown</li>
 								<br />
-								<li class="hide"><a class="hover" href="https://danserif.com/newsletter/" onclick="fathom.trackGoal('Newsletter', 0);">Subscribe &rarr;</a></li>
+								<li><a class="hover highlight" href="https://danserif.com/newsletter/" onclick="fathom.trackGoal('Newsletter', 0);">Subscribe &rarr;</a></li>
 							</ul>
 						</div>
 					</div>
-					<hr class="full hide" />
+					<!--<hr class="full hide" />
 					<div class="featured hide">
 						<p>I currently run Knolling, a design studio and family office.</p>
 						<p>Previously I was Head of Design at <a href="/archiving/axiom/">Axiom</a>, a logging and observability <code class="opacity">[o11y]</code> product for engineers.</p>
@@ -227,7 +243,7 @@
 							<a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);">work</a>, see what I’m doing <a href="/now/" onclick="fathom.trackEvent('Now');">now</a>, or
 							<a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);">get in touch</a>.
 						</p>
-					</div>
+					</div>-->
 				</section>
 
 				<!-- Work -->
