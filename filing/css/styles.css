@@ -834,6 +834,11 @@ hr.full {
 	font-family: "Berkeley Mono", monospace, serif;
 }
 
+a.highlight,
+.highlight {
+	color: #aaff00;
+}
+
 footer {
 	max-width: 680px;
 	padding: 120px 0 0 0;
