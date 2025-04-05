@@ -852,11 +852,16 @@ form {
 	padding: 10px 0 10px 0;
 }
 
-.form input {
+.form input,
+.form button {
 	font-size: 14px;
 	font-weight: 400;
 	border-radius: 0;
 	font-family: Berkeley Mono;
+}
+
+.form input {
+	background-color: #ffffff;
 }
 
 .email {
@@ -872,7 +877,7 @@ form {
 	color: #666;
 }
 
-input:focus {
+.form input:focus {
 	outline: none;
 	background-color: #f9f9f9;
 	border: 1px solid #ccc;
@@ -1169,7 +1174,8 @@ footer {
 	hr.full {
 		margin: 30px 0 10px 0;
 	}
-	.form input {
+	.form input,
+	.form button {
 		font-size: 12px;
 	}
 	.subscribe {

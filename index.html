@@ -187,16 +187,9 @@
 									>
 								</p>
 								<p>An infrequently emailed update about life, work, design, branding, typography, photography, ASCII, AI, lists, and the Internet.</p>
-								<form
-									action="https://buttondown.com/api/emails/embed-subscribe/danserif"
-									method="post"
-									target="popupwindow"
-									onsubmit="window.open('https://buttondown.com/danserif', 'popupwindow')"
-									onclick="fathom.trackEvent('Subscribe', 0);"
-									class="embeddable-buttondown-form"
-								>
-									<input class="email" type="email" name="email" id="bd-email" placeholder="Email" />
-									<input class="subscribe" type="submit" value="Subscribe" />
+								<form id="subscribe-form" class="embeddable-buttondown-form">
+									<input class="email" type="email" name="email" id="bd-email" placeholder="Email" required />
+									<button id="subscribe-button" class="subscribe" type="submit">Subscribe</button>
 								</form>
 								<div class="disclaimer">
 									<p class="caption opacity-light">
@@ -210,6 +203,42 @@
 									</p>
 								</div>
 							</div>
+							<script>
+								const form = document.getElementById("subscribe-form");
+								const button = document.getElementById("subscribe-button");
+
+								form.addEventListener("submit", async function (e) {
+									e.preventDefault(); // Stop normal form
+
+									const email = document.getElementById("bd-email").value;
+
+									// Disable button and change text
+									button.disabled = true;
+									button.innerText = "Submitting...";
+
+									try {
+										await fetch("https://buttondown.com/api/emails/embed-subscribe/danserif", {
+											method: "POST",
+											headers: {
+												"Content-Type": "application/x-www-form-urlencoded",
+											},
+											body: new URLSearchParams({ email }),
+										});
+
+										if (window.fathom) fathom.trackEvent("Subscribe");
+
+										// Redirect to ~/thanks
+										window.location.href = "https://danserif.com/thanks/";
+									} catch (error) {
+										console.error("Subscription failed:", error);
+										alert("Oops! Something went wrong. Please try again.");
+
+										// Re-enable button and reset text if error
+										button.disabled = false;
+										button.innerText = "Subscribe";
+									}
+								});
+							</script>
 						</div>
 						<div class="column-20">
 							<ul class="mono tiny">
