@@ -1,4 +1,9 @@
+# Dependencies
+node_modules/
+package.json
+
 # Mac OS files
 .DS_Store
 # WIP files
 *~
+todo.txt
