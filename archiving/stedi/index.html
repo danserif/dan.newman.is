@@ -1,279 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<title>Stedi — Dan Newman</title>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<meta name="description" content="EDI. X12. EDIFACT. Developers. JSON. Integrations. APIs. Diagrams. Illustrations. Animations. Colours. Themes. Patterns. Icons. Glyphs." />
-		<meta name="author" content="Dan Newman" />
-		<meta name="copyright" content="Copyright Dan Newman, 2026" />
+	<title>Stedi — Dan Newman</title>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description"
+		content="EDI. X12. EDIFACT. Developers. JSON. Integrations. APIs. Diagrams. Illustrations. Animations. Colours. Themes. Patterns. Icons. Glyphs." />
+	<meta name="author" content="Dan Newman" />
+	<meta name="copyright" content="Copyright Dan Newman, 2026" />
 
-		<link rel="stylesheet" href="/filing/css/styles.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="robots" content="noindex" />
 
-		<link rel="preload" href="/filing/fonts/soehne-buch.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-		<link rel="preload" href="/filing/fonts/soehne-dreiviertelfett.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-		<link rel="preload" href="/filing/fonts/soehne-leicht.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/filing/v4/css/styles.css" />
 
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/favicon-16x16.png" sizes="16x16" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/favicon-32x32.png" sizes="32x32" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/icon.png" sizes="1024x1024" />
-		<link rel="apple-touch-icon" href="https://dan.newman.is/filing/images/icons/apple-touch-icon.png" sizes="1024x1024" />
-		<link rel="mask-icon" href="https://dan.newman.is/filing/images/icons/safari-pinned-tab.svg" color="#1e1e1e" />
+	<link rel="preload" href="/filing/v4/fonts/soehne-buch.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="preload" href="/filing/v4/fonts/soehne-dreiviertelfett.woff2" as="font" type="font/woff2"
+		crossorigin="anonymous" />
+	<link rel="preload" href="/filing/v4/fonts/soehne-leicht.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
-		<meta name="theme-color" content="#000000" />
+	<link rel="icon" type="image/png" href="https://dan.newman.is/filing/v4/icons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://dan.newman.is/filing/v4/icons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://dan.newman.is/filing/v4/icons/icon.png" sizes="1024x1024" />
+	<link rel="apple-touch-icon" href="https://dan.newman.is/filing/v4/icons/apple-touch-icon.png" sizes="1024x1024" />
+	<link rel="mask-icon" href="https://dan.newman.is/filing/v4/icons/safari-pinned-tab.svg" color="#1e1e1e" />
 
-		<meta property="og:title" content="Stedi — Dan Newman" />
-		<meta property="og:description" content="EDI. X12. EDIFACT. Developers. JSON. Integrations. APIs. Diagrams. Illustrations. Animations. Colours. Themes. Patterns. Icons. Glyphs." />
-		<meta property="og:image" content="https://dan.newman.is/filing/images/opengraph-image-stedi.jpg" />
-		<meta property="og:image:alt" content="Stedi" />
-		<meta property="og:site_name" content="dan.newman.is/archiving" />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+	<meta name="theme-color" content="#000000" />
 
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Stedi — Dan Newman" />
-		<meta name="twitter:description" content="EDI. X12. EDIFACT. Developers. JSON. Integrations. APIs. Diagrams. Illustrations. Animations. Colours. Themes. Patterns. Icons. Glyphs." />
-		<meta name="twitter:image" content="https://dan.newman.is/filing/images/opengraph-image-stedi.jpg" />
-		<meta name="twitter:site" content="@danserif" />
+	<meta property="og:title" content="Stedi — Dan Newman" />
+	<meta property="og:description"
+		content="EDI. X12. EDIFACT. Developers. JSON. Integrations. APIs. Diagrams. Illustrations. Animations. Colours. Themes. Patterns. Icons. Glyphs." />
+	<meta property="og:image" content="https://dan.newman.is/filing/v4/images/opengraph-image-stedi.jpg" />
+	<meta property="og:image:alt" content="Stedi" />
+	<meta property="og:site_name" content="dan.newman.is/archiving" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
 
-		<script src="https://cdn.usefathom.com/script.js" data-site="NJPLLGHN" defer></script>
-	</head>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Stedi — Dan Newman" />
+	<meta name="twitter:description"
+		content="EDI. X12. EDIFACT. Developers. JSON. Integrations. APIs. Diagrams. Illustrations. Animations. Colours. Themes. Patterns. Icons. Glyphs." />
+	<meta name="twitter:image" content="https://dan.newman.is/filing/v4/images/opengraph-image-stedi.jpg" />
+	<meta name="twitter:site" content="@danserif" />
 
-	<body id="beginning" class="work">
-		<!-- CONTENT -->
-		<div class="container">
-			<nav>
-				<ul>
-					<li><a class="URL" href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="Home. Sweet. Home.">dan.newman.is</a> <span class="desktop opacity">&nbsp; / &nbsp;</span></li>
-					<li class="opacity">
-						<a href="/now/" onclick="fathom.trackGoal('X3UAXYRH', 0);">Now (24—25) &rarr;</a>
+	<script src="https://cdn.usefathom.com/script.js" data-site="NJPLLGHN" defer></script>
+</head>
+
+<body id="beginning" class="work">
+	<!-- ARCHIVE BANNER -->
+	<div class="archive-banner">
+		This version <span class="opacity-light">(v4.0)</span> is now archived.<br class="desktop" /> View the <a
+			href="/">latest version</a> <span class="opacity-light">(v5.0) &rarr;</span>
+	</div>
+	<!-- CONTENT -->
+	<div class="container">
+		<nav>
+			<ul>
+				<li><a class="URL" href="/archiving/v4/" title="Home. Sweet. Home.">dan.newman.is</a> <span
+						class="desktop opacity">&nbsp; / &nbsp;</span></li>
+				<li class="opacity">
+					Archiving <span class="opacity-light">(v4.0)</span>
+				</li>
+				<li><a class="anchor" href="/archiving/v4/contactable/" title="Send. Me. Email.">Contact</a></li>
+				<li><a class="anchor" href="/archiving/v4/informing/" title="Me. Me. Me.">About</a></li>
+				<li><a class="anchor" href="/archiving/v4/designing/" title="Werk. Werk. Werk.">Work</a></li>
+			</ul>
+			<div class="mobile menu">
+				<ul id="menu" class="hide">
+					<li><a href="/archiving/v4/designing/">Work</a></li>
+					<li>
+						<a href="/archiving/axiom/"><span class="opacity">&#8985; Axiom</span></a>
+						<a href="/archiving/klim-type-foundry/"><span class="opacity">&#8985; Klim Type Foundry</span></a> <a
+							href="/archiving/stedi/"><span class="opacity">&#8985; Stedi</span></a>
+						<a href="/archiving/springload/"><span class="opacity">&#8985; Springload</span></a> <a
+							href="/archiving/delivereasy/"><span class="opacity">&#8985; Delivereasy</span></a>
+						<a href="/archiving/te-papa/"><span class="opacity">&#8985; Te Papa</span></a>
 					</li>
-					<li><a class="anchor" href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
-					<li><a class="anchor" href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
-					<li><a class="anchor" href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
+					<br />
+					<li><a href="/archiving/v4/informing/">About</a></li>
+					<li><a href="/archiving/v4/contactable/">Contact</a></li>
+					<br />
+					<li>
+						<a href="/archiving/v4/imagining/"><span class="opacity">~/imagining</span></a>
+					</li>
+					<li>
+						<a href="/archiving/v4/experimenting/"><span class="opacity">~/experimenting</span></a>
+					</li>
+					<li>
+						<a href="/archiving/"><span class="opacity">~/archiving</span></a>
+					</li>
+					<br />
+					<li>
+						<span class="opacity">v4.0</span> <span class="opacity-dark">(Archvived)</span>
+					</li>
+					<li class="logo">
+						<a href="/archiving/v4/">
+							<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0"
+								style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
+								<style>
+									.st0 {
+										fill: #ffffff;
+									}
+								</style>
+								<path
+									d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
+									class="st0" />
+								<path
+									d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
+									style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff" />
+							</svg>
+						</a>
+						<span class="opacity">&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></span>
+					</li>
 				</ul>
-				<div class="mobile menu">
-					<ul id="menu" class="hide">
-						<li><a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);">Work</a></li>
-						<li>
-							<a href="/archiving/axiom/"><span class="opacity">&#8985; Axiom</span></a>
-							<a href="/archiving/klim-type-foundry/"><span class="opacity">&#8985; Klim Type Foundry</span></a> <a href="/archiving/stedi/"><span class="opacity">&#8985; Stedi</span></a>
-							<a href="/archiving/springload/"><span class="opacity">&#8985; Springload</span></a> <a href="/archiving/delivereasy/"><span class="opacity">&#8985; Delivereasy</span></a>
-							<a href="/archiving/te-papa/"><span class="opacity">&#8985; Te Papa</span></a>
-						</li>
-						<br />
-						<li><a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);">About</a></li>
-						<li><a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);">Contact</a></li>
-						<br />
-						<li>
-							<a href="/imagining/" onclick="fathom.trackGoal('JWBK6JUK', 0);"><span class="opacity">~/imagining</span></a>
-						</li>
-						<li>
-							<a href="/experimenting/" onclick="fathom.trackGoal('7DA3M1EU', 0);"><span class="opacity">~/experimenting</span></a>
-						</li>
-						<li>
-							<a href="/archiving/" onclick="fathom.trackGoal('7T4ND1TC', 0);"><span class="opacity">~/archiving</span></a>
-						</li>
-						<br />
-						<li>
-							<a href="/now/" onclick="fathom.trackEvent('Now');">Now <span class="opacity">(24—25) &rarr;</span></a>
-						</li>
-						<li class="logo">
-							<a href="/">
-								<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
-									<style>
-										.st0 {
-											fill: #ffffff;
-										}
-									</style>
-									<path
-										d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
-										class="st0"
-									/>
-									<path
-										d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
-										style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff"
-									/>
-								</svg>
-							</a>
-							<span class="opacity">&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></span>
-						</li>
-					</ul>
-					<a href="javascript:void(0);" onclick="mobileMenu()">
-						<i class="icon">
-							<svg width="15" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.75.75h14M.75 10.75h14M.75 5.75h14" stroke="#fff" stroke-linejoin="round" /></svg
-						></i>
-					</a>
-					<script>
-						function mobileMenu() {
-							var x = document.getElementById("menu");
-							if (x.style.display === "block") {
-								x.style.display = "none";
-							} else {
-								x.style.display = "block";
-							}
+				<a href="javascript:void(0);" onclick="mobileMenu()">
+					<i class="icon">
+						<svg width="15" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M.75.75h14M.75 10.75h14M.75 5.75h14" stroke="#fff" stroke-linejoin="round" />
+						</svg></i>
+				</a>
+				<script>
+					function mobileMenu() {
+						var x = document.getElementById("menu");
+						if (x.style.display === "block") {
+							x.style.display = "none";
+						} else {
+							x.style.display = "block";
 						}
-					</script>
+					}
+				</script>
+			</div>
+		</nav>
+
+		<header>
+			<h1 id="intro">Stedi</h1>
+			<h2 class="opacity">EDI. X12. EDIFACT. Integrations. Developers. JSON. Diagrams. APIs. Illustrations. Animations.
+				Colours. Themes. Patterns. Icons. Glyphs.</h2>
+			<section>
+				<table>
+					<tr>
+						<td><span class="opacity">Client</span></td>
+						<td>Stedi</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Project</span></td>
+						<td>Redesign</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Years</span></td>
+						<td>2021—2022</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Location</span></td>
+						<td>Remote</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Role</span></td>
+						<td>Design Lead</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Agency</span></td>
+						<td>Internal</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Category</span></td>
+						<td>Startup</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Format</span></td>
+						<td>Digital, Brand</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Fonts</span></td>
+						<td>Inter, SF Mono, Recursive Mono</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">URL</span></td>
+						<td><a href="https://stedi.com">stedi.com</a></td>
+					</tr>
+				</table>
+			</section>
+			<p class="arrow"><a href="/archiving/stedi/#archiving">&darr;</a></p>
+		</header>
+
+		<main>
+			<!-- WORK -->
+			<section class="images">
+				<h3 id="archiving">Work</h3>
+				<div class="row">
+					<div class="column-100">
+						<img
+							srcset="/filing/v4/images/stedi/stedi-homepage-montage.jpg 1x, /filing/v4/images/stedi/stedi-homepage-montage-2x.jpg 2x"
+							style="width: 100%" alt="Stedi Homepage Montage" />
+						<p class="caption">Montage of the <a href="https://stedi.com">stedi.com</a> homepage.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-homepage-top.jpg 1x, /filing/v4/images/stedi/stedi-homepage-top-2x.jpg 2x"
+							style="width: 100%" alt="Stedi Homepage (Top)" />
+						<p class="caption">Stedi homepage featuring an architecture diagram, EDI tools, and customer testimonials.
+						</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-homepage-bottom.jpg 1x, /filing/v4/images/stedi/stedi-homepage-bottom-2x.jpg 2x"
+							style="width: 100%" alt="Stedi Homepage (Bottom)" />
+						<p class="caption">Stedi homepage featuring the latest EDI products, tools, getting started resources, and
+							footer.</p>
+						<hr class="large" />
+					</div>
 				</div>
-			</nav>
-
-			<header>
-				<h1 id="intro">Stedi</h1>
-				<h2 class="opacity">EDI. X12. EDIFACT. Integrations. Developers. JSON. Diagrams. APIs. Illustrations. Animations. Colours. Themes. Patterns. Icons. Glyphs.</h2>
-				<section>
-					<table>
-						<tr>
-							<td><span class="opacity">Client</span></td>
-							<td>Stedi</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Project</span></td>
-							<td>Redesign</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Years</span></td>
-							<td>2021—2022</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Location</span></td>
-							<td>Remote</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Role</span></td>
-							<td>Design Lead</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Agency</span></td>
-							<td>Internal</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Category</span></td>
-							<td>Startup</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Format</span></td>
-							<td>Digital, Brand</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Fonts</span></td>
-							<td>Inter, SF Mono, Recursive Mono</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">URL</span></td>
-							<td><a href="https://stedi.com">stedi.com</a></td>
-						</tr>
-					</table>
-				</section>
-				<p class="arrow"><a href="/archiving/stedi/#archiving">&darr;</a></p>
-			</header>
-
-			<main>
-				<!-- WORK -->
-				<section class="images">
-					<h3 id="archiving">Work</h3>
-					<div class="row">
-						<div class="column-100">
-							<img srcset="/filing/images/stedi/stedi-homepage-montage.jpg 1x, /filing/images/stedi/stedi-homepage-montage-2x.jpg 2x" style="width: 100%" alt="Stedi Homepage Montage" />
-							<p class="caption">Montage of the <a href="https://stedi.com">stedi.com</a> homepage.</p>
-							<img srcset="/filing/images/stedi/stedi-homepage-top.jpg 1x, /filing/images/stedi/stedi-homepage-top-2x.jpg 2x" style="width: 100%" alt="Stedi Homepage (Top)" />
-							<p class="caption">Stedi homepage featuring an architecture diagram, EDI tools, and customer testimonials.</p>
-							<img srcset="/filing/images/stedi/stedi-homepage-bottom.jpg 1x, /filing/images/stedi/stedi-homepage-bottom-2x.jpg 2x" style="width: 100%" alt="Stedi Homepage (Bottom)" />
-							<p class="caption">Stedi homepage featuring the latest EDI products, tools, getting started resources, and footer.</p>
-							<hr class="large" />
-						</div>
+				<div class="row">
+					<div class="column-40">
+						<img
+							srcset="/filing/v4/images/stedi/stedi-edi-core-components.png 1x, /filing/v4/images/stedi/stedi-edi-core-components-2x.png 2x"
+							style="width: 100%" alt="EDI Core Components" />
+						<p class="caption">EDI Core <span class="opacity">(Components)</span></p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-edi-core-og-image.png 1x, /filing/v4/images/stedi/stedi-edi-core-og-image-2x.png 2x"
+							style="width: 100%" alt="EDI Core OpenGraph Image" />
+						<p class="caption">EDI Core <span class="opacity">(OpenGraph Image)</span></p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-converter-components.png 1x, /filing/v4/images/stedi/stedi-converter-components-2x.png 2x"
+							style="width: 100%" alt="Converter Components" />
+						<p class="caption">Converter <span class="opacity">(Components)</span></p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-converter-og-image.png 1x, /filing/v4/images/stedi/stedi-converter-og-image-2x.png 2x"
+							style="width: 100%" alt="Converter OpenGraph Image" />
+						<p class="caption">Converter <span class="opacity">(OpenGraph Image)</span></p>
+						<img srcset="/filing/v4/images/stedi/stedi-menu.png 1x, /filing/v4/images/stedi/stedi-menu-2x.png 2x"
+							style="width: 100%" alt="Product Menu" />
+						<p class="caption">Product Dropdown Menu</p>
+						<img srcset="/filing/v4/images/stedi/stedi-icons.png 1x, /filing/v4/images/stedi/stedi-icons-2x.png 2x"
+							style="width: 100%" alt="Product Icons" />
+						<p class="caption">Product Icons</p>
+						<img srcset="/filing/v4/images/stedi/stedi-careers.png 1x, /filing/v4/images/stedi/stedi-careers-2x.png 2x"
+							style="width: 100%" alt="Stedi Careers" />
+						<p class="caption">Careers Map & Benefits</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-customers.png 1x, /filing/v4/images/stedi/stedi-customers-2x.png 2x"
+							style="width: 100%" alt="Stedi Customers" />
+						<p class="caption">Customer Cards <span class="opacity">(WIP)</span></p>
 					</div>
-					<div class="row">
-						<div class="column-40">
-							<img srcset="/filing/images/stedi/stedi-edi-core-components.png 1x, /filing/images/stedi/stedi-edi-core-components-2x.png 2x" style="width: 100%" alt="EDI Core Components" />
-							<p class="caption">EDI Core <span class="opacity">(Components)</span></p>
-							<img srcset="/filing/images/stedi/stedi-edi-core-og-image.png 1x, /filing/images/stedi/stedi-edi-core-og-image-2x.png 2x" style="width: 100%" alt="EDI Core OpenGraph Image" />
-							<p class="caption">EDI Core <span class="opacity">(OpenGraph Image)</span></p>
-							<img srcset="/filing/images/stedi/stedi-converter-components.png 1x, /filing/images/stedi/stedi-converter-components-2x.png 2x" style="width: 100%" alt="Converter Components" />
-							<p class="caption">Converter <span class="opacity">(Components)</span></p>
-							<img srcset="/filing/images/stedi/stedi-converter-og-image.png 1x, /filing/images/stedi/stedi-converter-og-image-2x.png 2x" style="width: 100%" alt="Converter OpenGraph Image" />
-							<p class="caption">Converter <span class="opacity">(OpenGraph Image)</span></p>
-							<img srcset="/filing/images/stedi/stedi-menu.png 1x, /filing/images/stedi/stedi-menu-2x.png 2x" style="width: 100%" alt="Product Menu" />
-							<p class="caption">Product Dropdown Menu</p>
-							<img srcset="/filing/images/stedi/stedi-icons.png 1x, /filing/images/stedi/stedi-icons-2x.png 2x" style="width: 100%" alt="Product Icons" />
-							<p class="caption">Product Icons</p>
-							<img srcset="/filing/images/stedi/stedi-careers.png 1x, /filing/images/stedi/stedi-careers-2x.png 2x" style="width: 100%" alt="Stedi Careers" />
-							<p class="caption">Careers Map & Benefits</p>
-							<img srcset="/filing/images/stedi/stedi-customers.png 1x, /filing/images/stedi/stedi-customers-2x.png 2x" style="width: 100%" alt="Stedi Customers" />
-							<p class="caption">Customer Cards <span class="opacity">(WIP)</span></p>
-						</div>
-						<div class="column-60">
-							<img srcset="/filing/images/stedi/stedi-pricing.png 1x, /filing/images/stedi/stedi-pricing-2x.png 2x" style="width: 100%" alt="Stedi Pricing" />
-							<p class="caption">Pricing</p>
-							<img srcset="/filing/images/stedi/stedi-landing-pages-light.png 1x, /filing/images/stedi/stedi-landing-pages-light-2x.png 2x" style="width: 100%" alt="Stedi Landing Pages (Light)" />
-							<p class="caption">Landing Pages <span class="opacity">(Light Mode)</span></p>
-							<img srcset="/filing/images/stedi/stedi-landing-pages-dark.png 1x, /filing/images/stedi/stedi-landing-pages-dark-2x.png 2x" style="width: 100%" alt="Stedi Landing Pages (Dark)" />
-							<p class="caption">Landing Pages <span class="opacity">(Dark Mode)</span></p>
-							<img srcset="/filing/images/stedi/stedi-mappings.png 1x, /filing/images/stedi/stedi-mappings-2x.png 2x" style="width: 100%" alt="Stedi Mappings" />
-							<p class="caption">Mappings <span class="opacity">(Landing Page)</span></p>
-							<img srcset="/filing/images/stedi/stedi-components.png 1x, /filing/images/stedi/stedi-components-2x.png 2x" style="width: 100%" alt="Stedi Components" />
-							<p class="caption">Stedi Components</p>
-						</div>
+					<div class="column-60">
+						<img srcset="/filing/v4/images/stedi/stedi-pricing.png 1x, /filing/v4/images/stedi/stedi-pricing-2x.png 2x"
+							style="width: 100%" alt="Stedi Pricing" />
+						<p class="caption">Pricing</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-landing-pages-light.png 1x, /filing/v4/images/stedi/stedi-landing-pages-light-2x.png 2x"
+							style="width: 100%" alt="Stedi Landing Pages (Light)" />
+						<p class="caption">Landing Pages <span class="opacity">(Light Mode)</span></p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-landing-pages-dark.png 1x, /filing/v4/images/stedi/stedi-landing-pages-dark-2x.png 2x"
+							style="width: 100%" alt="Stedi Landing Pages (Dark)" />
+						<p class="caption">Landing Pages <span class="opacity">(Dark Mode)</span></p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-mappings.png 1x, /filing/v4/images/stedi/stedi-mappings-2x.png 2x"
+							style="width: 100%" alt="Stedi Mappings" />
+						<p class="caption">Mappings <span class="opacity">(Landing Page)</span></p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-components.png 1x, /filing/v4/images/stedi/stedi-components-2x.png 2x"
+							style="width: 100%" alt="Stedi Components" />
+						<p class="caption">Stedi Components</p>
 					</div>
-					<hr />
-					<h3>Process</h3>
-					<div class="row">
-						<div class="column-40">
-							<img srcset="/filing/images/stedi/stedi-edi-animation.gif" style="width: 100%" alt="EDI Animation" />
-							<p class="caption opacity">Homepage animation tests. <br class="desktop" />Produced by Katherine Meng & Ivan Miskovic.</p>
-							<img srcset="/filing/images/stedi/stedi-process-wireframes.png 1x, /filing/images/stedi/stedi-process-wireframes-2x.png 2x" style="width: 100%" alt="Homepage Wireframes" />
-							<p class="caption opacity">Wireframes of early homepage designs.</p>
-							<img srcset="/filing/images/stedi/stedi-process-diagrams.png 1x, /filing/images/stedi/stedi-process-diagrams-2x.png 2x" style="width: 100%" alt="Illustration Process" />
-							<p class="caption opacity">Early diagram and illustration experiments.</p>
-							<img srcset="/filing/images/stedi/stedi-process-grids.png 1x, /filing/images/stedi/stedi-process-grids-2x.png 2x" style="width: 100%" alt="Grids" />
-							<p class="caption opacity">Exploring grid systems based on the Stedi logo.</p>
-							<img srcset="/filing/images/stedi/stedi-process-emails.jpg 1x, /filing/images/stedi/stedi-process-emails-2x.jpg 2x" style="width: 100%" alt="Email Mockups" />
-							<p class="caption opacity">Mockups of email templates.</p>
-							<img srcset="/filing/images/stedi/stedi-process-type-tests.png 1x, /filing/images/stedi/stedi-process-type-tests-2x.png 2x" style="width: 100%" alt="Typopgraphy Tests" />
-							<p class="caption opacity">Testing alternative type treatments. <br class="desktop" />Söhne and Söhne Mono by Klim Type Foundry.</p>
-							<img srcset="/filing/images/stedi/stedi-process-alt-logo.png 1x, /filing/images/stedi/stedi-process-alt-logo-2x.png 2x" style="width: 100%" alt="Alternative Logo" />
-							<p class="caption opacity">WIP alternative logo design.</p>
-						</div>
-						<div class="column-60">
-							<img srcset="/filing/images/stedi/stedi-process-posters.jpg 1x, /filing/images/stedi/stedi-process-posters-2x.jpg 2x" style="width: 100%" alt="Poster Mockups" />
-							<p class="caption opacity">Alternative product icons mocked up on posters.</p>
-							<img srcset="/filing/images/stedi/stedi-process-content.png 1x, /filing/images/stedi/stedi-process-content-2x.png 2x" style="width: 100%" alt="Content Wireframes" />
-							<p class="caption opacity">Wireframes of content outlining the product benefits.</p>
-							<img srcset="/filing/images/stedi/stedi-process-pricing.jpg 1x, /filing/images/stedi/stedi-process-pricing-2x.jpg 2x" style="width: 100%" alt="Pricing Research" />
-							<p class="caption opacity">Pricing and SaaS landing page research.</p>
-							<img srcset="/filing/images/stedi/stedi-process-iterations.jpg 1x, /filing/images/stedi/stedi-process-iterations-2x.jpg 2x" style="width: 100%" alt="Design Iterations" />
-							<p class="caption opacity">Early design explorations and alternative icons.</p>
-							<img srcset="/filing/images/stedi/stedi-process-icons.jpg 1x, /filing/images/stedi/stedi-process-icons-2x.jpg 2x" style="width: 100%" alt="OpenGraph Image" />
-							<p class="caption opacity">Alternative OpenGraph image.</p>
-							<img srcset="/filing/images/stedi/stedi-process-pets.jpg 1x, /filing/images/stedi/stedi-process-pets-2x.jpg 2x" style="width: 100%" alt="Pets Of Stedi" />
-							<p class="caption opacity">Pets of Stedi. Featuring: 34 dogs, 17 cats, and 2 bunnies.</p>
-						</div>
+				</div>
+				<hr />
+				<h3>Process</h3>
+				<div class="row">
+					<div class="column-40">
+						<img srcset="/filing/v4/images/stedi/stedi-edi-animation.gif" style="width: 100%" alt="EDI Animation" />
+						<p class="caption opacity">Homepage animation tests. <br class="desktop" />Produced by Katherine Meng & Ivan
+							Miskovic.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-wireframes.png 1x, /filing/v4/images/stedi/stedi-process-wireframes-2x.png 2x"
+							style="width: 100%" alt="Homepage Wireframes" />
+						<p class="caption opacity">Wireframes of early homepage designs.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-diagrams.png 1x, /filing/v4/images/stedi/stedi-process-diagrams-2x.png 2x"
+							style="width: 100%" alt="Illustration Process" />
+						<p class="caption opacity">Early diagram and illustration experiments.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-grids.png 1x, /filing/v4/images/stedi/stedi-process-grids-2x.png 2x"
+							style="width: 100%" alt="Grids" />
+						<p class="caption opacity">Exploring grid systems based on the Stedi logo.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-emails.jpg 1x, /filing/v4/images/stedi/stedi-process-emails-2x.jpg 2x"
+							style="width: 100%" alt="Email Mockups" />
+						<p class="caption opacity">Mockups of email templates.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-type-tests.png 1x, /filing/v4/images/stedi/stedi-process-type-tests-2x.png 2x"
+							style="width: 100%" alt="Typopgraphy Tests" />
+						<p class="caption opacity">Testing alternative type treatments. <br class="desktop" />Söhne and Söhne Mono
+							by Klim Type Foundry.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-alt-logo.png 1x, /filing/v4/images/stedi/stedi-process-alt-logo-2x.png 2x"
+							style="width: 100%" alt="Alternative Logo" />
+						<p class="caption opacity">WIP alternative logo design.</p>
 					</div>
-				</section>
+					<div class="column-60">
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-posters.jpg 1x, /filing/v4/images/stedi/stedi-process-posters-2x.jpg 2x"
+							style="width: 100%" alt="Poster Mockups" />
+						<p class="caption opacity">Alternative product icons mocked up on posters.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-content.png 1x, /filing/v4/images/stedi/stedi-process-content-2x.png 2x"
+							style="width: 100%" alt="Content Wireframes" />
+						<p class="caption opacity">Wireframes of content outlining the product benefits.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-pricing.jpg 1x, /filing/v4/images/stedi/stedi-process-pricing-2x.jpg 2x"
+							style="width: 100%" alt="Pricing Research" />
+						<p class="caption opacity">Pricing and SaaS landing page research.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-iterations.jpg 1x, /filing/v4/images/stedi/stedi-process-iterations-2x.jpg 2x"
+							style="width: 100%" alt="Design Iterations" />
+						<p class="caption opacity">Early design explorations and alternative icons.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-icons.jpg 1x, /filing/v4/images/stedi/stedi-process-icons-2x.jpg 2x"
+							style="width: 100%" alt="OpenGraph Image" />
+						<p class="caption opacity">Alternative OpenGraph image.</p>
+						<img
+							srcset="/filing/v4/images/stedi/stedi-process-pets.jpg 1x, /filing/v4/images/stedi/stedi-process-pets-2x.jpg 2x"
+							style="width: 100%" alt="Pets Of Stedi" />
+						<p class="caption opacity">Pets of Stedi. Featuring: 34 dogs, 17 cats, and 2 bunnies.</p>
+					</div>
+				</div>
+			</section>
 
-				<section>
-					<h4>Information</h4>
-					<p class="intro">
-						<a href="https://stedi.com">Stedi</a> is rebuilding the technological backbone of the B2B economy. Each year, trillions of dollars flow through a global network of commerce via an archaic framework called
-						<a href="https://en.wikipedia.org/wiki/Electronic_data_interchange">EDI</a> (Electronic Data Interchange), but there hasn’t been a major new EDI platform in over a decade.
-					</p>
+			<section>
+				<h4>Information</h4>
+				<p class="intro">
+					<a href="https://stedi.com">Stedi</a> is rebuilding the technological backbone of the B2B economy. Each year,
+					trillions of dollars flow through a global network of commerce via an archaic framework called
+					<a href="https://en.wikipedia.org/wiki/Electronic_data_interchange">EDI</a> (Electronic Data Interchange), but
+					there hasn’t been a major new EDI platform in over a decade.
+				</p>
+				<p>
+					The team at Stedi are developing a new platform that developers can use to architect their own EDI system that
+					easily integrates with other applications. These customisable systems allow businesses to
+					securely exchange transactions like purchase orders, invoices, and more with their trading partners around the
+					world.
+				</p>
+				<p>
+					At Stedi, there’s a need to communicate what’s possible with EDI. For example, it can be translated into more
+					<a href="https://stedi.com/edi/inspector">human-readable</a> formats such as JSON, then mapped
+					between schemas, and converted into various other file formats via Stedi’s products.
+				</p>
+				<blockquote>
 					<p>
-						The team at Stedi are developing a new platform that developers can use to architect their own EDI system that easily integrates with other applications. These customisable systems allow businesses to
-						securely exchange transactions like purchase orders, invoices, and more with their trading partners around the world.
-					</p>
-					<p>
-						At Stedi, there’s a need to communicate what’s possible with EDI. For example, it can be translated into more <a href="https://stedi.com/edi/inspector">human-readable</a> formats such as JSON, then mapped
-						between schemas, and converted into various other file formats via Stedi’s products.
-					</p>
-					<blockquote>
-						<p>
-							<code>
+						<code>
 								ISA<span class="opacity">*00* *ZZ*STEDI *ZZ*ACME *210901*1234*U*00801*000000001*0*T*>~</span> <br />
 								GS<span class="opacity">*PO*SENDERGS*007326879*20210901<br class="desktop" />*1234*1*X*008020~</span><br />
 								ST<span class="opacity">*850*000000001~</span><br />
@@ -288,131 +363,146 @@
 								GE<span class="opacity">*1*1~</span><br />
 								IEA<span class="opacity">*1*000000001~</span>
 							</code>
-							<br />
-							<span class="quote">&mdash; <a href="https://stedi.com/edi/inspector">Example EDI</a></span>
-						</p>
-					</blockquote>
-					<p>
-						Stedi’s primary audience is developers who are looking for a technical platform and products to make working with EDI easier. This required a design direction that is relatable to the audience and similar to
-						the tools they’re familiar with. By using colour, illustrations, diagrams, patterns (affectionately called EDI-fetti), and typographic glyphs/characters (~ * + % $ } / = etc.) the elements pay homage to EDI
-						and code as part of Stedi’s core visual language. The site is designed to help developers quickly understand whats possible with EDI and that Stedi specialises in “APIs for building EDI integrations”.
+						<br />
+						<span class="quote">&mdash; <a href="https://stedi.com/edi/inspector">Example EDI</a></span>
 					</p>
-					<p>
-						The illustrations abstract the products and show what each individual API is capable of, as well as highlighting what they can do when combined. With limited visual interfaces for the APIs, these
-						illustrations, product icons, and individual colour treatments created a themeable system to help uniquely brand Stedi’s tools, while communicating what they do.
-					</p>
-					<ul>
-						<li>Site design features:</li>
-						<li class="opacity">&mdash; Light and dark mode support</li>
-						<li class="opacity">&mdash; Code and SVG animations of Stedi’s APIs</li>
-						<li class="opacity">&mdash; System architecture diagrams and animations</li>
-						<li class="opacity">&mdash; Typographic patterns and font glyphs/characters as iconography</li>
-						<li class="opacity">&mdash; Pixel-inspired icons and illustrations (homage to the square in Stedi’s logo)</li>
-						<li class="opacity">&mdash; Individually coloured themed product landing pages and product icons</li>
-						<li class="opacity">&mdash; Configurable cards and panels to cross-promote and sell Stedi’s separate products</li>
-					</ul>
-					<blockquote>
-						<p>
-							“Dan ran a really smooth homepage redesign / product page launch. I appreciate that he was able to execute and deliver on such a large project. Our priorities and expectations were set correctly, and we
-							delivered on what felt like a good timeline. Any time a problem presented itself, we were able to take corrective actions (by reaching out to specific stakeholders or codeowners) to ensure the project kept
-							on trucking.” <br />
-							<span class="quote">&mdash; Anonymous <span class="opacity">(360 Feedback)</span></span>
-						</p>
-					</blockquote>
-					<hr />
-				</section>
-
-				<section>
-					<h4>Credits</h4>
-					<ul>
-						<li>Dan Newman, Katherine Meng, Eden Halperin <span class="opacity">(Design)</span></li>
-						<li>Ivan Miskovic, Neil Fenton <span class="opacity">(Development)</span></li>
-						<li>David Kanter, Kasia Fojucik, Joost Ronkes Agerbeek <span class="opacity">(Content)</span></li>
-					</ul>
-				</section>
-
-				<section>
-					<h4>Awards / Recognition</h4>
-					<ul>
-						<li>DINZ Best Awards: Bronze, Large Scale Websites <span class="opacity">(2022)</span></li>
-					</ul>
-				</section>
-			</main>
-
-			<footer>
-				<p class="arrow"><a href="/archiving/stedi/#beginning" onclick="fathom.trackGoal('GRB0XXWJ', 0);">&uarr;</a></p>
-				<ul>
-					<li><a href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="Home. Sweet. Home.">Home</a></li>
-					<li><a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
-					<li><a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
-					<li><a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
-				</ul>
-				<ul>
-					<li>
-						<a class="hover" href="/imagining/" onclick="fathom.trackGoal('JWBK6JUK', 0);" title="Dan Newman’s AI Work."><span class="opacity">~/imagining</span></a>
-					</li>
-					<li>
-						<a class="hover" href="/experimenting/" onclick="fathom.trackGoal('7DA3M1EU', 0);" title="Dan Newman’s Neue Work."><span class="opacity">~/experimenting</span></a>
-					</li>
-					<li>
-						<a class="hover" href="/archiving/" onclick="fathom.trackGoal('7T4ND1TC', 0);" title="Dan Oldman’s Alt Work."><span class="opacity">~/archiving</span></a>
-					</li>
-				</ul>
+				</blockquote>
 				<p>
-					<a href="https://github.com/danserif/dan.newman.is/raw/master/filing/Résumé%20–%20Dan%20Newman%20–%202025.pdf" onclick="fathom.trackGoal('URO8EAAU', 0);" title="📄">Download Résumé</a>
-					<span class="opacity">(PDF)</span>
+					Stedi’s primary audience is developers who are looking for a technical platform and products to make working
+					with EDI easier. This required a design direction that is relatable to the audience and similar to
+					the tools they’re familiar with. By using colour, illustrations, diagrams, patterns (affectionately called
+					EDI-fetti), and typographic glyphs/characters (~ * + % $ } / = etc.) the elements pay homage to EDI
+					and code as part of Stedi’s core visual language. The site is designed to help developers quickly understand
+					whats possible with EDI and that Stedi specialises in “APIs for building EDI integrations”.
 				</p>
-
-				<div class="socials">
-					<p class="opacity">@danserif &rarr;</p>
-					<ul>
-						<li><a href="https://linkedin.com/in/danserif" onclick="fathom.trackEvent('LinkedIn', 0);" title="💼">LinkedIn</a> <span class="opacity">/</span></li>
-						<li><a href="https://github.com/danserif" onclick="fathom.trackEvent('GitHub', 0);" title="💾">GitHub</a> <span class="opacity">/</span></li>
-						<li><a href="https://bsky.app/profile/danserif.com" onclick="fathom.trackEvent('Bluesky', 0);" title="🦋">Bluesky</a> <span class="opacity">/</span></li>
-						<li><a href="https://cosmos.so/danserif" onclick="fathom.trackEvent('Cosmos', 0);" title="🔭">Cosmos</a> <span class="opacity">/</span></li>
-						<li><a href="https://letterboxd.com/danserif" onclick="fathom.trackEvent('Letterboxd', 0);" title="🎬">Letterboxd</a> <span class="opacity">/</span></li>
-						<li><a href="https://glass.photo/danserif" onclick="fathom.trackEvent('Glass', 0);" title="📸">Glass</a> <span class="opacity">/</span></li>
-						<li><a href="https://instagram.com/danserif" onclick="fathom.trackEvent('Instagram', 0);" title="📷">Instagram</a> <span class="opacity">/</span></li>
-						<li><a href="https://threads.net/@danserif" onclick="fathom.trackEvent('Threads', 0);" title="🧵">Threads</a> <span class="opacity">/</span></li>
-						<li><a href="https://mastodon.social/@danserif" onclick="fathom.trackEvent('Mastodon', 0);" title="🐘">Mastodon</a> <span class="opacity">/</span></li>
-						<li>
-							<s><a href="https://twitter.com/danserif" onclick="fathom.trackEvent('Twitter', 0);" title="💀">Twitter</a></s>
-						</li>
-					</ul>
-				</div>
-
+				<p>
+					The illustrations abstract the products and show what each individual API is capable of, as well as
+					highlighting what they can do when combined. With limited visual interfaces for the APIs, these
+					illustrations, product icons, and individual colour treatments created a themeable system to help uniquely
+					brand Stedi’s tools, while communicating what they do.
+				</p>
+				<ul>
+					<li>Site design features:</li>
+					<li class="opacity">&mdash; Light and dark mode support</li>
+					<li class="opacity">&mdash; Code and SVG animations of Stedi’s APIs</li>
+					<li class="opacity">&mdash; System architecture diagrams and animations</li>
+					<li class="opacity">&mdash; Typographic patterns and font glyphs/characters as iconography</li>
+					<li class="opacity">&mdash; Pixel-inspired icons and illustrations (homage to the square in Stedi’s logo)</li>
+					<li class="opacity">&mdash; Individually coloured themed product landing pages and product icons</li>
+					<li class="opacity">&mdash; Configurable cards and panels to cross-promote and sell Stedi’s separate products
+					</li>
+				</ul>
+				<blockquote>
+					<p>
+						“Dan ran a really smooth homepage redesign / product page launch. I appreciate that he was able to execute
+						and deliver on such a large project. Our priorities and expectations were set correctly, and we
+						delivered on what felt like a good timeline. Any time a problem presented itself, we were able to take
+						corrective actions (by reaching out to specific stakeholders or codeowners) to ensure the project kept
+						on trucking.” <br />
+						<span class="quote">&mdash; Anonymous <span class="opacity">(360 Feedback)</span></span>
+					</p>
+				</blockquote>
 				<hr />
+			</section>
 
-				<div class="logo">
-					<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
-						<style>
-							.st0 {
-								fill: #ffffff;
-							}
-						</style>
-						<path
-							d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
-							class="st0"
-						/>
-						<path
-							d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
-							style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff"
-						/>
-					</svg>
-					<p>&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></p>
-					<p class="opacity">
-						The original Braun logo was designed by Will Münch in the 1930s (then updated by Wolfgang Schmittel in the 1950s). This homage is based on the 1990s version used today, and yes, I’m a
-						<a href="https://en.wikipedia.org/wiki/Braun_(company)">Braun</a> nerd and <a href="https://en.wikipedia.org/wiki/Dieter_Rams">Dieter Rams</a> fan.
-					</p>
-				</div>
+			<section>
+				<h4>Credits</h4>
+				<ul>
+					<li>Dan Newman, Katherine Meng, Eden Halperin <span class="opacity">(Design)</span></li>
+					<li>Ivan Miskovic, Neil Fenton <span class="opacity">(Development)</span></li>
+					<li>David Kanter, Kasia Fojucik, Joost Ronkes Agerbeek <span class="opacity">(Content)</span></li>
+				</ul>
+			</section>
 
-				<p>
-					<a class="hover uppercase" href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="You. Are. Here.">dan.newman.is</a> &nbsp; <span class="opacity">/</span> &nbsp;
-					<a class="hover uppercase" href="/now/" onclick="fathom.trackEvent('Now');">Now &rarr;</a>
-					<br />
-					<span class="opacity">Copyright &copy; 1982—2026.</span>
+			<section>
+				<h4>Awards / Recognition</h4>
+				<ul>
+					<li>DINZ Best Awards: Bronze, Large Scale Websites <span class="opacity">(2022)</span></li>
+				</ul>
+			</section>
+		</main>
+
+		<footer>
+			<p class="arrow"><a href="/archiving/stedi/#beginning">&uarr;</a></p>
+			<ul>
+				<li><a href="/archiving/v4/" title="Home. Sweet. Home.">Home</a></li>
+				<li><a href="/archiving/v4/designing/" title="Werk. Werk. Werk.">Work</a></li>
+				<li><a href="/archiving/v4/informing/" title="Me. Me. Me.">About</a></li>
+				<li><a href="/archiving/v4/contactable/" title="Send. Me. Email.">Contact</a></li>
+			</ul>
+			<ul>
+				<li>
+					<a class="hover" href="/archiving/v4/imagining/" title="Dan Newman’s AI Work."><span
+							class="opacity">~/imagining</span></a>
+				</li>
+				<li>
+					<a class="hover" href="/archiving/v4/experimenting/" title="Dan Newman’s Neue Work."><span
+							class="opacity">~/experimenting</span></a>
+				</li>
+				<li>
+					<a class="hover" href="/archiving/" title="Dan Oldman’s Alt Work."><span
+							class="opacity">~/archiving</span></a>
+				</li>
+			</ul>
+			<p>
+				<a href="https://github.com/danserif/dan.newman.is/raw/master/filing/v4/Résumé%20–%20Dan%20Newman%20–%202025.pdf"
+					title="📄">Download Résumé</a>
+				<span class="opacity">(PDF)</span>
+			</p>
+
+			<div class="socials">
+				<p class="opacity">@danserif &rarr;</p>
+				<ul>
+					<li><a href="https://linkedin.com/in/danserif" title="💼">LinkedIn</a> <span class="opacity">/</span></li>
+					<li><a href="https://github.com/danserif" title="💾">GitHub</a> <span class="opacity">/</span></li>
+					<li><a href="https://bsky.app/profile/danserif.com" title="🦋">Bluesky</a> <span class="opacity">/</span></li>
+					<li><a href="https://cosmos.so/danserif" title="🔭">Cosmos</a> <span class="opacity">/</span></li>
+					<li><a href="https://letterboxd.com/danserif" title="🎬">Letterboxd</a> <span class="opacity">/</span></li>
+					<li><a href="https://glass.photo/danserif" title="📸">Glass</a> <span class="opacity">/</span></li>
+					<li><a href="https://instagram.com/danserif" title="📷">Instagram</a> <span class="opacity">/</span></li>
+					<li><a href="https://threads.net/@danserif" title="🧵">Threads</a> <span class="opacity">/</span></li>
+					<li><a href="https://mastodon.social/@danserif" title="🐘">Mastodon</a> <span class="opacity">/</span></li>
+					<li>
+						<s><a href="https://twitter.com/danserif" title="💀">Twitter</a></s>
+					</li>
+				</ul>
+			</div>
+
+			<hr />
+
+			<div class="logo">
+				<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0"
+					style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
+					<style>
+						.st0 {
+							fill: #ffffff;
+						}
+					</style>
+					<path
+						d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
+						class="st0" />
+					<path
+						d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
+						style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff" />
+				</svg>
+				<p>&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></p>
+				<p class="opacity">
+					The original Braun logo was designed by Will Münch in the 1930s (then updated by Wolfgang Schmittel in the
+					1950s). This homage is based on the 1990s version used today, and yes, I’m a
+					<a href="https://en.wikipedia.org/wiki/Braun_(company)">Braun</a> nerd and <a
+						href="https://en.wikipedia.org/wiki/Dieter_Rams">Dieter Rams</a> fan.
 				</p>
-			</footer>
-		</div>
-	</body>
+			</div>
+
+			<p>
+				<a class="hover uppercase" href="/archiving/v4/" title="You. Are. Here.">dan.newman.is</a> &nbsp; <span
+					class="opacity">/</span> &nbsp;
+				<span class="opacity">Archiving <span class="opacity-light">(v4.0)</span></span>
+				<br />
+				<span class="opacity">Copyright &copy; 1982—2026.</span>
+			</p>
+		</footer>
+	</div>
+</body>
+
 </html>

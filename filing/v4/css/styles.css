@@ -24,6 +24,7 @@ nav,
 section {
 	display: block;
 }
+
 audio,
 canvas,
 video {
@@ -31,9 +32,11 @@ video {
 	*display: inline;
 	*zoom: 1;
 }
+
 audio:not([controls]) {
 	display: none;
 }
+
 [hidden] {
 	display: none;
 }
@@ -81,6 +84,7 @@ body {
 	color: #000000;
 	text-shadow: none;
 }
+
 ::selection {
 	background: #ffffff;
 	color: #000000;
@@ -96,13 +100,16 @@ a {
 	outline: none;
 	text-decoration: underline;
 }
+
 a:visited {
 	color: #dddddd;
 }
+
 a:hover {
 	color: #dddddd;
 	opacity: 0.4;
 }
+
 a:focus {
 	outline: none;
 }
@@ -171,6 +178,7 @@ pre {
 q {
 	quotes: none;
 }
+
 q:before,
 q:after {
 	content: "";
@@ -190,9 +198,11 @@ sup {
 	vertical-align: baseline;
 	opacity: 0.4;
 }
+
 sup {
 	top: -0.5em;
 }
+
 sub {
 	bottom: -0.25em;
 }
@@ -206,9 +216,11 @@ ol {
 	margin: 1em 0;
 	padding: 0 0 0 40px;
 }
+
 dd {
 	margin: 0 0 0 40px;
 }
+
 nav ul,
 nav ol {
 	list-style: none;
@@ -255,6 +267,7 @@ figure {
 form {
 	margin: 0;
 }
+
 fieldset {
 	border: 0;
 	margin: 0;
@@ -338,12 +351,14 @@ input[type="radio"] {
 	*width: 13px;
 	*height: 13px;
 }
+
 input[type="search"] {
 	-webkit-appearance: textfield;
 	-moz-box-sizing: content-box;
 	-webkit-box-sizing: content-box;
 	box-sizing: content-box;
 }
+
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
 	-webkit-appearance: none;
@@ -388,14 +403,17 @@ table {
 	padding-bottom: 90px;
 	font-size: 14px;
 }
+
 table.key {
 	padding-top: 0;
 	padding-bottom: 60px;
 }
+
 tr {
 	padding: 0;
 	margin: 0;
 }
+
 td {
 	vertical-align: top;
 	padding-right: 60px;
@@ -423,7 +441,7 @@ td {
 
 .home .fixed {
 	position: fixed;
-	background-image: url("/filing/images/wellington-location.png"), url("/filing/images/wellington-map-large.jpg");
+	background-image: url("/filing/v4/images/wellington-location.png"), url("/filing/v4/images/wellington-map-large.jpg");
 	background-repeat: no-repeat;
 	background-position: left top;
 	background-size: contain;
@@ -509,14 +527,14 @@ nav a:hover {
 
 .home header {
 	max-width: 1620px;
-	padding-top: 35vh;
+	padding-top: 30vh;
 	padding-bottom: 100px;
 }
 
 .work header,
 .about header {
 	max-width: 1220px;
-	padding-top: 45vh;
+	padding-top: 40vh;
 }
 
 .arrow a {
@@ -717,6 +735,19 @@ blockquote p {
 	opacity: 0.8;
 }
 
+.archive-banner {
+	background: #000;
+	border-bottom: 1px solid #1a1a1a;
+	padding: 16px 60px;
+	font-size: 14px;
+	letter-spacing: 0.02em;
+	opacity: 0.7;
+}
+
+.archive-banner a {
+	color: #fff;
+}
+
 hr {
 	margin: 40px 0 20px 0;
 	border-top: 1px solid #1a1a1a;
@@ -914,114 +945,142 @@ footer {
 	.home .container {
 		background-image: none;
 	}
+
 	.attribution {
 		display: none;
 	}
 }
+
 @media only screen and (max-width: 1680px) {
 	.home header {
 		padding-top: 20vh;
 		padding-bottom: 40px;
 	}
+
 	.work header,
 	.about header {
 		padding-top: 55vh;
 	}
+
 	.home h1,
 	.home h2 {
 		font-size: 40px;
 		line-height: 45px;
 		padding-bottom: 40px;
 	}
+
 	.home h2 {
 		max-width: 1300px;
 	}
+
 	nav ul {
 		margin-right: 0%;
 	}
+
 	.images {
 		max-width: 1540px;
 	}
+
 	.column-60 {
 		flex: 65%;
 	}
+
 	.column-40 {
 		flex: 35%;
 	}
 }
+
 @media only screen and (max-width: 1380px) {
 	header {
 		padding-top: 30vh;
 	}
+
 	.home header {
 		padding-top: 55vh;
 	}
+
 	.home header .hide {
 		display: none;
 	}
+
 	.home header .desktop {
 		display: inline;
 	}
+
 	.work h1,
 	.about h1 {
 		font-size: 100px;
 		line-height: 110px;
 	}
+
 	.work h2,
 	.about h2 {
 		font-size: 30px;
 		line-height: 40px;
 		max-width: 900px;
 	}
+
 	.home header .arrow {
 		padding-top: 40px;
 	}
+
 	.URL {
 		margin-right: 8%;
 	}
+
 	.anchor {
 		margin-left: 8%;
 	}
 }
+
 @media only screen and (max-width: 1200px) {
+
 	/* iPad Header */
 	.home header {
 		max-width: 1000px;
 		padding-top: 50vh;
 	}
+
 	.work header,
 	.about header {
 		padding-top: 50vh;
 	}
 }
+
 @media only screen and (max-width: 1000px) {
 	.anchor {
 		display: none;
 	}
+
 	/* Mobile Menu */
 	.menu .hide {
 		display: none;
 	}
+
 	.menu {
 		display: inline;
 	}
+
 	.mobile ul {
 		overflow: hidden;
 		position: relative;
-		margin-top: 20px;
-		padding: 20px 0px 30px 0;
+		margin: 20px -60px 0;
+		padding: 20px 60px 30px;
 		border-top: 1px solid #1a1a1a;
 	}
+
 	.mobile a {
 		display: block;
 		line-height: 1.6em;
 	}
+
 	.mobile a i.icon {
 		display: block;
 		position: absolute;
 		right: 64px;
-		top: 32px;
+		top: 78px;
 	}
+
 	.mobile li.logo {
 		padding-top: 80px;
 		display: block;
@@ -1032,32 +1091,52 @@ footer {
 	body {
 		font-size: 14px;
 	}
+
+	.archive-banner {
+		padding: 12px 20px;
+	}
+
 	.container {
 		padding: 20px 20px;
 	}
+
 	nav ul li {
 		font-size: 14px;
 	}
+
 	.anchor {
 		display: none;
 	}
+
 	.URL {
 		margin-right: 0%;
 	}
+
 	nav a {
 		opacity: 1;
 	}
+
+	.mobile ul {
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
 	.mobile a i.icon {
 		right: 22px;
-		top: 22px;
+		top: 92px;
 	}
+
 	.home header {
 		padding-top: 40vh;
 	}
+
 	.work header,
 	.about header {
 		padding-top: 50vh;
 	}
+
 	.home h1 {
 		font-size: 20px;
 		line-height: 26px;
@@ -1066,32 +1145,39 @@ footer {
 		padding-right: 20px;
 		color: #dddddd;
 	}
+
 	.home h2 {
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 22px;
 		max-width: 900px;
 	}
+
 	.home header .opacity {
 		opacity: 1;
 	}
+
 	.home h1 a,
 	.home h2 a {
 		opacity: 1;
 	}
+
 	.home h1 a {
 		text-decoration: underline;
 	}
+
 	.home h2 a {
 		opacity: 0.8;
 		text-decoration: underline;
 	}
+
 	.work h1,
 	.about h1 {
 		font-size: 38px;
 		line-height: 48px;
 		padding-bottom: 0px;
 	}
+
 	.work h2,
 	.about h2,
 	h2,
@@ -1101,86 +1187,108 @@ footer {
 		padding: 10px 0 10px 0;
 		max-width: 615px;
 	}
+
 	h2.contactable {
 		padding-bottom: 30px;
 	}
+
 	.column-100 p.caption {
 		padding-bottom: 0px;
 	}
+
 	p.employable {
 		font-size: 14px;
 		line-height: 22px;
 	}
+
 	p.intro {
 		font-size: 18px;
 		line-height: 24px;
 	}
+
 	.featured {
 		padding-top: 20px;
 		font-size: 18px;
 		line-height: 1.4em;
 	}
+
 	.credit {
 		max-width: 360px;
 		font-size: 14px;
 		line-height: 20px;
 	}
+
 	.images {
 		padding: 140px 0 70px 0;
 	}
+
 	.row,
 	.bonus-row {
 		display: block;
 		max-width: 615px;
 	}
+
 	.column-100 {
 		flex: 100%;
 		padding: 0;
 	}
+
 	.column-80 {
 		flex: 100%;
 		padding: 0;
 	}
+
 	.column-60 {
 		flex: 100%;
 		padding: 0;
 	}
+
 	.column-40 {
 		flex: 100%;
 		padding: 0;
 	}
+
 	.column-20 {
 		flex: 100%;
 		padding: 0;
 	}
+
 	.hide,
 	.attribution {
 		display: none;
 	}
+
 	.desktop,
 	.tablet {
 		display: inline;
 	}
+
 	table {
 		padding-top: 50px;
 		padding-bottom: 40px;
 	}
+
 	td {
 		padding-right: 40px;
 	}
+
 	hr.large {
 		margin: 30px 0 30px 0;
 	}
+
 	hr.full {
 		margin: 30px 0 10px 0;
 	}
+
 	.form input,
 	.form button {
 		font-size: 12px;
 	}
+
 	.subscribe {
 		padding: 12px 16px 12px 16px;
 	}
+
 	.form p span.large {
 		font-size: 20px;
 	}
@@ -1191,6 +1299,7 @@ footer {
 		font-size: 56px;
 		line-height: 66px;
 	}
+
 	h2 {
 		font-size: 18px;
 		line-height: 24px;
@@ -1213,6 +1322,7 @@ footer {
 	direction: ltr;
 	*line-height: 0;
 }
+
 .ir br {
 	display: none;
 }
@@ -1257,9 +1367,11 @@ footer {
 	content: "";
 	display: table;
 }
+
 .clearfix:after {
 	clear: both;
 }
+
 .clearfix {
 	*zoom: 1;
 }
@@ -1277,46 +1389,59 @@ footer {
 		text-shadow: none !important;
 		filter: none !important;
 		-ms-filter: none !important;
-	} /* Black prints faster: h5bp.com/s */
+	}
+
+	/* Black prints faster: h5bp.com/s */
 	a,
 	a:visited {
 		text-decoration: underline;
 	}
+
 	a[href]:after {
 		content: " (" attr(href) ")";
 	}
+
 	abbr[title]:after {
 		content: " (" attr(title) ")";
 	}
+
 	.ir a:after,
 	a[href^="javascript:"]:after,
 	a[href^="#"]:after {
 		content: "";
-	} /* Don't show links for images, or javascript/internal links */
+	}
+
+	/* Don't show links for images, or javascript/internal links */
 	pre,
 	blockquote {
 		border: 1px solid #999;
 		page-break-inside: avoid;
 	}
+
 	thead {
 		display: table-header-group;
 	}
+
 	tr,
 	img {
 		page-break-inside: avoid;
 	}
+
 	img {
 		max-width: 100% !important;
 	}
+
 	@page {
 		margin: 0.5cm;
 	}
+
 	p,
 	h2,
 	h3 {
 		orphans: 3;
 		widows: 3;
 	}
+
 	h2,
 	h3 {
 		page-break-after: avoid;
@@ -1333,7 +1458,7 @@ footer {
 	font-style: normal;
 	font-weight: 300;
 	font-display: block;
-	src: url("/filing/fonts/soehne-leicht.woff2") format("woff2");
+	src: url("../fonts/soehne-leicht.woff2") format("woff2");
 }
 
 /* Regular | Buch */
@@ -1342,7 +1467,7 @@ footer {
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
-	src: url("/filing/fonts/soehne-buch.woff2") format("woff2");
+	src: url("../fonts/soehne-buch.woff2") format("woff2");
 }
 
 /* Bold | Dreiviertelfett */
@@ -1351,7 +1476,7 @@ footer {
 	font-style: normal;
 	font-weight: 700;
 	font-display: block;
-	src: url("/filing/fonts/soehne-dreiviertelfett.woff2") format("woff2");
+	src: url("../fonts/soehne-dreiviertelfett.woff2") format("woff2");
 }
 
 /* ==|== font styles =====================================================
@@ -1364,5 +1489,5 @@ footer {
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
-	src: url("/filing/fonts/berkeley-mono-regular.woff2") format("woff2");
+	src: url("../fonts/berkeley-mono-regular.woff2") format("woff2");
 }

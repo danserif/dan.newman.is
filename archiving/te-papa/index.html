@@ -1,419 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<title>Te Papa — Dan Newman</title>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<meta name="description" content="Earthquakes. Seismic Data. Topographic. Fault Lines. Interactive. Datasets. Timelines. Magnitude. Research. User Testing. Design." />
-		<meta name="author" content="Dan Newman" />
-		<meta name="copyright" content="Copyright Dan Newman, 2026" />
+	<title>Te Papa — Dan Newman</title>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description"
+		content="Earthquakes. Seismic Data. Topographic. Fault Lines. Interactive. Datasets. Timelines. Magnitude. Research. User Testing. Design." />
+	<meta name="author" content="Dan Newman" />
+	<meta name="copyright" content="Copyright Dan Newman, 2026" />
 
-		<link rel="stylesheet" href="/filing/css/styles.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="robots" content="noindex" />
 
-		<link rel="preload" href="/filing/fonts/soehne-buch.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-		<link rel="preload" href="/filing/fonts/soehne-dreiviertelfett.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-		<link rel="preload" href="/filing/fonts/soehne-leicht.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/filing/v4/css/styles.css" />
 
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/favicon-16x16.png" sizes="16x16" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/favicon-32x32.png" sizes="32x32" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/icon.png" sizes="1024x1024" />
-		<link rel="apple-touch-icon" href="https://dan.newman.is/filing/images/icons/apple-touch-icon.png" sizes="1024x1024" />
-		<link rel="mask-icon" href="https://dan.newman.is/filing/images/icons/safari-pinned-tab.svg" color="#1e1e1e" />
+	<link rel="preload" href="/filing/v4/fonts/soehne-buch.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="preload" href="/filing/v4/fonts/soehne-dreiviertelfett.woff2" as="font" type="font/woff2"
+		crossorigin="anonymous" />
+	<link rel="preload" href="/filing/v4/fonts/soehne-leicht.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
-		<meta name="theme-color" content="#000000" />
+	<link rel="icon" type="image/png" href="https://dan.newman.is/filing/v4/icons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://dan.newman.is/filing/v4/icons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://dan.newman.is/filing/v4/icons/icon.png" sizes="1024x1024" />
+	<link rel="apple-touch-icon" href="https://dan.newman.is/filing/v4/icons/apple-touch-icon.png" sizes="1024x1024" />
+	<link rel="mask-icon" href="https://dan.newman.is/filing/v4/icons/safari-pinned-tab.svg" color="#1e1e1e" />
 
-		<meta property="og:title" content="Te Papa — Dan Newman" />
-		<meta property="og:description" content="Earthquakes. Seismic Data. Topographic. Fault Lines. Interactive. Datasets. Timelines. Magnitude. Research. User Testing. Design." />
-		<meta property="og:image" content="https://dan.newman.is/filing/images/opengraph-image-tepapa.jpg" />
-		<meta property="og:image:alt" content="Te Papa" />
-		<meta property="og:site_name" content="dan.newman.is/archiving" />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+	<meta name="theme-color" content="#000000" />
 
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Te Papa — Dan Newman" />
-		<meta name="twitter:description" content="Earthquakes. Seismic Data. Topographic. Fault Lines. Interactive. Datasets. Timelines. Magnitude. Research. User Testing. Design." />
-		<meta name="twitter:image" content="https://dan.newman.is/filing/images/opengraph-image-tepapa.jpg" />
-		<meta name="twitter:site" content="@danserif" />
+	<meta property="og:title" content="Te Papa — Dan Newman" />
+	<meta property="og:description"
+		content="Earthquakes. Seismic Data. Topographic. Fault Lines. Interactive. Datasets. Timelines. Magnitude. Research. User Testing. Design." />
+	<meta property="og:image" content="https://dan.newman.is/filing/v4/images/opengraph-image-tepapa.jpg" />
+	<meta property="og:image:alt" content="Te Papa" />
+	<meta property="og:site_name" content="dan.newman.is/archiving" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
 
-		<script src="https://cdn.usefathom.com/script.js" data-site="NJPLLGHN" defer></script>
-	</head>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Te Papa — Dan Newman" />
+	<meta name="twitter:description"
+		content="Earthquakes. Seismic Data. Topographic. Fault Lines. Interactive. Datasets. Timelines. Magnitude. Research. User Testing. Design." />
+	<meta name="twitter:image" content="https://dan.newman.is/filing/v4/images/opengraph-image-tepapa.jpg" />
+	<meta name="twitter:site" content="@danserif" />
 
-	<body id="beginning" class="work">
-		<!-- CONTENT -->
-		<div class="container">
-			<nav>
-				<ul>
-					<li><a class="URL" href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="Home. Sweet. Home.">dan.newman.is</a> <span class="desktop opacity">&nbsp; / &nbsp;</span></li>
-					<li class="opacity">
-						<a href="/now/" onclick="fathom.trackGoal('X3UAXYRH', 0);">Now (24—25) &rarr;</a>
-					</li>
-					<li><a class="anchor" href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
-					<li><a class="anchor" href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
-					<li><a class="anchor" href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
-				</ul>
-				<div class="mobile menu">
-					<ul id="menu" class="hide">
-						<li><a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);">Work</a></li>
-						<li>
-							<a href="/archiving/axiom/"><span class="opacity">&#8985; Axiom</span></a>
-							<a href="/archiving/klim-type-foundry/"><span class="opacity">&#8985; Klim Type Foundry</span></a> <a href="/archiving/stedi/"><span class="opacity">&#8985; Stedi</span></a>
-							<a href="/archiving/springload/"><span class="opacity">&#8985; Springload</span></a> <a href="/archiving/delivereasy/"><span class="opacity">&#8985; Delivereasy</span></a>
-							<a href="/archiving/te-papa/"><span class="opacity">&#8985; Te Papa</span></a>
-						</li>
-						<br />
-						<li><a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);">About</a></li>
-						<li><a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);">Contact</a></li>
-						<br />
-						<li>
-							<a href="/imagining/" onclick="fathom.trackGoal('JWBK6JUK', 0);"><span class="opacity">~/imagining</span></a>
-						</li>
-						<li>
-							<a href="/experimenting/" onclick="fathom.trackGoal('7DA3M1EU', 0);"><span class="opacity">~/experimenting</span></a>
-						</li>
-						<li>
-							<a href="/archiving/" onclick="fathom.trackGoal('7T4ND1TC', 0);"><span class="opacity">~/archiving</span></a>
-						</li>
-						<br />
-						<li>
-							<a href="/now/" onclick="fathom.trackEvent('Now');">Now <span class="opacity">(24—25) &rarr;</span></a>
-						</li>
-						<li class="logo">
-							<a href="/">
-								<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
-									<style>
-										.st0 {
-											fill: #ffffff;
-										}
-									</style>
-									<path
-										d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
-										class="st0"
-									/>
-									<path
-										d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
-										style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff"
-									/>
-								</svg>
-							</a>
-							<span class="opacity">&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></span>
-						</li>
-					</ul>
-					<a href="javascript:void(0);" onclick="mobileMenu()">
-						<i class="icon">
-							<svg width="15" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.75.75h14M.75 10.75h14M.75 5.75h14" stroke="#fff" stroke-linejoin="round" /></svg
-						></i>
-					</a>
-					<script>
-						function mobileMenu() {
-							var x = document.getElementById("menu");
-							if (x.style.display === "block") {
-								x.style.display = "none";
-							} else {
-								x.style.display = "block";
-							}
-						}
-					</script>
-				</div>
-			</nav>
+	<script src="https://cdn.usefathom.com/script.js" data-site="NJPLLGHN" defer></script>
+</head>
 
-			<header>
-				<h1 id="intro">Te Papa</h1>
-				<h2 class="opacity">Earthquakes. Seismic Data. Topographic. Fault Lines. Interactive. Datasets. Timelines. Magnitude. Research. User Testing. Design.</h2>
-				<section>
-					<table>
-						<tr>
-							<td><span class="opacity">Client</span></td>
-							<td>Museum of New Zealand <br class="desktop" />Te Papa Tongarewa</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Project</span></td>
-							<td>Quake Nation</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Year</span></td>
-							<td>2019</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Location</span></td>
-							<td>Wellington</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Role</span></td>
-							<td>Creative Director</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Agency</span></td>
-							<td>Springload</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Category</span></td>
-							<td>Museum</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Formats</span></td>
-							<td>Digital</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Fonts</span></td>
-							<td>National 2</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">URL</span></td>
-							<td>N/A</td>
-						</tr>
-					</table>
-				</section>
-				<p class="arrow"><a href="/archiving/te-papa/#archiving">&darr;</a></p>
-			</header>
-
-			<main>
-				<!-- WORK -->
-				<section class="images">
-					<h3 id="archiving">Work</h3>
-					<div class="row">
-						<div class="column-100">
-							<img srcset="/filing/images/tepapa/tepapa-montage.jpg 1x, /filing/images/tepapa/tepapa-montage-2x.jpg 2x" style="width: 100%" alt="Te Papa: Quake Nation - Montage" />
-							<p class="caption">
-								Montage of the Quake Nation interactive.
-								<span class="opacity">Installed as part of the Whakarūaumoko Active Land exhibition in the <a href="https://tepapa.govt.nz/visit/exhibitions/te-taiao-nature">Te Taiao Nature</a> zone.</span>
-							</p>
-							<img srcset="/filing/images/tepapa/tepapa-map-nz.jpg 1x, /filing/images/tepapa/tepapa-map-nz-2x.jpg 2x" style="width: 100%" alt="Te Papa: Quake Nation - New Zealand Map" />
-							<p class="caption">
-								Map of Aotearoa New Zealand.
-								<span class="opacity"
-									>Topographical data from <a href="https://geographx.co.nz">Geographx</a> was combined with seafloor maps from <a href="https://niwa.co.nz">NIWA</a> by Lachie Philipson & Robin Marshall.</span
-								>
-							</p>
-							<img srcset="/filing/images/tepapa/tepapa-installation.jpg 1x, /filing/images/tepapa/tepapa-installation-2x.jpg 2x" style="width: 100%" alt="Te Papa: Quake Nation - Installation (Photo)" />
-							<p class="caption">Photo of the Quake Nation interactive in use.</p>
-							<hr class="large" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="column-40">
-							<img srcset="/filing/images/tepapa/tepapa-map-te-reo.jpg 1x, /filing/images/tepapa/tepapa-map-te-reo-2x.jpg 2x" style="width: 100%" alt="Te Reo Māori Map Labels" />
-							<p class="caption">Location Labels <span class="opacity">(Te Reo Māori)</span></p>
-							<img srcset="/filing/images/tepapa/tepapa-photo-location.jpg 1x, /filing/images/tepapa/tepapa-photo-location-2x.jpg 2x" style="width: 100%" alt="Location Label (Photo)" />
-							<p class="caption">Location Labels <span class="opacity">(Photo)</span></p>
-							<img srcset="/filing/images/tepapa/tepapa-ui-fullscreen.jpg 1x, /filing/images/tepapa/tepapa-ui-fullscreen-2x.jpg 2x" style="width: 100%" alt="Quake Nation UI - Fullscreen" />
-							<p class="caption">Earthquake Timeline <span class="opacity">(UI)</span></p>
-							<img srcset="/filing/images/tepapa/tepapa-ui-kaikōura.jpg 1x, /filing/images/tepapa/tepapa-ui-kaikōura-2x.jpg 2x" style="width: 100%" alt="Kaikōura Earthquake" />
-							<p class="caption">Kaikōura Earthquake <span class="opacity">(UI)</span></p>
-							<img srcset="/filing/images/tepapa/tepapa-photo-timeline.jpg 1x, /filing/images/tepapa/tepapa-photo-timeline-2x.jpg 2x" style="width: 100%" alt="Earthquakes Timeline (Photo)" />
-							<p class="caption">Earthquake Timeline <span class="opacity">(Photo)</span></p>
-						</div>
-						<div class="column-60">
-							<img srcset="/filing/images/tepapa/tepapa-photo-visitors.jpg 1x, /filing/images/tepapa/tepapa-photo-visitors-2x.jpg 2x" style="width: 100%" alt="Museum Visitors (Photo)" />
-							<p class="caption">Installation</p>
-							<img srcset="/filing/images/tepapa/tepapa-ui-north-island.jpg 1x, /filing/images/tepapa/tepapa-ui-north-island-2x.jpg 2x" style="width: 100%" alt="Quake Nation UI - North Island" />
-							<p class="caption">North Island Earthquakes <span class="opacity">(UI)</span></p>
-							<img srcset="/filing/images/tepapa/tepapa-montage-ui.jpg 1x, /filing/images/tepapa/tepapa-montage-ui-2x.jpg 2x" style="width: 100%" alt="Quake Nation UI (Montage)" />
-							<p class="caption">Montage <span class="opacity">(UI)</span></p>
-							<img srcset="/filing/images/tepapa/tepapa-montage-photos.jpg 1x, /filing/images/tepapa/tepapa-montage-photos-2x.jpg 2x" style="width: 100%" alt="Quake Nation Testing (Photos)" />
-							<p class="caption">Montage <span class="opacity">(Photos)</span></p>
-						</div>
-					</div>
-					<hr />
-					<h3>Process</h3>
-					<div class="row">
-						<div class="column-40">
-							<img srcset="/filing/images/tepapa/tepapa-process-installation.jpg 1x, /filing/images/tepapa/tepapa-process-installation-2x.jpg 2x" style="width: 100%" alt="Quake Nation Installation" />
-							<p class="caption opacity"><a href="https://lachie.design">Lachie</a> visiting the installation to oversee user testing.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-timeline.png 1x, /filing/images/tepapa/tepapa-process-timeline-2x.png 2x" style="width: 100%" alt="Quake Nation Prototype - Timeline" />
-							<p class="caption opacity">An early prototype of the timeline UI.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-map.jpg 1x, /filing/images/tepapa/tepapa-process-map-2x.jpg 2x" style="width: 100%" alt="Map Process" />
-							<p class="caption opacity">
-								Images from the map production in <a href="https://gdal.org">GDAL</a> (Geospatial Data Abstraction Library). <br/ > &#8985; Top left: topographic map supplied by Geographx. <br/ > &#8985; Top right:
-								bathymetry supplied by NIWA. <br/ > &#8985; Bottom left: Hillshade layer. <br/ > &#8985; Bottom right: Recoloured bathymetry layer.
-							</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-map-relief.jpg 1x, /filing/images/tepapa/tepapa-process-map-relief-2x.jpg 2x" style="width: 100%" alt="Map Process - Relief" />
-							<p class="caption opacity">Closeup of the raised-relief render.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-epicentre.jpg 1x, /filing/images/tepapa/tepapa-process-epicentre-2x.jpg 2x" style="width: 100%" alt="Epicentre UI Tests" />
-							<p class="caption opacity">UI tests of the earthquake epicentre.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-earthquakes.jpg 1x, /filing/images/tepapa/tepapa-process-earthquakes-2x.jpg 2x" style="width: 100%" alt="Earthquake UI Tests" />
-							<p class="caption opacity">UI tests of the earthquake data.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-3d-mode.png 1x, /filing/images/tepapa/tepapa-process-3d-mode-2x.png 2x" style="width: 100%" alt="3D Mode Tests" />
-							<p class="caption opacity">UI tests of the 3D data mode.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-colour-tests.jpg 1x, /filing/images/tepapa/tepapa-process-colour-tests-2x.jpg 2x" style="width: 100%" alt="Accessiblity Colour Tests" />
-							<p class="caption opacity">Accessiblity colour tests for earthquake labels.</p>
-							<img srcset="/filing/images/tepapa/tepapa-quake-nation.gif" style="width: 100%" alt="Earthquake Data Animation Test" />
-							<p class="caption opacity">Earthquake data animation tests.</p>
-						</div>
-						<div class="column-60">
-							<img srcset="/filing/images/tepapa/tepapa-process-prototype.png 1x, /filing/images/tepapa/tepapa-process-prototype-2x.png 2x" style="width: 100%" alt="Quake Nation Prototype - UI" />
-							<p class="caption opacity">An early prototype of the UI for testing.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-data-density.png 1x, /filing/images/tepapa/tepapa-process-data-density-2x.png 2x" style="width: 100%" alt="Earthquake Data Density Tests" />
-							<p class="caption opacity">Testing the timeline density with earthquake data.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-ui-concept.jpg 1x, /filing/images/tepapa/tepapa-process-ui-concept-2x.jpg 2x" style="width: 100%" alt="Quake Nation UI Concepts" />
-							<p class="caption opacity">An early UI concept design.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-sensors.png 1x, /filing/images/tepapa/tepapa-process-sensors-2x.png 2x" style="width: 100%" alt="Earthquake Sensors UI Tests" />
-							<p class="caption opacity">Testing the legibility of the earthquake sensors label.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-data-tests.png 1x, /filing/images/tepapa/tepapa-process-data-tests-2x.png 2x" style="width: 100%" alt="Earthquake Data Tests" />
-							<p class="caption opacity">A screenshot of an early prototype with earthquake data.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-ui-labels.png 1x, /filing/images/tepapa/tepapa-process-ui-labels-2x.png 2x" style="width: 100%" alt="Earthquake Label Tests" />
-							<p class="caption opacity">Various earthquake label UI tests and iterations.</p>
-							<img srcset="/filing/images/tepapa/tepapa-process-montage.jpg 1x, /filing/images/tepapa/tepapa-process-montage-2x.jpg 2x" style="width: 100%" alt="Quake Nation Process Montage (Photos)" />
-							<p class="caption opacity">Montage of photos and prototype UI designs from the Quake Nation process.</p>
-						</div>
-					</div>
-				</section>
-
-				<section>
-					<h4>Information</h4>
-					<p class="intro">
-						The <a href="https://tepapa.govt.nz">Museum of New Zealand Te Papa Tongarewa</a> is our country’s national museum. Commonly referred to as <a href="https://en.wikipedia.org/wiki/Te_Papa">Te Papa</a> (Māori
-						for “the treasure box”), the museum is visited by more than 1.5 million people every year amd is located in Te Whanganui-a-Tara/Wellington. <br class="hide" />
-						Te Papa was opened in 1998 after the merging of the National Museum and the National Art Gallery.
-					</p>
-					<p>
-						In 2019, the team at Springload created Quake Nation, a live data-driven visualisation displaying over 200 years of earthquake data in New Zealand. The installation is part of the new Whakarūaumoko Active
-						Land exhibition in the <a href="https://tepapa.govt.nz/visit/exhibitions/te-taiao-nature">Te Taiao Nature</a> zone.
-					</p>
-					<p>
-						The map displays all earthquake locations and their magnitude across New Zealand as well as major events such as the
-						<a href="https://en.wikipedia.org/wiki/2011_Christchurch_earthquake">Christchurch Earthquake</a> with stories and news about the natural disaster. Earthquakes appear on the map as visitors scroll the timeline
-						and clusters indicate multiple earthquakes, making it easy to see our most seismically active fault lines.
-					</p>
-					<p>
-						The team composited multiple different map data sources and transformed them into a single topographic projection using the geo-spatial software, <a href="https://gdal.org">GDAL</a> (Geospatial Data
-						Abstraction Library). The end result is a visually rich, but geospatially correct, layered rendering of New Zealand. Topographical data was sourced from cartography studio
-						<a href="https://geographx.co.nz">Geographx</a>, and seafloor data from Crown Research Institute <a href="https://niwa.co.nz">NIWA</a>. The NIWA seafloor map was re-coloured to look more like a satellite
-						image while still allowing users to see terrain and fault lines.
-					</p>
-					<p>
-						In close collaboration with <a href="https://gns.cri.nz">GNS Science</a>, the team built upon Te Papa’s initial concept through in-depth prototyping using the extensive GeoNet earthquake data set from the
-						beginning of the design process. The creation of a scrollable timeline lets users explore the entire GeoNet earthquake dataset back to 1810 as well as intergrateing with the GeoNet API feeds to present live
-						data every few minutes, including alerts when the latest earthquake above a specific magnitude is detected.
-					</p>
-					<blockquote>
-						<p>
-							“In our observational research of visitor use of the interactive, we observed that of the visitors who came within proximity of Quake Nation, over 40% engage. This is an excellent conversion rate for a
-							touchscreen interactive in an exhibition of this kind.” <br />
-							<span class="quote">&mdash; Amos Mann <span class="opacity">(Digital Producer, Te Papa)</span></span>
-						</p>
-					</blockquote>
-					<p>
-						This project was recognised with a prestigious spatial excellence award from the New Zealand Cartographic Society, which was particularly meaningful as it acknowledged the quality of the mapping, not just the
-						design of the interactive.
-					</p>
-					<hr />
-				</section>
-
-				<section>
-					<h4>Credits</h4>
-					<ul>
-						<li>Amos Mann, Kate Whitley, Ralph Upton <span class="opacity">(Client)</span></li>
-						<li>Dan Newman, Lachie Philipson, Josh Twaddle <span class="opacity">(Design)</span></li>
-						<li>Lauren Skogstad, Lachie Philipson <span class="opacity">(Research)</span></li>
-						<li>
-							Joris Rotteveel, Robin Marshall, Cameron Bourgeois, Lydie Danet, Alexandr Haleisha, <br class="hide" />
-							Sofia Spials, John Anderson, Daniel Kohn, Eugene Dementiev, Jan Nakladal <span class="opacity">(Development)</span>
-						</li>
-						<li>GNS Science, Geographx <span class="opacity">(Collaborators)</span></li>
-					</ul>
-				</section>
-
-				<section>
-					<h4>Awards / Recognition</h4>
-					<ul>
-						<li>New Zealand Cartographic Society Award for Best Map Design <span class="opacity">(2019)</span></li>
-						<li>AGDA Awards: Merit, Digital / Kiosk <span class="opacity">(2019)</span></li>
-						<li>DINZ Best Awards: Finalist, Digital Products <span class="opacity">(2019)</span></li>
-						<li>DINZ Best Awards: Finalist, User Experience <span class="opacity">(2019)</span></li>
-					</ul>
-				</section>
-
-				<section>
-					<h4>Featured</h4>
-					<p>
-						<a href="https://collections.tepapa.govt.nz/document/11027">He Iwi Rū | Quake Nation: effective interactive data visualisation in the museum</a> <span class="opacity">(2021)</span> <br />
-						<span class="opacity">&#8985;</span> Michael Upchurch <span class="opacity">(Author)</span>
-					</p>
-				</section>
-			</main>
-
-			<footer>
-				<p class="arrow"><a href="/archiving/te-papa/#beginning" onclick="fathom.trackGoal('GRB0XXWJ', 0);">&uarr;</a></p>
-				<ul>
-					<li><a href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="Home. Sweet. Home.">Home</a></li>
-					<li><a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
-					<li><a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
-					<li><a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
-				</ul>
-				<ul>
+<body id="beginning" class="work">
+	<!-- ARCHIVE BANNER -->
+	<div class="archive-banner">
+		This version <span class="opacity-light">(v4.0)</span> is now archived.<br class="desktop" /> View the <a
+			href="/">latest version</a> <span class="opacity-light">(v5.0) &rarr;</span>
+	</div>
+	<!-- CONTENT -->
+	<div class="container">
+		<nav>
+			<ul>
+				<li><a class="URL" href="/archiving/v4/" title="Home. Sweet. Home.">dan.newman.is</a> <span
+						class="desktop opacity">&nbsp; / &nbsp;</span></li>
+				<li class="opacity">
+					Archiving <span class="opacity-light">(v4.0)</span>
+				</li>
+				<li><a class="anchor" href="/archiving/v4/contactable/" title="Send. Me. Email.">Contact</a></li>
+				<li><a class="anchor" href="/archiving/v4/informing/" title="Me. Me. Me.">About</a></li>
+				<li><a class="anchor" href="/archiving/v4/designing/" title="Werk. Werk. Werk.">Work</a></li>
+			</ul>
+			<div class="mobile menu">
+				<ul id="menu" class="hide">
+					<li><a href="/archiving/v4/designing/">Work</a></li>
 					<li>
-						<a class="hover" href="/imagining/" onclick="fathom.trackGoal('JWBK6JUK', 0);" title="Dan Newman’s AI Work."><span class="opacity">~/imagining</span></a>
+						<a href="/archiving/axiom/"><span class="opacity">&#8985; Axiom</span></a>
+						<a href="/archiving/klim-type-foundry/"><span class="opacity">&#8985; Klim Type Foundry</span></a> <a
+							href="/archiving/stedi/"><span class="opacity">&#8985; Stedi</span></a>
+						<a href="/archiving/springload/"><span class="opacity">&#8985; Springload</span></a> <a
+							href="/archiving/delivereasy/"><span class="opacity">&#8985; Delivereasy</span></a>
+						<a href="/archiving/te-papa/"><span class="opacity">&#8985; Te Papa</span></a>
 					</li>
-					<li>
-						<a class="hover" href="/experimenting/" onclick="fathom.trackGoal('7DA3M1EU', 0);" title="Dan Newman’s Neue Work."><span class="opacity">~/experimenting</span></a>
-					</li>
-					<li>
-						<a class="hover" href="/archiving/" onclick="fathom.trackGoal('7T4ND1TC', 0);" title="Dan Oldman’s Alt Work."><span class="opacity">~/archiving</span></a>
-					</li>
-				</ul>
-				<p>
-					<a href="https://github.com/danserif/dan.newman.is/raw/master/filing/Résumé%20–%20Dan%20Newman%20–%202025.pdf" onclick="fathom.trackGoal('URO8EAAU', 0);" title="📄">Download Résumé</a>
-					<span class="opacity">(PDF)</span>
-				</p>
-
-				<div class="socials">
-					<p class="opacity">@danserif &rarr;</p>
-					<ul>
-						<li><a href="https://linkedin.com/in/danserif" onclick="fathom.trackEvent('LinkedIn', 0);" title="💼">LinkedIn</a> <span class="opacity">/</span></li>
-						<li><a href="https://github.com/danserif" onclick="fathom.trackEvent('GitHub', 0);" title="💾">GitHub</a> <span class="opacity">/</span></li>
-						<li><a href="https://bsky.app/profile/danserif.com" onclick="fathom.trackEvent('Bluesky', 0);" title="🦋">Bluesky</a> <span class="opacity">/</span></li>
-						<li><a href="https://cosmos.so/danserif" onclick="fathom.trackEvent('Cosmos', 0);" title="🔭">Cosmos</a> <span class="opacity">/</span></li>
-						<li><a href="https://letterboxd.com/danserif" onclick="fathom.trackEvent('Letterboxd', 0);" title="🎬">Letterboxd</a> <span class="opacity">/</span></li>
-						<li><a href="https://glass.photo/danserif" onclick="fathom.trackEvent('Glass', 0);" title="📸">Glass</a> <span class="opacity">/</span></li>
-						<li><a href="https://instagram.com/danserif" onclick="fathom.trackEvent('Instagram', 0);" title="📷">Instagram</a> <span class="opacity">/</span></li>
-						<li><a href="https://threads.net/@danserif" onclick="fathom.trackEvent('Threads', 0);" title="🧵">Threads</a> <span class="opacity">/</span></li>
-						<li><a href="https://mastodon.social/@danserif" onclick="fathom.trackEvent('Mastodon', 0);" title="🐘">Mastodon</a> <span class="opacity">/</span></li>
-						<li>
-							<s><a href="https://twitter.com/danserif" onclick="fathom.trackEvent('Twitter', 0);" title="💀">Twitter</a></s>
-						</li>
-					</ul>
-				</div>
-
-				<hr />
-
-				<div class="logo">
-					<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
-						<style>
-							.st0 {
-								fill: #ffffff;
-							}
-						</style>
-						<path
-							d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
-							class="st0"
-						/>
-						<path
-							d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
-							style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff"
-						/>
-					</svg>
-					<p>&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></p>
-					<p class="opacity">
-						The original Braun logo was designed by Will Münch in the 1930s (then updated by Wolfgang Schmittel in the 1950s). This homage is based on the 1990s version used today, and yes, I’m a
-						<a href="https://en.wikipedia.org/wiki/Braun_(company)">Braun</a> nerd and <a href="https://en.wikipedia.org/wiki/Dieter_Rams">Dieter Rams</a> fan.
-					</p>
-				</div>
-
-				<p>
-					<a class="hover uppercase" href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="You. Are. Here.">dan.newman.is</a> &nbsp; <span class="opacity">/</span> &nbsp;
-					<a class="hover uppercase" href="/now/" onclick="fathom.trackEvent('Now');">Now &rarr;</a>
 					<br />
-					<span class="opacity">Copyright &copy; 1982—2026.</span>
+					<li><a href="/archiving/v4/informing/">About</a></li>
+					<li><a href="/archiving/v4/contactable/">Contact</a></li>
+					<br />
+					<li>
+						<a href="/archiving/v4/imagining/"><span class="opacity">~/imagining</span></a>
+					</li>
+					<li>
+						<a href="/archiving/v4/experimenting/"><span class="opacity">~/experimenting</span></a>
+					</li>
+					<li>
+						<a href="/archiving/"><span class="opacity">~/archiving</span></a>
+					</li>
+					<br />
+					<li>
+						<span class="opacity">v4.0</span> <span class="opacity-dark">(Archvived)</span>
+					</li>
+					<li class="logo">
+						<a href="/archiving/v4/">
+							<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0"
+								style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
+								<style>
+									.st0 {
+										fill: #ffffff;
+									}
+								</style>
+								<path
+									d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
+									class="st0" />
+								<path
+									d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
+									style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff" />
+							</svg>
+						</a>
+						<span class="opacity">&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></span>
+					</li>
+				</ul>
+				<a href="javascript:void(0);" onclick="mobileMenu()">
+					<i class="icon">
+						<svg width="15" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M.75.75h14M.75 10.75h14M.75 5.75h14" stroke="#fff" stroke-linejoin="round" />
+						</svg></i>
+				</a>
+				<script>
+					function mobileMenu() {
+						var x = document.getElementById("menu");
+						if (x.style.display === "block") {
+							x.style.display = "none";
+						} else {
+							x.style.display = "block";
+						}
+					}
+				</script>
+			</div>
+		</nav>
+
+		<header>
+			<h1 id="intro">Te Papa</h1>
+			<h2 class="opacity">Earthquakes. Seismic Data. Topographic. Fault Lines. Interactive. Datasets. Timelines.
+				Magnitude. Research. User Testing. Design.</h2>
+			<section>
+				<table>
+					<tr>
+						<td><span class="opacity">Client</span></td>
+						<td>Museum of New Zealand <br class="desktop" />Te Papa Tongarewa</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Project</span></td>
+						<td>Quake Nation</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Year</span></td>
+						<td>2019</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Location</span></td>
+						<td>Wellington</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Role</span></td>
+						<td>Creative Director</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Agency</span></td>
+						<td>Springload</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Category</span></td>
+						<td>Museum</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Formats</span></td>
+						<td>Digital</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Fonts</span></td>
+						<td>National 2</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">URL</span></td>
+						<td>N/A</td>
+					</tr>
+				</table>
+			</section>
+			<p class="arrow"><a href="/archiving/te-papa/#archiving">&darr;</a></p>
+		</header>
+
+		<main>
+			<!-- WORK -->
+			<section class="images">
+				<h3 id="archiving">Work</h3>
+				<div class="row">
+					<div class="column-100">
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-montage.jpg 1x, /filing/v4/images/tepapa/tepapa-montage-2x.jpg 2x"
+							style="width: 100%" alt="Te Papa: Quake Nation - Montage" />
+						<p class="caption">
+							Montage of the Quake Nation interactive.
+							<span class="opacity">Installed as part of the Whakarūaumoko Active Land exhibition in the <a
+									href="https://tepapa.govt.nz/visit/exhibitions/te-taiao-nature">Te Taiao Nature</a> zone.</span>
+						</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-map-nz.jpg 1x, /filing/v4/images/tepapa/tepapa-map-nz-2x.jpg 2x"
+							style="width: 100%" alt="Te Papa: Quake Nation - New Zealand Map" />
+						<p class="caption">
+							Map of Aotearoa New Zealand.
+							<span class="opacity">Topographical data from <a href="https://geographx.co.nz">Geographx</a> was combined
+								with seafloor maps from <a href="https://niwa.co.nz">NIWA</a> by Lachie Philipson & Robin
+								Marshall.</span>
+						</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-installation.jpg 1x, /filing/v4/images/tepapa/tepapa-installation-2x.jpg 2x"
+							style="width: 100%" alt="Te Papa: Quake Nation - Installation (Photo)" />
+						<p class="caption">Photo of the Quake Nation interactive in use.</p>
+						<hr class="large" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="column-40">
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-map-te-reo.jpg 1x, /filing/v4/images/tepapa/tepapa-map-te-reo-2x.jpg 2x"
+							style="width: 100%" alt="Te Reo Māori Map Labels" />
+						<p class="caption">Location Labels <span class="opacity">(Te Reo Māori)</span></p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-photo-location.jpg 1x, /filing/v4/images/tepapa/tepapa-photo-location-2x.jpg 2x"
+							style="width: 100%" alt="Location Label (Photo)" />
+						<p class="caption">Location Labels <span class="opacity">(Photo)</span></p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-ui-fullscreen.jpg 1x, /filing/v4/images/tepapa/tepapa-ui-fullscreen-2x.jpg 2x"
+							style="width: 100%" alt="Quake Nation UI - Fullscreen" />
+						<p class="caption">Earthquake Timeline <span class="opacity">(UI)</span></p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-ui-kaikōura.jpg 1x, /filing/v4/images/tepapa/tepapa-ui-kaikōura-2x.jpg 2x"
+							style="width: 100%" alt="Kaikōura Earthquake" />
+						<p class="caption">Kaikōura Earthquake <span class="opacity">(UI)</span></p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-photo-timeline.jpg 1x, /filing/v4/images/tepapa/tepapa-photo-timeline-2x.jpg 2x"
+							style="width: 100%" alt="Earthquakes Timeline (Photo)" />
+						<p class="caption">Earthquake Timeline <span class="opacity">(Photo)</span></p>
+					</div>
+					<div class="column-60">
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-photo-visitors.jpg 1x, /filing/v4/images/tepapa/tepapa-photo-visitors-2x.jpg 2x"
+							style="width: 100%" alt="Museum Visitors (Photo)" />
+						<p class="caption">Installation</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-ui-north-island.jpg 1x, /filing/v4/images/tepapa/tepapa-ui-north-island-2x.jpg 2x"
+							style="width: 100%" alt="Quake Nation UI - North Island" />
+						<p class="caption">North Island Earthquakes <span class="opacity">(UI)</span></p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-montage-ui.jpg 1x, /filing/v4/images/tepapa/tepapa-montage-ui-2x.jpg 2x"
+							style="width: 100%" alt="Quake Nation UI (Montage)" />
+						<p class="caption">Montage <span class="opacity">(UI)</span></p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-montage-photos.jpg 1x, /filing/v4/images/tepapa/tepapa-montage-photos-2x.jpg 2x"
+							style="width: 100%" alt="Quake Nation Testing (Photos)" />
+						<p class="caption">Montage <span class="opacity">(Photos)</span></p>
+					</div>
+				</div>
+				<hr />
+				<h3>Process</h3>
+				<div class="row">
+					<div class="column-40">
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-installation.jpg 1x, /filing/v4/images/tepapa/tepapa-process-installation-2x.jpg 2x"
+							style="width: 100%" alt="Quake Nation Installation" />
+						<p class="caption opacity"><a href="https://lachie.design">Lachie</a> visiting the installation to oversee
+							user testing.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-timeline.png 1x, /filing/v4/images/tepapa/tepapa-process-timeline-2x.png 2x"
+							style="width: 100%" alt="Quake Nation Prototype - Timeline" />
+						<p class="caption opacity">An early prototype of the timeline UI.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-map.jpg 1x, /filing/v4/images/tepapa/tepapa-process-map-2x.jpg 2x"
+							style="width: 100%" alt="Map Process" />
+						<p class="caption opacity">
+							Images from the map production in <a href="https://gdal.org">GDAL</a> (Geospatial Data Abstraction
+							Library). <br /> &#8985; Top left: topographic map supplied by Geographx. <br /> &#8985; Top right:
+							bathymetry supplied by NIWA. <br /> &#8985; Bottom left: Hillshade layer. <br /> &#8985; Bottom right:
+							Recoloured bathymetry layer.
+						</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-map-relief.jpg 1x, /filing/v4/images/tepapa/tepapa-process-map-relief-2x.jpg 2x"
+							style="width: 100%" alt="Map Process - Relief" />
+						<p class="caption opacity">Closeup of the raised-relief render.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-epicentre.jpg 1x, /filing/v4/images/tepapa/tepapa-process-epicentre-2x.jpg 2x"
+							style="width: 100%" alt="Epicentre UI Tests" />
+						<p class="caption opacity">UI tests of the earthquake epicentre.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-earthquakes.jpg 1x, /filing/v4/images/tepapa/tepapa-process-earthquakes-2x.jpg 2x"
+							style="width: 100%" alt="Earthquake UI Tests" />
+						<p class="caption opacity">UI tests of the earthquake data.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-3d-mode.png 1x, /filing/v4/images/tepapa/tepapa-process-3d-mode-2x.png 2x"
+							style="width: 100%" alt="3D Mode Tests" />
+						<p class="caption opacity">UI tests of the 3D data mode.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-colour-tests.jpg 1x, /filing/v4/images/tepapa/tepapa-process-colour-tests-2x.jpg 2x"
+							style="width: 100%" alt="Accessiblity Colour Tests" />
+						<p class="caption opacity">Accessiblity colour tests for earthquake labels.</p>
+						<img srcset="/filing/v4/images/tepapa/tepapa-quake-nation.gif" style="width: 100%"
+							alt="Earthquake Data Animation Test" />
+						<p class="caption opacity">Earthquake data animation tests.</p>
+					</div>
+					<div class="column-60">
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-prototype.png 1x, /filing/v4/images/tepapa/tepapa-process-prototype-2x.png 2x"
+							style="width: 100%" alt="Quake Nation Prototype - UI" />
+						<p class="caption opacity">An early prototype of the UI for testing.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-data-density.png 1x, /filing/v4/images/tepapa/tepapa-process-data-density-2x.png 2x"
+							style="width: 100%" alt="Earthquake Data Density Tests" />
+						<p class="caption opacity">Testing the timeline density with earthquake data.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-ui-concept.jpg 1x, /filing/v4/images/tepapa/tepapa-process-ui-concept-2x.jpg 2x"
+							style="width: 100%" alt="Quake Nation UI Concepts" />
+						<p class="caption opacity">An early UI concept design.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-sensors.png 1x, /filing/v4/images/tepapa/tepapa-process-sensors-2x.png 2x"
+							style="width: 100%" alt="Earthquake Sensors UI Tests" />
+						<p class="caption opacity">Testing the legibility of the earthquake sensors label.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-data-tests.png 1x, /filing/v4/images/tepapa/tepapa-process-data-tests-2x.png 2x"
+							style="width: 100%" alt="Earthquake Data Tests" />
+						<p class="caption opacity">A screenshot of an early prototype with earthquake data.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-ui-labels.png 1x, /filing/v4/images/tepapa/tepapa-process-ui-labels-2x.png 2x"
+							style="width: 100%" alt="Earthquake Label Tests" />
+						<p class="caption opacity">Various earthquake label UI tests and iterations.</p>
+						<img
+							srcset="/filing/v4/images/tepapa/tepapa-process-montage.jpg 1x, /filing/v4/images/tepapa/tepapa-process-montage-2x.jpg 2x"
+							style="width: 100%" alt="Quake Nation Process Montage (Photos)" />
+						<p class="caption opacity">Montage of photos and prototype UI designs from the Quake Nation process.</p>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h4>Information</h4>
+				<p class="intro">
+					The <a href="https://tepapa.govt.nz">Museum of New Zealand Te Papa Tongarewa</a> is our country’s national
+					museum. Commonly referred to as <a href="https://en.wikipedia.org/wiki/Te_Papa">Te Papa</a> (Māori
+					for “the treasure box”), the museum is visited by more than 1.5 million people every year amd is located in Te
+					Whanganui-a-Tara/Wellington. <br class="hide" />
+					Te Papa was opened in 1998 after the merging of the National Museum and the National Art Gallery.
 				</p>
-			</footer>
-		</div>
-	</body>
+				<p>
+					In 2019, the team at Springload created Quake Nation, a live data-driven visualisation displaying over 200
+					years of earthquake data in New Zealand. The installation is part of the new Whakarūaumoko Active
+					Land exhibition in the <a href="https://tepapa.govt.nz/visit/exhibitions/te-taiao-nature">Te Taiao Nature</a>
+					zone.
+				</p>
+				<p>
+					The map displays all earthquake locations and their magnitude across New Zealand as well as major events such
+					as the
+					<a href="https://en.wikipedia.org/wiki/2011_Christchurch_earthquake">Christchurch Earthquake</a> with stories
+					and news about the natural disaster. Earthquakes appear on the map as visitors scroll the timeline
+					and clusters indicate multiple earthquakes, making it easy to see our most seismically active fault lines.
+				</p>
+				<p>
+					The team composited multiple different map data sources and transformed them into a single topographic
+					projection using the geo-spatial software, <a href="https://gdal.org">GDAL</a> (Geospatial Data
+					Abstraction Library). The end result is a visually rich, but geospatially correct, layered rendering of New
+					Zealand. Topographical data was sourced from cartography studio
+					<a href="https://geographx.co.nz">Geographx</a>, and seafloor data from Crown Research Institute <a
+						href="https://niwa.co.nz">NIWA</a>. The NIWA seafloor map was re-coloured to look more like a satellite
+					image while still allowing users to see terrain and fault lines.
+				</p>
+				<p>
+					In close collaboration with <a href="https://gns.cri.nz">GNS Science</a>, the team built upon Te Papa’s
+					initial concept through in-depth prototyping using the extensive GeoNet earthquake data set from the
+					beginning of the design process. The creation of a scrollable timeline lets users explore the entire GeoNet
+					earthquake dataset back to 1810 as well as intergrateing with the GeoNet API feeds to present live
+					data every few minutes, including alerts when the latest earthquake above a specific magnitude is detected.
+				</p>
+				<blockquote>
+					<p>
+						“In our observational research of visitor use of the interactive, we observed that of the visitors who came
+						within proximity of Quake Nation, over 40% engage. This is an excellent conversion rate for a
+						touchscreen interactive in an exhibition of this kind.” <br />
+						<span class="quote">&mdash; Amos Mann <span class="opacity">(Digital Producer, Te Papa)</span></span>
+					</p>
+				</blockquote>
+				<p>
+					This project was recognised with a prestigious spatial excellence award from the New Zealand Cartographic
+					Society, which was particularly meaningful as it acknowledged the quality of the mapping, not just the
+					design of the interactive.
+				</p>
+				<hr />
+			</section>
+
+			<section>
+				<h4>Credits</h4>
+				<ul>
+					<li>Amos Mann, Kate Whitley, Ralph Upton <span class="opacity">(Client)</span></li>
+					<li>Dan Newman, Lachie Philipson, Josh Twaddle <span class="opacity">(Design)</span></li>
+					<li>Lauren Skogstad, Lachie Philipson <span class="opacity">(Research)</span></li>
+					<li>
+						Joris Rotteveel, Robin Marshall, Cameron Bourgeois, Lydie Danet, Alexandr Haleisha, <br class="hide" />
+						Sofia Spials, John Anderson, Daniel Kohn, Eugene Dementiev, Jan Nakladal <span
+							class="opacity">(Development)</span>
+					</li>
+					<li>GNS Science, Geographx <span class="opacity">(Collaborators)</span></li>
+				</ul>
+			</section>
+
+			<section>
+				<h4>Awards / Recognition</h4>
+				<ul>
+					<li>New Zealand Cartographic Society Award for Best Map Design <span class="opacity">(2019)</span></li>
+					<li>AGDA Awards: Merit, Digital / Kiosk <span class="opacity">(2019)</span></li>
+					<li>DINZ Best Awards: Finalist, Digital Products <span class="opacity">(2019)</span></li>
+					<li>DINZ Best Awards: Finalist, User Experience <span class="opacity">(2019)</span></li>
+				</ul>
+			</section>
+
+			<section>
+				<h4>Featured</h4>
+				<p>
+					<a href="https://collections.tepapa.govt.nz/document/11027">He Iwi Rū | Quake Nation: effective interactive
+						data visualisation in the museum</a> <span class="opacity">(2021)</span> <br />
+					<span class="opacity">&#8985;</span> Michael Upchurch <span class="opacity">(Author)</span>
+				</p>
+			</section>
+		</main>
+
+		<footer>
+			<p class="arrow"><a href="/archiving/te-papa/#beginning">&uarr;</a></p>
+			<ul>
+				<li><a href="/archiving/v4/" title="Home. Sweet. Home.">Home</a></li>
+				<li><a href="/archiving/v4/designing/" title="Werk. Werk. Werk.">Work</a></li>
+				<li><a href="/archiving/v4/informing/" title="Me. Me. Me.">About</a></li>
+				<li><a href="/archiving/v4/contactable/" title="Send. Me. Email.">Contact</a></li>
+			</ul>
+			<ul>
+				<li>
+					<a class="hover" href="/archiving/v4/imagining/" title="Dan Newman’s AI Work."><span
+							class="opacity">~/imagining</span></a>
+				</li>
+				<li>
+					<a class="hover" href="/archiving/v4/experimenting/" title="Dan Newman’s Neue Work."><span
+							class="opacity">~/experimenting</span></a>
+				</li>
+				<li>
+					<a class="hover" href="/archiving/" title="Dan Oldman’s Alt Work."><span
+							class="opacity">~/archiving</span></a>
+				</li>
+			</ul>
+			<p>
+				<a href="https://github.com/danserif/dan.newman.is/raw/master/filing/v4/Résumé%20–%20Dan%20Newman%20–%202025.pdf"
+					title="📄">Download Résumé</a>
+				<span class="opacity">(PDF)</span>
+			</p>
+
+			<div class="socials">
+				<p class="opacity">@danserif &rarr;</p>
+				<ul>
+					<li><a href="https://linkedin.com/in/danserif" title="💼">LinkedIn</a> <span class="opacity">/</span></li>
+					<li><a href="https://github.com/danserif" title="💾">GitHub</a> <span class="opacity">/</span></li>
+					<li><a href="https://bsky.app/profile/danserif.com" title="🦋">Bluesky</a> <span class="opacity">/</span></li>
+					<li><a href="https://cosmos.so/danserif" title="🔭">Cosmos</a> <span class="opacity">/</span></li>
+					<li><a href="https://letterboxd.com/danserif" title="🎬">Letterboxd</a> <span class="opacity">/</span></li>
+					<li><a href="https://glass.photo/danserif" title="📸">Glass</a> <span class="opacity">/</span></li>
+					<li><a href="https://instagram.com/danserif" title="📷">Instagram</a> <span class="opacity">/</span></li>
+					<li><a href="https://threads.net/@danserif" title="🧵">Threads</a> <span class="opacity">/</span></li>
+					<li><a href="https://mastodon.social/@danserif" title="🐘">Mastodon</a> <span class="opacity">/</span></li>
+					<li>
+						<s><a href="https://twitter.com/danserif" title="💀">Twitter</a></s>
+					</li>
+				</ul>
+			</div>
+
+			<hr />
+
+			<div class="logo">
+				<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0"
+					style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
+					<style>
+						.st0 {
+							fill: #ffffff;
+						}
+					</style>
+					<path
+						d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
+						class="st0" />
+					<path
+						d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
+						style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff" />
+				</svg>
+				<p>&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></p>
+				<p class="opacity">
+					The original Braun logo was designed by Will Münch in the 1930s (then updated by Wolfgang Schmittel in the
+					1950s). This homage is based on the 1990s version used today, and yes, I’m a
+					<a href="https://en.wikipedia.org/wiki/Braun_(company)">Braun</a> nerd and <a
+						href="https://en.wikipedia.org/wiki/Dieter_Rams">Dieter Rams</a> fan.
+				</p>
+			</div>
+
+			<p>
+				<a class="hover uppercase" href="/archiving/v4/" title="You. Are. Here.">dan.newman.is</a> &nbsp; <span
+					class="opacity">/</span> &nbsp;
+				<span class="opacity">Archiving <span class="opacity-light">(v4.0)</span></span>
+				<br />
+				<span class="opacity">Copyright &copy; 1982—2026.</span>
+			</p>
+		</footer>
+	</div>
+</body>
+
 </html>

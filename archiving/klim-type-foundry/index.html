@@ -1,490 +1,629 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<title>Klim Type Foundry — Dan Newman</title>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<meta name="description" content="Fonts. Typography. Glyphs. Design. Development. Research. Grids. Specimens. Foundries. Josef Müller-Brockmann. Söhne. Signifier." />
-		<meta name="author" content="Dan Newman" />
-		<meta name="copyright" content="Copyright Dan Newman, 2026" />
+	<title>Klim Type Foundry — Dan Newman</title>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description"
+		content="Fonts. Typography. Glyphs. Design. Development. Research. Grids. Specimens. Foundries. Josef Müller-Brockmann. Söhne. Signifier." />
+	<meta name="author" content="Dan Newman" />
+	<meta name="copyright" content="Copyright Dan Newman, 2026" />
 
-		<link rel="stylesheet" href="/filing/css/styles.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="robots" content="noindex" />
 
-		<link rel="preload" href="/filing/fonts/soehne-buch.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-		<link rel="preload" href="/filing/fonts/soehne-dreiviertelfett.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-		<link rel="preload" href="/filing/fonts/soehne-leicht.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/filing/v4/css/styles.css" />
 
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/favicon-16x16.png" sizes="16x16" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/favicon-32x32.png" sizes="32x32" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/icon.png" sizes="1024x1024" />
-		<link rel="apple-touch-icon" href="https://dan.newman.is/filing/images/icons/apple-touch-icon.png" sizes="1024x1024" />
-		<link rel="mask-icon" href="https://dan.newman.is/filing/images/icons/safari-pinned-tab.svg" color="#1e1e1e" />
+	<link rel="preload" href="/filing/v4/fonts/soehne-buch.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="preload" href="/filing/v4/fonts/soehne-dreiviertelfett.woff2" as="font" type="font/woff2"
+		crossorigin="anonymous" />
+	<link rel="preload" href="/filing/v4/fonts/soehne-leicht.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
-		<meta name="theme-color" content="#000000" />
+	<link rel="icon" type="image/png" href="https://dan.newman.is/filing/v4/icons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="https://dan.newman.is/filing/v4/icons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://dan.newman.is/filing/v4/icons/icon.png" sizes="1024x1024" />
+	<link rel="apple-touch-icon" href="https://dan.newman.is/filing/v4/icons/apple-touch-icon.png" sizes="1024x1024" />
+	<link rel="mask-icon" href="https://dan.newman.is/filing/v4/icons/safari-pinned-tab.svg" color="#1e1e1e" />
 
-		<meta property="og:title" content="Klim Type Foundry — Dan Newman" />
-		<meta property="og:description" content="Fonts. Typography. Glyphs. Design. Development. Research. Grids. Specimens. Foundries. Josef Müller-Brockmann. Söhne. Signifier." />
-		<meta property="og:image" content="https://dan.newman.is/filing/images/opengraph-image-klim.jpg" />
-		<meta property="og:image:alt" content="Klim Type Foundry" />
-		<meta property="og:site_name" content="dan.newman.is/archiving" />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+	<meta name="theme-color" content="#000000" />
 
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Klim Type Foundry — Dan Newman" />
-		<meta name="twitter:description" content="Fonts. Typography. Glyphs. Design. Development. Research. Grids. Specimens. Foundries. Josef Müller-Brockmann. Söhne. Signifier." />
-		<meta name="twitter:image" content="https://dan.newman.is/filing/images/opengraph-image-klim.jpg" />
-		<meta name="twitter:site" content="@danserif" />
+	<meta property="og:title" content="Klim Type Foundry — Dan Newman" />
+	<meta property="og:description"
+		content="Fonts. Typography. Glyphs. Design. Development. Research. Grids. Specimens. Foundries. Josef Müller-Brockmann. Söhne. Signifier." />
+	<meta property="og:image" content="https://dan.newman.is/filing/v4/images/opengraph-image-klim.jpg" />
+	<meta property="og:image:alt" content="Klim Type Foundry" />
+	<meta property="og:site_name" content="dan.newman.is/archiving" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
 
-		<script src="https://cdn.usefathom.com/script.js" data-site="NJPLLGHN" defer></script>
-	</head>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Klim Type Foundry — Dan Newman" />
+	<meta name="twitter:description"
+		content="Fonts. Typography. Glyphs. Design. Development. Research. Grids. Specimens. Foundries. Josef Müller-Brockmann. Söhne. Signifier." />
+	<meta name="twitter:image" content="https://dan.newman.is/filing/v4/images/opengraph-image-klim.jpg" />
+	<meta name="twitter:site" content="@danserif" />
 
-	<body id="beginning" class="work">
-		<!-- CONTENT -->
-		<div class="container">
-			<nav>
-				<ul>
-					<li><a class="URL" href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="Home. Sweet. Home.">dan.newman.is</a> <span class="desktop opacity">&nbsp; / &nbsp;</span></li>
-					<li class="opacity">
-						<a href="/now/" onclick="fathom.trackGoal('X3UAXYRH', 0);">Now (24—25) &rarr;</a>
-					</li>
-					<li><a class="anchor" href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
-					<li><a class="anchor" href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
-					<li><a class="anchor" href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
-				</ul>
-				<div class="mobile menu">
-					<ul id="menu" class="hide">
-						<li><a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);">Work</a></li>
-						<li>
-							<a href="/archiving/axiom/"><span class="opacity">&#8985; Axiom</span></a>
-							<a href="/archiving/klim-type-foundry/"><span class="opacity">&#8985; Klim Type Foundry</span></a> <a href="/archiving/stedi/"><span class="opacity">&#8985; Stedi</span></a>
-							<a href="/archiving/springload/"><span class="opacity">&#8985; Springload</span></a> <a href="/archiving/delivereasy/"><span class="opacity">&#8985; Delivereasy</span></a>
-							<a href="/archiving/te-papa/"><span class="opacity">&#8985; Te Papa</span></a>
-						</li>
-						<br />
-						<li><a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);">About</a></li>
-						<li><a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);">Contact</a></li>
-						<br />
-						<li>
-							<a href="/imagining/" onclick="fathom.trackGoal('JWBK6JUK', 0);"><span class="opacity">~/imagining</span></a>
-						</li>
-						<li>
-							<a href="/experimenting/" onclick="fathom.trackGoal('7DA3M1EU', 0);"><span class="opacity">~/experimenting</span></a>
-						</li>
-						<li>
-							<a href="/archiving/" onclick="fathom.trackGoal('7T4ND1TC', 0);"><span class="opacity">~/archiving</span></a>
-						</li>
-						<br />
-						<li>
-							<a href="/now/" onclick="fathom.trackEvent('Now');">Now <span class="opacity">(24—25) &rarr;</span></a>
-						</li>
-						<li class="logo">
-							<a href="/">
-								<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
-									<style>
-										.st0 {
-											fill: #ffffff;
-										}
-									</style>
-									<path
-										d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
-										class="st0"
-									/>
-									<path
-										d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
-										style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff"
-									/>
-								</svg>
-							</a>
-							<span class="opacity">&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></span>
-						</li>
-					</ul>
-					<a href="javascript:void(0);" onclick="mobileMenu()">
-						<i class="icon">
-							<svg width="15" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.75.75h14M.75 10.75h14M.75 5.75h14" stroke="#fff" stroke-linejoin="round" /></svg
-						></i>
-					</a>
-					<script>
-						function mobileMenu() {
-							var x = document.getElementById("menu");
-							if (x.style.display === "block") {
-								x.style.display = "none";
-							} else {
-								x.style.display = "block";
-							}
-						}
-					</script>
-				</div>
-			</nav>
+	<script src="https://cdn.usefathom.com/script.js" data-site="NJPLLGHN" defer></script>
+</head>
 
-			<header>
-				<h1 id="intro">Klim Type Foundry</h1>
-				<h2 class="opacity">Fonts. Typography. Glyphs. Design. Development. Research. Grids. Specimens. Foundries. Josef Müller-Brockmann. Söhne. Signifier.</h2>
-				<section>
-					<table>
-						<tr>
-							<td><span class="opacity">Client</span></td>
-							<td>Klim Type Foundry</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Project</span></td>
-							<td>Neue Klim</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Years</span></td>
-							<td>2018—2020</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Location</span></td>
-							<td>Wellington</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Role</span></td>
-							<td>Creative Director</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Agency</span></td>
-							<td>Springload</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Category</span></td>
-							<td>Ecommerce</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Format</span></td>
-							<td>Digital</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">Fonts</span></td>
-							<td>Söhne, Söhne Mono, Signifier</td>
-						</tr>
-						<tr>
-							<td><span class="opacity">URL</span></td>
-							<td><a href="https://klim.co.nz">klim.co.nz</a></td>
-						</tr>
-					</table>
-				</section>
-				<p class="arrow"><a href="/archiving/klim-type-foundry/#archiving">&darr;</a></p>
-			</header>
-
-			<main>
-				<!-- WORK -->
-				<section class="images">
-					<h3 id="archiving">Work</h3>
-					<div class="row">
-						<div class="column-100">
-							<img srcset="/filing/images/klim/klim-homepage-montage.jpg 1x, /filing/images/klim/klim-homepage-montage-2x.jpg 2x" style="width: 100%" alt="Klim Homepage Montage" />
-							<p class="caption">
-								Montage of the <a href="https://klim.co.nz">klim.co.nz</a> homepage. <br class="desktop" /><span class="opacity">Söhne Collection campaign animations by <a href="https://dia.tv">DIA</a>.</span>
-							</p>
-							<img srcset="/filing/images/klim/klim-mobile-montage.jpg 1x, /filing/images/klim/klim-mobile-montage-2x.jpg 2x" style="width: 100%" alt="Klim Mobile Montage" />
-							<p class="caption">Various responsive mobile designs.</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="column-100">
-							<div style="padding: 56.25% 0 0 0; position: relative">
-								<iframe
-									title="Klim Promotional Video"
-									src="https://player.vimeo.com/video/386074471?h=027022db0a&autoplay=1&loop=1&color=ffffff&title=0&byline=0&portrait=0"
-									style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
-									frameborder="0"
-									allow="autoplay; fullscreen; picture-in-picture"
-									allowfullscreen
-									alt="Klim Promotional Video"
-								></iframe>
-							</div>
-							<script src="https://player.vimeo.com/api/player.js"></script>
-							<p class="caption">
-								Promotional video created for the launch of the site. <span class="opacity">Produced by <a href="https://benwright.co.nz">Ben Wright</a>.</span>
-							</p>
-							<hr class="large" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="column-40">
-							<img srcset="/filing/images/klim/klim-homepage.png 1x, /filing/images/klim/klim-homepage-2x.png 2x" style="width: 100%" alt="Klim Homepage" />
-							<p class="caption">Homepage</p>
-							<img srcset="/filing/images/klim/klim-soehne-cart.png 1x, /filing/images/klim/klim-soehne-cart-2x.png 2x" style="width: 100%" alt="Josef Müller-Brockmann Homage" />
-							<p class="caption">Josef Müller-Brockmann Homage</p>
-							<img srcset="/filing/images/klim/klim-menu.png 1x, /filing/images/klim/klim-menu-2x.png 2x" style="width: 100%" alt="Klim Menu" />
-							<p class="caption">Menu</p>
-							<img srcset="/filing/images/klim/klim-heldane-design-information.png 1x, /filing/images/klim/klim-heldane-design-information-2x.png 2x" style="width: 100%" alt="Heldane Design Information" />
-							<p class="caption"><a href="https://klim.co.nz/blog/heldane-design-information/">Heldane Design Information</a></p>
-							<img srcset="/filing/images/klim/klim-font-licence.png 1x, /filing/images/klim/klim-font-licence-2x.png 2x" style="width: 100%" alt="Font Licence" />
-							<p class="caption"><a href="https://klim.co.nz/licences/desktop-fonts/">Desktop Font Licence Agreement</a></p>
-							<img srcset="/filing/images/klim/klim-geograph-specimen.png 1x, /filing/images/klim/klim-geograph-specimen-2x.png 2x" style="width: 100%" alt="Geograph Specimen" />
-							<p class="caption"><a href="https://klim.co.nz/retail-fonts/geograph/">Geograph Specimen</a></p>
-							<img srcset="/filing/images/klim/klim-geograph-glyphs.png 1x, /filing/images/klim/klim-geograph-glyphs-2x.png 2x" style="width: 100%" alt="Geograph Glyphs" />
-							<p class="caption">Geograph Glyphs</p>
-							<img srcset="/filing/images/klim/klim-financier-specimen.png 1x, /filing/images/klim/klim-financier-specimen-2x.png 2x" style="width: 100%" alt="Financier Display Specimen" />
-							<p class="caption"><a href="https://klim.co.nz/retail-fonts/financier-display/">Financier Display Specimen</a></p>
-							<img srcset="/filing/images/klim/klim-financier-glyphs.png 1x, /filing/images/klim/klim-financier-glyphs-2x.png 2x" style="width: 100%" alt="Financier Display Glyphs" />
-							<p class="caption">Financier Display Glyphs</p>
-							<img srcset="/filing/images/klim/klim-custom-fonts.png 1x, /filing/images/klim/klim-custom-fonts-2x.png 2x" style="width: 100%" alt="Custom Fonts" />
-							<p class="caption"><a href="https://klim.co.nz/custom-fonts/">Custom Fonts</a></p>
-							<img srcset="/filing/images/klim/klim-blog.jpg 1x, /filing/images/klim/klim-blog-2x.jpg 2x" style="width: 100%" alt="Klim Blog" />
-							<p class="caption"><a href="https://klim.co.nz/blog/">Blog</a></p>
-							<img srcset="/filing/images/klim/klim-fonts-in-use.jpg 1x, /filing/images/klim/klim-fonts-in-use-2x.jpg 2x" style="width: 100%" alt="Fonts In Use" />
-							<p class="caption"><a href="https://klim.co.nz/in-use/">Fonts In Use</a></p>
-						</div>
-						<div class="column-60">
-							<img srcset="/filing/images/klim/klim-soehne-specimen.png 1x, /filing/images/klim/klim-soehne-specimen-2x.png 2x" style="width: 100%" alt="Söhne Specimen" />
-							<p class="caption"><a href="https://klim.co.nz/retail-fonts/soehne/">Söhne Specimen</a></p>
-							<img srcset="/filing/images/klim/klim-untitled-cart.png 1x, /filing/images/klim/klim-untitled-cart-2x.png 2x" style="width: 100%" alt="Untitled Serif Cart" />
-							<p class="caption">Untitled Serif Cart</p>
-							<img srcset="/filing/images/klim/klim-untitled-specimen.png 1x, /filing/images/klim/klim-untitled-specimen-2x.png 2x" style="width: 100%" alt="Untitled Sans Specimen" />
-							<p class="caption"><a href="https://klim.co.nz/retail-fonts/untitled-sans/">Untitled Sans Specimen</a></p>
-							<img srcset="/filing/images/klim/klim-heldane-cart.png 1x, /filing/images/klim/klim-heldane-cart-2x.png 2x" style="width: 100%" alt="Heldane Text Cart" />
-							<p class="caption">Heldane Text Cart</p>
-							<img srcset="/filing/images/klim/klim-heldane-specimen.png 1x, /filing/images/klim/klim-heldane-specimen-2x.png 2x" style="width: 100%" alt="Heldane Display Specimen" />
-							<p class="caption"><a href="https://klim.co.nz/retail-fonts/heldane-display/">Heldane Display Specimen</a></p>
-							<img srcset="/filing/images/klim/klim-pure-pākati.jpg 1x, /filing/images/klim/klim-pure-pākati-2x.jpg 2x" style="width: 100%" alt="Pure Pākati Specimen" />
-							<p class="caption"><a href="https://klim.co.nz/custom-fonts/pure-pakati/">Pure Pākati Specimen</a></p>
-							<img srcset="/filing/images/klim/klim-mobile.png 1x, /filing/images/klim/klim-mobile-2x.png 2x" style="width: 100%" alt="Klim Mobile" />
-							<p class="caption">Mobile</p>
-						</div>
-					</div>
-					<hr class="large" />
-					<h3>Process</h3>
-					<div class="row">
-						<div class="column-40">
-							<img srcset="/filing/images/klim/klim-bugs-process.jpg 1x, /filing/images/klim/klim-bugs-process-2x.jpg 2x" style="width: 100%" alt="Klim Bugs" />
-							<p class="caption opacity">Screenshots of mobile bugs.</p>
-							<img srcset="/filing/images/klim/klim-design-process.jpg 1x, /filing/images/klim/klim-design-process-2x.jpg 2x" style="width: 100%" alt="Springload Desk" />
-							<p class="caption opacity">Photo of a computer testing custom font specimens.</p>
-							<img srcset="/filing/images/klim/klim-menu-process.jpg 1x, /filing/images/klim/klim-menu-process-2x.jpg 2x" style="width: 100%" alt="Klim Menus" />
-							<p class="caption opacity">An alternative menu design.</p>
-							<img srcset="/filing/images/klim/klim-glyph-process.jpg 1x, /filing/images/klim/klim-glyph-process-2x.jpg 2x" style="width: 100%" alt="Klim Glyphs" />
-							<p class="caption opacity">An alternative design for viewing glyphs.</p>
-							<img srcset="/filing/images/klim/klim-dinz-presentation-process.jpg 1x, /filing/images/klim/klim-dinz-presentation-process-2x.jpg 2x" style="width: 100%" alt="DINZ Presentation" />
-							<p class="caption opacity">Photo of nerds at the DINZ Best of the Best — Designers Speak® presentation.</p>
-						</div>
-						<div class="column-60">
-							<img srcset="/filing/images/klim/klim-dinz-presentation-research.jpg 1x, /filing/images/klim/klim-dinz-presentation-research-2x.jpg 2x" style="width: 100%" alt="DINZ Presentation" />
-							<p class="caption opacity">Photo of nerds at the DINZ Best of the Best — Designers Speak® presentation.</p>
-							<img srcset="/filing/images/klim/klim-specs-process.jpg 1x, /filing/images/klim/klim-specs-process-2x.jpg 2x" style="width: 100%" alt="Klim Specs" />
-							<p class="caption opacity">Various screenshots specifing interaction states, text decorations, spacing, and alignment.</p>
-							<img srcset="/filing/images/klim/klim-research-process.jpg 1x, /filing/images/klim/klim-research-process-2x.jpg 2x" style="width: 100%" alt="Klim Research" />
-							<p class="caption opacity">Montage of images from the research, competitor analysis, and user testing process.</p>
-							<img srcset="/filing/images/klim/klim-paper-process.jpg 1x, /filing/images/klim/klim-paper-process-2x.jpg 2x" style="width: 100%" alt="Klim Printed" />
-							<p class="caption opacity">Photos of the printed designs and research.</p>
-						</div>
-					</div>
-				</section>
-
-				<section>
-					<h4>Information</h4>
-					<p class="intro">
-						The <a href="https://klim.co.nz">Klim Type Foundry</a> launched a completely redesigned site “to put the designer at the heart of the type browsing, buying, and learning experience”. An integral part of the
-						redesign is <a href="https://klim.co.nz/retail-fonts/soehne/">Söhne</a>, a collection of new typefaces described as “the memory of Akzidenz-Grotesk framed through the reality of Helvetica”.
-					</p>
-					<p>
-						Inspiration for the redesign came from mainly places, but primarily classic Swiss design principles as well as practitioners
-						<a href="https://en.wikipedia.org/wiki/Josef_Müller-Brockmann">Josef Müller-Brockmann</a>, Wim Crouwel, Romek Marber and Karl Gerstner.
-					</p>
-					<p>
-						Inspecting the browser console reveals an homage to Josef Müller-Brockmann’s book <a href="https://niggli.ch/en/grid-systems-in-graphic-design.html">Grid Systems in Graphic Design</a>. Pressing
-						<code class="opacity small">Ctrl+Alt+Shift+g</code> displays the underlying grid of the site, and on type specimen pages you can toggle page colour by the icon in the navigation or with
-						<code class="opacity small">Ctrl+Alt+Shift+t</code> on your keyboard. Experimenting with these commands results in recreating the book cover if you can find the right specimen and theme.
-					</p>
-					<blockquote>
-						<p>
-							“Ahhh this JMB throwback theme + grid easter egg on the @klimtypefoundry Klim/Söhne website is awesome (as is the typeface)!” <br />
-							<span class="quote">&mdash; <a href="https://twitter.com/negativespaceca/status/1199869677801005056?s=20">Thomas Lowry</a> <span class="opacity">(Twitter User)</span></span>
-						</p>
-					</blockquote>
-					<p>
-						Alongside the inspiration for the site, the redesign was further informed by extensive research into other type foundries as well as interviews with existing and potential customers. It also included
-						usability testing of the old site and prototypes of initial concepts (in design software and code) to validate numerous design details and approaches. This research and testing helped to discover what
-						challenges people face when licensing fonts and the expectations they have of a foundry site.
-					</p>
-					<p>
-						After a year of near constant design and development the new site showcases the breadth of Klim’s work in type design, but also the foundry’s gallery exhibitions, collaborations, publications, goods,
-						photography, animations and videos.
-					</p>
-					<p>
-						A personal highlight of the redesign is the random generation of type specimens. Each time a page loads a set of predefined rules for how typefaces should be presented is parsed over a corpus looking for
-						words, sentences, and paragraphs to programatically display as unique specimens. The redesigned specimens encourage experimentation before purchasing; people can view OpenType features, change alignment, add
-						columns, adjust line-height and letter-spacing with an interactive type tester, and review and test full character sets in the form of a glyph inspector with a ‘bézier view’.
-					</p>
-					<p>Speaking of specimens, after much hard work it has been humbling to see the response and feedback from the design community.</p>
-					<blockquote>
-						<p>
-							“The Söhne type specimen from @klimtypefoundry is a delight. A masterclass in considered interaction design, usefulness, and inspiration.” <br />
-							<span class="quote">&mdash; <a href="https://twitter.com/markboulton/status/1199065671025475584?s=20">Mark Boulton</a> <span class="opacity">(Twitter User)</span></span>
-						</p>
-					</blockquote>
-					<p>
-						The site’s writing sections have also been brought to the fore and extended. The <a href="https://klim.co.nz/blog/">blog</a> aggregates and displays the word count for each category currently on the site. For
-						example, there are 27,544 words about letters in the interview category and 25,386 words in the font information category. The <a href="https://klim.co.nz/in-use/">in use</a> section, which shows the extent
-						of Klim typefaces ‘in the wild’, has an improved filter to allow design work to be reviewed by typeface, and by category, and retail font specimen pages also now display related in-use examples.
-					</p>
-					<blockquote>
-						<p>
-							“The new @klimtypefoundry website is a thing of beauty. Simple, highly functional and so much polish. Fonts are pretty good too.” <br />
-							<span class="quote">&mdash; <a href="https://twitter.com/twandco/status/1199035772336107520?s=20">Thomas Williams</a> <span class="opacity">(Twitter User)</span></span>
-						</p>
-					</blockquote>
-					<p>
-						Finally, under the hood there is a statically-generated front-end and a GraphQL back-end as well as a custom e-commerce experience that connects with Stripe for transactions, Django for managing fonts,
-						orders, and upgrades, and Wagtail for content management.
-					</p>
-					<hr />
-				</section>
-
-				<section>
-					<h4>Credits</h4>
-					<ul>
-						<li>Kris Sowersby <span class="opacity">(Client)</span></li>
-						<li>Dan Newman, Zak Brown <span class="opacity">(Design)</span></li>
-						<li>
-							Peter Dekkers, Mitch Ryan, Katie Day, Dean Oemcke, Juliet Brown, Matthew Holloway, <br class="hide" />
-							Eugene Dementiev, Calin Dale <span class="opacity">(Development)</span>
-						</li>
-						<li>Kanhika Nikam <span class="opacity">(Research)</span></li>
-						<li><a href="https://dia.tv">DIA</a>, <a href="http://altgroup.net">Alt Group</a> <span class="opacity">(Collaborators)</span></li>
-					</ul>
-				</section>
-
-				<section>
-					<h4>Awards</h4>
-					<ul>
-						<li>Certificate of Typographic Excellence from the <a href="https://tdc.org">Type Directors Club</a> <span class="opacity">(2020)</span></li>
-						<li><a href="https://tdc.org">Type Directors Club</a>, Winner: Communication Design <span class="opacity">(2020)</span></li>
-						<li>Red Dot Award, Best of the Best: <a href="https://red-dot.org/project/klim-type-foundry-49210">Website</a> <span class="opacity">(2020)</span></li>
-						<li>Red Dot Award, Best of the Best: <a href="https://red-dot.org/project/klim-type-foundry-49020">Typography</a> <span class="opacity">(2020)</span></li>
-						<li>AGDA Awards: Judge’s Choice, <a href="https://agda.com.au/awards/results/819">Website</a> <span class="opacity">(2020)</span></li>
-						<li>AGDA Awards: Pinnacle, <a href="https://agda.com.au/awards/results/819">Website</a> <span class="opacity">(2020)</span></li>
-						<li>AGDA Awards: Distinction, <a href="https://agda.com.au/awards/results/823">UX, Interface & Navigation</a> <span class="opacity">(2020)</span></li>
-						<li>AGDA Awards: Distinction, <a href="https://agda.com.au/awards/results/820">Digital & Mobile</a> <span class="opacity">(2020)</span></li>
-						<li>AGDA Awards: Distinction, <a href="https://agda.com.au/awards/results/830">Design Craft, Typography</a> <span class="opacity">(2020)</span></li>
-						<li>DINZ Best Awards: Gold, <a href="https://bestawards.co.nz/digital/large-scale-websites/springload/klim-type-foundry-1/">Large Scale Websites</a> <span class="opacity">(2020)</span></li>
-						<li>DINZ Best Awards: Silver, <a href="https://bestawards.co.nz/digital/user-experience/springload/klim-type-foundry-3/">User Experience</a> <span class="opacity">(2020)</span></li>
-						<li>DINZ Best Awards: Silver, <a href="https://bestawards.co.nz/digital/digital-products/springload/klim-type-foundry-2/">Digital Products</a> <span class="opacity">(2020)</span></li>
-						<li>DINZ Best Awards: Bronze, <a href="https://bestawards.co.nz/digital/digital-campaigns/springload/sohne-collection/">Digital Campaigns</a> <span class="opacity">(2020)</span></li>
-						<li><a href="https://commarts.com">Communication Arts</a> Award of Excellence Winner: Typography Annual <span class="opacity">(2020)</span></li>
-						<li><a href="https://dandad.org">D&AD</a> Shortlist: Digital Design, Digital Products <span class="opacity">(2020)</span></li>
-						<li><a href="https://webbyawards.com">Webby Awards</a> Nominee: Best Visual Design <span class="opacity">(2020)</span></li>
-						<li><a href="https://katoitoi.nz/archive/klim-2">Kātoitoi</a> Aotearoa Design Archive: Digital, Technical Innovation <span class="opacity">(2020)</span></li>
-					</ul>
-					<blockquote>
-						<p>
-							“An impeccable grid structure, stunning visuals, and an interface that lets you test every detail of the expertly crafted typography. Every interaction state and responsive break-point has been considered,
-							the site performs fast, and delivers true function and form to the user. The checkout and account creation experience is extremely intuitive and does not break out of the conventions of the design aesthetic
-							the user is familiar with through the course of their journey.” <br />
-							<span class="quote">&mdash; Ahmed Meer <span class="opacity">(AGDA Juror)</span></span>
-						</p>
-					</blockquote>
-					<blockquote>
-						<p>
-							“Typefaces are not just products they are tools, therefore an entirely different approach is required, when it comes to selling them. This approach has never been better exemplified than in Klim Type
-							Foundry's new website. The site is the clear culmination of in-depth research, technical knowledge, and masterful design.” <br />
-							<span class="quote">&mdash; Luke Scott <span class="opacity">(AGDA Juror)</span></span>
-						</p>
-					</blockquote>
-					<blockquote>
-						<p>
-							“The Klim Type website has been implemented at an extremely high level with an attention to detail that is absolutely world class. The basic design / layout and navigation is functional and well thought out
-							with the layers of polish applied through bespoke animation, transitions and subtle effects only serving to enrich the experience. So often effects and flourishes are inconsistent with the overall flow of
-							the site but these simply contribute to the overall experiential nature of the site.” <br />
-							<span class="quote">&mdash; Morgan Martin-Skerm <span class="opacity">(AGDA Juror)</span></span>
-						</p>
-					</blockquote>
-				</section>
-
-				<section>
-					<h4>Featured</h4>
-					<p class="small">
-						<a href="https://itsnicethat.com/articles/klim-dia-sohne-graphic-design-101219">It’s Nice That</a>, Communication Arts, Muzli By InVision,
-						<a href="https://eyeondesign.aiga.org/a-modern-sans-serif-infused-with-the-spirit-of-the-nyc-subway/">AIGA: Eye On Design</a>, Creative Boom, AGI, CSSDSGN, CSS Tricks, CSS Winner, CSS Boutique, Type Wolf, The
-						Gallery, Httpster, The FWA, Awwwards, SiteInspire, North East, <a href="https://the-brandidentity.com/feed/klim-type-foundry-launches-new-typeface-sohne-kinetic-films-dia/">The Brand Identity</a>, UI Jar,
-						Mindsparkle Mag, Design Assembly, Crafted By Code
-					</p>
-				</section>
-			</main>
-
-			<footer>
-				<p class="arrow"><a href="/archiving/klim-type-foundry/#beginning" onclick="fathom.trackGoal('GRB0XXWJ', 0);">&uarr;</a></p>
-				<ul>
-					<li><a href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="Home. Sweet. Home.">Home</a></li>
-					<li><a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
-					<li><a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
-					<li><a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
-				</ul>
-				<ul>
+<body id="beginning" class="work">
+	<!-- ARCHIVE BANNER -->
+	<div class="archive-banner">
+		This version <span class="opacity-light">(v4.0)</span> is now archived.<br class="desktop" /> View the <a
+			href="/">latest version</a> <span class="opacity-light">(v5.0) &rarr;</span>
+	</div>
+	<!-- CONTENT -->
+	<div class="container">
+		<nav>
+			<ul>
+				<li><a class="URL" href="/archiving/v4/" title="Home. Sweet. Home.">dan.newman.is</a> <span
+						class="desktop opacity">&nbsp; / &nbsp;</span></li>
+				<li class="opacity">
+					Archiving <span class="opacity-light">(v4.0)</span>
+				</li>
+				<li><a class="anchor" href="/archiving/v4/contactable/" title="Send. Me. Email.">Contact</a></li>
+				<li><a class="anchor" href="/archiving/v4/informing/" title="Me. Me. Me.">About</a></li>
+				<li><a class="anchor" href="/archiving/v4/designing/" title="Werk. Werk. Werk.">Work</a></li>
+			</ul>
+			<div class="mobile menu">
+				<ul id="menu" class="hide">
+					<li><a href="/archiving/v4/designing/">Work</a></li>
 					<li>
-						<a class="hover" href="/imagining/" onclick="fathom.trackGoal('JWBK6JUK', 0);" title="Dan Newman’s AI Work."><span class="opacity">~/imagining</span></a>
+						<a href="/archiving/axiom/"><span class="opacity">&#8985; Axiom</span></a>
+						<a href="/archiving/klim-type-foundry/"><span class="opacity">&#8985; Klim Type Foundry</span></a> <a
+							href="/archiving/stedi/"><span class="opacity">&#8985; Stedi</span></a>
+						<a href="/archiving/springload/"><span class="opacity">&#8985; Springload</span></a> <a
+							href="/archiving/delivereasy/"><span class="opacity">&#8985; Delivereasy</span></a>
+						<a href="/archiving/te-papa/"><span class="opacity">&#8985; Te Papa</span></a>
 					</li>
-					<li>
-						<a class="hover" href="/experimenting/" onclick="fathom.trackGoal('7DA3M1EU', 0);" title="Dan Newman’s Neue Work."><span class="opacity">~/experimenting</span></a>
-					</li>
-					<li>
-						<a class="hover" href="/archiving/" onclick="fathom.trackGoal('7T4ND1TC', 0);" title="Dan Oldman’s Alt Work."><span class="opacity">~/archiving</span></a>
-					</li>
-				</ul>
-				<p>
-					<a href="https://github.com/danserif/dan.newman.is/raw/master/filing/Résumé%20–%20Dan%20Newman%20–%202025.pdf" onclick="fathom.trackGoal('URO8EAAU', 0);" title="📄">Download Résumé</a>
-					<span class="opacity">(PDF)</span>
-				</p>
-
-				<div class="socials">
-					<p class="opacity">@danserif &rarr;</p>
-					<ul>
-						<li><a href="https://linkedin.com/in/danserif" onclick="fathom.trackEvent('LinkedIn', 0);" title="💼">LinkedIn</a> <span class="opacity">/</span></li>
-						<li><a href="https://github.com/danserif" onclick="fathom.trackEvent('GitHub', 0);" title="💾">GitHub</a> <span class="opacity">/</span></li>
-						<li><a href="https://bsky.app/profile/danserif.com" onclick="fathom.trackEvent('Bluesky', 0);" title="🦋">Bluesky</a> <span class="opacity">/</span></li>
-						<li><a href="https://cosmos.so/danserif" onclick="fathom.trackEvent('Cosmos', 0);" title="🔭">Cosmos</a> <span class="opacity">/</span></li>
-						<li><a href="https://letterboxd.com/danserif" onclick="fathom.trackEvent('Letterboxd', 0);" title="🎬">Letterboxd</a> <span class="opacity">/</span></li>
-						<li><a href="https://glass.photo/danserif" onclick="fathom.trackEvent('Glass', 0);" title="📸">Glass</a> <span class="opacity">/</span></li>
-						<li><a href="https://instagram.com/danserif" onclick="fathom.trackEvent('Instagram', 0);" title="📷">Instagram</a> <span class="opacity">/</span></li>
-						<li><a href="https://threads.net/@danserif" onclick="fathom.trackEvent('Threads', 0);" title="🧵">Threads</a> <span class="opacity">/</span></li>
-						<li><a href="https://mastodon.social/@danserif" onclick="fathom.trackEvent('Mastodon', 0);" title="🐘">Mastodon</a> <span class="opacity">/</span></li>
-						<li>
-							<s><a href="https://twitter.com/danserif" onclick="fathom.trackEvent('Twitter', 0);" title="💀">Twitter</a></s>
-						</li>
-					</ul>
-				</div>
-
-				<hr />
-
-				<div class="logo">
-					<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
-						<style>
-							.st0 {
-								fill: #ffffff;
-							}
-						</style>
-						<path
-							d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
-							class="st0"
-						/>
-						<path
-							d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
-							style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff"
-						/>
-					</svg>
-					<p>&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></p>
-					<p class="opacity">
-						The original Braun logo was designed by Will Münch in the 1930s (then updated by Wolfgang Schmittel in the 1950s). This homage is based on the 1990s version used today, and yes, I’m a
-						<a href="https://en.wikipedia.org/wiki/Braun_(company)">Braun</a> nerd and <a href="https://en.wikipedia.org/wiki/Dieter_Rams">Dieter Rams</a> fan.
-					</p>
-				</div>
-
-				<p>
-					<a class="hover uppercase" href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="You. Are. Here.">dan.newman.is</a> &nbsp; <span class="opacity">/</span> &nbsp;
-					<a class="hover uppercase" href="/now/" onclick="fathom.trackEvent('Now');">Now &rarr;</a>
 					<br />
-					<span class="opacity">Copyright &copy; 1982—2026.</span>
+					<li><a href="/archiving/v4/informing/">About</a></li>
+					<li><a href="/archiving/v4/contactable/">Contact</a></li>
+					<br />
+					<li>
+						<a href="/archiving/v4/imagining/"><span class="opacity">~/imagining</span></a>
+					</li>
+					<li>
+						<a href="/archiving/v4/experimenting/"><span class="opacity">~/experimenting</span></a>
+					</li>
+					<li>
+						<a href="/archiving/"><span class="opacity">~/archiving</span></a>
+					</li>
+					<br />
+					<li>
+						<span class="opacity">v4.0</span> <span class="opacity-dark">(Archvived)</span>
+					</li>
+					<li class="logo">
+						<a href="/archiving/v4/">
+							<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0"
+								style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
+								<style>
+									.st0 {
+										fill: #ffffff;
+									}
+								</style>
+								<path
+									d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
+									class="st0" />
+								<path
+									d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
+									style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff" />
+							</svg>
+						</a>
+						<span class="opacity">&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></span>
+					</li>
+				</ul>
+				<a href="javascript:void(0);" onclick="mobileMenu()">
+					<i class="icon">
+						<svg width="15" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M.75.75h14M.75 10.75h14M.75 5.75h14" stroke="#fff" stroke-linejoin="round" />
+						</svg></i>
+				</a>
+				<script>
+					function mobileMenu() {
+						var x = document.getElementById("menu");
+						if (x.style.display === "block") {
+							x.style.display = "none";
+						} else {
+							x.style.display = "block";
+						}
+					}
+				</script>
+			</div>
+		</nav>
+
+		<header>
+			<h1 id="intro">Klim Type Foundry</h1>
+			<h2 class="opacity">Fonts. Typography. Glyphs. Design. Development. Research. Grids. Specimens. Foundries. Josef
+				Müller-Brockmann. Söhne. Signifier.</h2>
+			<section>
+				<table>
+					<tr>
+						<td><span class="opacity">Client</span></td>
+						<td>Klim Type Foundry</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Project</span></td>
+						<td>Neue Klim</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Years</span></td>
+						<td>2018—2020</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Location</span></td>
+						<td>Wellington</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Role</span></td>
+						<td>Creative Director</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Agency</span></td>
+						<td>Springload</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Category</span></td>
+						<td>Ecommerce</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Format</span></td>
+						<td>Digital</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">Fonts</span></td>
+						<td>Söhne, Söhne Mono, Signifier</td>
+					</tr>
+					<tr>
+						<td><span class="opacity">URL</span></td>
+						<td><a href="https://klim.co.nz">klim.co.nz</a></td>
+					</tr>
+				</table>
+			</section>
+			<p class="arrow"><a href="/archiving/klim-type-foundry/#archiving">&darr;</a></p>
+		</header>
+
+		<main>
+			<!-- WORK -->
+			<section class="images">
+				<h3 id="archiving">Work</h3>
+				<div class="row">
+					<div class="column-100">
+						<img
+							srcset="/filing/v4/images/klim/klim-homepage-montage.jpg 1x, /filing/v4/images/klim/klim-homepage-montage-2x.jpg 2x"
+							style="width: 100%" alt="Klim Homepage Montage" />
+						<p class="caption">
+							Montage of the <a href="https://klim.co.nz">klim.co.nz</a> homepage. <br class="desktop" /><span
+								class="opacity">Söhne Collection campaign animations by <a href="https://dia.tv">DIA</a>.</span>
+						</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-mobile-montage.jpg 1x, /filing/v4/images/klim/klim-mobile-montage-2x.jpg 2x"
+							style="width: 100%" alt="Klim Mobile Montage" />
+						<p class="caption">Various responsive mobile designs.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="column-100">
+						<div style="padding: 56.25% 0 0 0; position: relative">
+							<iframe title="Klim Promotional Video"
+								src="https://player.vimeo.com/video/386074471?h=027022db0a&autoplay=1&loop=1&color=ffffff&title=0&byline=0&portrait=0"
+								style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" frameborder="0"
+								allow="autoplay; fullscreen; picture-in-picture" allowfullscreen alt="Klim Promotional Video"></iframe>
+						</div>
+						<script src="https://player.vimeo.com/api/player.js"></script>
+						<p class="caption">
+							Promotional video created for the launch of the site. <span class="opacity">Produced by <a
+									href="https://benwright.co.nz">Ben Wright</a>.</span>
+						</p>
+						<hr class="large" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="column-40">
+						<img srcset="/filing/v4/images/klim/klim-homepage.png 1x, /filing/v4/images/klim/klim-homepage-2x.png 2x"
+							style="width: 100%" alt="Klim Homepage" />
+						<p class="caption">Homepage</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-soehne-cart.png 1x, /filing/v4/images/klim/klim-soehne-cart-2x.png 2x"
+							style="width: 100%" alt="Josef Müller-Brockmann Homage" />
+						<p class="caption">Josef Müller-Brockmann Homage</p>
+						<img srcset="/filing/v4/images/klim/klim-menu.png 1x, /filing/v4/images/klim/klim-menu-2x.png 2x"
+							style="width: 100%" alt="Klim Menu" />
+						<p class="caption">Menu</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-heldane-design-information.png 1x, /filing/v4/images/klim/klim-heldane-design-information-2x.png 2x"
+							style="width: 100%" alt="Heldane Design Information" />
+						<p class="caption"><a href="https://klim.co.nz/blog/heldane-design-information/">Heldane Design
+								Information</a></p>
+						<img
+							srcset="/filing/v4/images/klim/klim-font-licence.png 1x, /filing/v4/images/klim/klim-font-licence-2x.png 2x"
+							style="width: 100%" alt="Font Licence" />
+						<p class="caption"><a href="https://klim.co.nz/licences/desktop-fonts/">Desktop Font Licence Agreement</a>
+						</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-geograph-specimen.png 1x, /filing/v4/images/klim/klim-geograph-specimen-2x.png 2x"
+							style="width: 100%" alt="Geograph Specimen" />
+						<p class="caption"><a href="https://klim.co.nz/retail-fonts/geograph/">Geograph Specimen</a></p>
+						<img
+							srcset="/filing/v4/images/klim/klim-geograph-glyphs.png 1x, /filing/v4/images/klim/klim-geograph-glyphs-2x.png 2x"
+							style="width: 100%" alt="Geograph Glyphs" />
+						<p class="caption">Geograph Glyphs</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-financier-specimen.png 1x, /filing/v4/images/klim/klim-financier-specimen-2x.png 2x"
+							style="width: 100%" alt="Financier Display Specimen" />
+						<p class="caption"><a href="https://klim.co.nz/retail-fonts/financier-display/">Financier Display
+								Specimen</a></p>
+						<img
+							srcset="/filing/v4/images/klim/klim-financier-glyphs.png 1x, /filing/v4/images/klim/klim-financier-glyphs-2x.png 2x"
+							style="width: 100%" alt="Financier Display Glyphs" />
+						<p class="caption">Financier Display Glyphs</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-custom-fonts.png 1x, /filing/v4/images/klim/klim-custom-fonts-2x.png 2x"
+							style="width: 100%" alt="Custom Fonts" />
+						<p class="caption"><a href="https://klim.co.nz/custom-fonts/">Custom Fonts</a></p>
+						<img srcset="/filing/v4/images/klim/klim-blog.jpg 1x, /filing/v4/images/klim/klim-blog-2x.jpg 2x"
+							style="width: 100%" alt="Klim Blog" />
+						<p class="caption"><a href="https://klim.co.nz/blog/">Blog</a></p>
+						<img
+							srcset="/filing/v4/images/klim/klim-fonts-in-use.jpg 1x, /filing/v4/images/klim/klim-fonts-in-use-2x.jpg 2x"
+							style="width: 100%" alt="Fonts In Use" />
+						<p class="caption"><a href="https://klim.co.nz/in-use/">Fonts In Use</a></p>
+					</div>
+					<div class="column-60">
+						<img
+							srcset="/filing/v4/images/klim/klim-soehne-specimen.png 1x, /filing/v4/images/klim/klim-soehne-specimen-2x.png 2x"
+							style="width: 100%" alt="Söhne Specimen" />
+						<p class="caption"><a href="https://klim.co.nz/retail-fonts/soehne/">Söhne Specimen</a></p>
+						<img
+							srcset="/filing/v4/images/klim/klim-untitled-cart.png 1x, /filing/v4/images/klim/klim-untitled-cart-2x.png 2x"
+							style="width: 100%" alt="Untitled Serif Cart" />
+						<p class="caption">Untitled Serif Cart</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-untitled-specimen.png 1x, /filing/v4/images/klim/klim-untitled-specimen-2x.png 2x"
+							style="width: 100%" alt="Untitled Sans Specimen" />
+						<p class="caption"><a href="https://klim.co.nz/retail-fonts/untitled-sans/">Untitled Sans Specimen</a></p>
+						<img
+							srcset="/filing/v4/images/klim/klim-heldane-cart.png 1x, /filing/v4/images/klim/klim-heldane-cart-2x.png 2x"
+							style="width: 100%" alt="Heldane Text Cart" />
+						<p class="caption">Heldane Text Cart</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-heldane-specimen.png 1x, /filing/v4/images/klim/klim-heldane-specimen-2x.png 2x"
+							style="width: 100%" alt="Heldane Display Specimen" />
+						<p class="caption"><a href="https://klim.co.nz/retail-fonts/heldane-display/">Heldane Display Specimen</a>
+						</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-pure-pākati.jpg 1x, /filing/v4/images/klim/klim-pure-pākati-2x.jpg 2x"
+							style="width: 100%" alt="Pure Pākati Specimen" />
+						<p class="caption"><a href="https://klim.co.nz/custom-fonts/pure-pakati/">Pure Pākati Specimen</a></p>
+						<img srcset="/filing/v4/images/klim/klim-mobile.png 1x, /filing/v4/images/klim/klim-mobile-2x.png 2x"
+							style="width: 100%" alt="Klim Mobile" />
+						<p class="caption">Mobile</p>
+					</div>
+				</div>
+				<hr class="large" />
+				<h3>Process</h3>
+				<div class="row">
+					<div class="column-40">
+						<img
+							srcset="/filing/v4/images/klim/klim-bugs-process.jpg 1x, /filing/v4/images/klim/klim-bugs-process-2x.jpg 2x"
+							style="width: 100%" alt="Klim Bugs" />
+						<p class="caption opacity">Screenshots of mobile bugs.</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-design-process.jpg 1x, /filing/v4/images/klim/klim-design-process-2x.jpg 2x"
+							style="width: 100%" alt="Springload Desk" />
+						<p class="caption opacity">Photo of a computer testing custom font specimens.</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-menu-process.jpg 1x, /filing/v4/images/klim/klim-menu-process-2x.jpg 2x"
+							style="width: 100%" alt="Klim Menus" />
+						<p class="caption opacity">An alternative menu design.</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-glyph-process.jpg 1x, /filing/v4/images/klim/klim-glyph-process-2x.jpg 2x"
+							style="width: 100%" alt="Klim Glyphs" />
+						<p class="caption opacity">An alternative design for viewing glyphs.</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-dinz-presentation-process.jpg 1x, /filing/v4/images/klim/klim-dinz-presentation-process-2x.jpg 2x"
+							style="width: 100%" alt="DINZ Presentation" />
+						<p class="caption opacity">Photo of nerds at the DINZ Best of the Best — Designers Speak® presentation.</p>
+					</div>
+					<div class="column-60">
+						<img
+							srcset="/filing/v4/images/klim/klim-dinz-presentation-research.jpg 1x, /filing/v4/images/klim/klim-dinz-presentation-research-2x.jpg 2x"
+							style="width: 100%" alt="DINZ Presentation" />
+						<p class="caption opacity">Photo of nerds at the DINZ Best of the Best — Designers Speak® presentation.</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-specs-process.jpg 1x, /filing/v4/images/klim/klim-specs-process-2x.jpg 2x"
+							style="width: 100%" alt="Klim Specs" />
+						<p class="caption opacity">Various screenshots specifing interaction states, text decorations, spacing, and
+							alignment.</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-research-process.jpg 1x, /filing/v4/images/klim/klim-research-process-2x.jpg 2x"
+							style="width: 100%" alt="Klim Research" />
+						<p class="caption opacity">Montage of images from the research, competitor analysis, and user testing
+							process.</p>
+						<img
+							srcset="/filing/v4/images/klim/klim-paper-process.jpg 1x, /filing/v4/images/klim/klim-paper-process-2x.jpg 2x"
+							style="width: 100%" alt="Klim Printed" />
+						<p class="caption opacity">Photos of the printed designs and research.</p>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h4>Information</h4>
+				<p class="intro">
+					The <a href="https://klim.co.nz">Klim Type Foundry</a> launched a completely redesigned site “to put the
+					designer at the heart of the type browsing, buying, and learning experience”. An integral part of the
+					redesign is <a href="https://klim.co.nz/retail-fonts/soehne/">Söhne</a>, a collection of new typefaces
+					described as “the memory of Akzidenz-Grotesk framed through the reality of Helvetica”.
 				</p>
-			</footer>
-		</div>
-	</body>
+				<p>
+					Inspiration for the redesign came from mainly places, but primarily classic Swiss design principles as well as
+					practitioners
+					<a href="https://en.wikipedia.org/wiki/Josef_Müller-Brockmann">Josef Müller-Brockmann</a>, Wim Crouwel, Romek
+					Marber and Karl Gerstner.
+				</p>
+				<p>
+					Inspecting the browser console reveals an homage to Josef Müller-Brockmann’s book <a
+						href="https://niggli.ch/en/grid-systems-in-graphic-design.html">Grid Systems in Graphic Design</a>. Pressing
+					<code class="opacity small">Ctrl+Alt+Shift+g</code> displays the underlying grid of the site, and on type
+					specimen pages you can toggle page colour by the icon in the navigation or with
+					<code class="opacity small">Ctrl+Alt+Shift+t</code> on your keyboard. Experimenting with these commands
+					results in recreating the book cover if you can find the right specimen and theme.
+				</p>
+				<blockquote>
+					<p>
+						“Ahhh this JMB throwback theme + grid easter egg on the @klimtypefoundry Klim/Söhne website is awesome (as
+						is the typeface)!” <br />
+						<span class="quote">&mdash; <a
+								href="https://twitter.com/negativespaceca/status/1199869677801005056?s=20">Thomas Lowry</a> <span
+								class="opacity">(Twitter User)</span></span>
+					</p>
+				</blockquote>
+				<p>
+					Alongside the inspiration for the site, the redesign was further informed by extensive research into other
+					type foundries as well as interviews with existing and potential customers. It also included
+					usability testing of the old site and prototypes of initial concepts (in design software and code) to validate
+					numerous design details and approaches. This research and testing helped to discover what
+					challenges people face when licensing fonts and the expectations they have of a foundry site.
+				</p>
+				<p>
+					After a year of near constant design and development the new site showcases the breadth of Klim’s work in type
+					design, but also the foundry’s gallery exhibitions, collaborations, publications, goods,
+					photography, animations and videos.
+				</p>
+				<p>
+					A personal highlight of the redesign is the random generation of type specimens. Each time a page loads a set
+					of predefined rules for how typefaces should be presented is parsed over a corpus looking for
+					words, sentences, and paragraphs to programatically display as unique specimens. The redesigned specimens
+					encourage experimentation before purchasing; people can view OpenType features, change alignment, add
+					columns, adjust line-height and letter-spacing with an interactive type tester, and review and test full
+					character sets in the form of a glyph inspector with a ‘bézier view’.
+				</p>
+				<p>Speaking of specimens, after much hard work it has been humbling to see the response and feedback from the
+					design community.</p>
+				<blockquote>
+					<p>
+						“The Söhne type specimen from @klimtypefoundry is a delight. A masterclass in considered interaction design,
+						usefulness, and inspiration.” <br />
+						<span class="quote">&mdash; <a href="https://twitter.com/markboulton/status/1199065671025475584?s=20">Mark
+								Boulton</a> <span class="opacity">(Twitter User)</span></span>
+					</p>
+				</blockquote>
+				<p>
+					The site’s writing sections have also been brought to the fore and extended. The <a
+						href="https://klim.co.nz/blog/">blog</a> aggregates and displays the word count for each category currently
+					on the site. For
+					example, there are 27,544 words about letters in the interview category and 25,386 words in the font
+					information category. The <a href="https://klim.co.nz/in-use/">in use</a> section, which shows the extent
+					of Klim typefaces ‘in the wild’, has an improved filter to allow design work to be reviewed by typeface, and
+					by category, and retail font specimen pages also now display related in-use examples.
+				</p>
+				<blockquote>
+					<p>
+						“The new @klimtypefoundry website is a thing of beauty. Simple, highly functional and so much polish. Fonts
+						are pretty good too.” <br />
+						<span class="quote">&mdash; <a href="https://twitter.com/twandco/status/1199035772336107520?s=20">Thomas
+								Williams</a> <span class="opacity">(Twitter User)</span></span>
+					</p>
+				</blockquote>
+				<p>
+					Finally, under the hood there is a statically-generated front-end and a GraphQL back-end as well as a custom
+					e-commerce experience that connects with Stripe for transactions, Django for managing fonts,
+					orders, and upgrades, and Wagtail for content management.
+				</p>
+				<hr />
+			</section>
+
+			<section>
+				<h4>Credits</h4>
+				<ul>
+					<li>Kris Sowersby <span class="opacity">(Client)</span></li>
+					<li>Dan Newman, Zak Brown <span class="opacity">(Design)</span></li>
+					<li>
+						Peter Dekkers, Mitch Ryan, Katie Day, Dean Oemcke, Juliet Brown, Matthew Holloway, <br class="hide" />
+						Eugene Dementiev, Calin Dale <span class="opacity">(Development)</span>
+					</li>
+					<li>Kanhika Nikam <span class="opacity">(Research)</span></li>
+					<li><a href="https://dia.tv">DIA</a>, <a href="http://altgroup.net">Alt Group</a> <span
+							class="opacity">(Collaborators)</span></li>
+				</ul>
+			</section>
+
+			<section>
+				<h4>Awards</h4>
+				<ul>
+					<li>Certificate of Typographic Excellence from the <a href="https://tdc.org">Type Directors Club</a> <span
+							class="opacity">(2020)</span></li>
+					<li><a href="https://tdc.org">Type Directors Club</a>, Winner: Communication Design <span
+							class="opacity">(2020)</span></li>
+					<li>Red Dot Award, Best of the Best: <a href="https://red-dot.org/project/klim-type-foundry-49210">Website</a>
+						<span class="opacity">(2020)</span></li>
+					<li>Red Dot Award, Best of the Best: <a
+							href="https://red-dot.org/project/klim-type-foundry-49020">Typography</a> <span
+							class="opacity">(2020)</span></li>
+					<li>AGDA Awards: Judge’s Choice, <a href="https://agda.com.au/awards/results/819">Website</a> <span
+							class="opacity">(2020)</span></li>
+					<li>AGDA Awards: Pinnacle, <a href="https://agda.com.au/awards/results/819">Website</a> <span
+							class="opacity">(2020)</span></li>
+					<li>AGDA Awards: Distinction, <a href="https://agda.com.au/awards/results/823">UX, Interface & Navigation</a>
+						<span class="opacity">(2020)</span></li>
+					<li>AGDA Awards: Distinction, <a href="https://agda.com.au/awards/results/820">Digital & Mobile</a> <span
+							class="opacity">(2020)</span></li>
+					<li>AGDA Awards: Distinction, <a href="https://agda.com.au/awards/results/830">Design Craft, Typography</a>
+						<span class="opacity">(2020)</span></li>
+					<li>DINZ Best Awards: Gold, <a
+							href="https://bestawards.co.nz/digital/large-scale-websites/springload/klim-type-foundry-1/">Large Scale
+							Websites</a> <span class="opacity">(2020)</span></li>
+					<li>DINZ Best Awards: Silver, <a
+							href="https://bestawards.co.nz/digital/user-experience/springload/klim-type-foundry-3/">User
+							Experience</a> <span class="opacity">(2020)</span></li>
+					<li>DINZ Best Awards: Silver, <a
+							href="https://bestawards.co.nz/digital/digital-products/springload/klim-type-foundry-2/">Digital
+							Products</a> <span class="opacity">(2020)</span></li>
+					<li>DINZ Best Awards: Bronze, <a
+							href="https://bestawards.co.nz/digital/digital-campaigns/springload/sohne-collection/">Digital
+							Campaigns</a> <span class="opacity">(2020)</span></li>
+					<li><a href="https://commarts.com">Communication Arts</a> Award of Excellence Winner: Typography Annual <span
+							class="opacity">(2020)</span></li>
+					<li><a href="https://dandad.org">D&AD</a> Shortlist: Digital Design, Digital Products <span
+							class="opacity">(2020)</span></li>
+					<li><a href="https://webbyawards.com">Webby Awards</a> Nominee: Best Visual Design <span
+							class="opacity">(2020)</span></li>
+					<li><a href="https://katoitoi.nz/archive/klim-2">Kātoitoi</a> Aotearoa Design Archive: Digital, Technical
+						Innovation <span class="opacity">(2020)</span></li>
+				</ul>
+				<blockquote>
+					<p>
+						“An impeccable grid structure, stunning visuals, and an interface that lets you test every detail of the
+						expertly crafted typography. Every interaction state and responsive break-point has been considered,
+						the site performs fast, and delivers true function and form to the user. The checkout and account creation
+						experience is extremely intuitive and does not break out of the conventions of the design aesthetic
+						the user is familiar with through the course of their journey.” <br />
+						<span class="quote">&mdash; Ahmed Meer <span class="opacity">(AGDA Juror)</span></span>
+					</p>
+				</blockquote>
+				<blockquote>
+					<p>
+						“Typefaces are not just products they are tools, therefore an entirely different approach is required, when
+						it comes to selling them. This approach has never been better exemplified than in Klim Type
+						Foundry's new website. The site is the clear culmination of in-depth research, technical knowledge, and
+						masterful design.” <br />
+						<span class="quote">&mdash; Luke Scott <span class="opacity">(AGDA Juror)</span></span>
+					</p>
+				</blockquote>
+				<blockquote>
+					<p>
+						“The Klim Type website has been implemented at an extremely high level with an attention to detail that is
+						absolutely world class. The basic design / layout and navigation is functional and well thought out
+						with the layers of polish applied through bespoke animation, transitions and subtle effects only serving to
+						enrich the experience. So often effects and flourishes are inconsistent with the overall flow of
+						the site but these simply contribute to the overall experiential nature of the site.” <br />
+						<span class="quote">&mdash; Morgan Martin-Skerm <span class="opacity">(AGDA Juror)</span></span>
+					</p>
+				</blockquote>
+			</section>
+
+			<section>
+				<h4>Featured</h4>
+				<p class="small">
+					<a href="https://itsnicethat.com/articles/klim-dia-sohne-graphic-design-101219">It’s Nice That</a>,
+					Communication Arts, Muzli By InVision,
+					<a href="https://eyeondesign.aiga.org/a-modern-sans-serif-infused-with-the-spirit-of-the-nyc-subway/">AIGA:
+						Eye On Design</a>, Creative Boom, AGI, CSSDSGN, CSS Tricks, CSS Winner, CSS Boutique, Type Wolf, The
+					Gallery, Httpster, The FWA, Awwwards, SiteInspire, North East, <a
+						href="https://the-brandidentity.com/feed/klim-type-foundry-launches-new-typeface-sohne-kinetic-films-dia/">The
+						Brand Identity</a>, UI Jar,
+					Mindsparkle Mag, Design Assembly, Crafted By Code
+				</p>
+			</section>
+		</main>
+
+		<footer>
+			<p class="arrow"><a href="/archiving/klim-type-foundry/#beginning">&uarr;</a></p>
+			<ul>
+				<li><a href="/archiving/v4/" title="Home. Sweet. Home.">Home</a></li>
+				<li><a href="/archiving/v4/designing/" title="Werk. Werk. Werk.">Work</a></li>
+				<li><a href="/archiving/v4/informing/" title="Me. Me. Me.">About</a></li>
+				<li><a href="/archiving/v4/contactable/" title="Send. Me. Email.">Contact</a></li>
+			</ul>
+			<ul>
+				<li>
+					<a class="hover" href="/archiving/v4/imagining/" title="Dan Newman’s AI Work."><span
+							class="opacity">~/imagining</span></a>
+				</li>
+				<li>
+					<a class="hover" href="/archiving/v4/experimenting/" title="Dan Newman’s Neue Work."><span
+							class="opacity">~/experimenting</span></a>
+				</li>
+				<li>
+					<a class="hover" href="/archiving/" title="Dan Oldman’s Alt Work."><span
+							class="opacity">~/archiving</span></a>
+				</li>
+			</ul>
+			<p>
+				<a href="https://github.com/danserif/dan.newman.is/raw/master/filing/v4/Résumé%20–%20Dan%20Newman%20–%202025.pdf"
+					title="📄">Download Résumé</a>
+				<span class="opacity">(PDF)</span>
+			</p>
+
+			<div class="socials">
+				<p class="opacity">@danserif &rarr;</p>
+				<ul>
+					<li><a href="https://linkedin.com/in/danserif" title="💼">LinkedIn</a> <span class="opacity">/</span></li>
+					<li><a href="https://github.com/danserif" title="💾">GitHub</a> <span class="opacity">/</span></li>
+					<li><a href="https://bsky.app/profile/danserif.com" title="🦋">Bluesky</a> <span class="opacity">/</span></li>
+					<li><a href="https://cosmos.so/danserif" title="🔭">Cosmos</a> <span class="opacity">/</span></li>
+					<li><a href="https://letterboxd.com/danserif" title="🎬">Letterboxd</a> <span class="opacity">/</span></li>
+					<li><a href="https://glass.photo/danserif" title="📸">Glass</a> <span class="opacity">/</span></li>
+					<li><a href="https://instagram.com/danserif" title="📷">Instagram</a> <span class="opacity">/</span></li>
+					<li><a href="https://threads.net/@danserif" title="🧵">Threads</a> <span class="opacity">/</span></li>
+					<li><a href="https://mastodon.social/@danserif" title="🐘">Mastodon</a> <span class="opacity">/</span></li>
+					<li>
+						<s><a href="https://twitter.com/danserif" title="💀">Twitter</a></s>
+					</li>
+				</ul>
+			</div>
+
+			<hr />
+
+			<div class="logo">
+				<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0"
+					style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
+					<style>
+						.st0 {
+							fill: #ffffff;
+						}
+					</style>
+					<path
+						d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
+						class="st0" />
+					<path
+						d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
+						style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff" />
+				</svg>
+				<p>&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></p>
+				<p class="opacity">
+					The original Braun logo was designed by Will Münch in the 1930s (then updated by Wolfgang Schmittel in the
+					1950s). This homage is based on the 1990s version used today, and yes, I’m a
+					<a href="https://en.wikipedia.org/wiki/Braun_(company)">Braun</a> nerd and <a
+						href="https://en.wikipedia.org/wiki/Dieter_Rams">Dieter Rams</a> fan.
+				</p>
+			</div>
+
+			<p>
+				<a class="hover uppercase" href="/archiving/v4/" title="You. Are. Here.">dan.newman.is</a> &nbsp; <span
+					class="opacity">/</span> &nbsp;
+				<span class="opacity">Archiving <span class="opacity-light">(v4.0)</span></span>
+				<br />
+				<span class="opacity">Copyright &copy; 1982—2026.</span>
+			</p>
+		</footer>
+	</div>
+</body>
+
 </html>
