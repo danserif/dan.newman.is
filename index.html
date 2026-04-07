@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<title>Dan Newman. Creative Director. Designer. List Maker.</title>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<meta name="description" content="Kia ora. Hello. I’m Dan Newman, a Creative Director and Designer from Te Whanganui-a-Tara/Wellington, Aotearoa/New Zealand." />
-		<meta name="author" content="Dan Newman" />
-		<meta name="copyright" content="Copyright Dan Newman, 2026" />
+	<title>Dan Newman. Creative Director. Designer. List Maker.</title>
 
-		<script type="application/ld+json">
+	<meta name="description"
+		content="Kia ora. Hello. I’m Dan Newman, a Creative Director and Designer from Te Whanganui-a-Tara/Wellington, Aotearoa/New Zealand." />
+	<meta name="author" content="Dan Newman" />
+	<meta name="copyright" content="Copyright Dan Newman, 2026" />
+
+	<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
 				"@type": "WebSite",
@@ -19,510 +21,192 @@
 			}
 		</script>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+	<link rel="canonical" href="https://dan.newman.is/" />
 
-		<link rel="stylesheet" href="/filing/css/styles.css" />
+	<script>
+		(function () {
+			try {
+				var savedMode = localStorage.getItem("colorMode");
+				if (savedMode === "light") document.documentElement.classList.add("light-mode");
+			} catch (e) { }
+		})();
+	</script>
 
-		<link rel="preload" href="/filing/fonts/soehne-buch.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-		<link rel="preload" href="/filing/fonts/soehne-dreiviertelfett.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-		<link rel="preload" href="/filing/fonts/soehne-leicht.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/filing/v5/css/styles.css" />
+	<link rel="preload" href="/filing/v5/fonts/berkeley-mono-regular.woff2" as="font" type="font/woff2" crossorigin />
 
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/favicon-16x16.png" sizes="16x16" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/favicon-32x32.png" sizes="32x32" />
-		<link rel="icon" type="image/png" href="https://dan.newman.is/filing/images/icons/icon.png" sizes="1024x1024" />
-		<link rel="apple-touch-icon" href="https://dan.newman.is/filing/images/icons/apple-touch-icon.png" sizes="1024x1024" />
-		<link rel="mask-icon" href="https://dan.newman.is/filing/images/icons/safari-pinned-tab.svg" color="#1e1e1e" />
+	<link rel="icon" type="image/png" href="/filing/v5/icons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="/filing/v5/icons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="/filing/v5/icons/icon-192x192.png" sizes="192x192" />
+	<link rel="icon" type="image/png" href="/filing/v5/icons/icon-512x512.png" sizes="512x512" />
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+	<link rel="apple-touch-icon" href="/filing/v5/icons/apple-touch-icon.png" sizes="180x180" />
+	<link rel="mask-icon" href="/filing/v5/icons/safari-pinned-tab.svg" color="#000000" />
 
-		<meta name="theme-color" content="#000000" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
 
-		<meta property="og:title" content="Dan Newman" />
-		<meta property="og:description" content="Kia ora. Hello. I’m Dan Newman, a Creative Director and Designer from Te Whanganui-a-Tara/Wellington, Aotearoa/New Zealand." />
-		<meta property="og:image" content="https://dan.newman.is/filing/images/opengraph-image.png" />
-		<meta property="og:image:alt" content="Dan Newman" />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
-		<meta property="og:site_name" content="dan.newman.is" />
+	<meta name="theme-color" content="#000000" />
 
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Dan Newman" />
-		<meta name="twitter:description" content="Kia ora. Hello. I’m Dan Newman, a Creative Director and Designer from Te Whanganui-a-Tara/Wellington, Aotearoa/New Zealand." />
-		<meta name="twitter:image" content="https://dan.newman.is/filing/images/opengraph-image.png" />
-		<meta name="twitter:site" content="@danserif" />
+	<meta property="og:title" content="Dan Newman" />
+	<meta property="og:description"
+		content="Kia ora. Hello. I’m Dan Newman, a Creative Director and Designer from Te Whanganui-a-Tara/Wellington, Aotearoa/New Zealand." />
+	<meta property="og:url" content="https://dan.newman.is/" />
+	<meta property="og:image" content="https://dan.newman.is/filing/v5/images/opengraph-image.png" />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:alt" content="Dan Newman" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:site_name" content="dan.newman.is" />
 
-		<meta name="google-site-verification" content="sBRXplaBSCl-HPax0zWddhXHqcW3rNIlB8difQcKjPg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Dan Newman" />
+	<meta name="twitter:description"
+		content="Kia ora. Hello. I’m Dan Newman, a Creative Director and Designer from Te Whanganui-a-Tara/Wellington, Aotearoa/New Zealand." />
+	<meta name="twitter:image" content="https://dan.newman.is/filing/v5/images/opengraph-image.png" />
+	<meta name="twitter:site" content="@danserif" />
 
-		<script src="https://cdn.usefathom.com/script.js" data-site="NJPLLGHN" defer></script>
-	</head>
+	<meta name="google-site-verification" content="sBRXplaBSCl-HPax0zWddhXHqcW3rNIlB8difQcKjPg" />
 
-	<body id="beginning" class="home">
-		<!-- CONTENT -->
-		<div class="container">
-			<nav>
-				<ul>
-					<li><a class="URL" href="/#starting" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="You. Are. Here.">dan.newman.is</a> <span class="desktop opacity">&nbsp; / &nbsp;</span></li>
-					<li class="opacity">
-						<a href="/now/" onclick="fathom.trackGoal('X3UAXYRH', 0);">Now (24—25) &rarr;</a>
-					</li>
-					<li>
-						<a class="anchor" href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a>
-					</li>
-					<li><a class="anchor" href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
-					<li><a class="anchor" href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
-				</ul>
-				<div class="mobile menu">
-					<ul id="menu" class="hide">
-						<li><a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);">Work</a></li>
-						<li>
-							<a href="/archiving/axiom/"><span class="opacity">&#8985; Axiom</span></a>
-							<a href="/archiving/klim-type-foundry/"><span class="opacity">&#8985; Klim Type Foundry</span></a> <a href="/archiving/stedi/"><span class="opacity">&#8985; Stedi</span></a>
-							<a href="/archiving/springload/"><span class="opacity">&#8985; Springload</span></a> <a href="/archiving/delivereasy/"><span class="opacity">&#8985; Delivereasy</span></a>
-							<a href="/archiving/te-papa/"><span class="opacity">&#8985; Te Papa</span></a>
-						</li>
-						<br />
-						<li><a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);">About</a></li>
-						<li><a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);">Contact</a></li>
-						<br />
-						<li>
-							<a href="/imagining/" onclick="fathom.trackGoal('JWBK6JUK', 0);"><span class="opacity">~/imagining</span></a>
-						</li>
-						<li>
-							<a href="/experimenting/" onclick="fathom.trackGoal('7DA3M1EU', 0);"><span class="opacity">~/experimenting</span></a>
-						</li>
-						<li>
-							<a href="/archiving/" onclick="fathom.trackGoal('7T4ND1TC', 0);"><span class="opacity">~/archiving</span></a>
-						</li>
-						<br />
-						<li>
-							<a href="/now/" onclick="fathom.trackEvent('Now');">Now <span class="opacity">(24—25) &rarr;</span></a>
-						</li>
-						<li class="logo">
-							<a href="/">
-								<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
-									<style>
-										.st0 {
-											fill: #ffffff;
-										}
-									</style>
-									<path
-										d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
-										class="st0"
-									/>
-									<path
-										d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
-										style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff"
-									/>
-								</svg>
-							</a>
-							<span class="opacity">&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></span>
-						</li>
-					</ul>
-					<a href="javascript:void(0);" onclick="mobileMenu()">
-						<i class="icon">
-							<svg width="15" height="12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.75.75h14M.75 10.75h14M.75 5.75h14" stroke="#fff" stroke-linejoin="round" /></svg
-						></i>
-					</a>
-					<script>
-						function mobileMenu() {
-							var x = document.getElementById("menu");
-							if (x.style.display === "block") {
-								x.style.display = "none";
-							} else {
-								x.style.display = "block";
-							}
-						}
-					</script>
-				</div>
-			</nav>
+	<script src="https://cdn.usefathom.com/script.js" data-site="NJPLLGHN" defer></script>
+</head>
 
-			<header>
-				<h1 id="starting">
-					<span class="opacity-light">Kia ora. Hello.</span> I’m <a href="/informing/">Dan Newman</a><span class="opacity">,</span> a Creative Director and Designer<br class="hide" />
-					from Te Whanganui-a-Tara<span class="opacity">/</span>Wellington<span class="opacity">,</span> Aotearoa<span class="opacity">/</span>New Zealand<span class="opacity">.</span>
-				</h1>
-				<h2 class="hide">
-					<span class="opacity-light">Mahi. Work.</span> Knolling<span class="opacity">,</span> <a href="/archiving/axiom/">Axiom</a><span class="opacity">,</span> <a href="/archiving/stedi/">Stedi</a
-					><span class="opacity">,</span> Callaghan Innovation<span class="opacity">,</span> Te Kunenga <br class="hide" />Ki Pūrehuroa, Massey University<span class="opacity">,</span>
-					<a href="/archiving/springload/">Te Pipītanga, Springload</a><span class="opacity">,</span> Forma11y<span class="opacity">,</span> <a href="/archiving/delivereasy/">Delivereasy</a
-					><span class="opacity">,</span> Springlabs<span class="opacity">,</span> Touchless<span class="opacity">,</span> Simple Trace<span class="opacity">,</span>
-					<a href="/archiving/klim-type-foundry/">Klim Type Foundry</a><span class="opacity">,</span> Austin Assessment<span class="opacity">,</span> MSD: Ratonga Taiohi, Youth Service<span class="opacity">,</span>
-					Inquisitive<span class="opacity">,</span> ACC<span class="opacity">,</span> DIA: NZGDS<span class="opacity">,</span> <a href="/archiving/te-papa/">Te Papa Tongarewa, Museum of New Zealand</a
-					><span class="opacity">,</span> <br class="hide" />
-					NZ Customs<span class="opacity">,</span> MTF<span class="opacity">,</span> Formway: Noho<span class="opacity">,</span> NOW<span class="opacity">,</span> Irirangi Te Motu, NZ On Air<span class="opacity">,</span>
-					Accuro<span class="opacity">,</span> Kiwibank<span class="opacity">,</span> Airwallex<span class="opacity">,</span> <a href="/archiving/#koordinates">Koordinates</a><span class="opacity">,</span> Meddbase<span
-						class="opacity"
-						>,</span
-					>
-					<a href="/archiving/#xero">Xero</a><span class="opacity">,</span> American Express<span class="opacity">,</span> Al Jazeera<span class="opacity">,</span> ODEON Cinemas<span class="opacity">,</span> France
-					Télévisions<span class="opacity">,</span> ESPN Cricinfo<span class="opacity">,</span> Travelex<span class="opacity">,</span> The Economist<span class="opacity">,</span> Virgin<span class="opacity">,</span> The
-					Telegraph<span class="opacity">,</span> <a href="/archiving/#tigerspike">Tigerspike</a><span class="opacity">,</span> Nintendo<span class="opacity">,</span> Spy Valley Wines<span class="opacity">,</span> Direct
-					FX<span class="opacity">,</span> Eklektus<span class="opacity">,</span> SPCA<span class="opacity">,</span> Icebreaker<span class="opacity">...</span>
-				</h2>
-				<h2 class="tablet">
-					Find out more <a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);">about</a> me (or my dog), view my latest <a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);">work</a>, what I’m doing
-					<a href="/now/" onclick="fathom.trackEvent('Now');">now</a>, or <a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);">get in touch</a>.
-				</h2>
-				<p class="arrow"><a href="/#latest">&darr;</a></p>
-			</header>
+<body class="page">
 
-			<main>
-				<!-- Latest -->
-				<section class="images">
-					<h3 id="latest">Latest</h3>
-					<div class="row">
-						<div class="column-80">
-							<!--[TDU]-->
-							<a href="https://danserif.com/newsletter/" onclick="fathom.trackGoal('Newsletter', 0);">
-								<img srcset="/filing/gifs/tdu-montage.gif" style="width: 100%; aspect-ratio: 1665 / 937" alt="[TDU]" />
-							</a>
-							<!-- FORM -->
-							<div class="form">
-								<p>
-									<a class="hover" href="https://danserif.com/newsletter/" onclick="fathom.trackGoal('Newsletter', 0);"
-										><span class="uppercase large">The Danserif Update</span> <span class="opacity large">[TDU]</span><br />
-										<span class="opacity">&#8985; <span class="opacity-light">https://</span>danserif.com<span class="opacity-light">/</span>newsletter</span></a
-									>
-								</p>
-								<p>An infrequently emailed update about life, work, design, branding, typography, photography, ASCII, AI, lists, and the Internet.</p>
-								<form id="subscribe-form" class="embeddable-buttondown-form">
-									<input class="email" type="email" name="email" id="bd-email" placeholder="Email" required />
-									<button id="subscribe-button" class="subscribe" type="submit">Subscribe</button>
-								</form>
-								<div class="disclaimer">
-									<p class="caption opacity-light">
-										Add
-										<a href="mailto:newsletter@danserif.com" title="📧" class="hover"
-											><span class="opacity-light">newsletter</span> <span class="opacity">[at]</span> <span class="opacity-light">danserif</span> <span class="opacity">[dot]</span>
-											<span class="opacity-light">com</span></a
-										>
-										to your contacts so my<br class="hide" />
-										emails dont’t end up in spam, and remember to opt in! <span class="opacity-light">\m/</span>
-									</p>
-								</div>
-							</div>
-							<script>
-								const form = document.getElementById("subscribe-form");
-								const button = document.getElementById("subscribe-button");
+	<!-- HEADER -->
+	<header>
+		<img class="logo" src="/filing/v5/assets/logo.svg" alt="DAN" width="121" height="90" />
+		<p class="logo-caption">
+			<span class="opacity-25">&#8985;</span> <span class="opacity-50">logo.svg</span>
+			<span class="opacity-25">(Braun &amp; Dieter Rams Homage)</span>
+		</p>
+	</header>
 
-								form.addEventListener("submit", async function (e) {
-									e.preventDefault(); // Stop normal form
-
-									const email = document.getElementById("bd-email").value;
-
-									// Disable button and change text
-									button.disabled = true;
-									button.innerText = "Submitting...";
-
-									try {
-										await fetch("https://buttondown.com/api/emails/embed-subscribe/danserif", {
-											method: "POST",
-											headers: {
-												"Content-Type": "application/x-www-form-urlencoded",
-											},
-											body: new URLSearchParams({ email }),
-										});
-
-										if (window.fathom) fathom.trackEvent("Subscribe");
-
-										// Redirect to ~/thanks
-										window.location.href = "https://danserif.com/thanks/";
-									} catch (error) {
-										console.error("Subscription failed:", error);
-										alert("Oops! Something went wrong. Please try again.");
-
-										// Re-enable button and reset text if error
-										button.disabled = false;
-										button.innerText = "Subscribe";
-									}
-								});
-							</script>
-						</div>
-						<div class="column-20">
-							<ul class="mono tiny">
-								<li class="opacity">tdu-montage.gif <span class="opacity-light">(2.7 MB)</span></li>
-								<br />
-								<li><span class="opacity">01</span> <span class="opacity">[TDU]</span> Stamps</li>
-								<li><span class="opacity">02</span> ASCII <span class="opacity">Sent</span></li>
-								<li><span class="opacity">03</span> ASCII <span class="opacity">Delivered</span></li>
-								<li><span class="opacity">04</span> <span class="opacity uppercase">(Design)</span> \m/</li>
-								<li><span class="opacity">05</span> Capital Letter D <span class="opacity">(Custom)</span></li>
-								<li><span class="opacity">06</span> DANDR<span class="opacity-light">Ø</span>IDS</li>
-								<li><span class="opacity">07</span> Stamps <span class="opacity">(Sheets)</span></li>
-								<li class="uppercase"><span class="opacity">08</span> Mini-Disk <span class="opacity">5,25”</span></li>
-								<li><span class="opacity">09</span> TDU-01 <span class="opacity">/</span> TDU-12</li>
-								<li><span class="opacity">10</span> <span class="opacity">[TDU]</span> Logo</li>
-								<li><span class="opacity">11</span> <span class="opacity"><</span>HTML<span class="opacity">/></span> <span class="opacity">+</span> CSS<span class="opacity">{}</span></li>
-								<li><span class="opacity">12</span> <span class="opacity">0% [ _ _ _ _ _ ] 100%</span></li>
-								<li><span class="opacity">13</span> <span class="opacity">0% [</span> █ ▄ <span class="opacity">_ _ _ ] 100%</span></li>
-								<li><span class="opacity">14</span> <span class="opacity">0% [</span> █ █ █ ▄ <span class="opacity">_ ] 100%</span></li>
-								<li><span class="opacity">15</span> Faces <span class="opacity">(^_^)/~</span></li>
-								<li><span class="opacity">16</span> <span class="opacity">Adventures of</span> Dandan</li>
-								<li><span class="opacity">17</span> <span class="opacity">&</span> Ada <span class="opacity">(Hergé + ChatGPT)</span></li>
-								<li class="uppercase"><span class="opacity">18</span> Video Cassette <span class="opacity">D-120</span></li>
-								<li><span class="opacity">19</span> ASCII <span class="opacity">Newsletter</span></li>
-								<li><span class="opacity">20</span> <span class="opacity">[TDU]</span> Details</li>
-								<br />
-								<li class="hide"><span class="opacity">[]</span> <a class="hover" href="https://danserif.com/newsletter/" onclick="fathom.trackGoal('Newsletter', 0);">Subscribe &rarr;</a></li>
-							</ul>
-						</div>
-					</div>
-					<!--<hr class="full hide" />
-					<div class="featured hide">
-						<p>I currently run Knolling, a design studio and family office.</p>
-						<p>Previously I was Head of Design at <a href="/archiving/axiom/">Axiom</a>, a logging and observability <code class="opacity">[o11y]</code> product for engineers.</p>
-						<p class="hide">
-							You can find out more <a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);">about</a> me <span class="opacity">(or my dog),</span> view my latest
-							<a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);">work</a>, see what I’m doing <a href="/now/" onclick="fathom.trackEvent('Now');">now</a>, or
-							<a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);">get in touch</a>.
-						</p>
-					</div>-->
-				</section>
-
-				<!-- Work -->
-				<section class="images">
-					<h3 id="archiving">Work</h3>
-					<div class="row">
-						<div class="column-100">
-							<!-- Axiom -->
-							<a href="/archiving/axiom/"> <img srcset="/filing/images/home/asciiom-homepage.jpg 1x, /filing/images/home/asciiom-homepage-2x.jpg 2x" style="width: 100%; aspect-ratio: 1680 / 1090"" alt="Axiom" /> </a>
-							<p class="caption">
-								<a href="/archiving/axiom/">Axiom</a>
-								<span class="opacity"
-									>(2022—2025) <br />
-									Logs. Looogs. Loooooogs. Loooooooooogs.</span
-								>
-							</p>
-							<!-- Klim Type Foundry -->
-							<a href="/archiving/klim-type-foundry/">
-								<img srcset="/filing/images/home/klim-mobile-montage.jpg 1x, /filing/images/home/klim-mobile-montage-2x.jpg 2x" style="width: 100%; aspect-ratio: 1665 / 1178" alt="Klim Type Foundry" />
-							</a>
-							<p class="caption">
-								<a href="/archiving/klim-type-foundry/">Klim Type Foundry</a>
-								<span class="opacity"
-									>(2018—2020) <br />
-									Fonts. Typography. Glyphs. Design.</span
-								>
-							</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="column-60">
-							<!-- Delivereasy -->
-							<a href="/archiving/delivereasy/">
-								<img srcset="/filing/images/home/delivereasy-posters.jpg 1x, /filing/images/home/delivereasy-posters-2x.jpg 2x" style="width: 100%; aspect-ratio: 1035 / 773" alt="Delivereasy" />
-							</a>
-							<p class="caption">
-								<a href="/archiving/delivereasy/">Delivereasy</a>
-								<span class="opacity"
-									>(2020) <br />
-									Woodfired Pizzas. “Kiwi Hot” Curries. Drinks. Deliveries.</span
-								>
-							</p>
-							<!-- Stedi -->
-							<a href="/archiving/stedi/"><img srcset="/filing/images/home/stedi-laptop.jpg 1x, /filing/images/home/stedi-laptop-2x.jpg 2x" style="width: 100%; aspect-ratio: 1035 / 773" alt="Stedi" /></a>
-							<p class="caption">
-								<a href="/archiving/stedi/">Stedi</a>
-								<span class="opacity"
-									>(2021—2022) <br />
-									EDI. X12. Integrations. Developers.</span
-								>
-							</p>
-						</div>
-						<div class="column-40">
-							<!-- Springload -->
-							<a href="/archiving/springload/"><img srcset="/filing/images/home/springload-gin.jpg 1x, /filing/images/home/springload-gin-2x.jpg 2x" style="width: 100%; aspect-ratio: 615 / 435" alt="Springload" /></a>
-							<p class="caption">
-								<a href="/archiving/springload/">Springload</a>
-								<span class="opacity"
-									>(2017—2021) <br />
-									Agency. Websites. Design. Branding.</span
-								>
-							</p>
-							<!-- Te Papa -->
-							<a href="/archiving/te-papa/"
-								><img srcset="/filing/images/home/tepapa-quake-nation.jpg 1x, /filing/images/home/tepapa-quake-nation-2x.jpg 2x" style="width: 100%; aspect-ratio: 615 / 435" alt="Te Papa"
-							/></a>
-							<p class="caption">
-								<a href="/archiving/te-papa/">Te Papa</a>
-								<span class="opacity"
-									>(2019) <br />
-									Earthquakes. Seismic Data. Topographic. Fault Lines.</span
-								>
-							</p>
-						</div>
-					</div>
-
-					<div class="bonus-row">
-						<div class="column-40">
-							<!-- Experimenting -->
-							<a href="/experimenting/"><img srcset="/filing/images/home/experiments.jpg 1x, /filing/images/home/experiments-2x.jpg 2x" style="width: 100%; aspect-ratio: 615 / 435" alt="Experiments" /></a>
-							<p class="caption">
-								<a href="/experimenting/">Experimenting</a> <span class="opacity">(2000—Present)</span> <br />
-								<span class="opacity">WIP. Side Projects. Screenshots. Mockups.</span>
-							</p>
-							<!-- Archiving -->
-							<a href="/archiving/"><img srcset="/filing/images/home/archive.jpg 1x, /filing/images/home/archive-2x.jpg 2x" style="width: 100%; aspect-ratio: 615 / 435" alt="Archive" /></a>
-							<p class="caption">
-								<a href="/archiving/">Archiving</a> <span class="opacity">(2000—Present)</span> <br />
-								<span class="opacity"
-									>&#8985; <a class="hover" href="/archiving/#springload">#springload</a> <a class="hover" href="/archiving/#koordinates">#koordinates</a> <a class="hover" href="/archiving/#xero">#xero</a>
-									<a class="hover" href="/archiving/#tigerspike">#tigerspike</a></span
-								>
-							</p>
-						</div>
-						<div class="column-60">
-							<!-- Imagining -->
-							<a href="/imagining/"><img srcset="/filing/images/home/dandroids.jpg 1x, /filing/images/home/dandroids-2x.jpg 2x" style="width: 100%; aspect-ratio: 1040 / 737" alt="DANDRØIDS" /></a>
-							<p class="caption">
-								<a href="/imagining/">Imagining</a> <span class="opacity">(2022—Present)</span> <br />
-								<span class="opacity">AI. MidJourney. DANDRØIDS. Prompts.</span>
-							</p>
-						</div>
-					</div>
-					<hr class="full" />
-					<div class="featured">
-						<p><span class="opacity">Websites. Brands. Design Systems. Swag.</span> <br /><a class="hover" href="/designing/" title="Work" onclick="fathom.trackEvent('Portfolio');">Portfolio &rarr;</a></p>
-					</div>
-				</section>
-
-				<!-- About -->
-				<section class="images">
-					<h3 id="employable">About</h3>
-					<div class="row">
-						<div class="column-60">
-							<img srcset="/filing/photos/dan-newman.jpg 1x, /filing/photos/dan-newman-2x.jpg 2x" style="width: 100%; aspect-ratio: 1035 / 533" title="Humans" alt="Dan Newman & Noush Isaac" />
-							<p class="caption">Dan & Noush <span class="opacity">— Assistants to the Branch Manager</span></p>
-						</div>
-						<div class="column-40">
-							<img srcset="/filing/photos/ada.jpg 1x, /filing/photos/ada-2x.jpg 2x" style="width: 100%; aspect-ratio: 615 / 320" title="Dog" alt="Ada Isaac-Newman" />
-							<p class="caption">Ada <span class="opacity">— Branch Manager</span></p>
-						</div>
-					</div>
-					<hr class="full" />
-					<div class="featured">
-						<p><span class="opacity">Dog Dad. Designer. Cricket Fan. List Maker.</span> <br /><a class="hover" href="/informing/" title="About" onclick="fathom.trackEvent('Information');">Information &rarr;</a></p>
-					</div>
-				</section>
-
-				<section>
-					<h4>Colophon</h4>
-					<ul>
-						<li>Written in <a href="https://obsidian.md" title="📃">Obsidian</a>.</li>
-						<li class="opacity mono small">&#8985; <span class="opacity-light">#</span> Markdown</li>
-						<li>Organised in <a href="https://notion.so" title="✅">Notion</a>.</li>
-						<li>Designed in <a href="https://figma.com" title="🎨">Figma</a>.</li>
-						<li>Built in <a href="https://code.visualstudio.com" title="🚧">VS Code</a>.</li>
-						<li class="opacity mono small">&#8985; <span class="opacity-light"><</span>HTML<span class="opacity-light">/></span> CSS<span class="opacity-light">{}</span> JS<span class="opacity-light">();</span></li>
-						<li>Tested in <a href="https://apple.com/safari/" title="🌐">Safari</a>.</li>
-						<li>Hosted on <a href="https://github.com/danserif/dan.newman.is" title="📁">GitHub</a>.</li>
-						<li class="opacity mono small">&#8985; <span class="opacity-light">%</span> Commit No. 633</li>
-						<li>Analytics by <a href="https://usefathom.com/ref/VFNFWZ" title="📈">Fathom</a>.</li>
-					</ul>
-				</section>
-
-				<section>
-					<h4>Fonts</h4>
-					<ul>
-						<li>Söhne by <a href="https://klim.co.nz/retail-fonts/soehne/" title="🔠">Klim Type Foundry</a>.</li>
-						<li>Berkely Mono by <a href="https://usgraphics.com/typefaces/berkeley-mono" title="🔠">U.S. Graphics</a>.</li>
-					</ul>
-				</section>
-
-				<section>
-					<h4>Site</h4>
-					<ul>
-						<li>Last Updated <span class="opacity">(30.03.2025)</span></li>
-						<li>Domain Registered <span class="opacity">(2011)</span></li>
-						<li>Version <span class="opacity">(4.0)</span></li>
-					</ul>
-				</section>
-
-				<section>
-					<h4>Details</h4>
-					<ul>
-						<li>Current Location <span class="opacity">(Miramar, Wellington)</span></li>
-						<li>Local Timezone <span class="opacity">(GMT+12 / NZST)</span></li>
-					</ul>
-				</section>
-			</main>
-
-			<footer>
-				<p class="arrow"><a href="/#beginning" onclick="fathom.trackGoal('GRB0XXWJ', 0);">&uarr;</a></p>
-				<ul>
-					<li><a href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="Home. Sweet. Home.">Home</a></li>
-					<li><a href="/designing/" onclick="fathom.trackGoal('O3KLLTP3', 0);" title="Werk. Werk. Werk.">Work</a></li>
-					<li><a href="/informing/" onclick="fathom.trackGoal('U6UECOAD', 0);" title="Me. Me. Me.">About</a></li>
-					<li><a href="/contactable/" onclick="fathom.trackGoal('JZGUGKQD', 0);" title="Send. Me. Email.">Contact</a></li>
-				</ul>
-				<ul>
-					<li>
-						<a class="hover" href="/imagining/" onclick="fathom.trackGoal('JWBK6JUK', 0);" title="Dan Newman’s AI Work."><span class="opacity">~/imagining</span></a>
-					</li>
-					<li>
-						<a class="hover" href="/experimenting/" onclick="fathom.trackGoal('7DA3M1EU', 0);" title="Dan Newman’s Neue Work."><span class="opacity">~/experimenting</span></a>
-					</li>
-					<li>
-						<a class="hover" href="/archiving/" onclick="fathom.trackGoal('7T4ND1TC', 0);" title="Dan Oldman’s Alt Work."><span class="opacity">~/archiving</span></a>
-					</li>
-				</ul>
-				<p>
-					<a href="https://github.com/danserif/dan.newman.is/raw/master/filing/Résumé%20–%20Dan%20Newman%20–%202025.pdf" onclick="fathom.trackGoal('URO8EAAU', 0);" title="📄">Download Résumé</a>
-					<span class="opacity">(PDF)</span>
-				</p>
-
-				<div class="socials">
-					<p class="opacity">@danserif &rarr;</p>
-					<ul>
-						<li><a href="https://linkedin.com/in/danserif" onclick="fathom.trackEvent('LinkedIn', 0);" title="💼">LinkedIn</a> <span class="opacity">/</span></li>
-						<li><a href="https://github.com/danserif" onclick="fathom.trackEvent('GitHub', 0);" title="💾">GitHub</a> <span class="opacity">/</span></li>
-						<li><a href="https://bsky.app/profile/danserif.com" onclick="fathom.trackEvent('Bluesky', 0);" title="🦋">Bluesky</a> <span class="opacity">/</span></li>
-						<li><a href="https://cosmos.so/danserif" onclick="fathom.trackEvent('Cosmos', 0);" title="🔭">Cosmos</a> <span class="opacity">/</span></li>
-						<li><a href="https://letterboxd.com/danserif" onclick="fathom.trackEvent('Letterboxd', 0);" title="🎬">Letterboxd</a> <span class="opacity">/</span></li>
-						<li><a href="https://glass.photo/danserif" onclick="fathom.trackEvent('Glass', 0);" title="📸">Glass</a> <span class="opacity">/</span></li>
-						<li><a href="https://instagram.com/danserif" onclick="fathom.trackEvent('Instagram', 0);" title="📷">Instagram</a> <span class="opacity">/</span></li>
-						<li><a href="https://threads.net/@danserif" onclick="fathom.trackEvent('Threads', 0);" title="🧵">Threads</a> <span class="opacity">/</span></li>
-						<li><a href="https://mastodon.social/@danserif" onclick="fathom.trackEvent('Mastodon', 0);" title="🐘">Mastodon</a> <span class="opacity">/</span></li>
-						<li>
-							<s><a href="https://twitter.com/danserif" onclick="fathom.trackEvent('Twitter', 0);" title="💀">Twitter</a></s>
-						</li>
-					</ul>
-				</div>
-
-				<hr />
-
-				<div class="logo">
-					<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background: new 0 0 109 82" version="1.1" viewBox="0 0 109 82">
-						<style>
-							.st0 {
-								fill: #ffffff;
-							}
-						</style>
-						<path
-							d="M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z"
-							class="st0"
-						/>
-						<path
-							d="M.4 52.7v-31h16.2c4.7 0 14.3 1.2 14.3 14.4v31.2c0 13.2-9.6 14.4-14.3 14.4H.4v-29zm9.7-.1v-23h4.7c3 0 6.4.2 6.4 8.9v25.9c0 8.7-3.4 8.9-6.4 8.9h-4.7V52.6z"
-							style="fill-rule: evenodd; clip-rule: evenodd; fill: #ffffff"
-						/>
-					</svg>
-					<p>&#8985; logo.svg <span class="opacity">(Braun & Dieter Rams Homage)</span></p>
-					<p class="opacity">
-						The original Braun logo was designed by Will Münch in the 1930s (then updated by Wolfgang Schmittel in the 1950s). This homage is based on the 1990s version used today, and yes, I’m a
-						<a href="https://en.wikipedia.org/wiki/Braun_(company)">Braun</a> nerd and <a href="https://en.wikipedia.org/wiki/Dieter_Rams">Dieter Rams</a> fan.
-					</p>
-				</div>
-
-				<p>
-					<a class="hover uppercase" href="/" onclick="fathom.trackGoal('NWLGZ5TK', 0);" title="You. Are. Here.">dan.newman.is</a> &nbsp; <span class="opacity">/</span> &nbsp;
-					<a class="hover uppercase" href="/now/" onclick="fathom.trackEvent('Now');">Now &rarr;</a>
-					<br />
-					<span class="opacity">Copyright &copy; 1982—2026.</span>
-				</p>
-			</footer>
+	<!-- INFO -->
+	<main class="info">
+		<div class="row">
+			<span class="label"><span class="opacity-25">&sim;</span> Name</span>
+			<h1>Dan Newman <span class="opacity-25">(aka @danserif)</span></h1>
 		</div>
-	</body>
+		<div class="row">
+			<span class="label"><span class="opacity-25">&sol;</span> Skills</span>
+			<h2>Design <span class="opacity-25">/</span> Photography <span class="opacity-25">/</span> Watching Cricket</h2>
+		</div>
+		<div class="row">
+			<span class="label"><span class="opacity-25">&times;</span> Location</span>
+			<span><span class="opacity-75">Wellington, New Zealand</span></span>
+		</div>
+		<div class="row">
+			<span class="label"><span class="opacity-25">&colon;</span> Time</span>
+			<span><span class="opacity-50" id="nz-time"></span> <span class="opacity-25" id="nz-tz"></span></span>
+		</div>
+		<div class="row">
+			<span class="label"><span class="opacity-25">&dollar;</span> Studio</span>
+			<span><a href="https://daas.graphics" target="_blank"><span class="opacity-15">https://</span> daas.graphics
+					<span class="accent">&rarr;</span></a></span>
+		</div>
+		<div class="row">
+			<span class="label"><span class="opacity-25">!</span> Newsletter</span>
+			<span><a href="https://danserif.com/newsletter" target="_blank"><span class="opacity-15">https://</span>
+					danserif.com <span class="opacity-25">/</span> newsletter
+					<span class="accent">&rarr;</span></a></span>
+		</div>
+		<div class="row">
+			<span class="label"><span class="opacity-25">&commat;</span> Email</span>
+			<span><a href="mailto:dan@newman.is"><span class="opacity-15">mailto:</span> <span class="opacity-75">dan</span>
+					<span class="opacity-25">[at]</span> <span class="opacity-75">newman</span> <span
+						class="opacity-25">[dot]</span> <span class="opacity-75">is</span></a></span>
+		</div>
+		<div class="row">
+			<span class="label"><span class="opacity-25">&plus;</span> Follow</span>
+			<span><a href="https://linkedin.com/in/danserif">LinkedIn</a> <span class="opacity-25">/</span>
+				<a href="https://twitter.com/danserif">Twitter</a> <span class="opacity-25">/</span>
+				<a href="https://instagram.com/danserif">Instagram</a> <span class="opacity-25">/</span>
+				<a href="https://cosmos.so/danserif">Cosmos</a></span>
+		</div>
+		<div class="row">
+			<span class="label"><span class="opacity-25">&gt;</span> Code</span>
+			<span><a href="https://github.com/danserif" target="_blank">Github Pages</a> <span
+					class="opacity-25">&nbsp;&lt;</span><span class="opacity-50">HTML</span><span class="opacity-25">/&gt;</span>
+				<span class="opacity-50">CSS</span><span class="opacity-25">{}</span> <span class="opacity-50">JS</span><span
+					class="opacity-25">();</span></span>
+		</div>
+		<div class="row">
+			<span class="label"><span class="opacity-25">&quest;</span> Fonts</span>
+			<span><a href="https://usgraphics.com/typefaces/berkeley-mono/" target="_blank">Berkeley
+					Mono</a> <span class="opacity-25">(U.S. Graphics)</span></span>
+		</div>
+		<div class="row">
+			<span class="label"><span class="opacity-25">&num;</span> Colours</span>
+			<span><span class="opacity-50">#000000</span> <span class="opacity-25">+</span> <span
+					class="opacity-50">#FFFFFF</span> <span class="opacity-25">+</span> <span class="accent opacity-50"
+					id="accent-hex">#AAFF00</span></span>
+		</div>
+	</main>
+
+	<!-- FOOTER -->
+	<footer>
+		<p class="footer-meta">
+			<span class="opacity-25">M:</span>
+			<a href="#" class="mode-light">Light</a> <span class="opacity-25">/</span>
+			<a href="#" class="mode-dark">Dark</a>&nbsp;&nbsp;&nbsp;<span class="opacity-25">V:</span> <span
+				class="opacity-50">5.0</span>
+			<span class="opacity-25">(WIP) /</span> <a href="/archiving/v4/" class="opacity-50">4.0</a>
+			<span class="opacity-25">(Archived)</span>
+		</p>
+		<p class="footer-credit">
+			Brought to you by the letter D <span class="opacity-25">(U+0044).</span><br />
+			<span class="opacity-25">Copyright &copy; 1982&mdash;2026.</span>
+		</p>
+	</footer>
+
+	<script>
+		(function () {
+			var timeEl = document.getElementById("nz-time");
+			var tzEl = document.getElementById("nz-tz");
+			var tzFmt = new Intl.DateTimeFormat("en-NZ", {
+				timeZone: "Pacific/Auckland",
+				timeZoneName: "short"
+			});
+			function tick() {
+				var now = new Date();
+				timeEl.textContent = now.toLocaleTimeString("en-NZ", {
+					hour: "numeric", minute: "2-digit", second: "2-digit",
+					hour12: true, timeZone: "Pacific/Auckland"
+				});
+				var parts = tzFmt.formatToParts(now);
+				for (var i = 0; i < parts.length; i++) {
+					if (parts[i].type === "timeZoneName") {
+						tzEl.textContent = "(" + parts[i].value + ")";
+						break;
+					}
+				}
+			}
+			tick();
+			setInterval(tick, 1000);
+
+			var accentEl = document.getElementById("accent-hex");
+			function updateAccent() {
+				accentEl.textContent = document.documentElement.classList.contains("light-mode") ? "#0044FF" : "#AAFF00";
+			}
+			updateAccent();
+
+			document.querySelector(".mode-light").addEventListener("click", function (e) {
+				e.preventDefault();
+				document.documentElement.classList.add("light-mode");
+				try { localStorage.setItem("colorMode", "light"); } catch (err) { }
+				updateAccent();
+			});
+			document.querySelector(".mode-dark").addEventListener("click", function (e) {
+				e.preventDefault();
+				document.documentElement.classList.remove("light-mode");
+				try { localStorage.setItem("colorMode", "dark"); } catch (err) { }
+				updateAccent();
+			});
+		})();
+	</script>
+
+</body>
+
 </html>

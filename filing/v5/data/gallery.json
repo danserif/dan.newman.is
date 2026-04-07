@@ -1,0 +1,479 @@
+{
+  "items": [
+    {
+      "type": "title",
+      "name": "Loophole Labs, Inc.",
+      "date": "(2025-Present)",
+      "description": "Branding, logos, illustrations, landing pages, product, and design system for a new infrastructure startup."
+    },
+    {
+      "filename": "ll-c-mark.png",
+      "number": "LL-01",
+      "description": "{∞} (Mark)",
+      "columns": 1,
+      "width": 1032,
+      "height": 1032
+    },
+    {
+      "filename": "ll-c-mark-specification.png",
+      "number": "LL-02",
+      "description": "Company: Loophole Labs (Mark Specification)",
+      "columns": 3,
+      "width": 1628,
+      "height": 856
+    },
+    {
+      "filename": "ll-tote-bag.jpg",
+      "number": "LL-03",
+      "description": "Tote Bag (B-01)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1256
+    },
+    {
+      "filename": "ll-team.png",
+      "number": "LL-04",
+      "description": "humans.txt",
+      "columns": 2,
+      "width": 1072,
+      "height": 604
+    },
+    {
+      "filename": "ll-diagram.png",
+      "number": "LL-05",
+      "description": "Diagram (Pods)",
+      "columns": 2,
+      "width": 1072,
+      "height": 724
+    },
+    {
+      "filename": "ll-terminal.png",
+      "number": "LL-06",
+      "description": "Terminal (Mockup)",
+      "columns": 2,
+      "width": 1072,
+      "height": 956
+    },
+    {
+      "filename": "ll-authentication.png",
+      "number": "LL-07",
+      "description": "Authentication (Sign Up)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1406
+    },
+    {
+      "filename": "ll-p-mark.png",
+      "number": "LL-08",
+      "description": "/~\\ (Mark)",
+      "width": 1032,
+      "height": 1032
+    },
+    {
+      "filename": "ll-p-mark-specification.png",
+      "number": "LL-09",
+      "description": "Product: Architect (Mark Specification)",
+      "columns": 3,
+      "width": 1628,
+      "height": 856
+    },
+    {
+      "filename": "ll-blog-migrations.png",
+      "number": "LL-10",
+      "description": "Blog Illustration (Migrations)",
+      "columns": 2,
+      "width": 1072,
+      "height": 604
+    },
+    {
+      "filename": "ll-sigil-marketing.png",
+      "number": "LL-11",
+      "description": "Sigil Design System (Marketing)",
+      "columns": 3,
+      "width": 1628,
+      "height": 976
+    },
+    {
+      "filename": "ll-sigil-product.png",
+      "number": "LL-12",
+      "description": "Sigil Design System (Product)",
+      "columns": 4,
+      "width": 2184,
+      "height": 1292
+    },
+    {
+      "filename": "ll-homepage.png",
+      "number": "LL-13",
+      "description": "feat: homepage",
+      "columns": 3,
+      "width": 1628,
+      "height": 976,
+      "link": "https://loopholelabs.io"
+    },
+    {
+      "filename": "ll-wizard.png",
+      "number": "LL-14",
+      "description": "Archibald (Mascot)",
+      "columns": 1,
+      "width": 774,
+      "height": 1374
+    },
+    {
+      "filename": "ll-sigil-graphic.png",
+      "number": "LL-15",
+      "description": "Sigil Design System (Graphic)",
+      "columns": 2,
+      "width": 1072,
+      "height": 604
+    },
+    {
+      "filename": "ll-glyph-faces.png",
+      "number": "LL-16",
+      "description": "{*_*} ¦^_^¦ [°…°] \\~_~/ (Glyph Faces)",
+      "columns": 3,
+      "width": 1628,
+      "height": 916
+    },
+    {
+      "filename": "ll-logo-specifications.png",
+      "number": "LL-17",
+      "description": "{∞} + /~\\ (Logo Specifications)",
+      "columns": 2,
+      "width": 1072,
+      "height": 672
+    },
+    {
+      "filename": "ll-stickers.png",
+      "number": "LL-18",
+      "description": "Stickers",
+      "columns": 2,
+      "width": 1072,
+      "height": 600
+    },
+    {
+      "divider": true
+    },
+    {
+      "type": "title",
+      "name": "Enter Startup",
+      "date": "(2026)",
+      "description": "Branding, logos, illustrations, ASCII maze, and cover design for a new startup book, community, and training program."
+    },
+    {
+      "filename": "es-logo.png",
+      "number": "ES-01",
+      "description": "Logo + ASCII Maze (S)",
+      "columns": 2,
+      "width": 1072,
+      "height": 772
+    },
+    {
+      "filename": "es-mark.png",
+      "number": "ES-02",
+      "description": "→× (Mark)",
+      "columns": 1,
+      "width": 1032,
+      "height": 1032
+    },
+    {
+      "filename": "es-cover.png",
+      "number": "ES-03",
+      "description": "Cover + ASCII Maze (L)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1624
+    },
+    {
+      "filename": "es-logotype.png",
+      "number": "ES-04",
+      "description": "→× (Logotype)",
+      "columns": 2,
+      "width": 1072,
+      "height": 516
+    },
+    {
+      "filename": "es-mockup.jpg",
+      "number": "ES-05",
+      "description": "Book Cover (Mockup) ",
+      "columns": 3,
+      "width": 1628,
+      "height": 996
+    },
+    {
+      "divider": true
+    },
+    {
+      "type": "title",
+      "name": "Axiom, Inc.",
+      "date": "(2022—2025)",
+      "description": "Website, branding, ads, diagrams, illustrations, swag, and design system for a logging and observability platform."
+    },
+    {
+      "filename": "ax-logs.png",
+      "number": "AX-01",
+      "description": "Logs. Looogs. Looooooooooogs. (Ad)",
+      "columns": 1,
+      "width": 1032,
+      "height": 1032
+    },
+    {
+      "filename": "ax-homepage.png",
+      "number": "AX-02",
+      "description": "feat: homepage",
+      "columns": 3,
+      "width": 1628,
+      "height": 1232,
+      "link": "https://axiom.co"
+    },
+    {
+      "filename": "ax-blog-elements.png",
+      "number": "AX-03",
+      "description": "Blog Illustration (Elements) ",
+      "columns": 2,
+      "width": 1072,
+      "height": 648
+    },
+    {
+      "filename": "ax-collateral.png",
+      "number": "AX-04",
+      "description": "Sales & Marketing (Collateral)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1016
+    },
+    {
+      "filename": "ax-dashboard.png",
+      "number": "AX-05",
+      "description": "Diagram (Dashboard) ",
+      "columns": 2,
+      "width": 1072,
+      "height": 880
+    },
+    {
+      "filename": "ax-tshirts.jpg",
+      "number": "AX-06",
+      "description": "T-Shirts (AX-02)",
+      "columns": 3,
+      "width": 1628,
+      "height": 916
+    },
+    {
+      "filename": "ax-blog-post.png",
+      "number": "AX-07",
+      "description": "Blog Post (Monitoring)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1108
+    },
+    {
+      "filename": "ax-invite.png",
+      "number": "AX-08",
+      "description": "Axiom + AWS (Party Invite)",
+      "columns": 2,
+      "width": 1072,
+      "height": 964
+    },
+    {
+      "filename": "ax-design-system.png",
+      "number": "AX-9",
+      "description": "Axe (Design System)",
+      "columns": 3,
+      "width": 1628,
+      "height": 2116
+    },
+    {
+      "filename": "ax-calculator.png",
+      "number": "AX-10",
+      "description": "Savings Calculator",
+      "columns": 2,
+      "width": 1072,
+      "height": 696
+    },
+    {
+      "filename": "ax-skateboard.jpg",
+      "number": "AX-11",
+      "description": "Skateboard (SK8-02) # POP AN O11Y",
+      "columns": 2,
+      "width": 1072,
+      "height": 1340
+    },
+    {
+      "filename": "ax-advertisement.png",
+      "number": "AX-12",
+      "description": "THIS IS AN AXIOM AD → → →",
+      "columns": 2,
+      "width": 1072,
+      "height": 1072
+    },
+    {
+      "filename": "ax-cards.jpg",
+      "number": "AX-13",
+      "description": "Business Cards",
+      "columns": 2,
+      "width": 1072,
+      "height": 748
+    },
+    {
+      "filename": "ax-blog-compliance.png",
+      "number": "AX-14",
+      "description": "Blog Illustration (Compliance)",
+      "columns": 2,
+      "width": 1072,
+      "height": 648
+    },
+    {
+      "filename": "ax-lols.png",
+      "number": "AX-15",
+      "description": "Live. Laugh. Log. (Ad)",
+      "columns": 1,
+      "width": 1032,
+      "height": 1032
+    },
+    {
+      "filename": "ax-remote.png",
+      "number": "AX-16",
+      "description": "<Designed/> and Engineered() globally.",
+      "columns": 2,
+      "width": 1072,
+      "height": 660
+    },
+    {
+      "filename": "ax-footer.png",
+      "number": "AX-17",
+      "description": "Footer (Mobile)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1988
+    },
+    {
+      "filename": "ax-hot-sauce.jpg",
+      "number": "AX-18",
+      "description": "Hot Sauce (Mockup)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1296
+    },
+    {
+      "filename": "ax-stickers.png",
+      "number": "AX-19",
+      "description": "Stickers",
+      "columns": 3,
+      "width": 1628,
+      "height": 912
+    },
+    {
+      "divider": true
+    },
+    {
+      "type": "title",
+      "name": "Klim Type Foundry",
+      "date": "(2018-2020)",
+      "description": "Design and creative direction of a custom ecommerce website including a specimen builder, blog, fonts in use gallery, glyph inspector, and type tester for a renowned foundry."
+    },
+    {
+      "filename": "k-mobile-montage.png",
+      "number": "K-01",
+      "description": "Mobile (Montage)",
+      "columns": 3,
+      "width": 1628,
+      "height": 1160,
+      "link": "https://klim.co.nz"
+    },
+    {
+      "filename": "k-soehne-specimen.png",
+      "number": "K-02",
+      "description": "Söhne (Specimen)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1604
+    },
+    {
+      "filename": "k-soehne-grid.png",
+      "number": "K-03",
+      "description": "Josef Müller-Brockmann (Homage)",
+      "columns": 2,
+      "width": 1072,
+      "height": 724
+    },
+    {
+      "filename": "k-untitled-serif.png",
+      "number": "K-04",
+      "description": "Untitled Serif (Cart)",
+      "columns": 3,
+      "width": 1628,
+      "height": 1028
+    },
+    {
+      "filename": "k-untitled-sans.png",
+      "number": "K-05",
+      "description": "Untitled Sans (Specimen)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1604
+    },
+    {
+      "filename": "k-homepage.png",
+      "number": "K-06",
+      "description": "Homepage (Montage)",
+      "columns": 2,
+      "width": 1072,
+      "height": 636
+    },
+    {
+      "filename": "k-financier-specimen.png",
+      "number": "K-07",
+      "description": "Financier Display (Specimen)",
+      "columns": 2,
+      "width": 1072,
+      "height": 988
+    },
+    {
+      "filename": "k-financier-glyphs.png",
+      "number": "K-08",
+      "description": "Financier Display (Glyphs)",
+      "columns": 2,
+      "width": 1072,
+      "height": 724
+    },
+    {
+      "filename": "k-blog.png",
+      "number": "K-09",
+      "description": "70,471 words about letters...",
+      "columns": 2,
+      "width": 1072,
+      "height": 828
+    },
+    {
+      "filename": "k-heldane-text.png",
+      "number": "K-10",
+      "description": "Heldane Text (Cart)",
+      "columns": 3,
+      "width": 1628,
+      "height": 1028
+    },
+    {
+      "filename": "k-heldane-display.png",
+      "number": "K-11",
+      "description": "Heldane Display (Specimen)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1604
+    },
+    {
+      "filename": "k-fonts-in-use.png",
+      "number": "K-12",
+      "description": "Fonts In Use (FIU)",
+      "columns": 2,
+      "width": 1072,
+      "height": 724
+    },
+    {
+      "filename": "k-custom-fonts.png",
+      "number": "K-13",
+      "description": "Custom Fonts (Menu)",
+      "columns": 3,
+      "width": 1628,
+      "height": 992
+    }
+  ]
+}

@@ -1,0 +1,1300 @@
+/* ==========================================================================
+   V5 — BASE
+   ========================================================================== */
+
+/* FONTS */
+
+@font-face {
+	font-family: "Berkeley Mono";
+	src: url("../fonts/berkeley-mono-regular.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+@font-face {
+	font-family: "Die Grotesk A";
+	src: url("../fonts/die-grotesk-a-regular.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+@font-face {
+	font-family: "Die Grotesk B";
+	src: url("../fonts/die-grotesk-b-regular.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+.font-grotesk-a {
+	font-family: "Die Grotesk A", sans-serif;
+}
+
+.font-grotesk-b {
+	font-family: "Die Grotesk B", sans-serif;
+}
+
+.font-berkeley {
+	font-family: "Berkeley Mono", monospace;
+}
+
+/* ==========================================================================
+   CUSTOM PROPERTIES
+   ========================================================================== */
+
+:root {
+	--color-bg: #000000;
+	--color-text: #ffffff;
+	--color-accent: #aaff00;
+	--color-border: #1a1a1a;
+	--opacity-15: rgba(255, 255, 255, 0.15);
+	--opacity-25: rgba(255, 255, 255, 0.25);
+	--opacity-50: rgba(255, 255, 255, 0.5);
+	--opacity-75: rgba(255, 255, 255, 0.75);
+	--opacity-90: rgba(255, 255, 255, 0.9);
+	--gap-section: 16px;
+	--gap-flex: 20px;
+	--max-width: 2880px;
+	--padding-x: 60px;
+}
+
+:root.light-mode {
+	--color-bg: #ffffff;
+	--color-text: #000000;
+	--color-accent: #0044FF;
+	--color-border: #e5e5e5;
+	--opacity-15: rgba(0, 0, 0, 0.15);
+	--opacity-25: rgba(0, 0, 0, 0.25);
+	--opacity-50: rgba(0, 0, 0, 0.5);
+	--opacity-75: rgba(0, 0, 0, 0.75);
+	--opacity-90: rgba(0, 0, 0, 0.9);
+}
+
+/* ==========================================================================
+   RESET
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-moz-tab-size: 4;
+	tab-size: 4;
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0 auto;
+	line-height: 1.6;
+	color: var(--color-text);
+	font-size: 12px;
+	font-family: "Berkeley Mono", monospace;
+	max-width: 100%;
+	background-color: var(--color-bg);
+}
+
+/* TEXT SELECTION */
+
+::selection {
+	background-color: var(--opacity-50);
+	color: var(--color-bg);
+}
+
+::-moz-selection {
+	background-color: var(--opacity-50);
+	color: var(--color-bg);
+}
+
+/* TYPOGRAPHY RESETS */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+a:hover {
+	opacity: 0.5;
+}
+
+a.underline {
+	text-decoration: underline;
+	text-underline-position: from-font;
+	text-decoration-skip-ink: none;
+}
+
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button;
+	appearance: button;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+pre,
+code {
+	font-family: "Berkeley Mono", monospace;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+
+.mono {
+	font-family: "Berkeley Mono", monospace;
+}
+
+.mono.small {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.opacity-15 {
+	opacity: 0.15;
+}
+
+.opacity-25 {
+	opacity: 0.25;
+}
+
+.opacity-35 {
+	opacity: 0.35;
+}
+
+.opacity-50 {
+	opacity: 0.5;
+}
+
+.opacity-75 {
+	opacity: 0.75;
+}
+
+.opacity-90 {
+	opacity: 0.9;
+}
+
+.opacity-100 {
+	opacity: 1;
+}
+
+.accent {
+	color: var(--color-accent);
+}
+
+.divider {
+	width: 100%;
+	height: 0;
+	border: none;
+	border-top: 1px dashed var(--color-border);
+	margin: var(--gap-section) 0;
+	padding: 0;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.no-break {
+	white-space: nowrap;
+}
+
+.mobile-only {
+	display: none;
+}
+
+/* ==========================================================================
+   HOMEPAGE
+   ========================================================================== */
+
+.page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.page>header {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 64px var(--padding-x) 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.logo {
+	width: 121px;
+	height: auto;
+}
+
+:root.light-mode .logo {
+	filter: invert(1);
+}
+
+.logo-caption {
+	font-size: 12px;
+	line-height: 22px;
+	color: var(--opacity-50);
+	margin-top: 36px;
+}
+
+.info {
+	max-width: var(--max-width);
+	margin: clamp(160px, 24vh, 460px) auto 0;
+	padding: 0 var(--padding-x);
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.row {
+	display: grid;
+	grid-template-columns: 200px 1fr;
+	font-size: 14px;
+	line-height: 24px;
+	color: var(--opacity-90);
+	border-top: 1px dashed var(--color-border);
+	padding: 16px 0 15px;
+}
+
+.row:last-child {
+	border-bottom: 1px dashed var(--color-border);
+}
+
+.label {
+	color: var(--opacity-50);
+}
+
+.page .opacity-15 {
+	color: var(--opacity-15);
+	opacity: 1;
+}
+
+.page .opacity-25 {
+	color: var(--opacity-25);
+	opacity: 1;
+}
+
+.page .opacity-50 {
+	color: var(--opacity-50);
+	opacity: 1;
+}
+
+.page .opacity-75 {
+	color: var(--opacity-75);
+	opacity: 1;
+}
+
+.page .opacity-90 {
+	color: var(--opacity-90);
+	opacity: 1;
+}
+
+.page a:hover {
+	opacity: 0.5;
+}
+
+.page>footer {
+	margin-top: auto;
+	font-size: 12px;
+	line-height: 22px;
+	color: var(--opacity-90);
+}
+
+.footer-meta {
+	margin-bottom: 22px;
+}
+
+.mode-light,
+.mode-dark {
+	color: var(--opacity-50);
+}
+
+/* ==========================================================================
+   SITE HEADER
+   ========================================================================== */
+
+.site-header {
+	display: flex;
+	gap: 60px;
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 48px var(--padding-x) 0;
+	width: 100%;
+	box-sizing: border-box;
+	align-items: flex-start;
+}
+
+/* Shared label above each header column */
+.header-section-label {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 14px;
+	line-height: 22px;
+	text-transform: uppercase;
+	color: var(--opacity-25);
+	margin-bottom: 32px;
+}
+
+/* Shared caption below each header column */
+.header-caption {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 14px;
+	line-height: 24px;
+	margin-top: auto;
+	padding-top: 24px;
+}
+
+/* BIO -------------------------------------------------- */
+
+.header-bio {
+	flex: 1 1 0;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.header-heading {
+	font-size: 48px;
+	line-height: 56px;
+	color: var(--color-text);
+}
+
+/* LOGO ------------------------------------------------- */
+
+.header-logo {
+	flex: 0 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.header-logo-img {
+	width: 133px;
+	height: auto;
+	margin-top: 8px;
+}
+
+:root.light-mode .header-logo-img {
+	filter: invert(1);
+}
+
+/* MENU ------------------------------------------------- */
+
+.header-menu {
+	flex: 0 0 auto;
+	min-width: 280px;
+	display: flex;
+	flex-direction: column;
+}
+
+.header-menu-body {
+	display: flex;
+	gap: 32px;
+}
+
+.header-nav {
+	display: flex;
+	flex-direction: column;
+	font-size: 32px;
+	line-height: 40px;
+	color: var(--color-text);
+}
+
+.header-nav a {
+	display: block;
+}
+
+.header-nav-side {
+	display: flex;
+	flex-direction: column;
+	font-family: "Berkeley Mono", monospace;
+	font-size: 16px;
+	line-height: 24px;
+	padding-top: 5px;
+}
+
+.header-nav-side a {
+	display: block;
+}
+
+.header-mode {
+	font-size: 14px;
+	line-height: 24px;
+	margin-top: auto;
+	padding-top: 24px;
+}
+
+.header-mode .light-mode-toggle {
+	opacity: 0.25;
+}
+
+.header-mode .dark-mode-toggle {
+	opacity: 0.5;
+}
+
+:root.light-mode .header-mode .light-mode-toggle {
+	opacity: 0.5;
+}
+
+:root.light-mode .header-mode .dark-mode-toggle {
+	opacity: 0.25;
+}
+
+.header-email {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 14px;
+	line-height: 24px;
+	color: var(--opacity-75);
+	margin-top: 24px;
+}
+
+.header-email a {
+	color: var(--color-text);
+}
+
+/* ==========================================================================
+   HERO — ASCII WORLD MAP
+   ========================================================================== */
+
+.hero {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 40px var(--padding-x) 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.hero-ascii {
+	width: 100%;
+	height: 50vw;
+	max-height: 1100px;
+	min-height: 240px;
+	overflow: hidden;
+}
+
+.hero-ascii-text {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 24px;
+	line-height: 20px;
+	color: var(--color-text);
+	opacity: 0.1;
+	word-break: break-all;
+	margin: 0;
+}
+
+.hero-labels {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	padding-top: 16px;
+	gap: 2rem;
+}
+
+.hero-label {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 14px;
+	line-height: 22px;
+	color: var(--color-text);
+	white-space: nowrap;
+}
+
+.hero-label-right {
+	text-align: right;
+}
+
+.hero-arrow {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 64px;
+	line-height: 72px;
+	color: var(--color-text);
+	padding-top: 48px;
+}
+
+/* ==========================================================================
+   SECTION LABEL
+   ========================================================================== */
+
+.section-label {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 14px;
+	line-height: 24px;
+	color: var(--opacity-25);
+	margin-bottom: 48px;
+}
+
+/* ==========================================================================
+   BODY TEXT
+   ========================================================================== */
+
+.body-text {
+	font-family: "Die Grotesk A", sans-serif;
+	font-size: 24px;
+	line-height: 32px;
+	color: #dddddd;
+}
+
+:root.light-mode .body-text {
+	color: #222222;
+}
+
+.body-text p {
+	margin: 0 0 24px 0;
+}
+
+.body-text p:last-child {
+	margin-bottom: 0;
+}
+
+.body-text a:hover {
+	opacity: 0.625;
+}
+
+/* ==========================================================================
+   ABOUT SECTION
+   ========================================================================== */
+
+.about {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 var(--padding-x);
+	margin-top: 160px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.about-columns {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 60px;
+}
+
+/* ==========================================================================
+   COLUMNS ROW (PLACEHOLDER)
+   ========================================================================== */
+
+.columns-row {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--gap-flex);
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 var(--padding-x);
+	margin-top: 80px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.column-placeholder {
+	aspect-ratio: 688 / 394;
+	background-color: #d9d9d9;
+	opacity: 0.1;
+}
+
+/* ==========================================================================
+   WORK SECTION
+   ========================================================================== */
+
+.work-samples {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-section);
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: var(--gap-section) var(--padding-x);
+	margin-top: 120px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.work-samples:last-of-type {
+	margin-bottom: 120px;
+}
+
+.work-samples .section-label {
+	margin-bottom: 32px;
+}
+
+.work-intro {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 60px;
+	margin-bottom: 24px;
+}
+
+.work-disclaimer {
+	margin-bottom: 48px;
+}
+
+.work-samples .divider {
+	margin: 8px 0;
+}
+
+.work-label {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 11px;
+	line-height: normal;
+	text-transform: uppercase;
+	color: var(--opacity-25);
+	margin: 0;
+}
+
+.work-content {
+	max-width: 100%;
+}
+
+/* WORK GRID */
+
+.work-grid {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	gap: var(--gap-flex);
+	width: 100%;
+	margin-top: var(--gap-section);
+	margin-bottom: 2rem;
+}
+
+.work-item {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-section);
+	overflow: hidden;
+	align-self: start;
+}
+
+.work-item[data-columns="1"] {
+	grid-column: span 1;
+}
+
+.work-item[data-columns="2"] {
+	grid-column: span 2;
+}
+
+.work-item[data-columns="3"] {
+	grid-column: span 3;
+}
+
+.work-item[data-columns="4"] {
+	grid-column: span 4;
+}
+
+.work-grid>hr.work-grid-divider {
+	grid-column: 1 / -1;
+	margin-bottom: calc(var(--gap-section) * 2);
+}
+
+.work-grid-title {
+	grid-column: 1 / -1;
+	justify-self: start;
+	width: 100%;
+	max-width: 530px;
+	font-family: "Berkeley Mono", monospace;
+	font-size: 12px;
+	line-height: 18px;
+	color: var(--color-text);
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.work-grid-title .work-title-line {
+	margin: 0;
+	line-height: 1.65;
+}
+
+.work-grid-title .work-link {
+	line-height: 1.65;
+}
+
+.work-grid-title .work-title-name {
+	opacity: 1;
+	color: var(--color-text);
+	text-transform: uppercase;
+}
+
+/* WORK IMAGES */
+
+.work-image-frame {
+	width: 100%;
+	box-sizing: border-box;
+	background-color: #080808;
+	border: 1px solid #1D1D1D;
+	overflow: hidden;
+}
+
+.work-image {
+	width: 100%;
+	height: auto;
+	display: block;
+	transition: filter 0.3s ease, opacity 0.9s ease-out;
+	opacity: 0;
+	color: transparent;
+}
+
+.work-image.is-loaded {
+	opacity: 1;
+}
+
+#work .work-image {
+	filter: grayscale(0%);
+}
+
+.light-mode .work-image-frame {
+	background-color: #F5F5F5;
+	border-color: #DDDDDD;
+}
+
+.work-item>a {
+	display: block;
+	width: 100%;
+}
+
+.work-item>a:hover {
+	opacity: 1;
+}
+
+/* WORK CAPTIONS */
+
+.work-caption,
+.work-text,
+.work-client,
+.work-number,
+.work-description,
+.work-filename {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 11px;
+	line-height: 1.5;
+}
+
+.work-caption {
+	color: var(--color-text);
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin-bottom: 1rem;
+}
+
+.work-text {
+	margin: 0;
+}
+
+.work-client {
+	color: var(--color-text);
+	opacity: 0.75;
+}
+
+.work-number {
+	color: var(--color-text);
+	opacity: 0.50;
+}
+
+.work-client a,
+.work-number a {
+	display: inline;
+	color: inherit;
+	opacity: inherit;
+}
+
+.work-description {
+	color: var(--opacity-75);
+	margin-top: 0;
+	display: inline;
+}
+
+.work-filename {
+	color: var(--color-text);
+	margin: 0;
+}
+
+.work-link {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 11px;
+	line-height: 1.5;
+	color: var(--color-text);
+	margin-top: 4px;
+	display: block;
+}
+
+.work-link a {
+	color: inherit;
+	text-decoration: none;
+	opacity: 0.75;
+}
+
+.work-link a:hover {
+	opacity: 1;
+}
+
+/* LOAD MORE */
+
+.load-more-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.5em 1em;
+	margin-top: var(--gap-section);
+	padding: var(--gap-section) 0;
+}
+
+.load-more-row .load-more-button {
+	margin-top: 0;
+}
+
+.load-more-separator {
+	white-space: pre;
+}
+
+.load-more-separator.hidden {
+	display: none;
+}
+
+.load-more-status {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 11px;
+	line-height: normal;
+	text-transform: uppercase;
+}
+
+.load-more-button {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 11px;
+	line-height: normal;
+	text-transform: uppercase;
+	color: var(--opacity-90);
+	background: none;
+	border: none;
+	padding: 0;
+	margin-top: 0;
+	cursor: pointer;
+	text-align: left;
+	transition: opacity 0.2s ease;
+}
+
+.load-more-button:hover {
+	opacity: 0.75;
+}
+
+.load-more-button:disabled,
+.load-more-button.hidden,
+.work-content>.divider.hidden {
+	display: none;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+footer {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 120px var(--padding-x) 60px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+footer .caption {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 11px;
+	line-height: 1.65;
+	color: var(--opacity-50);
+}
+
+/* ==========================================================================
+   SCROLL ANCHORS
+   ========================================================================== */
+
+#about {
+	scroll-margin-top: 60px;
+}
+
+#work {
+	scroll-margin-top: 60px;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+*:focus-visible {
+	outline: 2px solid var(--opacity-50);
+	outline-offset: 2px;
+}
+
+/* ==========================================================================
+   RESPONSIVE — WIDE DESKTOP (≤2660px)
+   ========================================================================== */
+
+@media only screen and (max-width: 2660px) {
+	:root {
+		--padding-x: 3rem;
+	}
+
+	body {
+		max-width: 1840px;
+	}
+
+	.divider {
+		margin: 0;
+	}
+
+	.site-header {
+		gap: 48px;
+	}
+
+	.about-columns,
+	.work-intro {
+		gap: 48px;
+	}
+}
+
+/* ==========================================================================
+   RESPONSIVE — DESKTOP (≤1860px)
+   ========================================================================== */
+
+@media only screen and (max-width: 1860px) {
+	.site-header {
+		padding-top: 2rem;
+	}
+
+	.divider {
+		margin: 0;
+	}
+
+	.header-heading {
+		font-size: 40px;
+		line-height: 48px;
+	}
+
+	.header-nav {
+		font-size: 28px;
+		line-height: 36px;
+	}
+}
+
+/* ==========================================================================
+   RESPONSIVE — NARROW DESKTOP (≤1640px)
+   ========================================================================== */
+
+@media only screen and (max-width: 1640px) {
+	:root {
+		--padding-x: 2rem;
+	}
+
+	body {
+		max-width: 1200px;
+	}
+
+	.site-header {
+		gap: 32px;
+	}
+
+	.header-heading {
+		font-size: 32px;
+		line-height: 40px;
+	}
+
+	.header-nav {
+		font-size: 24px;
+		line-height: 32px;
+	}
+
+	.header-nav-side {
+		font-size: 14px;
+		line-height: 22px;
+	}
+
+	.header-logo-img {
+		width: 100px;
+	}
+
+	.hero-ascii-text {
+		font-size: 18px;
+		line-height: 16px;
+	}
+
+	.hero-arrow {
+		font-size: 48px;
+		line-height: 56px;
+	}
+
+	.body-text {
+		font-size: 20px;
+		line-height: 28px;
+	}
+
+	.about {
+		margin-top: 120px;
+	}
+
+	.columns-row {
+		margin-top: 60px;
+	}
+
+	.work-samples {
+		margin-top: 80px;
+	}
+
+	.about-columns,
+	.work-intro {
+		gap: 32px;
+	}
+
+	.work-grid {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+/* ==========================================================================
+   RESPONSIVE — MOBILE (≤1080px)
+   ========================================================================== */
+
+@media only screen and (max-width: 1080px) {
+	:root {
+		--padding-x: 1.5rem;
+	}
+
+	.mobile-only {
+		display: inline;
+	}
+
+	.desktop-only {
+		display: none;
+	}
+
+	/* HEADER */
+	.site-header {
+		flex-direction: column;
+		gap: 2.5rem;
+		padding-top: 1.5rem;
+	}
+
+	.header-section-label {
+		font-size: 12px;
+		margin-bottom: 16px;
+	}
+
+	.header-heading {
+		font-size: 24px;
+		line-height: 32px;
+	}
+
+	.header-logo-img {
+		width: 80px;
+	}
+
+	.header-menu {
+		min-width: 0;
+	}
+
+	.header-nav {
+		font-size: 22px;
+		line-height: 30px;
+	}
+
+	.header-nav-side {
+		font-size: 14px;
+		padding-top: 3px;
+	}
+
+	.header-mode {
+		padding-top: 12px;
+	}
+
+	.header-email {
+		margin-top: 16px;
+	}
+
+	.header-caption {
+		padding-top: 16px;
+	}
+
+	/* HERO */
+	.hero {
+		padding-top: 2rem;
+	}
+
+	.hero-ascii {
+		height: 60vw;
+		min-height: 180px;
+		max-height: 400px;
+	}
+
+	.hero-ascii-text {
+		font-size: 12px;
+		line-height: 10px;
+	}
+
+	.hero-labels {
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.hero-label-right {
+		text-align: left;
+	}
+
+	.hero-arrow {
+		font-size: 36px;
+		line-height: 44px;
+		padding-top: 2rem;
+	}
+
+	/* ABOUT */
+	.about {
+		margin-top: 3rem;
+	}
+
+	.about-columns {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
+
+	.section-label {
+		margin-bottom: 24px;
+	}
+
+	.body-text {
+		font-size: 16px;
+		line-height: 24px;
+	}
+
+	/* COLUMNS */
+	.columns-row {
+		grid-template-columns: repeat(2, 1fr);
+		margin-top: 2.5rem;
+	}
+
+	/* WORK */
+	.work-samples {
+		margin-top: 3rem;
+		padding-left: var(--padding-x);
+		padding-right: var(--padding-x);
+	}
+
+	.work-intro {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
+
+	.work-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.work-item[data-columns] {
+		grid-column: span 1 !important;
+	}
+
+	/* FOOTER */
+	footer {
+		padding-top: 3rem;
+		padding-bottom: 2rem;
+	}
+
+	#about,
+	#work {
+		scroll-margin-top: 30px;
+	}
+
+	/* HOMEPAGE */
+	.page>header {
+		padding-top: 48px;
+	}
+
+	.info {
+		margin-top: clamp(80px, 15vh, 200px);
+	}
+
+	.page>footer {
+		padding-top: 60px;
+		padding-bottom: 32px;
+	}
+}
+
+/* ==========================================================================
+   RESPONSIVE — SMALL MOBILE (≤640px)
+   ========================================================================== */
+
+@media only screen and (max-width: 640px) {
+	.columns-row {
+		grid-template-columns: 1fr;
+	}
+
+	.header-menu-body {
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.header-nav-side {
+		padding-top: 0;
+	}
+
+	.header-mode {
+		padding-top: 0;
+	}
+
+	/* HOMEPAGE */
+	.page>header {
+		padding-top: 48px;
+	}
+
+	.logo {
+		width: 80px;
+	}
+
+	.logo-caption {
+		margin-top: 24px;
+	}
+
+	.row {
+		grid-template-columns: 100px 1fr;
+		font-size: 11px;
+		line-height: 20px;
+	}
+
+	.info {
+		margin-top: clamp(48px, 8vh, 120px);
+	}
+}
