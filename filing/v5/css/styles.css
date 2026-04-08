@@ -294,6 +294,9 @@ code {
 	padding: 0 var(--padding-x);
 	width: 100%;
 	box-sizing: border-box;
+}
+
+.page-content .info {
 	position: sticky;
 	top: 0;
 	z-index: 500;
