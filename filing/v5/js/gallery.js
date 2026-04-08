@@ -450,21 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Load and render work gallery
 	async function initWorkGallery(sectionType, jsonPath, renderFunction) {
-		// Find section by icon content
-		const sections = document.querySelectorAll(".work-samples");
-		let section = null;
-
-		for (let i = 0; i < sections.length; i++) {
-			const icon = sections[i].querySelector(".work-icon");
-			if (icon) {
-				const iconText = icon.textContent.trim();
-				if (sectionType === "graphics" && iconText === "⌘") {
-					section = sections[i];
-					break;
-				}
-			}
-		}
-
+		const section = document.querySelector(".work-samples");
 		if (!section) return;
 
 		const workContent = section.querySelector(".work-content");
@@ -575,7 +561,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				loadMoreStatus.appendChild(document.createTextNode(shown + " of " + total + " " + label));
 				if (sizeStr) {
 					const sizeWrap = document.createElement("span");
-					sizeWrap.className = "opacity-75";
+					sizeWrap.className = "opacity-15";
 					sizeWrap.textContent = " (" + sizeStr + ")";
 					loadMoreStatus.appendChild(sizeWrap);
 				}
@@ -688,11 +674,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			const isMobile = window.matchMedia("(max-width: 1080px)").matches;
 
 			// Initial display:
-			// - Desktop: max 2 rows (20 columns at largest breakpoint)
+			// - Desktop: max 4 rows (40 columns at largest breakpoint)
 			// - Mobile: max 4 content items (+ graphics dividers in the same slice)
 			const rawInitialCount = isMobile
 				? countMobileBatchItems(allItems, 4)
-				: calculateDisplayCount(allItems, 20);
+				: calculateDisplayCount(allItems, 40);
 			const initialDisplayCount = adjustBatchCountForTrailingDividers(allItems, rawInitialCount);
 
 			async function displayNextBatch() {
@@ -761,6 +747,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Initialize galleries (only if not disabled)
 	if (!DISABLE_JSON_LOADING) {
-		initWorkGallery("graphics", "/filing/v5/data/gallery.json", renderGraphicsItem);
+		initWorkGallery("graphics", "/filing/v5/data/work.json", renderGraphicsItem);
 	}
 });

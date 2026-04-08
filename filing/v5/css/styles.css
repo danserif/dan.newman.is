@@ -143,7 +143,8 @@ a:hover {
 a.underline {
 	text-decoration: underline;
 	text-underline-position: from-font;
-	text-decoration-skip-ink: none;
+	text-underline-offset: 1px;
+	text-decoration-skip-ink: auto;
 }
 
 button,
@@ -259,6 +260,10 @@ code {
 	flex-direction: column;
 }
 
+.page-content {
+	flex: 1 0 auto;
+}
+
 .page>header {
 	max-width: var(--max-width);
 	margin: 0 auto;
@@ -268,7 +273,7 @@ code {
 }
 
 .logo {
-	width: 121px;
+	width: 110px;
 	height: auto;
 }
 
@@ -280,7 +285,7 @@ code {
 	font-size: 12px;
 	line-height: 22px;
 	color: var(--opacity-50);
-	margin-top: 36px;
+	margin-top: 24px;
 }
 
 .info {
@@ -289,6 +294,12 @@ code {
 	padding: 0 var(--padding-x);
 	width: 100%;
 	box-sizing: border-box;
+	position: sticky;
+	top: 0;
+	z-index: 500;
+	background-color: color-mix(in srgb, var(--color-bg) 75%, transparent);
+	-webkit-backdrop-filter: blur(12px) saturate(180%);
+	backdrop-filter: blur(12px) saturate(180%);
 }
 
 .row {
@@ -301,7 +312,7 @@ code {
 	padding: 16px 0 15px;
 }
 
-.row:last-child {
+.row:last-of-type {
 	border-bottom: 1px dashed var(--color-border);
 }
 
@@ -355,202 +366,30 @@ code {
 }
 
 /* ==========================================================================
-   SITE HEADER
+   HEADER LINKS
    ========================================================================== */
 
-.site-header {
-	display: flex;
-	gap: 60px;
-	max-width: var(--max-width);
-	margin: 0 auto;
-	padding: 48px var(--padding-x) 0;
-	width: 100%;
-	box-sizing: border-box;
-	align-items: flex-start;
-}
-
-/* Shared label above each header column */
-.header-section-label {
+.header-links {
+	position: absolute;
+	right: var(--padding-x);
+	top: 50%;
+	transform: translateY(-50%);
 	font-family: "Berkeley Mono", monospace;
-	font-size: 14px;
-	line-height: 22px;
-	text-transform: uppercase;
-	color: var(--opacity-25);
-	margin-bottom: 32px;
-}
-
-/* Shared caption below each header column */
-.header-caption {
-	font-family: "Berkeley Mono", monospace;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 24px;
-	margin-top: auto;
-	padding-top: 24px;
+	color: var(--opacity-50);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s ease;
 }
 
-/* BIO -------------------------------------------------- */
-
-.header-bio {
-	flex: 1 1 0;
-	min-width: 0;
-	display: flex;
-	flex-direction: column;
+.info.is-stuck .header-links {
+	opacity: 1;
+	pointer-events: auto;
 }
 
-.header-heading {
-	font-size: 48px;
-	line-height: 56px;
-	color: var(--color-text);
-}
-
-/* LOGO ------------------------------------------------- */
-
-.header-logo {
-	flex: 0 0 auto;
-	display: flex;
-	flex-direction: column;
-}
-
-.header-logo-img {
-	width: 133px;
-	height: auto;
-	margin-top: 8px;
-}
-
-:root.light-mode .header-logo-img {
-	filter: invert(1);
-}
-
-/* MENU ------------------------------------------------- */
-
-.header-menu {
-	flex: 0 0 auto;
-	min-width: 280px;
-	display: flex;
-	flex-direction: column;
-}
-
-.header-menu-body {
-	display: flex;
-	gap: 32px;
-}
-
-.header-nav {
-	display: flex;
-	flex-direction: column;
-	font-size: 32px;
-	line-height: 40px;
-	color: var(--color-text);
-}
-
-.header-nav a {
-	display: block;
-}
-
-.header-nav-side {
-	display: flex;
-	flex-direction: column;
-	font-family: "Berkeley Mono", monospace;
-	font-size: 16px;
-	line-height: 24px;
-	padding-top: 5px;
-}
-
-.header-nav-side a {
-	display: block;
-}
-
-.header-mode {
-	font-size: 14px;
-	line-height: 24px;
-	margin-top: auto;
-	padding-top: 24px;
-}
-
-.header-mode .light-mode-toggle {
-	opacity: 0.25;
-}
-
-.header-mode .dark-mode-toggle {
-	opacity: 0.5;
-}
-
-:root.light-mode .header-mode .light-mode-toggle {
-	opacity: 0.5;
-}
-
-:root.light-mode .header-mode .dark-mode-toggle {
-	opacity: 0.25;
-}
-
-.header-email {
-	font-family: "Berkeley Mono", monospace;
-	font-size: 14px;
-	line-height: 24px;
+.header-links a {
 	color: var(--opacity-75);
-	margin-top: 24px;
-}
-
-.header-email a {
-	color: var(--color-text);
-}
-
-/* ==========================================================================
-   HERO — ASCII WORLD MAP
-   ========================================================================== */
-
-.hero {
-	max-width: var(--max-width);
-	margin: 0 auto;
-	padding: 40px var(--padding-x) 0;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.hero-ascii {
-	width: 100%;
-	height: 50vw;
-	max-height: 1100px;
-	min-height: 240px;
-	overflow: hidden;
-}
-
-.hero-ascii-text {
-	font-family: "Berkeley Mono", monospace;
-	font-size: 24px;
-	line-height: 20px;
-	color: var(--color-text);
-	opacity: 0.1;
-	word-break: break-all;
-	margin: 0;
-}
-
-.hero-labels {
-	display: flex;
-	justify-content: space-between;
-	align-items: baseline;
-	padding-top: 16px;
-	gap: 2rem;
-}
-
-.hero-label {
-	font-family: "Berkeley Mono", monospace;
-	font-size: 14px;
-	line-height: 22px;
-	color: var(--color-text);
-	white-space: nowrap;
-}
-
-.hero-label-right {
-	text-align: right;
-}
-
-.hero-arrow {
-	font-family: "Berkeley Mono", monospace;
-	font-size: 64px;
-	line-height: 72px;
-	color: var(--color-text);
-	padding-top: 48px;
 }
 
 /* ==========================================================================
@@ -559,78 +398,10 @@ code {
 
 .section-label {
 	font-family: "Berkeley Mono", monospace;
-	font-size: 14px;
-	line-height: 24px;
+	text-transform: uppercase;
+	font-size: 12px;
+	line-height: 22px;
 	color: var(--opacity-25);
-	margin-bottom: 48px;
-}
-
-/* ==========================================================================
-   BODY TEXT
-   ========================================================================== */
-
-.body-text {
-	font-family: "Die Grotesk A", sans-serif;
-	font-size: 24px;
-	line-height: 32px;
-	color: #dddddd;
-}
-
-:root.light-mode .body-text {
-	color: #222222;
-}
-
-.body-text p {
-	margin: 0 0 24px 0;
-}
-
-.body-text p:last-child {
-	margin-bottom: 0;
-}
-
-.body-text a:hover {
-	opacity: 0.625;
-}
-
-/* ==========================================================================
-   ABOUT SECTION
-   ========================================================================== */
-
-.about {
-	max-width: var(--max-width);
-	margin: 0 auto;
-	padding: 0 var(--padding-x);
-	margin-top: 160px;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.about-columns {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 60px;
-}
-
-/* ==========================================================================
-   COLUMNS ROW (PLACEHOLDER)
-   ========================================================================== */
-
-.columns-row {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: var(--gap-flex);
-	max-width: var(--max-width);
-	margin: 0 auto;
-	padding: 0 var(--padding-x);
-	margin-top: 80px;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.column-placeholder {
-	aspect-ratio: 688 / 394;
-	background-color: #d9d9d9;
-	opacity: 0.1;
 }
 
 /* ==========================================================================
@@ -653,19 +424,22 @@ code {
 	margin-bottom: 120px;
 }
 
-.work-samples .section-label {
+.work-intro {
+	display: grid;
+	grid-template-columns: minmax(0, 880px) minmax(0, 880px);
+	gap: 0 3rem;
+	font-size: 24px;
+	line-height: 32px;
+	color: var(--opacity-90);
+	margin-bottom: 12rem;
+}
+
+.work-intro p {
 	margin-bottom: 32px;
 }
 
-.work-intro {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 60px;
-	margin-bottom: 24px;
-}
-
-.work-disclaimer {
-	margin-bottom: 48px;
+.work-intro p:last-child {
+	margin-bottom: 0;
 }
 
 .work-samples .divider {
@@ -729,10 +503,10 @@ code {
 	grid-column: 1 / -1;
 	justify-self: start;
 	width: 100%;
-	max-width: 530px;
+	max-width: 640px;
 	font-family: "Berkeley Mono", monospace;
-	font-size: 12px;
-	line-height: 18px;
+	font-size: 14px;
+	line-height: 22px;
 	color: var(--color-text);
 	margin: 0;
 	display: flex;
@@ -742,10 +516,16 @@ code {
 
 .work-grid-title .work-title-line {
 	margin: 0;
+	font-size: 14px;
 	line-height: 1.65;
 }
 
+.work-grid-title .work-description {
+	font-size: 14px;
+}
+
 .work-grid-title .work-link {
+	font-size: 14px;
 	line-height: 1.65;
 }
 
@@ -900,7 +680,7 @@ code {
 
 .load-more-button {
 	font-family: "Berkeley Mono", monospace;
-	font-size: 11px;
+	font-size: 12px;
 	line-height: normal;
 	text-transform: uppercase;
 	color: var(--opacity-90);
@@ -923,6 +703,17 @@ code {
 	display: none;
 }
 
+.arrow {
+	font-size: 22px;
+	padding-top: 4rem;
+	padding-bottom: 2rem;
+}
+
+.arrow a {
+	color: inherit;
+	text-decoration: none;
+}
+
 /* ==========================================================================
    FOOTER
    ========================================================================== */
@@ -943,12 +734,147 @@ footer .caption {
 }
 
 /* ==========================================================================
-   SCROLL ANCHORS
+   LOGOS MARQUEE
    ========================================================================== */
 
-#about {
-	scroll-margin-top: 60px;
+.marquee-column {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-section);
+	width: 100%;
+	padding: 0 0 100px 0;
 }
+
+.marquee {
+	width: 100%;
+	max-width: var(--max-width);
+	margin: 10px auto 0;
+	padding: 0;
+	overflow: hidden;
+	box-sizing: border-box;
+	position: relative;
+	border-top: 1px dashed var(--color-border);
+	border-bottom: 1px dashed var(--color-border);
+}
+
+.marquee-track {
+	display: inline-flex;
+	align-items: center;
+	white-space: nowrap;
+	will-change: transform;
+	animation: marquee-scroll 90s linear infinite;
+}
+
+.marquee ul {
+	display: inline-flex;
+	flex-shrink: 0;
+	align-items: center;
+	gap: 1.5rem;
+	padding: 18px 0;
+	margin: 0;
+	margin-right: 1.5rem;
+	list-style: none;
+	white-space: nowrap;
+}
+
+.marquee li {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 11px;
+	line-height: 22px;
+	text-transform: uppercase;
+	color: var(--color-text);
+	white-space: nowrap;
+}
+
+@keyframes marquee-scroll {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.marquee::before,
+.marquee::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 80px;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.marquee::before {
+	left: 0;
+	background: linear-gradient(to right, var(--color-bg) 0%, transparent 100%);
+}
+
+.marquee::after {
+	right: 0;
+	background: linear-gradient(to left, var(--color-bg) 0%, transparent 100%);
+}
+
+.logos-marquee-section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-section);
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: var(--gap-section) 60px;
+	margin-top: 240px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.logos-marquee-section .marquee-column {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-section);
+	width: 100%;
+	padding: 0;
+}
+
+.logos-marquee-section .marquee-track {
+	opacity: 0.50;
+}
+
+.logos-marquee-section .marquee ul {
+	gap: 6rem;
+	margin-right: 6rem;
+}
+
+.logos-marquee-section .marquee li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 60px;
+}
+
+.logo-svg {
+	display: block;
+	max-height: 60px;
+	max-width: 200px;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	opacity: 0.75;
+	transition: opacity 0.3s ease;
+}
+
+.logo-svg:hover {
+	opacity: 1;
+}
+
+:root.light-mode .logo-svg {
+	filter: invert(1);
+}
+
+/* ==========================================================================
+   SCROLL ANCHORS
+   ========================================================================== */
 
 #work {
 	scroll-margin-top: 60px;
@@ -976,41 +902,32 @@ footer .caption {
 		max-width: 1840px;
 	}
 
-	.divider {
-		margin: 0;
-	}
-
-	.site-header {
-		gap: 48px;
-	}
-
-	.about-columns,
 	.work-intro {
-		gap: 48px;
-	}
-}
-
-/* ==========================================================================
-   RESPONSIVE — DESKTOP (≤1860px)
-   ========================================================================== */
-
-@media only screen and (max-width: 1860px) {
-	.site-header {
-		padding-top: 2rem;
+		grid-template-columns: minmax(0, 630px) minmax(0, 630px);
+		font-size: 18px;
+		line-height: 26px;
 	}
 
 	.divider {
 		margin: 0;
 	}
 
-	.header-heading {
-		font-size: 40px;
-		line-height: 48px;
+	/* WORK GRID TITLES */
+	.work-grid-title {
+		font-size: 12px;
+		line-height: 20px;
 	}
 
-	.header-nav {
-		font-size: 28px;
-		line-height: 36px;
+	.work-grid-title .work-title-line,
+	.work-grid-title .work-description,
+	.work-grid-title .work-link {
+		font-size: 12px;
+	}
+
+	/* LOGOS MARQUEE */
+	.logos-marquee-section {
+		padding-left: 3rem;
+		padding-right: 3rem;
 	}
 }
 
@@ -1027,63 +944,24 @@ footer .caption {
 		max-width: 1200px;
 	}
 
-	.site-header {
-		gap: 32px;
-	}
-
-	.header-heading {
-		font-size: 32px;
-		line-height: 40px;
-	}
-
-	.header-nav {
-		font-size: 24px;
-		line-height: 32px;
-	}
-
-	.header-nav-side {
-		font-size: 14px;
-		line-height: 22px;
-	}
-
-	.header-logo-img {
-		width: 100px;
-	}
-
-	.hero-ascii-text {
-		font-size: 18px;
-		line-height: 16px;
-	}
-
-	.hero-arrow {
-		font-size: 48px;
-		line-height: 56px;
-	}
-
-	.body-text {
-		font-size: 20px;
-		line-height: 28px;
-	}
-
-	.about {
-		margin-top: 120px;
-	}
-
-	.columns-row {
-		margin-top: 60px;
+	.work-intro {
+		grid-template-columns: minmax(0, 520px) minmax(0, 520px);
+		font-size: 16px;
+		line-height: 24px;
 	}
 
 	.work-samples {
 		margin-top: 80px;
 	}
 
-	.about-columns,
-	.work-intro {
-		gap: 32px;
-	}
-
 	.work-grid {
 		grid-template-columns: repeat(6, 1fr);
+	}
+
+	/* LOGOS MARQUEE */
+	.logos-marquee-section {
+		padding-left: 2rem;
+		padding-right: 2rem;
 	}
 }
 
@@ -1104,119 +982,11 @@ footer .caption {
 		display: none;
 	}
 
-	/* HEADER */
-	.site-header {
-		flex-direction: column;
-		gap: 2.5rem;
-		padding-top: 1.5rem;
-	}
-
-	.header-section-label {
-		font-size: 12px;
-		margin-bottom: 16px;
-	}
-
-	.header-heading {
-		font-size: 24px;
-		line-height: 32px;
-	}
-
-	.header-logo-img {
-		width: 80px;
-	}
-
-	.header-menu {
-		min-width: 0;
-	}
-
-	.header-nav {
-		font-size: 22px;
-		line-height: 30px;
-	}
-
-	.header-nav-side {
-		font-size: 14px;
-		padding-top: 3px;
-	}
-
-	.header-mode {
-		padding-top: 12px;
-	}
-
-	.header-email {
-		margin-top: 16px;
-	}
-
-	.header-caption {
-		padding-top: 16px;
-	}
-
-	/* HERO */
-	.hero {
-		padding-top: 2rem;
-	}
-
-	.hero-ascii {
-		height: 60vw;
-		min-height: 180px;
-		max-height: 400px;
-	}
-
-	.hero-ascii-text {
-		font-size: 12px;
-		line-height: 10px;
-	}
-
-	.hero-labels {
-		flex-direction: column;
-		gap: 0.25rem;
-	}
-
-	.hero-label-right {
-		text-align: left;
-	}
-
-	.hero-arrow {
-		font-size: 36px;
-		line-height: 44px;
-		padding-top: 2rem;
-	}
-
-	/* ABOUT */
-	.about {
-		margin-top: 3rem;
-	}
-
-	.about-columns {
-		grid-template-columns: 1fr;
-		gap: 0;
-	}
-
-	.section-label {
-		margin-bottom: 24px;
-	}
-
-	.body-text {
-		font-size: 16px;
-		line-height: 24px;
-	}
-
-	/* COLUMNS */
-	.columns-row {
-		grid-template-columns: repeat(2, 1fr);
-		margin-top: 2.5rem;
-	}
-
 	/* WORK */
 	.work-samples {
 		margin-top: 3rem;
 		padding-left: var(--padding-x);
 		padding-right: var(--padding-x);
-	}
-
-	.work-intro {
-		grid-template-columns: 1fr;
-		gap: 0;
 	}
 
 	.work-grid {
@@ -1233,7 +1003,6 @@ footer .caption {
 		padding-bottom: 2rem;
 	}
 
-	#about,
 	#work {
 		scroll-margin-top: 30px;
 	}
@@ -1251,6 +1020,49 @@ footer .caption {
 		padding-top: 60px;
 		padding-bottom: 32px;
 	}
+
+	/* LOGOS MARQUEE */
+	.logos-marquee-section {
+		padding: 1.5rem;
+		margin-top: 3rem;
+	}
+
+	.logos-marquee-section .marquee {
+		margin-top: 8px;
+	}
+
+	.logos-marquee-section .marquee ul {
+		gap: 4rem;
+		margin-right: 4rem;
+	}
+
+	.logos-marquee-section .marquee li {
+		height: 50px;
+	}
+
+	.logo-svg {
+		max-height: 50px;
+		max-width: 160px;
+	}
+
+	.marquee-column {
+		padding-bottom: 2rem;
+	}
+
+	.marquee ul {
+		padding: 12px 0;
+	}
+
+	.marquee {
+		margin-top: 0;
+	}
+
+	.marquee::before,
+	.marquee::after {
+		display: block;
+		width: 20px;
+	}
+
 }
 
 /* ==========================================================================
@@ -1258,21 +1070,25 @@ footer .caption {
    ========================================================================== */
 
 @media only screen and (max-width: 640px) {
-	.columns-row {
+
+	.work-intro {
 		grid-template-columns: 1fr;
+		font-size: 14px;
+		line-height: 22px;
 	}
 
-	.header-menu-body {
-		flex-direction: column;
-		gap: 1rem;
+	.work-intro p {
+		margin-bottom: 16px;
 	}
 
-	.header-nav-side {
-		padding-top: 0;
+	.work-intro-col:first-child {
+		margin-bottom: 16px;
 	}
 
-	.header-mode {
-		padding-top: 0;
+	.work-grid-title .work-title-line,
+	.work-grid-title .work-description,
+	.work-grid-title .work-link {
+		font-size: 12px;
 	}
 
 	/* HOMEPAGE */

@@ -2,6 +2,201 @@
   "items": [
     {
       "type": "title",
+      "name": "Klim Type Foundry",
+      "date": "(2018-2020)",
+      "description": "Design and creative direction of a custom ecommerce website including a specimen builder, blog, fonts in use gallery, glyph inspector, and type tester for a renowned foundry."
+    },
+    {
+      "filename": "k-mobile-montage.png",
+      "number": "K-01",
+      "description": "Mobile (Montage)",
+      "columns": 3,
+      "width": 1628,
+      "height": 1160,
+      "link": "https://klim.co.nz"
+    },
+    {
+      "filename": "k-soehne-specimen.png",
+      "number": "K-02",
+      "description": "Söhne (Specimen)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1604
+    },
+    {
+      "filename": "k-soehne-grid.png",
+      "number": "K-03",
+      "description": "Josef Müller-Brockmann (Homage)",
+      "columns": 2,
+      "width": 1072,
+      "height": 724
+    },
+    {
+      "filename": "k-untitled-serif.png",
+      "number": "K-04",
+      "description": "Untitled Serif (Cart)",
+      "columns": 3,
+      "width": 1628,
+      "height": 1028
+    },
+    {
+      "filename": "k-untitled-sans.png",
+      "number": "K-05",
+      "description": "Untitled Sans (Specimen)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1604
+    },
+    {
+      "filename": "k-homepage.png",
+      "number": "K-06",
+      "description": "Homepage (Montage)",
+      "columns": 2,
+      "width": 1072,
+      "height": 636
+    },
+    {
+      "filename": "k-financier-specimen.png",
+      "number": "K-07",
+      "description": "Financier Display (Specimen)",
+      "columns": 2,
+      "width": 1072,
+      "height": 988
+    },
+    {
+      "filename": "k-financier-glyphs.png",
+      "number": "K-08",
+      "description": "Financier Display (Glyphs)",
+      "columns": 2,
+      "width": 1072,
+      "height": 724
+    },
+    {
+      "filename": "k-blog.png",
+      "number": "K-09",
+      "description": "70,471 words about letters...",
+      "columns": 2,
+      "width": 1072,
+      "height": 828
+    },
+    {
+      "filename": "k-heldane-text.png",
+      "number": "K-10",
+      "description": "Heldane Text (Cart)",
+      "columns": 3,
+      "width": 1628,
+      "height": 1028
+    },
+    {
+      "filename": "k-heldane-display.png",
+      "number": "K-11",
+      "description": "Heldane Display (Specimen)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1604
+    },
+    {
+      "filename": "k-fonts-in-use.png",
+      "number": "K-12",
+      "description": "Fonts In Use (FIU)",
+      "columns": 2,
+      "width": 1072,
+      "height": 724
+    },
+    {
+      "filename": "k-custom-fonts.png",
+      "number": "K-13",
+      "description": "Custom Fonts (Menu)",
+      "columns": 3,
+      "width": 1628,
+      "height": 992
+    },
+    {
+      "filename": "k-pure-pakati.png",
+      "number": "K-14",
+      "description": "Pure Pākati (Specimen)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1652
+    },
+    {
+      "filename": "k-licence-agreement.png",
+      "number": "K-15",
+      "description": "Desktop Font Licence Agreement",
+      "columns": 2,
+      "width": 1072,
+      "height": 724
+    },
+    {
+      "filename": "k-geograph.png",
+      "number": "K-16",
+      "description": "Geograph (Specimen)",
+      "columns": 3,
+      "width": 1628,
+      "height": 1192
+    },
+    {
+      "filename": "k-menu.jpg",
+      "number": "K-17",
+      "description": "Menu",
+      "columns": 3,
+      "width": 1628,
+      "height": 1028
+    },
+    {
+      "divider": true
+    },
+    {
+      "type": "title",
+      "name": "Enter Startup",
+      "date": "(2026)",
+      "description": "Branding, logos, illustrations, ASCII maze, and cover design for a new startup book, community, and training program."
+    },
+    {
+      "filename": "es-logo.png",
+      "number": "ES-01",
+      "description": "Logo + ASCII Maze (S)",
+      "columns": 2,
+      "width": 1072,
+      "height": 772
+    },
+    {
+      "filename": "es-mark.png",
+      "number": "ES-02",
+      "description": "→× (Mark)",
+      "columns": 1,
+      "width": 1032,
+      "height": 1032
+    },
+    {
+      "filename": "es-cover.png",
+      "number": "ES-03",
+      "description": "Cover + ASCII Maze (L)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1624
+    },
+    {
+      "filename": "es-logotype.png",
+      "number": "ES-04",
+      "description": "→× (Logotype)",
+      "columns": 2,
+      "width": 1072,
+      "height": 516
+    },
+    {
+      "filename": "es-mockup.jpg",
+      "number": "ES-05",
+      "description": "Book Cover (Mockup) ",
+      "columns": 3,
+      "width": 1628,
+      "height": 996
+    },
+    {
+      "divider": true
+    },
+    {
+      "type": "title",
       "name": "Loophole Labs, Inc.",
       "date": "(2025-Present)",
       "description": "Branding, logos, illustrations, landing pages, product, and design system for a new infrastructure startup."
@@ -155,55 +350,6 @@
     },
     {
       "type": "title",
-      "name": "Enter Startup",
-      "date": "(2026)",
-      "description": "Branding, logos, illustrations, ASCII maze, and cover design for a new startup book, community, and training program."
-    },
-    {
-      "filename": "es-logo.png",
-      "number": "ES-01",
-      "description": "Logo + ASCII Maze (S)",
-      "columns": 2,
-      "width": 1072,
-      "height": 772
-    },
-    {
-      "filename": "es-mark.png",
-      "number": "ES-02",
-      "description": "→× (Mark)",
-      "columns": 1,
-      "width": 1032,
-      "height": 1032
-    },
-    {
-      "filename": "es-cover.png",
-      "number": "ES-03",
-      "description": "Cover + ASCII Maze (L)",
-      "columns": 2,
-      "width": 1072,
-      "height": 1624
-    },
-    {
-      "filename": "es-logotype.png",
-      "number": "ES-04",
-      "description": "→× (Logotype)",
-      "columns": 2,
-      "width": 1072,
-      "height": 516
-    },
-    {
-      "filename": "es-mockup.jpg",
-      "number": "ES-05",
-      "description": "Book Cover (Mockup) ",
-      "columns": 3,
-      "width": 1628,
-      "height": 996
-    },
-    {
-      "divider": true
-    },
-    {
-      "type": "title",
       "name": "Axiom, Inc.",
       "date": "(2022—2025)",
       "description": "Website, branding, ads, diagrams, illustrations, swag, and design system for a logging and observability platform."
@@ -211,7 +357,7 @@
     {
       "filename": "ax-logs.png",
       "number": "AX-01",
-      "description": "Logs. Looogs. Looooooooooogs. (Ad)",
+      "description": "Logs. Looogs. Loooooogs. (Ad)",
       "columns": 1,
       "width": 1032,
       "height": 1032
@@ -366,114 +512,73 @@
     },
     {
       "type": "title",
-      "name": "Klim Type Foundry",
-      "date": "(2018-2020)",
-      "description": "Design and creative direction of a custom ecommerce website including a specimen builder, blog, fonts in use gallery, glyph inspector, and type tester for a renowned foundry."
+      "name": "Koordinates",
+      "date": "(2015-2017)",
+      "description": "Website, branding, illustrations, swag, marketing, product design, and design system for a geospatial data platform."
     },
     {
-      "filename": "k-mobile-montage.png",
-      "number": "K-01",
-      "description": "Mobile (Montage)",
+      "filename": "kx-cards.jpg",
+      "number": "KX-01",
+      "description": "Business Cards",
       "columns": 3,
       "width": 1628,
-      "height": 1160,
-      "link": "https://klim.co.nz"
+      "height": 1264
     },
     {
-      "filename": "k-soehne-specimen.png",
-      "number": "K-02",
-      "description": "Söhne (Specimen)",
+      "filename": "kx-homepage.png",
+      "number": "KX-02",
+      "description": "Homepage",
       "columns": 2,
       "width": 1072,
-      "height": 1604
+      "height": 756
     },
     {
-      "filename": "k-soehne-grid.png",
-      "number": "K-03",
-      "description": "Josef Müller-Brockmann (Homage)",
-      "columns": 2,
-      "width": 1072,
-      "height": 724
-    },
-    {
-      "filename": "k-untitled-serif.png",
-      "number": "K-04",
-      "description": "Untitled Serif (Cart)",
+      "filename": "kx-conservation-data.png",
+      "number": "KX-03",
+      "description": "New Zealand Department of Conservation (Geospatial Data)",
       "columns": 3,
       "width": 1628,
-      "height": 1028
+      "height": 1116
     },
     {
-      "filename": "k-untitled-sans.png",
-      "number": "K-05",
-      "description": "Untitled Sans (Specimen)",
+      "filename": "kx-pricing.png",
+      "number": "KX-04",
+      "description": "Pricing",
       "columns": 2,
       "width": 1072,
-      "height": 1604
+      "height": 756
     },
     {
-      "filename": "k-homepage.png",
-      "number": "K-06",
-      "description": "Homepage (Montage)",
+      "filename": "kx-export.png",
+      "number": "KX-05",
+      "description": "Export Options (UI)",
       "columns": 2,
       "width": 1072,
-      "height": 636
+      "height": 756
     },
     {
-      "filename": "k-financier-specimen.png",
-      "number": "K-07",
-      "description": "Financier Display (Specimen)",
-      "columns": 2,
-      "width": 1072,
-      "height": 988
-    },
-    {
-      "filename": "k-financier-glyphs.png",
-      "number": "K-08",
-      "description": "Financier Display (Glyphs)",
-      "columns": 2,
-      "width": 1072,
-      "height": 724
-    },
-    {
-      "filename": "k-blog.png",
-      "number": "K-09",
-      "description": "70,471 words about letters...",
-      "columns": 2,
-      "width": 1072,
-      "height": 828
-    },
-    {
-      "filename": "k-heldane-text.png",
-      "number": "K-10",
-      "description": "Heldane Text (Cart)",
+      "filename": "kx-help.png",
+      "number": "KX-05",
+      "description": "Help (Documentation)",
       "columns": 3,
       "width": 1628,
-      "height": 1028
+      "height": 1072
     },
     {
-      "filename": "k-heldane-display.png",
-      "number": "K-11",
-      "description": "Heldane Display (Specimen)",
+      "filename": "kx-offices.png",
+      "number": "KX-06",
+      "description": "Offices (Map Component)",
       "columns": 2,
       "width": 1072,
-      "height": 1604
+      "height": 560
     },
     {
-      "filename": "k-fonts-in-use.png",
-      "number": "K-12",
-      "description": "Fonts In Use (FIU)",
-      "columns": 2,
-      "width": 1072,
-      "height": 724
-    },
-    {
-      "filename": "k-custom-fonts.png",
-      "number": "K-13",
-      "description": "Custom Fonts (Menu)",
+      "filename": "kx-posters.jpg",
+      "number": "KX-07",
+      "description": "Posters (WLG / AKL)",
       "columns": 3,
       "width": 1628,
-      "height": 992
+      "height": 1288
     }
   ]
 }
