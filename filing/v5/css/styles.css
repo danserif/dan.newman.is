@@ -1113,7 +1113,7 @@ footer .caption {
 
 	.row {
 		grid-template-columns: 100px 1fr;
-		font-size: 11px;
+		font-size: 12px;
 		line-height: 20px;
 	}
 
