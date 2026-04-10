@@ -162,11 +162,9 @@
 			<span><span class="opacity-75 color-hex" id="hex-black">#0<span class="desktop-only">0</span>0<span
 						class="desktop-only">0</span>0<span class="desktop-only">0</span></span>
 				<span class="opacity-25">+</span> <span class="opacity-75 color-hex" id="hex-white">#F<span
-						class="desktop-only">F</span>F<span class="desktop-only">F</span>F<span
-						class="desktop-only">F</span></span>
+						class="desktop-only">F</span>F<span class="desktop-only">F</span>F<span class="desktop-only">F</span></span>
 				<span class="opacity-25">+</span> <span class="opacity-75 color-hex" id="hex-green">#A<span
-						class="desktop-only">A</span>F<span class="desktop-only">F</span>0<span
-						class="desktop-only">0</span></span>
+						class="desktop-only">A</span>F<span class="desktop-only">F</span>0<span class="desktop-only">0</span></span>
 				<span class="opacity-25">+</span> <span class="opacity-75 color-hex" id="hex-blue">#0<span
 						class="desktop-only">0</span>4<span class="desktop-only">4</span>F<span
 						class="desktop-only">F</span></span></span>
@@ -219,38 +217,38 @@
 			tick();
 			setInterval(tick, 1000);
 
-		var hexEls = {
-			black: document.getElementById("hex-black"),
-			white: document.getElementById("hex-white"),
-			green: document.getElementById("hex-green"),
-			blue: document.getElementById("hex-blue")
-		};
+			var hexEls = {
+				black: document.getElementById("hex-black"),
+				white: document.getElementById("hex-white"),
+				green: document.getElementById("hex-green"),
+				blue: document.getElementById("hex-blue")
+			};
 
-		function updateActiveHex() {
-			var light = document.documentElement.classList.contains("light-mode");
-			var accent = document.documentElement.classList.contains("accent-bg");
-			var activeId = accent ? (light ? "blue" : "green") : (light ? "white" : "black");
-			for (var key in hexEls) {
-				hexEls[key].classList.toggle("is-active", key === activeId);
+			function updateActiveHex() {
+				var light = document.documentElement.classList.contains("light-mode");
+				var accent = document.documentElement.classList.contains("accent-bg");
+				var activeId = accent ? (light ? "blue" : "green") : (light ? "white" : "black");
+				for (var key in hexEls) {
+					hexEls[key].classList.toggle("is-active", key === activeId);
+				}
 			}
-		}
 
-		function setMode(light, accentBg) {
-			document.documentElement.classList.toggle("light-mode", light);
-			document.documentElement.classList.toggle("accent-bg", accentBg);
-			try {
-				localStorage.setItem("colorMode", light ? "light" : "dark");
-				localStorage.setItem("accentBg", accentBg ? "true" : "false");
-			} catch (err) { }
+			function setMode(light, accentBg) {
+				document.documentElement.classList.toggle("light-mode", light);
+				document.documentElement.classList.toggle("accent-bg", accentBg);
+				try {
+					localStorage.setItem("colorMode", light ? "light" : "dark");
+					localStorage.setItem("accentBg", accentBg ? "true" : "false");
+				} catch (err) { }
+				updateActiveHex();
+			}
+
 			updateActiveHex();
-		}
 
-		updateActiveHex();
-
-		hexEls.black.addEventListener("click", function () { setMode(false, false); });
-		hexEls.white.addEventListener("click", function () { setMode(true, false); });
-		hexEls.green.addEventListener("click", function () { setMode(false, true); });
-		hexEls.blue.addEventListener("click", function () { setMode(true, true); });
+			hexEls.black.addEventListener("click", function () { setMode(false, false); });
+			hexEls.white.addEventListener("click", function () { setMode(true, false); });
+			hexEls.green.addEventListener("click", function () { setMode(false, true); });
+			hexEls.blue.addEventListener("click", function () { setMode(true, true); });
 
 			document.querySelector(".mode-light").addEventListener("click", function (e) {
 				e.preventDefault();
