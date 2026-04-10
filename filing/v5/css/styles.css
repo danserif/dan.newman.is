@@ -30,14 +30,10 @@
 
 .font-grotesk-a {
 	font-family: "Die Grotesk A", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 .font-grotesk-b {
 	font-family: "Die Grotesk B", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 .font-berkeley {
@@ -138,6 +134,16 @@ html {
 	-moz-tab-size: 4;
 	tab-size: 4;
 	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	-webkit-font-feature-settings: 'kern';
+	-moz-font-feature-settings: 'kern';
+	-moz-font-feature-settings: 'kern=1';
+	-webkit-font-kerning: normal;
+	-moz-font-kerning: normal;
+	font-feature-settings: 'kern';
+	font-kerning: normal;
 }
 
 body {
@@ -148,8 +154,6 @@ body {
 	font-family: "Berkeley Mono", monospace;
 	max-width: 100%;
 	background-color: var(--color-bg);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 /* TEXT SELECTION */
