@@ -915,6 +915,7 @@ footer .caption {
 		grid-template-columns: minmax(0, 630px) minmax(0, 630px);
 		font-size: 18px;
 		line-height: 26px;
+		margin-bottom: 6rem;
 	}
 
 	.divider {
