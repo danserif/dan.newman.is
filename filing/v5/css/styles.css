@@ -104,6 +104,8 @@ body {
 	font-family: "Berkeley Mono", monospace;
 	max-width: 100%;
 	background-color: var(--color-bg);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 /* TEXT SELECTION */
