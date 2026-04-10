@@ -1165,6 +1165,6 @@ footer .caption {
 	}
 
 	.info {
-		margin-top: clamp(48px, 8vh, 120px);
+		margin-top: clamp(64px, 8vh, 120px);
 	}
 }
