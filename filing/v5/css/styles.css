@@ -76,6 +76,50 @@
 	--opacity-90: rgba(0, 0, 0, 0.9);
 }
 
+:root.accent-bg {
+	--color-bg: #AAFF00;
+	--color-text: #000000;
+	--color-accent: #000000;
+	--color-border: rgba(0, 0, 0, 0.15);
+	--opacity-15: rgba(0, 0, 0, 0.15);
+	--opacity-25: rgba(0, 0, 0, 0.25);
+	--opacity-50: rgba(0, 0, 0, 0.5);
+	--opacity-75: rgba(0, 0, 0, 0.75);
+	--opacity-90: rgba(0, 0, 0, 0.9);
+}
+
+:root.accent-bg .logo {
+	filter: invert(1);
+}
+
+:root.light-mode.accent-bg {
+	--color-bg: #0044FF;
+	--color-text: #ffffff;
+	--color-accent: #ffffff;
+	--color-border: rgba(255, 255, 255, 0.15);
+	--opacity-15: rgba(255, 255, 255, 0.15);
+	--opacity-25: rgba(255, 255, 255, 0.25);
+	--opacity-50: rgba(255, 255, 255, 0.5);
+	--opacity-75: rgba(255, 255, 255, 0.75);
+	--opacity-90: rgba(255, 255, 255, 0.9);
+}
+
+:root.light-mode.accent-bg .logo {
+	filter: none;
+}
+
+.color-hex {
+	cursor: pointer;
+}
+
+.page .color-hex:hover {
+	opacity: 0.5;
+}
+
+.page .color-hex.is-active {
+	color: var(--opacity-25);
+}
+
 /* ==========================================================================
    RESET
    ========================================================================== */

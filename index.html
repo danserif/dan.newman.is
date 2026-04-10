@@ -28,6 +28,7 @@
 			try {
 				var savedMode = localStorage.getItem("colorMode");
 				if (savedMode === "light") document.documentElement.classList.add("light-mode");
+				if (localStorage.getItem("accentBg") === "true") document.documentElement.classList.add("accent-bg");
 			} catch (e) { }
 		})();
 	</script>
@@ -158,9 +159,10 @@
 		</div>
 		<div class="row">
 			<span class="label"><span class="opacity-25">&num;</span> Colours</span>
-			<span><span class="opacity-50">#000000</span> <span class="opacity-25">+</span> <span
-					class="opacity-50">#FFFFFF</span> <span class="opacity-25">+</span> <span class="accent opacity-50"
-					id="accent-hex">#AAFF00</span></span>
+			<span><span class="opacity-75 color-hex" id="hex-black">#000000</span> <span class="opacity-25">+</span> <span
+					class="opacity-75 color-hex" id="hex-white">#FFFFFF</span> <span class="opacity-25">+</span> <span
+					class="opacity-75 color-hex" id="hex-green">#AAFF00</span> <span class="opacity-25">+</span> <span
+					class="opacity-75 color-hex" id="hex-blue">#0044FF</span></span>
 		</div>
 	</main>
 
@@ -210,23 +212,46 @@
 			tick();
 			setInterval(tick, 1000);
 
-			var accentEl = document.getElementById("accent-hex");
-			function updateAccent() {
-				accentEl.textContent = document.documentElement.classList.contains("light-mode") ? "#0044FF" : "#AAFF00";
+		var hexEls = {
+			black: document.getElementById("hex-black"),
+			white: document.getElementById("hex-white"),
+			green: document.getElementById("hex-green"),
+			blue: document.getElementById("hex-blue")
+		};
+
+		function updateActiveHex() {
+			var light = document.documentElement.classList.contains("light-mode");
+			var accent = document.documentElement.classList.contains("accent-bg");
+			var activeId = accent ? (light ? "blue" : "green") : (light ? "white" : "black");
+			for (var key in hexEls) {
+				hexEls[key].classList.toggle("is-active", key === activeId);
 			}
-			updateAccent();
+		}
+
+		function setMode(light, accentBg) {
+			document.documentElement.classList.toggle("light-mode", light);
+			document.documentElement.classList.toggle("accent-bg", accentBg);
+			try {
+				localStorage.setItem("colorMode", light ? "light" : "dark");
+				localStorage.setItem("accentBg", accentBg ? "true" : "false");
+			} catch (err) { }
+			updateActiveHex();
+		}
+
+		updateActiveHex();
+
+		hexEls.black.addEventListener("click", function () { setMode(false, false); });
+		hexEls.white.addEventListener("click", function () { setMode(true, false); });
+		hexEls.green.addEventListener("click", function () { setMode(false, true); });
+		hexEls.blue.addEventListener("click", function () { setMode(true, true); });
 
 			document.querySelector(".mode-light").addEventListener("click", function (e) {
 				e.preventDefault();
-				document.documentElement.classList.add("light-mode");
-				try { localStorage.setItem("colorMode", "light"); } catch (err) { }
-				updateAccent();
+				setMode(true, false);
 			});
 			document.querySelector(".mode-dark").addEventListener("click", function (e) {
 				e.preventDefault();
-				document.documentElement.classList.remove("light-mode");
-				try { localStorage.setItem("colorMode", "dark"); } catch (err) { }
-				updateAccent();
+				setMode(false, false);
 			});
 		})();
 	</script>
