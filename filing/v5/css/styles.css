@@ -84,10 +84,6 @@
 	--opacity-90: rgba(0, 0, 0, 0.9);
 }
 
-:root.accent-bg .logo {
-	filter: invert(1);
-}
-
 :root.light-mode.accent-bg {
 	--color-bg: #0044FF;
 	--color-text: #ffffff;
@@ -98,26 +94,6 @@
 	--opacity-50: rgba(255, 255, 255, 0.5);
 	--opacity-75: rgba(255, 255, 255, 0.75);
 	--opacity-90: rgba(255, 255, 255, 0.9);
-}
-
-:root.light-mode.accent-bg .logo {
-	filter: none;
-}
-
-.color-hex {
-	cursor: pointer;
-}
-
-.page .color-hex:hover {
-	opacity: 0.5;
-}
-
-.page .color-hex.is-active {
-	color: var(--opacity-25);
-}
-
-.accent-bg .page .color-hex.is-active {
-	color: var(--opacity-50);
 }
 
 /* ==========================================================================
@@ -309,7 +285,16 @@ code {
 }
 
 /* ==========================================================================
-   HOMEPAGE
+   ACCESSIBILITY
+   ========================================================================== */
+
+*:focus-visible {
+	outline: 2px solid var(--opacity-50);
+	outline-offset: 2px;
+}
+
+/* ==========================================================================
+   PAGE LAYOUT
    ========================================================================== */
 
 .page {
@@ -321,6 +306,10 @@ code {
 .page-content {
 	flex: 1 0 auto;
 }
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
 
 .page>header {
 	max-width: var(--max-width);
@@ -339,12 +328,24 @@ code {
 	filter: invert(1);
 }
 
+:root.accent-bg .logo {
+	filter: invert(1);
+}
+
+:root.light-mode.accent-bg .logo {
+	filter: none;
+}
+
 .logo-caption {
 	font-size: 12px;
 	line-height: 22px;
 	color: var(--opacity-50);
 	margin-top: 24px;
 }
+
+/* ==========================================================================
+   INFO
+   ========================================================================== */
 
 .info {
 	max-width: var(--max-width);
@@ -410,25 +411,23 @@ code {
 	opacity: 0.5;
 }
 
-.page>footer {
-	margin-top: auto;
-	font-size: 12px;
-	line-height: 22px;
-	color: var(--opacity-90);
+.color-hex {
+	cursor: pointer;
 }
 
-.footer-meta {
-	margin-bottom: 22px;
+.page .color-hex:hover {
+	opacity: 0.5;
 }
 
-.mode-light,
-.mode-dark {
+.page .color-hex.is-active {
+	color: var(--opacity-25);
+}
+
+.accent-bg .page .color-hex.is-active {
 	color: var(--opacity-50);
 }
 
-/* ==========================================================================
-   HEADER LINKS
-   ========================================================================== */
+/* HEADER LINKS */
 
 .header-links {
 	position: absolute;
@@ -792,7 +791,9 @@ code {
 	opacity: 0.75;
 }
 
-/* LOAD MORE */
+/* ==========================================================================
+   LOAD MORE
+   ========================================================================== */
 
 .load-more-row {
 	display: flex;
@@ -846,36 +847,6 @@ code {
 .work-content>.divider.hidden,
 .photo-content>.divider.hidden {
 	display: none;
-}
-
-.arrow {
-	font-size: 22px;
-	padding-top: 4rem;
-	padding-bottom: 2rem;
-}
-
-.arrow a {
-	color: inherit;
-	text-decoration: none;
-}
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-
-footer {
-	max-width: var(--max-width);
-	margin: 0 auto;
-	padding: 120px var(--padding-x) 60px;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-footer .caption {
-	font-family: "Berkeley Mono", monospace;
-	font-size: 11px;
-	line-height: 1.65;
-	color: var(--opacity-50);
 }
 
 /* ==========================================================================
@@ -1027,12 +998,49 @@ footer .caption {
 }
 
 /* ==========================================================================
-   ACCESSIBILITY
+   FOOTER
    ========================================================================== */
 
-*:focus-visible {
-	outline: 2px solid var(--opacity-50);
-	outline-offset: 2px;
+footer {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 120px var(--padding-x) 60px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+footer .caption {
+	font-family: "Berkeley Mono", monospace;
+	font-size: 11px;
+	line-height: 1.65;
+	color: var(--opacity-50);
+}
+
+.page>footer {
+	margin-top: auto;
+	font-size: 12px;
+	line-height: 22px;
+	color: var(--opacity-90);
+}
+
+.arrow {
+	font-size: 22px;
+	padding-top: 4rem;
+	padding-bottom: 2rem;
+}
+
+.arrow a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.footer-meta {
+	margin-bottom: 22px;
+}
+
+.mode-light,
+.mode-dark {
+	color: var(--opacity-50);
 }
 
 /* ==========================================================================
@@ -1048,6 +1056,12 @@ footer .caption {
 		max-width: 1840px;
 	}
 
+	/* UTILITIES */
+	.divider {
+		margin: 0;
+	}
+
+	/* WORK / PHOTOS */
 	.work-intro,
 	.photo-intro {
 		grid-template-columns: minmax(0, 630px) minmax(0, 630px);
@@ -1056,11 +1070,6 @@ footer .caption {
 		margin-bottom: 6rem;
 	}
 
-	.divider {
-		margin: 0;
-	}
-
-	/* WORK / PHOTO GRID TITLES */
 	.work-grid-title,
 	.photo-grid-title {
 		font-size: 12px;
@@ -1096,6 +1105,7 @@ footer .caption {
 		max-width: 1200px;
 	}
 
+	/* WORK / PHOTOS */
 	.work-intro,
 	.photo-intro {
 		grid-template-columns: minmax(0, 520px) minmax(0, 520px);
@@ -1129,6 +1139,7 @@ footer .caption {
 		--padding-x: 1.5rem;
 	}
 
+	/* UTILITIES */
 	.mobile-only {
 		display: inline;
 	}
@@ -1137,12 +1148,22 @@ footer .caption {
 		display: none;
 	}
 
+	/* HEADER */
+	.page>header {
+		padding-top: 48px;
+	}
+
 	.logo {
 		width: 80px;
 	}
 
 	.logo-caption {
 		margin-top: 24px;
+	}
+
+	/* INFO */
+	.info {
+		margin-top: clamp(88px, 10vh, 200px);
 	}
 
 	/* WORK / PHOTOS */
@@ -1179,31 +1200,6 @@ footer .caption {
 		grid-column: span 1 !important;
 	}
 
-	/* FOOTER */
-	footer {
-		padding-top: 3rem;
-		padding-bottom: 2rem;
-	}
-
-	#work,
-	#photos {
-		scroll-margin-top: 30px;
-	}
-
-	/* HOMEPAGE */
-	.page>header {
-		padding-top: 48px;
-	}
-
-	.info {
-		margin-top: clamp(88px, 10vh, 200px);
-	}
-
-	.page>footer {
-		padding-top: 60px;
-		padding-bottom: 32px;
-	}
-
 	/* LOGOS MARQUEE */
 	.logos-marquee-section {
 		padding: 1.5rem;
@@ -1232,12 +1228,12 @@ footer .caption {
 		padding-bottom: 2rem;
 	}
 
-	.marquee ul {
-		padding: 12px 0;
-	}
-
 	.marquee {
 		margin-top: 0;
+	}
+
+	.marquee ul {
+		padding: 12px 0;
 	}
 
 	.marquee::before,
@@ -1246,6 +1242,22 @@ footer .caption {
 		width: 20px;
 	}
 
+	/* SCROLL ANCHORS */
+	#work,
+	#photos {
+		scroll-margin-top: 30px;
+	}
+
+	/* FOOTER */
+	footer {
+		padding-top: 3rem;
+		padding-bottom: 2rem;
+	}
+
+	.page>footer {
+		padding-top: 60px;
+		padding-bottom: 32px;
+	}
 }
 
 /* ==========================================================================
@@ -1254,6 +1266,23 @@ footer .caption {
 
 @media only screen and (max-width: 640px) {
 
+	/* HEADER */
+	.page>header {
+		padding-top: 48px;
+	}
+
+	/* INFO */
+	.info {
+		margin-top: 88px;
+	}
+
+	.row {
+		grid-template-columns: 110px 1fr;
+		font-size: 12px;
+		line-height: 20px;
+	}
+
+	/* WORK / PHOTOS */
 	.work-intro,
 	.photo-intro {
 		grid-template-columns: 1fr;
@@ -1279,19 +1308,118 @@ footer .caption {
 	.photo-grid-title .photo-link {
 		font-size: 12px;
 	}
+}
 
-	/* HOMEPAGE */
-	.page>header {
-		padding-top: 48px;
-	}
+/* ==========================================================================
+   CLOCK OVERLAY
+   ========================================================================== */
 
-	.row {
-		grid-template-columns: 110px 1fr;
-		font-size: 12px;
-		line-height: 20px;
-	}
+#nz-time-row {
+	cursor: pointer;
+	transition: opacity 0.2s ease;
+}
 
-	.info {
-		margin-top: 88px;
+#nz-time-row:hover {
+	opacity: 0.5 !important;
+}
+
+#clock-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: color-mix(in srgb, var(--color-bg) 94%, transparent);
+	-webkit-backdrop-filter: blur(20px) saturate(180%);
+	backdrop-filter: blur(20px) saturate(180%);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+#clock-overlay.is-open {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+#clock-svg {
+	width: min(560px, 85vmin);
+	height: min(560px, 85vmin);
+}
+
+@media (max-width: 600px) {
+	#clock-svg {
+		width: 70vmin;
+		height: 70vmin;
 	}
+}
+
+#clock-svg .clock-marker {
+	stroke: var(--color-text);
+	stroke-width: 0.8;
+	opacity: 0.75;
+}
+
+#clock-svg .clock-marker-hour {
+	stroke-width: 0.8;
+}
+
+#clock-svg .clock-numeral {
+	fill: var(--color-text);
+	font-family: "Die Grotesk A", sans-serif;
+	font-size: 12px;
+	text-anchor: middle;
+	dominant-baseline: central;
+}
+
+#clock-svg .clock-logo {
+	fill: var(--color-text);
+}
+
+#clock-svg .clock-tz {
+	fill: var(--color-text);
+	font-family: "Berkeley Mono", monospace;
+	font-size: 5px;
+	text-anchor: middle;
+	dominant-baseline: hanging;
+	opacity: 0.75;
+}
+
+#clock-svg .clock-hand-hour {
+	stroke: var(--color-text);
+	stroke-width: 3.5;
+	stroke-linecap: round;
+}
+
+#clock-svg .clock-hand-minute {
+	stroke: var(--color-text);
+	stroke-width: 2.5;
+	stroke-linecap: round;
+}
+
+#clock-svg .clock-hand-second {
+	stroke: var(--color-accent);
+	stroke-width: 1.2;
+	stroke-linecap: round;
+}
+
+#clock-svg .clock-cap {
+	fill: var(--color-accent);
+}
+
+#clock-overlay.clock-idle #clock-svg .clock-hand-second {
+	stroke: #666666;
+}
+
+#clock-overlay.clock-idle #clock-svg .clock-cap {
+	fill: #666666;
+}
+
+.light-mode #clock-overlay.clock-idle #clock-svg .clock-hand-second {
+	stroke: #cccccc;
+}
+
+.light-mode #clock-overlay.clock-idle #clock-svg .clock-cap {
+	fill: #cccccc;
 }

@@ -35,6 +35,7 @@
 
 	<link rel="stylesheet" href="/filing/v5/css/styles.css" />
 	<link rel="preload" href="/filing/v5/fonts/berkeley-mono-regular.woff2" as="font" type="font/woff2" crossorigin />
+	<link rel="preload" href="/filing/v5/fonts/die-grotesk-a-regular.woff2" as="font" type="font/woff2" crossorigin />
 
 	<link rel="icon" type="image/png" href="/filing/v5/icons/favicon-16x16.png" sizes="16x16" />
 	<link rel="icon" type="image/png" href="/filing/v5/icons/favicon-32x32.png" sizes="32x32" />
@@ -89,8 +90,9 @@
 		</div>
 		<div class="row">
 			<span class="label"><span class="opacity-25">&sol;</span> Skills</span>
-			<h2><a href="/a/designer" class="underline">Design</a> <span class="opacity-25">/</span>
-				Photography <span class="desktop-only"><span class="opacity-25">/</span> Watching Cricket </span></h2>
+			<h2><a href="/a/designer" class="underline accent">Design</a> <span class="opacity-25">/</span>
+				Photography <span class="desktop-only"><span class="opacity-25">/</span> Watching Cricket </span>
+			</h2>
 		</div>
 		<div class="row">
 			<span class="label"><span class="opacity-25">&times;</span> Location</span>
@@ -98,7 +100,8 @@
 		</div>
 		<div class="row">
 			<span class="label"><span class="opacity-25">&colon;</span> Time</span>
-			<span><span class="opacity-50" id="nz-time"></span> <span class="opacity-25" id="nz-tz"></span></span>
+			<span id="nz-time-row"><span class="opacity-50" id="nz-time"></span> <span class="opacity-25"
+					id="nz-tz"></span></span>
 		</div>
 		<!--<div class="row">
 			<span class="label"><span class="opacity-25">&amp;</span> Shop</span>
@@ -199,74 +202,8 @@
 		</p>
 	</footer>
 
-	<script>
-		(function () {
-			var timeEl = document.getElementById("nz-time");
-			var tzEl = document.getElementById("nz-tz");
-			var tzFmt = new Intl.DateTimeFormat("en-NZ", {
-				timeZone: "Pacific/Auckland",
-				timeZoneName: "short"
-			});
-			function tick() {
-				var now = new Date();
-				timeEl.textContent = now.toLocaleTimeString("en-NZ", {
-					hour: "numeric", minute: "2-digit", second: "2-digit",
-					hour12: true, timeZone: "Pacific/Auckland"
-				});
-				var parts = tzFmt.formatToParts(now);
-				for (var i = 0; i < parts.length; i++) {
-					if (parts[i].type === "timeZoneName") {
-						tzEl.textContent = "(" + parts[i].value + ")";
-						break;
-					}
-				}
-			}
-			tick();
-			setInterval(tick, 1000);
-
-			var hexEls = {
-				black: document.getElementById("hex-black"),
-				white: document.getElementById("hex-white"),
-				green: document.getElementById("hex-green"),
-				blue: document.getElementById("hex-blue")
-			};
-
-			function updateActiveHex() {
-				var light = document.documentElement.classList.contains("light-mode");
-				var accent = document.documentElement.classList.contains("accent-bg");
-				var activeId = accent ? (light ? "blue" : "green") : (light ? "white" : "black");
-				for (var key in hexEls) {
-					hexEls[key].classList.toggle("is-active", key === activeId);
-				}
-			}
-
-			function setMode(light, accentBg) {
-				document.documentElement.classList.toggle("light-mode", light);
-				document.documentElement.classList.toggle("accent-bg", accentBg);
-				try {
-					localStorage.setItem("colorMode", light ? "light" : "dark");
-					localStorage.setItem("accentBg", accentBg ? "true" : "false");
-				} catch (err) { }
-				updateActiveHex();
-			}
-
-			updateActiveHex();
-
-			hexEls.black.addEventListener("click", function () { setMode(false, false); });
-			hexEls.white.addEventListener("click", function () { setMode(true, false); });
-			hexEls.green.addEventListener("click", function () { setMode(false, true); });
-			hexEls.blue.addEventListener("click", function () { setMode(true, true); });
-
-			document.querySelector(".mode-light").addEventListener("click", function (e) {
-				e.preventDefault();
-				setMode(true, false);
-			});
-			document.querySelector(".mode-dark").addEventListener("click", function (e) {
-				e.preventDefault();
-				setMode(false, false);
-			});
-		})();
-	</script>
+	<script src="/filing/v5/js/main.js" defer></script>
+	<script src="/filing/v5/js/clock.js" defer></script>
 
 </body>
 
