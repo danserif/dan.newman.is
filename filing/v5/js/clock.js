@@ -156,9 +156,9 @@
 		if (e.key === "Escape" && overlay.classList.contains("is-open")) closeClock();
 	});
 
-	var nzTimeRow = document.getElementById("nz-time-row");
-	if (nzTimeRow) {
-		nzTimeRow.addEventListener("click", function (e) {
+	var nzTime = document.getElementById("nz-time");
+	if (nzTime) {
+		nzTime.addEventListener("click", function (e) {
 			e.stopPropagation();
 			openClock(false);
 		});

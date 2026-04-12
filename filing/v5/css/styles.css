@@ -465,7 +465,7 @@ code {
 }
 
 /* ==========================================================================
-   WORK / PHOTO SECTION
+   WORK / PHOTO SECTIONS
    ========================================================================== */
 
 .work-samples,
@@ -1314,12 +1314,12 @@ footer .caption {
    CLOCK OVERLAY
    ========================================================================== */
 
-#nz-time-row {
+#nz-time {
 	cursor: pointer;
 	transition: opacity 0.2s ease;
 }
 
-#nz-time-row:hover {
+#nz-time:hover {
 	opacity: 0.5 !important;
 }
 
