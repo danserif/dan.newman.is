@@ -443,9 +443,22 @@ code {
 	transition: opacity 0.2s ease;
 }
 
+.header-links ul {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
 .info.is-stuck .header-links {
 	opacity: 1;
 	pointer-events: auto;
+}
+
+.header-links li:last-child {
+	margin-left: 80px;
 }
 
 .header-links a {
@@ -1335,9 +1348,7 @@ footer .caption {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: color-mix(in srgb, var(--color-bg) 94%, transparent);
-	-webkit-backdrop-filter: blur(20px) saturate(180%);
-	backdrop-filter: blur(20px) saturate(180%);
+	background: var(--color-bg);
 	opacity: 0;
 	pointer-events: none;
 	visibility: hidden;

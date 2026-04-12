@@ -140,11 +140,14 @@
 	}
 
 	function closeClock() {
-		overlay.classList.remove("is-open", "clock-idle");
+		overlay.classList.remove("is-open");
 		if (clockRAF) {
 			cancelAnimationFrame(clockRAF);
 			clockRAF = null;
 		}
+		setTimeout(function () {
+			overlay.classList.remove("clock-idle");
+		}, 300);
 		resetIdle();
 	}
 
@@ -156,11 +159,13 @@
 		if (e.key === "Escape" && overlay.classList.contains("is-open")) closeClock();
 	});
 
-	var nzTime = document.getElementById("nz-time");
+	var nzTimeLink = document.getElementById("nz-time-link");
+	var nzTime = nzTimeLink || document.getElementById("nz-time");
 	if (nzTime) {
 		nzTime.addEventListener("click", function (e) {
+			e.preventDefault();
 			e.stopPropagation();
-			openClock(false);
+			openClock(!isHome);
 		});
 	}
 
