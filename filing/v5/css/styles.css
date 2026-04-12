@@ -1123,6 +1123,11 @@ footer .caption {
 		grid-template-columns: repeat(6, 1fr);
 	}
 
+	/* HEADER LINKS */
+	.header-time {
+		display: none;
+	}
+
 	/* LOGOS MARQUEE */
 	.logos-marquee-section {
 		padding-left: 2rem;
@@ -1335,12 +1340,14 @@ footer .caption {
 	backdrop-filter: blur(20px) saturate(180%);
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 0.3s ease;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 #clock-overlay.is-open {
 	opacity: 1;
 	pointer-events: auto;
+	visibility: visible;
 }
 
 #clock-svg {

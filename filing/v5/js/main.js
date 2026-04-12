@@ -4,16 +4,9 @@
 		var root = document.documentElement;
 
 		function syncThemeColorMeta() {
-			var old = document.querySelector('meta[name="theme-color"]');
-			if (!old) return;
-			var color = root.classList.contains("light-mode") ? "#ffffff" : "#000000";
-			old.parentNode.removeChild(old);
-			setTimeout(function () {
-				var meta = document.createElement("meta");
-				meta.name = "theme-color";
-				meta.content = color;
-				document.head.appendChild(meta);
-			}, 1);
+			var meta = document.querySelector('meta[name="theme-color"]');
+			if (!meta) return;
+			meta.setAttribute("content", root.classList.contains("light-mode") ? "#ffffff" : "#000000");
 		}
 
 		// Homepage: NZ time ticker
