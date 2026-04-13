@@ -16,7 +16,7 @@
 
 	var logoG = document.createElementNS(SVG_NS, "g");
 	logoG.setAttribute("class", "clock-logo");
-	logoG.setAttribute("transform", "translate(100, 63) scale(0.275) translate(-54.5, -41)");
+	logoG.setAttribute("transform", "translate(100, 66) scale(0.26) translate(-54.5, -41)");
 	var pathAN = document.createElementNS(SVG_NS, "path");
 	pathAN.setAttribute("d", "M80 31.7v49.9h9V34.1c0-4.3 4.1-4.7 5.5-4.7s5.5.3 5.5 4.7v47.5h9V31.7c0-10.4-11.4-11.3-14.5-11.3S80 21.3 80 31.7zM71.7 81.7v-69c0-10.4-13.1-12-16.3-12s-16.3 1.6-16.3 12v69h9.7V56.1H62v25.6h9.7zm-22.9-36V15.1c0-4.3 5.1-4.7 6.6-4.7s6.6.3 6.6 4.7v30.6H48.8z");
 	var pathD = document.createElementNS(SVG_NS, "path");
@@ -28,7 +28,7 @@
 	var tzText = document.createElementNS(SVG_NS, "text");
 	tzText.setAttribute("class", "clock-tz");
 	tzText.setAttribute("x", "100");
-	tzText.setAttribute("y", "80");
+	tzText.setAttribute("y", "81");
 
 	var tzParts = new Intl.DateTimeFormat("en-NZ", {
 		timeZone: "Pacific/Auckland",
