@@ -1426,7 +1426,7 @@ footer .caption {
 	fill: var(--color-accent);
 }
 
-#clock-overlay.clock-idle #clock-svg .clock-hand-second {
+/*#clock-overlay.clock-idle #clock-svg .clock-hand-second {
 	stroke: #666666;
 }
 
@@ -1440,4 +1440,4 @@ footer .caption {
 
 .light-mode #clock-overlay.clock-idle #clock-svg .clock-cap {
 	fill: #cccccc;
-}
+}*/
