@@ -1772,6 +1772,21 @@ footer .caption {
 	height: min(560px, 85vmin);
 }
 
+@media (max-width: 1640px) {
+	#clock-svg {
+		width: min(392px, 59.5vmin);
+		height: min(392px, 59.5vmin);
+	}
+
+	#clock-svg .clock-numeral {
+		font-size: 10px;
+	}
+
+	#clock-svg .clock-tz {
+		font-size: 4px;
+	}
+}
+
 @media (max-width: 600px) {
 	#clock-svg {
 		width: 70vmin;
