@@ -350,6 +350,103 @@
     },
     {
       "type": "title",
+      "name": "Critter",
+      "date": "(2026)",
+      "description": "Branding, logos, mascot, swag, collateral, website, and guidelines for a new health and safetly startup managing critical risk."
+    },
+    {
+      "filename": "cs-blueprint.png",
+      "number": "CS-01",
+      "description": "Logo (Blueprint)",
+      "columns": 4,
+      "width": 2184,
+      "height": 1228
+    },
+    {
+      "filename": "cs-colours.png",
+      "number": "CS-02",
+      "description": "Colours (Primary)",
+      "columns": 3,
+      "width": 1628,
+      "height": 796
+    },
+    {
+      "filename": "cs-mascot-ppe.png",
+      "number": "CS-03",
+      "description": "Cosmo (Mascot / PPE)",
+      "columns": 3,
+      "width": 1628,
+      "height": 916
+    },
+    {
+      "filename": "cs-card.png",
+      "number": "CS-04",
+      "description": "Business Card",
+      "columns": 2,
+      "width": 1072,
+      "height": 800
+    },
+    {
+      "filename": "cs-footer.png",
+      "number": "CS-05",
+      "description": "Footer",
+      "columns": 3,
+      "width": 1628,
+      "height": 1148
+    },
+    {
+      "filename": "cs-keychain.jpg",
+      "number": "CS-06",
+      "description": "Keychain (Mockup)",
+      "columns": 3,
+      "width": 1628,
+      "height": 916
+    },
+    {
+      "filename": "cs-colours-extended.png",
+      "number": "CS-07",
+      "description": "Colours (Extended)",
+      "columns": 2,
+      "width": 1072,
+      "height": 516
+    },
+    {
+      "filename": "cs-typography.png",
+      "number": "CS-08",
+      "description": "Typography (Specimen)",
+      "columns": 4,
+      "width": 2184,
+      "height": 1228
+    },
+    {
+      "filename": "cs-badges.png",
+      "number": "CS-09",
+      "description": "Badges (Built by +IMPAC)",
+      "columns": 2,
+      "width": 1072,
+      "height": 772
+    },
+    {
+      "filename": "cs-header.png",
+      "number": "CS-10",
+      "description": "Homepage (Header)",
+      "columns": 3,
+      "width": 1628,
+      "height": 1132
+    },
+    {
+      "filename": "cs-mascot.png",
+      "number": "CS-11",
+      "description": "Cosmo (Mascot)",
+      "columns": 1,
+      "width": 1032,
+      "height": 1032
+    },
+    {
+      "divider": true
+    },
+    {
+      "type": "title",
       "name": "Axiom, Inc.",
       "date": "(2022—2025)",
       "description": "Website, branding, ads, diagrams, illustrations, swag, and design system for a logging and observability platform."
