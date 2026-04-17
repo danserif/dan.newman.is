@@ -17,7 +17,7 @@
 
 	var logoG = document.createElementNS(SVG_NS, "g");
 	logoG.setAttribute("class", "clock-logo");
-	logoG.setAttribute("transform", "translate(100, 63) scale(0.275) translate(-54.5, -41)");
+	logoG.setAttribute("transform", "translate(100, 64) scale(0.275) translate(-54.5, -41)");
 	var pathAN = document.createElementNS(SVG_NS, "path");
 	pathAN.setAttribute(
 		"d",
@@ -35,7 +35,7 @@
 	var tzText = document.createElementNS(SVG_NS, "text");
 	tzText.setAttribute("class", "clock-tz");
 	tzText.setAttribute("x", "100");
-	tzText.setAttribute("y", "80");
+	tzText.setAttribute("y", "81");
 
 	var tzParts = new Intl.DateTimeFormat("en-NZ", {
 		timeZone: "Pacific/Auckland",
@@ -99,8 +99,9 @@
 	for (var i = 0; i < 60; i++) {
 		var angle = i * 6;
 		var isHour = i % 5 === 0;
-		var inner = polar(angle, isHour ? 79 : 82);
-		var outer = polar(angle, 88);
+		var inner = polar(angle, isHour ? 78 : 82);
+		var outerR = isHour ? 88.55 : 88;
+		var outer = polar(angle, outerR);
 		var line = document.createElementNS(SVG_NS, "line");
 		line.setAttribute("x1", inner.x.toFixed(2));
 		line.setAttribute("y1", inner.y.toFixed(2));
@@ -115,7 +116,7 @@
 
 	for (var n = 1; n <= 12; n++) {
 		var a = n * 30;
-		var p = polar(a, 66);
+		var p = polar(a, 65.5);
 		var txt = document.createElementNS(SVG_NS, "text");
 		txt.setAttribute("x", p.x.toFixed(2));
 		txt.setAttribute("y", p.y.toFixed(2));
