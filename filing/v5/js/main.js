@@ -15,13 +15,16 @@
 		if (timeEl) {
 			var tzFmt = new Intl.DateTimeFormat("en-NZ", {
 				timeZone: "Pacific/Auckland",
-				timeZoneName: "short"
+				timeZoneName: "short",
 			});
 			function tick() {
 				var now = new Date();
 				timeEl.textContent = now.toLocaleTimeString("en-NZ", {
-					hour: "numeric", minute: "2-digit", second: "2-digit",
-					hour12: true, timeZone: "Pacific/Auckland"
+					hour: "numeric",
+					minute: "2-digit",
+					second: "2-digit",
+					hour12: true,
+					timeZone: "Pacific/Auckland",
 				});
 				var parts = tzFmt.formatToParts(now);
 				for (var i = 0; i < parts.length; i++) {
@@ -40,14 +43,14 @@
 			black: document.getElementById("hex-black"),
 			white: document.getElementById("hex-white"),
 			green: document.getElementById("hex-green"),
-			blue: document.getElementById("hex-blue")
+			blue: document.getElementById("hex-blue"),
 		};
 
 		if (hexEls.black) {
 			function updateActiveHex() {
 				var light = root.classList.contains("light-mode");
 				var accent = root.classList.contains("accent-bg");
-				var activeId = accent ? (light ? "blue" : "green") : (light ? "white" : "black");
+				var activeId = accent ? (light ? "blue" : "green") : light ? "white" : "black";
 				for (var key in hexEls) {
 					if (hexEls[key]) hexEls[key].classList.toggle("is-active", key === activeId);
 				}
@@ -66,10 +69,18 @@
 
 			updateActiveHex();
 
-			hexEls.black.addEventListener("click", function () { setModeHome(false, false); });
-			hexEls.white.addEventListener("click", function () { setModeHome(true, false); });
-			hexEls.green.addEventListener("click", function () { setModeHome(false, true); });
-			hexEls.blue.addEventListener("click", function () { setModeHome(true, true); });
+			hexEls.black.addEventListener("click", function () {
+				setModeHome(false, false);
+			});
+			hexEls.white.addEventListener("click", function () {
+				setModeHome(true, false);
+			});
+			hexEls.green.addEventListener("click", function () {
+				setModeHome(false, true);
+			});
+			hexEls.blue.addEventListener("click", function () {
+				setModeHome(true, true);
+			});
 
 			var modeLight = document.querySelector(".mode-light");
 			var modeDark = document.querySelector(".mode-dark");
@@ -95,7 +106,9 @@
 				} else {
 					root.classList.remove("light-mode");
 				}
-				try { localStorage.setItem("colorMode", mode); } catch (e) {}
+				try {
+					localStorage.setItem("colorMode", mode);
+				} catch (e) {}
 				syncThemeColorMeta();
 				if (typeof window.updateGalleryTheme === "function") {
 					window.updateGalleryTheme();

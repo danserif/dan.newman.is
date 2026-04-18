@@ -63,7 +63,11 @@
 	--info-row-label-width: 200px;
 	--experience-role-col: 19rem;
 	--experience-location-col: 13rem;
-	--photo-filters-mobile-label-width: 190px;
+	--filter-bar-mobile-label-width: 190px;
+	/* Optional: if re-adding frosted-glass (color-mix + backdrop-filter on sticky bars). */
+	--sticky-frost-solid-pct: 90%;
+	--sticky-frost-blur: 10px;
+	--sticky-frost-saturate: 155%;
 }
 
 :root.light-mode {
@@ -364,10 +368,11 @@ code {
 .page-content .info {
 	position: sticky;
 	top: 0;
+	/* Mobile (default): same stack level as .filter-bar.is-stuck (500); filter comes after
+	   .info in the DOM so the bar paints on top—dropdowns stay usable. Desktop: see ≤1080 /
+	   ≥1081 overrides below. */
 	z-index: 500;
-	background-color: color-mix(in srgb, var(--color-bg) 75%, transparent);
-	-webkit-backdrop-filter: blur(12px) saturate(180%);
-	backdrop-filter: blur(12px) saturate(180%);
+	background-color: var(--color-bg);
 }
 
 .row {
@@ -719,7 +724,7 @@ code {
 .photo-grid-title .photo-title-line {
 	margin: 0;
 	font-size: 14px;
-	line-height: 1.65;
+	line-height: 1.55;
 }
 
 .work-grid-title .work-description,
@@ -730,7 +735,7 @@ code {
 .work-grid-title .work-link,
 .photo-grid-title .photo-link {
 	font-size: 14px;
-	line-height: 1.65;
+	line-height: 1.5;
 }
 
 .work-grid-title .work-title-name,
@@ -882,9 +887,9 @@ code {
 	color: var(--opacity-50);
 }
 
-/* PHOTO FILTERS */
+/* FILTER BAR */
 
-.photo-filters {
+.filter-bar {
 	position: relative;
 	background-color: var(--color-bg);
 	font-family: "Berkeley Mono", monospace;
@@ -897,11 +902,12 @@ code {
 	gap: 0;
 	padding: calc(var(--gap-section) - 2px) 0 calc(var(--gap-section) * 1.5);
 	border-bottom: 1px dashed var(--color-border);
-	transition: padding 0.2s ease;
+	/* Only animate vertical padding — horizontal goes 0 ↔ padding-x when .is-stuck toggles */
+	transition: padding-top 0.2s ease, padding-bottom 0.2s ease;
 	overflow: visible;
 }
 
-.photo-filters-desktop {
+.filter-bar-desktop {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: baseline;
@@ -910,7 +916,7 @@ code {
 	min-width: 0;
 }
 
-.photo-filters-groups {
+.filter-bar-groups {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: baseline;
@@ -918,7 +924,7 @@ code {
 	margin-left: auto;
 }
 
-.photo-filters-list {
+.filter-bar-list {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: baseline;
@@ -928,30 +934,70 @@ code {
 	gap: 0.5em 0.75em;
 }
 
-.photo-content .photo-filters {
+.photo-content .filter-bar,
+.work-content .filter-bar {
 	margin-bottom: 0;
 }
 
-.photo-content .photo-filters~.photo-grid {
+.photo-content .filter-bar~.photo-grid,
+.work-content .filter-bar~.work-grid {
 	margin-top: 0;
 	padding-top: calc(var(--gap-section) * 2);
 }
 
-.photo-filters:has(.photo-dropdown.is-open) {
-	z-index: 2;
+/* Dropdown panel above sticky bands (matches gallery filter bar layout breakpoint) */
+.filter-bar:has(.filter-dropdown.is-open) {
+	z-index: 530;
 }
 
-.photo-filters.is-stuck {
-	padding: 16px 0 15px;
+/* Sticky band (all breakpoints). Full-bleed expansion + inset border — desktop only — see below;
+   applying negative margins on mobile broke absolutely positioned dropdown lists (they’re tuned to .photo-content padding). */
+.filter-bar.is-stuck {
 	position: sticky;
-	top: var(--photo-filter-snap-top, 0px);
+	top: var(--filter-bar-snap-top, 0px);
 	z-index: 500;
-	background-color: color-mix(in srgb, var(--color-bg) 75%, transparent);
-	-webkit-backdrop-filter: blur(12px) saturate(180%);
-	backdrop-filter: blur(12px) saturate(180%);
+	background-color: var(--color-bg);
 }
 
-.photo-filters button {
+/* Wide desktop: full-bleed under URL row, filter under nav, dropdown flush to bar */
+@media only screen and (min-width: 1081px) {
+	.page-content .info {
+		z-index: 510;
+	}
+
+	.filter-bar.is-stuck {
+		box-sizing: border-box;
+		width: calc(100% + 2 * var(--padding-x));
+		max-width: none;
+		margin-left: calc(-1 * var(--padding-x));
+		margin-right: calc(-1 * var(--padding-x));
+		padding: 16px var(--padding-x) 15px;
+		z-index: 490;
+		border-bottom: none;
+	}
+
+	.filter-bar.is-stuck::after {
+		content: "";
+		position: absolute;
+		left: var(--padding-x);
+		right: var(--padding-x);
+		bottom: 0;
+		height: 0;
+		border-bottom: 1px dashed var(--color-border);
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.filter-bar.is-stuck .filter-bar-desktop .filter-dropdown-list {
+		left: 0;
+		right: 0;
+		margin-left: 0;
+		margin-right: 0;
+		max-width: none;
+	}
+}
+
+.filter-bar button {
 	background: none;
 	border: none;
 	padding: 0;
@@ -962,11 +1008,11 @@ code {
 	transition: opacity 0.2s ease;
 }
 
-.photo-filters button.is-active {
+.filter-bar button.is-active {
 	color: var(--opacity-75);
 }
 
-.photo-no-results {
+.no-results {
 	font-family: "Berkeley Mono", monospace;
 	font-size: 12px;
 	line-height: 1.5;
@@ -974,7 +1020,7 @@ code {
 	min-height: 60vh;
 }
 
-.photo-filters-desktop-narrow-cluster {
+.filter-bar-desktop-narrow-cluster {
 	display: none;
 	align-items: baseline;
 	flex-wrap: nowrap;
@@ -983,45 +1029,45 @@ code {
 
 @media only screen and (max-width: 1640px) and (min-width: 1081px) {
 
-	.photo-filters-groups {
+	.filter-bar-groups {
 		flex: 1 1 auto;
 		min-width: 0;
 		justify-content: flex-end;
 	}
 
-	.photo-filters-desktop-narrow-cluster {
+	.filter-bar-desktop-narrow-cluster {
 		display: flex;
 		width: 100%;
 		min-width: 0;
 		justify-content: flex-end;
 	}
 
-	.photo-filters-desktop-narrow-cluster .photo-filters-tags-narrow,
-	.photo-filters-desktop-narrow-cluster .photo-filters-tone-narrow {
+	.filter-bar-desktop-narrow-cluster .filter-bar-tags-narrow,
+	.filter-bar-desktop-narrow-cluster .filter-bar-tone-narrow {
 		flex: 0 0 auto;
 		min-width: 0;
 	}
 
-	.photo-filters-tags.photo-filters-tags-wide {
+	.filter-bar-tags.filter-bar-tags-wide {
 		display: none !important;
 	}
 
-	.photo-filters-tone.photo-filters-tone-wide {
+	.filter-bar-tone.filter-bar-tone-wide {
 		display: none !important;
 	}
 }
 
-/* MOBILE DROPDOWN FILTERS */
+/* FILTER BAR — MOBILE DROPDOWNS */
 
-.photo-filters-mobile {
+.filter-bar-mobile {
 	display: none;
 }
 
-.photo-dropdown {
+.filter-dropdown {
 	position: relative;
 }
 
-.photo-dropdown-trigger {
+.filter-dropdown-trigger {
 	background: none;
 	border: none;
 	padding: 0;
@@ -1031,12 +1077,12 @@ code {
 	transition: color 0.2s ease;
 }
 
-.photo-dropdown.has-selection .photo-dropdown-trigger,
-.photo-dropdown.is-open .photo-dropdown-trigger {
+.filter-dropdown.has-selection .filter-dropdown-trigger,
+.filter-dropdown.is-open .filter-dropdown-trigger {
 	color: var(--opacity-75);
 }
 
-.photo-dropdown-list {
+.filter-dropdown-list {
 	display: none;
 	position: absolute;
 	top: calc(100% + 8px);
@@ -1048,18 +1094,18 @@ code {
 	min-width: 160px;
 }
 
-.photo-dropdown.is-open .photo-dropdown-list {
+.filter-dropdown.is-open .filter-dropdown-list {
 	display: block;
 }
 
-.photo-filters-desktop .photo-dropdown-list {
+.filter-bar-desktop .filter-dropdown-list {
 	left: auto;
 	right: 0;
 	max-width: min(360px, calc(100vw - 2 * var(--padding-x) - 16px));
 	box-sizing: border-box;
 }
 
-.photo-dropdown-option {
+.filter-dropdown-option {
 	display: block;
 	width: 100%;
 	background: none;
@@ -1072,15 +1118,15 @@ code {
 	transition: color 0.2s ease;
 }
 
-.photo-dropdown-option.is-active {
+.filter-dropdown-option.is-active {
 	color: var(--opacity-75);
 }
 
-.photo-dropdown-option:hover {
+.filter-dropdown-option:hover {
 	color: var(--opacity-75);
 }
 
-.photo-filters button:hover {
+.filter-bar button:hover {
 	opacity: 0.75;
 }
 
@@ -1359,7 +1405,7 @@ footer .caption {
 		grid-template-columns: minmax(0, 630px) minmax(0, 630px);
 		font-size: 18px;
 		line-height: 26px;
-		margin-bottom: 6rem;
+		margin-bottom: 11rem;
 	}
 
 	.work-grid-title,
@@ -1635,21 +1681,22 @@ footer .caption {
 		padding-bottom: 32px;
 	}
 
-	/* PHOTO FILTERS */
-	.photo-filters {
+	/* FILTER BAR */
+	.filter-bar {
 		padding-bottom: var(--gap-section);
 	}
 
-	.photo-filters-desktop {
+	.filter-bar-desktop {
 		display: none;
 	}
 
-	.photo-content .photo-filters~.photo-grid {
+	.photo-content .filter-bar~.photo-grid,
+	.work-content .filter-bar~.work-grid {
 		margin-top: 0;
 		padding-top: calc(var(--gap-section) * 1.5);
 	}
 
-	.photo-filters-mobile {
+	.filter-bar-mobile {
 		display: flex;
 		align-items: baseline;
 		flex-wrap: wrap;
@@ -1657,20 +1704,20 @@ footer .caption {
 		width: 100%;
 	}
 
-	.photo-filters-mobile-label {
-		min-width: var(--photo-filters-mobile-label-width);
+	.filter-bar-mobile-label {
+		min-width: var(--filter-bar-mobile-label-width);
 		flex-shrink: 0;
 	}
 
-	.photo-dropdown-tone {
+	.filter-dropdown-tone {
 		display: none;
 	}
 
-	.photo-dropdown {
+	.filter-dropdown {
 		position: static;
 	}
 
-	.photo-dropdown-list {
+	.filter-dropdown-list {
 		font-size: 12px;
 		line-height: 24px;
 		top: 100%;
@@ -1692,7 +1739,7 @@ footer .caption {
 
 	:root {
 		--info-row-label-width: 110px;
-		--photo-filters-mobile-label-width: 100px;
+		--filter-bar-mobile-label-width: 100px;
 	}
 
 	/* HEADER */
