@@ -443,6 +443,38 @@
       "height": 1032
     },
     {
+      "filename": "cs-icon.png",
+      "number": "CS-12",
+      "description": "Icon (Favicon)",
+      "columns": 1,
+      "width": 1032,
+      "height": 1032
+    },
+    {
+      "filename": "cs-tshirts.jpg",
+      "number": "CS-13",
+      "description": "T-Shirts",
+      "columns": 4,
+      "width": 2184,
+      "height": 1228
+    },
+    {
+      "filename": "cs-poster.png",
+      "number": "CS-14",
+      "description": "Poster",
+      "columns": 3,
+      "width": 1628,
+      "height": 2040
+    },
+    {
+      "filename": "cs-embroidery.jpg",
+      "number": "CS-15",
+      "description": "Badges (Embroidery)",
+      "columns": 2,
+      "width": 1072,
+      "height": 904
+    },
+    {
       "divider": true
     },
     {
