@@ -1686,6 +1686,15 @@ footer .caption {
 		padding-bottom: var(--gap-section);
 	}
 
+	/* Above sticky .info (z-index 500) so the filter does not alternate paint order while is-stuck toggles. */
+	.filter-bar.is-stuck {
+		z-index: 501;
+	}
+
+	.filter-bar:has(.filter-dropdown.is-open) {
+		z-index: 531;
+	}
+
 	.filter-bar-desktop {
 		display: none;
 	}

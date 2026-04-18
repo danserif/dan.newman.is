@@ -1752,25 +1752,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 						function checkFilterStuck() {
 							var rect = filterBar.getBoundingClientRect();
-							/* Desktop: stick when bar reaches slot under nav. Mobile: only when bar hits
-							   viewport top so nav handoff matches filter snap (top: 0). */
-							var stickyTop = isMobileLayout.matches ? 0 : infoEl.offsetHeight;
-							var line = stickyTop + 1;
-							/* Hysteresis avoids rapid is-stuck toggling / horizontal layout jitter at threshold */
-							var stickHyst = 16;
+							var mobile = isMobileLayout.matches;
+							/* Desktop: stick when bar reaches slot under nav. Mobile: viewport top handoff.
+							   Mobile needs a wider threshold + hysteresis: iOS viewport/chrome shifts and
+							   sticky layout feedback can otherwise toggle is-stuck multiple times per frame
+							   when scrolling up past the URL row. */
+							var stickyTop = mobile ? 0 : infoEl.offsetHeight;
+							var line = stickyTop + (mobile ? 6 : 1);
+							var stickHyst = mobile ? 48 : 16;
 							var wasStuck = filterBar.classList.contains("is-stuck");
 							var stuck = wasStuck ? rect.top <= line + stickHyst : rect.top <= line;
 							filterBar.classList.toggle("is-stuck", stuck);
 
-							if (isMobileLayout.matches) {
+							if (mobile) {
 								if (stuck) {
 									snapRoot.style.setProperty("--filter-bar-snap-top", "0px");
-								} else {
+								} else if (wasStuck && !stuck) {
 									syncFilterSnapTop();
 								}
 							}
 						}
-						window.addEventListener("scroll", checkFilterStuck, { passive: true });
+						var filterStuckRaf = null;
+						function scheduleFilterStuckCheck() {
+							if (filterStuckRaf != null) return;
+							filterStuckRaf = requestAnimationFrame(function () {
+								filterStuckRaf = null;
+								checkFilterStuck();
+							});
+						}
+						window.addEventListener("scroll", scheduleFilterStuckCheck, { passive: true });
 						checkFilterStuck();
 					}
 				}
@@ -1848,22 +1858,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 						function gfxCheckFilterStuck() {
 							var rect = filterBar.getBoundingClientRect();
-							var stickyTop = gfxIsMobileLayout.matches ? 0 : gfxInfoEl.offsetHeight;
-							var line = stickyTop + 1;
-							var stickHyst = 16;
+							var mobile = gfxIsMobileLayout.matches;
+							var stickyTop = mobile ? 0 : gfxInfoEl.offsetHeight;
+							var line = stickyTop + (mobile ? 6 : 1);
+							var stickHyst = mobile ? 48 : 16;
 							var wasStuck = filterBar.classList.contains("is-stuck");
 							var stuck = wasStuck ? rect.top <= line + stickHyst : rect.top <= line;
 							filterBar.classList.toggle("is-stuck", stuck);
 
-							if (gfxIsMobileLayout.matches) {
+							if (mobile) {
 								if (stuck) {
 									gfxSnapRoot.style.setProperty("--filter-bar-snap-top", "0px");
-								} else {
+								} else if (wasStuck && !stuck) {
 									gfxSyncFilterSnapTop();
 								}
 							}
 						}
-						window.addEventListener("scroll", gfxCheckFilterStuck, { passive: true });
+						var gfxFilterStuckRaf = null;
+						function gfxScheduleFilterStuckCheck() {
+							if (gfxFilterStuckRaf != null) return;
+							gfxFilterStuckRaf = requestAnimationFrame(function () {
+								gfxFilterStuckRaf = null;
+								gfxCheckFilterStuck();
+							});
+						}
+						window.addEventListener("scroll", gfxScheduleFilterStuckCheck, { passive: true });
 						gfxCheckFilterStuck();
 					}
 				}
