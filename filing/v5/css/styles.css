@@ -924,6 +924,31 @@ code {
 	margin-left: auto;
 }
 
+.filter-bar-active-meta {
+	margin-left: auto;
+	flex: 0 0 auto;
+	white-space: nowrap;
+	align-self: baseline;
+}
+
+.filter-bar-mobile .filter-bar-active-meta {
+	margin-left: auto;
+}
+
+.filter-bar .filter-bar-portfolio-meta a {
+	color: inherit;
+}
+
+.filter-bar-active-meta.filter-bar-portfolio-meta {
+	white-space: normal;
+}
+
+@media only screen and (max-width: 1640px) {
+	.filter-bar-portfolio-meta {
+		display: none;
+	}
+}
+
 .filter-bar-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -937,6 +962,11 @@ code {
 .photo-content .filter-bar,
 .work-content .filter-bar {
 	margin-bottom: 0;
+}
+
+/* Project counts use <sup>; trim top padding so the bar stays visually aligned with the photo filter. */
+.work-content .filter-bar {
+	padding-top: calc((var(--gap-section) - 2px) - 4px);
 }
 
 .photo-content .filter-bar~.photo-grid,
@@ -974,6 +1004,10 @@ code {
 		padding: 16px var(--padding-x) 15px;
 		z-index: 490;
 		border-bottom: none;
+	}
+
+	.work-content .filter-bar.is-stuck {
+		padding-top: 12px;
 	}
 
 	.filter-bar.is-stuck::after {
@@ -1131,7 +1165,7 @@ code {
 }
 
 .filter-bar sup {
-	font-size: 0.7em;
+	font-size: 0.8em;
 	font-variant-numeric: tabular-nums;
 }
 

@@ -581,8 +581,48 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	// =========================================================================
-	// FILTER BAR — PHOTOS
+	// FILTER BAR
 	// =========================================================================
+
+	function createGraphicsPortfolioMeta() {
+		const wrap = document.createElement("span");
+		wrap.className = "filter-bar-active-meta filter-bar-portfolio-meta";
+
+		const prefix = document.createElement("span");
+		prefix.className = "opacity-25";
+		prefix.textContent = "Currently: ";
+		wrap.appendChild(prefix);
+
+		const a = document.createElement("a");
+		a.href = "https://daas.graphics";
+		a.target = "_blank";
+		a.rel = "noopener noreferrer";
+
+		const name = document.createElement("span");
+		name.className = "opacity-75";
+		name.textContent = "DaaS";
+		a.appendChild(name);
+
+		const role = document.createElement("span");
+		role.className = "opacity-25";
+		role.textContent = " (Graphics)";
+		a.appendChild(role);
+
+		wrap.appendChild(a);
+
+		const slash = document.createElement("span");
+		slash.className = "opacity-15";
+		slash.setAttribute("aria-hidden", "true");
+		slash.textContent = " / ";
+		wrap.appendChild(slash);
+
+		const period = document.createElement("span");
+		period.className = "opacity-25";
+		period.textContent = "2025—Present";
+		wrap.appendChild(period);
+
+		return wrap;
+	}
 
 	/* One bar, three presentations (CSS toggles which DOM is visible):
 	   — >1640px: inline locations + tags (+ More) + tone; mobile row hidden.
@@ -1341,6 +1381,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			);
 		}
 		desktopWrap.appendChild(projectsUl);
+		desktopWrap.appendChild(createGraphicsPortfolioMeta());
 		bar.appendChild(desktopWrap);
 
 		const mobileBar = document.createElement("div");
@@ -1375,6 +1416,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				},
 			),
 		);
+		mobileBar.appendChild(createGraphicsPortfolioMeta());
 
 		document.addEventListener("click", function () {
 			bar.querySelectorAll(".filter-dropdown.is-open").forEach(function (d) {
@@ -1847,16 +1889,20 @@ document.addEventListener("DOMContentLoaded", function () {
 					}
 				};
 
-				filterBar = buildGraphicsProjectFilterBar(projectNames, projectImageCounts, function (proj) {
-					activeGraphicsProject = proj;
-					applyGraphicsProjectFilter();
-					updateLoadMoreStatus();
-					void expandGraphicsFilterToVisible().then(function () {
+				filterBar = buildGraphicsProjectFilterBar(
+					projectNames,
+					projectImageCounts,
+					function (proj) {
+						activeGraphicsProject = proj;
 						applyGraphicsProjectFilter();
 						updateLoadMoreStatus();
-						scrollGridIntoViewAfterFilterTap();
-					});
-				});
+						void expandGraphicsFilterToVisible().then(function () {
+							applyGraphicsProjectFilter();
+							updateLoadMoreStatus();
+							scrollGridIntoViewAfterFilterTap();
+						});
+					},
+				);
 				if (filterBar) {
 					workContent.insertBefore(filterBar, grid);
 
