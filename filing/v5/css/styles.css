@@ -1217,15 +1217,19 @@ code {
 }
 
 .marquee-track {
-	display: inline-flex;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 	align-items: center;
+	width: max-content;
 	white-space: nowrap;
-	will-change: transform;
 	animation: marquee-scroll 90s linear infinite;
 }
 
 .marquee ul {
-	display: inline-flex;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 	flex-shrink: 0;
 	align-items: center;
 	gap: 1.5rem;
@@ -1237,6 +1241,7 @@ code {
 }
 
 .marquee li {
+	flex-shrink: 0;
 	font-family: "Berkeley Mono", monospace;
 	font-size: 11px;
 	line-height: 22px;
@@ -1247,11 +1252,11 @@ code {
 
 @keyframes marquee-scroll {
 	0% {
-		transform: translateX(0);
+		transform: translate3d(0, 0, 0);
 	}
 
 	100% {
-		transform: translateX(-50%);
+		transform: translate3d(-50%, 0, 0);
 	}
 }
 
@@ -1301,8 +1306,8 @@ code {
 }
 
 .logos-marquee-section .marquee ul {
-	gap: 6rem;
-	margin-right: 6rem;
+	gap: 5rem;
+	margin-right: 5rem;
 }
 
 .logos-marquee-section .marquee li {
@@ -1325,6 +1330,12 @@ code {
 
 .logo-svg:hover {
 	opacity: 1;
+}
+
+/* Narrower logos shorten the translated strip (~8k px GPU layer limits in some browsers). */
+.logos-marquee-section .logo-svg {
+	max-width: 170px;
+	flex-shrink: 0;
 }
 
 :root.light-mode .logo-svg {
@@ -1571,7 +1582,7 @@ footer .caption {
 		grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.78fr);
 		grid-template-rows: auto auto;
 		column-gap: clamp(0.5rem, 4vw, 1.25rem);
-		row-gap: 0.2rem;
+		row-gap: 0;
 		align-items: start;
 		width: 100%;
 	}
@@ -1613,7 +1624,7 @@ footer .caption {
 
 	.awards .row-group>.row {
 		grid-template-columns: 1fr;
-		row-gap: 4px;
+		row-gap: 0;
 		width: 100%;
 	}
 
@@ -1648,6 +1659,10 @@ footer .caption {
 
 	.logo-svg {
 		max-height: 50px;
+		max-width: 160px;
+	}
+
+	.logos-marquee-section .logo-svg {
 		max-width: 160px;
 	}
 
