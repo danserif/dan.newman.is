@@ -1148,7 +1148,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	/* Desktop: Projects: All / …; mobile: Projects: + Projects dropdown — reuses .filter-bar CSS. */
-	function buildGraphicsProjectFilterBar(projectNames, onProjectChange) {
+	function buildGraphicsProjectFilterBar(projectNames, projectImageCounts, onProjectChange) {
 		if (!projectNames || projectNames.length <= 1) return null;
 
 		const bar = document.createElement("div");
@@ -1197,12 +1197,26 @@ document.addEventListener("DOMContentLoaded", function () {
 			ul.appendChild(li);
 		}
 
-		function addProjectBtn(ul, label, value) {
+		function appendProjectFilterLabel(parent, displayLabel, imageCount) {
+			appendParenStyledTextPlain(displayLabel, parent, "opacity-25");
+			if (typeof imageCount === "number") {
+				var supEl = document.createElement("sup");
+				supEl.className = "opacity-25";
+				supEl.textContent = "(" + imageCount + ")";
+				parent.appendChild(supEl);
+			}
+		}
+
+		function addProjectBtn(ul, label, value, imageCount) {
 			const li = document.createElement("li");
 			const btn = document.createElement("button");
 			btn.type = "button";
 			btn.setAttribute("data-filter-project", value);
-			appendParenStyledTextPlain(label, btn, "opacity-25");
+			if (value === "all") {
+				appendParenStyledTextPlain(label, btn, "opacity-25");
+			} else {
+				appendProjectFilterLabel(btn, label, imageCount);
+			}
 			btn.addEventListener("click", function () {
 				activeProject = value === "all" ? null : value;
 				updateActiveStates();
@@ -1235,6 +1249,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			function updateTriggerLabel() {
 				var active = getActive();
 				var defaultVal = options.length > 0 ? options[0].value : null;
+				triggerLabel.replaceChildren();
 				if (active && active !== defaultVal) {
 					var match = null;
 					for (var mi = 0; mi < options.length; mi++) {
@@ -1243,7 +1258,16 @@ document.addEventListener("DOMContentLoaded", function () {
 							break;
 						}
 					}
-					triggerLabel.textContent = match ? match.shortLabel || match.label : active;
+					if (match) {
+						var tl = match.shortLabel || match.label;
+						if (typeof match.imageCount === "number") {
+							appendProjectFilterLabel(triggerLabel, tl, match.imageCount);
+						} else {
+							appendParenStyledTextPlain(tl, triggerLabel, "opacity-25");
+						}
+					} else {
+						triggerLabel.textContent = active;
+					}
 					wrapper.classList.add("has-selection");
 				} else {
 					triggerLabel.textContent = label;
@@ -1259,7 +1283,9 @@ document.addEventListener("DOMContentLoaded", function () {
 					opt.type = "button";
 					opt.className = "filter-dropdown-option";
 					opt.setAttribute("data-value", options[i].value);
-					if (options[i].styledLabel) {
+					if (typeof options[i].imageCount === "number" && options[i].styledLabel) {
+						appendProjectFilterLabel(opt, options[i].styledLabel, options[i].imageCount);
+					} else if (options[i].styledLabel) {
 						appendParenStyledTextPlain(options[i].styledLabel, opt, "opacity-25");
 					} else {
 						opt.textContent = options[i].label;
@@ -1311,6 +1337,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				projectsUl,
 				graphicsProjectListLabel(projectNames[i]),
 				projectNames[i],
+				projectImageCounts[projectNames[i]],
 			);
 		}
 		desktopWrap.appendChild(projectsUl);
@@ -1332,6 +1359,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				styledLabel: display,
 				shortLabel: display.replace(/\s*\([^)]*\)/, ""),
 				value: projectNames[ci],
+				imageCount: projectImageCounts[projectNames[ci]],
 			});
 		}
 
@@ -1439,17 +1467,14 @@ document.addEventListener("DOMContentLoaded", function () {
 						var gapPx = 16;
 						var infoNav = document.querySelector(".page-content .info");
 						var filterEl =
-							section.querySelector(".filter-bar") ||
-							workContent.querySelector(".filter-bar");
+							section.querySelector(".filter-bar") || workContent.querySelector(".filter-bar");
 
 						var anchor = null;
 						if (sectionType === "graphics") {
 							if (activeGraphicsProject) {
 								var ttl = grid.querySelectorAll(".work-grid-title");
 								for (var ti = 0; ti < ttl.length; ti++) {
-									if (
-										ttl[ti].getAttribute("data-project") === activeGraphicsProject
-									) {
+									if (ttl[ti].getAttribute("data-project") === activeGraphicsProject) {
 										anchor = ttl[ti];
 										break;
 									}
@@ -1460,29 +1485,21 @@ document.addEventListener("DOMContentLoaded", function () {
 							}
 						}
 						if (!anchor) {
-							var introSel =
-								sectionType === "graphics" ? ".work-intro" : ".photo-intro";
+							var introSel = sectionType === "graphics" ? ".work-intro" : ".photo-intro";
 							anchor =
-								section.querySelector(introSel) ||
-								section.querySelector(".section-label") ||
-								grid;
+								section.querySelector(introSel) || section.querySelector(".section-label") || grid;
 						}
 
 						var wantAnchorTop;
 						/* Extra air between sticky filter and project title (only title alignment) */
 						var titleBelowFilterPad = 14;
-						if (
-							anchor &&
-							anchor.classList.contains("work-grid-title") &&
-							filterEl
-						) {
+						if (anchor && anchor.classList.contains("work-grid-title") && filterEl) {
 							var fr = filterEl.getBoundingClientRect();
 							wantAnchorTop = fr.bottom + gapPx + titleBelowFilterPad;
 							if (wantAnchorTop < gapPx + 48) {
 								var snap =
-									parseFloat(
-										getComputedStyle(section).getPropertyValue("--filter-bar-snap-top"),
-									) || 0;
+									parseFloat(getComputedStyle(section).getPropertyValue("--filter-bar-snap-top")) ||
+									0;
 								wantAnchorTop =
 									snap +
 									Math.max(fr.height, filterEl.offsetHeight || 52) +
@@ -1490,8 +1507,7 @@ document.addEventListener("DOMContentLoaded", function () {
 									titleBelowFilterPad;
 							}
 						} else {
-							wantAnchorTop =
-								(infoNav ? infoNav.getBoundingClientRect().bottom : 64) + gapPx;
+							wantAnchorTop = (infoNav ? infoNav.getBoundingClientRect().bottom : 64) + gapPx;
 						}
 						wantAnchorTop = Math.max(wantAnchorTop, 72);
 
@@ -1788,6 +1804,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			if (sectionType === "graphics") {
 				let graphicsNoResultsMsg = null;
+				const projectImageCounts = {};
+				for (let ii = 0; ii < allItems.length; ii++) {
+					var row = allItems[ii];
+					if (!row.filename || !row.project) continue;
+					var pnKey = row.project;
+					projectImageCounts[pnKey] = (projectImageCounts[pnKey] || 0) + 1;
+				}
 				const projectNames = [];
 				const projectSeen = new Set();
 				for (let pi = 0; pi < allItems.length; pi++) {
@@ -1800,11 +1823,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 				applyGraphicsProjectFilter = function () {
 					var proj = activeGraphicsProject;
-					grid.querySelectorAll(".work-item, .work-grid-title, .work-grid-divider").forEach(function (el) {
-						var dp = el.getAttribute("data-project");
-						var visible = !proj || dp === proj;
-						el.style.display = visible ? "" : "none";
-					});
+					grid
+						.querySelectorAll(".work-item, .work-grid-title, .work-grid-divider")
+						.forEach(function (el) {
+							var dp = el.getAttribute("data-project");
+							var visible = !proj || dp === proj;
+							el.style.display = visible ? "" : "none";
+						});
 					/* Section dividers sit between projects; when filtering, a trailing HR has no next
 					   title/images — hide unless something substantive still follows in the grid. */
 					if (proj) {
@@ -1817,13 +1842,12 @@ document.addEventListener("DOMContentLoaded", function () {
 						}
 					}
 					if (graphicsNoResultsMsg) {
-						var noneInDataset =
-							proj && countGraphicsImagesMatchingTotal(allItems, proj) === 0;
+						var noneInDataset = proj && countGraphicsImagesMatchingTotal(allItems, proj) === 0;
 						graphicsNoResultsMsg.style.display = noneInDataset ? "block" : "none";
 					}
 				};
 
-				filterBar = buildGraphicsProjectFilterBar(projectNames, function (proj) {
+				filterBar = buildGraphicsProjectFilterBar(projectNames, projectImageCounts, function (proj) {
 					activeGraphicsProject = proj;
 					applyGraphicsProjectFilter();
 					updateLoadMoreStatus();
@@ -1848,10 +1872,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						var gfxSnapRoot = section;
 
 						function gfxSyncFilterSnapTop() {
-							gfxSnapRoot.style.setProperty(
-								"--filter-bar-snap-top",
-								gfxInfoEl.offsetHeight + "px",
-							);
+							gfxSnapRoot.style.setProperty("--filter-bar-snap-top", gfxInfoEl.offsetHeight + "px");
 						}
 						gfxSyncFilterSnapTop();
 						window.addEventListener("resize", gfxSyncFilterSnapTop);
@@ -1998,10 +2019,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				if (sectionType === "graphics") applyGraphicsProjectFilter();
 
 				/* Status can show full image count while JSON rows remain (titles/dividers). Hide button and pull those in. */
-				if (
-					displayedCount < allItems.length &&
-					!remainingMatchingFilenameItemsExist()
-				) {
+				if (displayedCount < allItems.length && !remainingMatchingFilenameItemsExist()) {
 					await displayNextBatch();
 				}
 			}
@@ -2050,10 +2068,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				}
 				filterChangeScrollEnabled = true;
 
-				while (
-					displayedCount < allItems.length &&
-					!remainingMatchingFilenameItemsExist()
-				) {
+				while (displayedCount < allItems.length && !remainingMatchingFilenameItemsExist()) {
 					await displayNextBatch();
 				}
 			})().catch(function (error) {
