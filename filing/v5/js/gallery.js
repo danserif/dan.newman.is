@@ -1194,6 +1194,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		const bar = document.createElement("div");
 		bar.className = "filter-bar";
 
+		var mqlGraphicsMobileTrigger = window.matchMedia(FILTER_BAR_MOBILE_MQL);
+
 		let activeProject = null;
 
 		function fireFilter() {
@@ -1300,7 +1302,9 @@ document.addEventListener("DOMContentLoaded", function () {
 					}
 					if (match) {
 						var tl = match.shortLabel || match.label;
-						if (typeof match.imageCount === "number") {
+						var showSupOnTrigger =
+							typeof match.imageCount === "number" && !mqlGraphicsMobileTrigger.matches;
+						if (showSupOnTrigger) {
 							appendProjectFilterLabel(triggerLabel, tl, match.imageCount);
 						} else {
 							appendParenStyledTextPlain(tl, triggerLabel, "opacity-25");
@@ -1360,6 +1364,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			wrapper.appendChild(trigger);
 			wrapper.appendChild(list);
 			updateTriggerLabel();
+			wrapper.updateTriggerLabel = updateTriggerLabel;
 			return wrapper;
 		}
 
@@ -1404,18 +1409,22 @@ document.addEventListener("DOMContentLoaded", function () {
 			});
 		}
 
-		mobileBar.appendChild(
-			buildDropdown(
-				"All",
-				projOptions,
-				function () {
-					return activeProject || "all";
-				},
-				function (val) {
-					activeProject = val === "all" ? null : val;
-				},
-			),
+		const projDropdownWrap = buildDropdown(
+			"All",
+			projOptions,
+			function () {
+				return activeProject || "all";
+			},
+			function (val) {
+				activeProject = val === "all" ? null : val;
+			},
 		);
+		mqlGraphicsMobileTrigger.addEventListener("change", function () {
+			if (typeof projDropdownWrap.updateTriggerLabel === "function") {
+				projDropdownWrap.updateTriggerLabel();
+			}
+		});
+		mobileBar.appendChild(projDropdownWrap);
 		mobileBar.appendChild(createGraphicsPortfolioMeta());
 
 		document.addEventListener("click", function () {
