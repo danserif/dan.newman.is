@@ -1001,7 +1001,7 @@ code {
 		max-width: none;
 		margin-left: calc(-1 * var(--padding-x));
 		margin-right: calc(-1 * var(--padding-x));
-		padding: 16px var(--padding-x) 15px;
+		padding: 16px var(--padding-x) 18px;
 		z-index: 490;
 		border-bottom: none;
 	}
@@ -1738,6 +1738,14 @@ footer .caption {
 	/* FILTER BAR */
 	.filter-bar {
 		padding-bottom: var(--gap-section);
+	}
+
+	/* Same top inset as `.info .row` (16px) at all times — if padding only applied when .is-stuck,
+	   toggling sticky changed inset and caused a visible jump */
+	.photo-content .filter-bar,
+	.work-content .filter-bar {
+		padding-top: 16px;
+		transition: padding-bottom 0.2s ease;
 	}
 
 	/* Above sticky .info (z-index 500) so the filter does not alternate paint order while is-stuck toggles. */
