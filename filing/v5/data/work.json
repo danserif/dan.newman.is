@@ -629,8 +629,40 @@
       "height": 1296
     },
     {
-      "filename": "ax-stickers.png",
+      "filename": "ax-label.png",
       "number": "AX-19",
+      "description": "Hot Sauce (Label)",
+      "columns": 3,
+      "width": 1628,
+      "height": 912
+    },
+    {
+      "filename": "ax-testimonial.png",
+      "number": "AX-20",
+      "description": "Testimonial (Hapn)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1364
+    },
+    {
+      "filename": "ax-s3-bucket.png",
+      "number": "AX-21",
+      "description": "AWS S3 Bucket (Diagram)",
+      "columns": 2,
+      "width": 1072,
+      "height": 652
+    },
+    {
+      "filename": "ax-dropdown.png",
+      "number": "AX-22",
+      "description": "Dropdown Menu (Customers)",
+      "columns": 3,
+      "width": 1628,
+      "height": 832
+    },
+    {
+      "filename": "ax-stickers.png",
+      "number": "AX-23",
       "description": "Stickers",
       "columns": 3,
       "width": 1628,
