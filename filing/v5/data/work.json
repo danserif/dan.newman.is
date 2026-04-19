@@ -161,17 +161,17 @@
       "height": 772
     },
     {
-      "filename": "es-mark.png",
+      "filename": "es-icon.png",
       "number": "ES-02",
-      "description": "→× (Mark)",
+      "description": "→× (Icon)",
       "columns": 1,
       "width": 1032,
       "height": 1032
     },
     {
-      "filename": "es-cover.png",
+      "filename": "es-cover-front.png",
       "number": "ES-03",
-      "description": "Cover + ASCII Maze (L)",
+      "description": "Front Cover + ASCII Maze (L)",
       "columns": 2,
       "width": 1072,
       "height": 1624
@@ -191,6 +191,38 @@
       "columns": 3,
       "width": 1628,
       "height": 996
+    },
+    {
+      "filename": "es-mark.png",
+      "number": "ES-06",
+      "description": "ES (Mark)",
+      "columns": 1,
+      "width": 1032,
+      "height": 1032
+    },
+    {
+      "filename": "es-cover-back.png",
+      "number": "ES-06",
+      "description": "Back Cover",
+      "columns": 2,
+      "width": 1072,
+      "height": 1624
+    },
+    {
+      "filename": "es-graphic.png",
+      "number": "ES-07",
+      "description": "Enter Startup (Graphic)",
+      "columns": 3,
+      "width": 1628,
+      "height": 864
+    },
+    {
+      "filename": "es-tshirts.jpg",
+      "number": "ES-08",
+      "description": "T-Shirts",
+      "columns": 4,
+      "width": 2184,
+      "height": 1228
     },
     {
       "divider": true
