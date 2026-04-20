@@ -266,7 +266,7 @@
       "height": 604
     },
     {
-      "filename": "ll-diagram.png",
+      "filename": "ll-diagram-pods.png",
       "number": "LL-05",
       "description": "Diagram (Pods)",
       "columns": 2,
@@ -376,6 +376,78 @@
       "columns": 2,
       "width": 1072,
       "height": 600
+    },
+    {
+      "filename": "ll-diagram-spot.png",
+      "number": "LL-18",
+      "description": "Diagram (On Demand → Spot)",
+      "columns": 2,
+      "width": 1072,
+      "height": 724
+    },
+    {
+      "filename": "ll-og-image.png",
+      "number": "LL-19",
+      "description": "OpenGraph Image",
+      "columns": 2,
+      "width": 1072,
+      "height": 560
+    },
+    {
+      "filename": "ll-tshirts.jpg",
+      "number": "LL-20",
+      "description": "T-Shirts",
+      "columns": 3,
+      "width": 1628,
+      "height": 912
+    },
+    {
+      "filename": "ll-tshirt-ascii.png",
+      "number": "LL-21",
+      "description": "T-Shirt Graphic (ASCII)",
+      "columns": 2,
+      "width": 1072,
+      "height": 676
+    },
+    {
+      "filename": "ll-card.png",
+      "number": "LL-22",
+      "description": "Business Card",
+      "columns": 1,
+      "width": 774,
+      "height": 1302
+    },
+    {
+      "filename": "ll-sigil-mark.png",
+      "number": "LL-23",
+      "description": "¦S¦ (Mark)",
+      "columns": 1,
+      "width": 1032,
+      "height": 1032
+    },
+    {
+      "filename": "ll-diagram-xdp.png",
+      "number": "LL-24",
+      "description": "Diagram (XDP)",
+      "columns": 2,
+      "width": 1072,
+      "height": 840
+    },
+    {
+      "filename": "ll-form.png",
+      "number": "LL-25",
+      "description": "Form (Waitlist)",
+      "columns": 3,
+      "width": 1628,
+      "height": 1396
+    },
+    {
+      "filename": "ll-footer.png",
+      "number": "LL-26",
+      "description": "Footer",
+      "columns": 4,
+      "width": 2184,
+      "height": 1224
     },
     {
       "divider": true
