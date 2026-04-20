@@ -368,8 +368,7 @@ code {
 .page-content .info {
 	position: sticky;
 	top: 0;
-	/* Filter bar sits below this row when stuck (--filter-bar-snap-top); filter z-index > .info
-	   only matters during overlap while scrolling. See gallery.js checkFilterStuck. */
+	/* Sticky URL row: above filter bar (490) so the filter slides under when scrolling — daas.graphics pattern. */
 	z-index: 500;
 	background-color: var(--color-bg);
 }
@@ -984,7 +983,7 @@ code {
 .filter-bar.is-stuck {
 	position: sticky;
 	top: var(--filter-bar-snap-top, 0px);
-	z-index: 500;
+	z-index: 490;
 	background-color: var(--color-bg);
 }
 
@@ -1756,11 +1755,6 @@ footer .caption {
 		transition: none;
 	}
 
-	/* Above sticky .info (z-index 500) so the filter does not alternate paint order while is-stuck toggles. */
-	.filter-bar.is-stuck {
-		z-index: 501;
-	}
-
 	/* Explicit in-flow padding when stuck so row height matches collapsed state (daas.graphics). */
 	.photo-content .filter-bar.is-stuck,
 	.work-content .filter-bar.is-stuck {
@@ -1785,10 +1779,6 @@ footer .caption {
 
 	.filter-bar.is-stuck:has(.filter-dropdown.is-open)::after {
 		display: none;
-	}
-
-	.filter-bar:has(.filter-dropdown.is-open) {
-		z-index: 531;
 	}
 
 	.filter-bar-desktop {
