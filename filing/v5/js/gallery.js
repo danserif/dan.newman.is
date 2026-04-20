@@ -1510,14 +1510,60 @@ document.addEventListener("DOMContentLoaded", function () {
 			let activeGraphicsProject = null;
 			let filterChangeScrollEnabled = false;
 
+			/** Photos + graphics: one implementation for --filter-bar-snap-top, is-stuck, listeners. */
+			function bindFilterBarSticky(barEl, snapRootEl, infoElEl) {
+				function syncFilterSnapTop() {
+					snapRootEl.style.setProperty("--filter-bar-snap-top", infoElEl.offsetHeight + "px");
+				}
+				syncFilterSnapTop();
+				window.addEventListener("resize", syncFilterSnapTop);
+
+				function checkFilterStuck() {
+					syncFilterSnapTop();
+					var rect = barEl.getBoundingClientRect();
+					var stickyTop =
+						parseFloat(getComputedStyle(snapRootEl).getPropertyValue("--filter-bar-snap-top")) ||
+						infoElEl.offsetHeight;
+					var line = stickyTop + 1;
+					var stickHyst = 16;
+					var wasStuck = barEl.classList.contains("is-stuck");
+					var stuck = wasStuck ? rect.top <= line + stickHyst : rect.top <= line;
+					barEl.classList.toggle("is-stuck", stuck);
+				}
+				var filterStuckRaf = null;
+				function scheduleFilterStuckCheck() {
+					if (filterStuckRaf != null) return;
+					filterStuckRaf = requestAnimationFrame(function () {
+						filterStuckRaf = null;
+						checkFilterStuck();
+					});
+				}
+				window.addEventListener("scroll", scheduleFilterStuckCheck, { passive: true });
+				if (window.visualViewport) {
+					window.visualViewport.addEventListener("resize", function () {
+						syncFilterSnapTop();
+						scheduleFilterStuckCheck();
+					});
+				}
+				barEl._syncStuck = checkFilterStuck;
+				checkFilterStuck();
+			}
+
 			function scrollGridIntoViewAfterFilterTap() {
 				if (!filterChangeScrollEnabled) return;
 
-				function measureAndScrollByFilterGeometry() {
+				function scheduleMobileSettleRetry(fn) {
+					requestAnimationFrame(function () {
+						requestAnimationFrame(fn);
+					});
+				}
+
+				function measureAndScrollByFilterGeometry(isMobileSettlePass) {
 					var mobileScroll = window.matchMedia(FILTER_BAR_MOBILE_MQL).matches;
 					var gapPx = mobileScroll ? 12 : 16;
 					var titleBelowFilterPad = mobileScroll ? 10 : 14;
 					var minWantAnchorTopPx = mobileScroll ? 56 : 72;
+					var doneEpsilon = isMobileSettlePass ? 2 : 4;
 
 					if (filterBar && typeof filterBar._syncStuck === "function") {
 						filterBar._syncStuck();
@@ -1544,6 +1590,22 @@ document.addEventListener("DOMContentLoaded", function () {
 							anchor = grid.querySelector(".work-grid-title");
 						}
 					}
+					if (!anchor && sectionType === "photos") {
+						var photoItems = grid.querySelectorAll(".photo-item");
+						for (var pi = 0; pi < photoItems.length; pi++) {
+							if (photoItems[pi].style.display !== "none") {
+								anchor = photoItems[pi];
+								break;
+							}
+						}
+					}
+					/* Location (or combined) filter can hide every tile — scroll to empty-state copy under the bar, not .photo-intro */
+					if (!anchor && (sectionType === "photos" || sectionType === "graphics")) {
+						var emptyEl = workContent.querySelector(".no-results");
+						if (emptyEl && emptyEl.style.display !== "none") {
+							anchor = emptyEl;
+						}
+					}
 					if (!anchor) {
 						var introSel = sectionType === "graphics" ? ".work-intro" : ".photo-intro";
 						anchor =
@@ -1551,7 +1613,13 @@ document.addEventListener("DOMContentLoaded", function () {
 					}
 
 					var wantAnchorTop;
-					if (anchor.classList && anchor.classList.contains("work-grid-title") && filterEl) {
+					var alignToFilterBand =
+						anchor &&
+						anchor.classList &&
+						(anchor.classList.contains("work-grid-title") ||
+							anchor.classList.contains("photo-item") ||
+							anchor.classList.contains("no-results"));
+					if (alignToFilterBand && filterEl) {
 						var fr = filterEl.getBoundingClientRect();
 						wantAnchorTop = fr.bottom + gapPx + titleBelowFilterPad;
 						if (wantAnchorTop < gapPx + 48) {
@@ -1574,14 +1642,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					var anchorTop = anchor.getBoundingClientRect().top;
 					var delta = anchorTop - wantAnchorTop;
-					if (Math.abs(delta) < 4) return;
-					window.scrollBy({
-						top: delta,
-						behavior: mobileScroll ? "auto" : "smooth",
-					});
-					if (mobileScroll && filterBar && typeof filterBar._syncStuck === "function") {
+					if (Math.abs(delta) < doneEpsilon) {
+						if (mobileScroll && !isMobileSettlePass) {
+							scheduleMobileSettleRetry(function () {
+								measureAndScrollByFilterGeometry(true);
+							});
+						}
+						return;
+					}
+					/* Mobile: absolute scroll position is more reliable than scrollBy after long pages + load-more (iOS/subpixel). */
+					if (mobileScroll) {
+						var y = window.pageYOffset + delta;
+						y = Math.max(0, Math.min(y, Math.max(0, document.documentElement.scrollHeight - window.innerHeight)));
+						window.scrollTo({ top: y, left: 0, behavior: "auto" });
+					} else {
+						window.scrollBy({
+							top: delta,
+							behavior: "smooth",
+						});
+					}
+					if (filterBar && typeof filterBar._syncStuck === "function") {
 						requestAnimationFrame(function () {
 							filterBar._syncStuck();
+						});
+					}
+					if (mobileScroll && !isMobileSettlePass) {
+						scheduleMobileSettleRetry(function () {
+							measureAndScrollByFilterGeometry(true);
 						});
 					}
 				}
@@ -1590,12 +1677,16 @@ document.addEventListener("DOMContentLoaded", function () {
 				if (window.matchMedia(FILTER_BAR_MOBILE_MQL).matches) {
 					requestAnimationFrame(function () {
 						requestAnimationFrame(function () {
-							requestAnimationFrame(measureAndScrollByFilterGeometry);
+							requestAnimationFrame(function () {
+								measureAndScrollByFilterGeometry(false);
+							});
 						});
 					});
 				} else {
 					requestAnimationFrame(function () {
-						requestAnimationFrame(measureAndScrollByFilterGeometry);
+						requestAnimationFrame(function () {
+							measureAndScrollByFilterGeometry(false);
+						});
 					});
 				}
 			}
@@ -1838,44 +1929,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					var infoEl = document.querySelector(".info");
 					if (infoEl) {
-						var snapRoot = section;
-
-						function syncFilterSnapTop() {
-							snapRoot.style.setProperty("--filter-bar-snap-top", infoEl.offsetHeight + "px");
-						}
-						syncFilterSnapTop();
-						window.addEventListener("resize", syncFilterSnapTop);
-
-						function checkFilterStuck() {
-							/* daas.graphics: refresh snap every pass so CSS sticky top matches live .info height */
-							syncFilterSnapTop();
-							var rect = filterBar.getBoundingClientRect();
-							var stickyTop =
-								parseFloat(getComputedStyle(snapRoot).getPropertyValue("--filter-bar-snap-top")) ||
-								infoEl.offsetHeight;
-							var line = stickyTop + 1;
-							var stickHyst = 16;
-							var wasStuck = filterBar.classList.contains("is-stuck");
-							var stuck = wasStuck ? rect.top <= line + stickHyst : rect.top <= line;
-							filterBar.classList.toggle("is-stuck", stuck);
-						}
-						var filterStuckRaf = null;
-						function scheduleFilterStuckCheck() {
-							if (filterStuckRaf != null) return;
-							filterStuckRaf = requestAnimationFrame(function () {
-								filterStuckRaf = null;
-								checkFilterStuck();
-							});
-						}
-						window.addEventListener("scroll", scheduleFilterStuckCheck, { passive: true });
-						if (window.visualViewport) {
-							window.visualViewport.addEventListener("resize", function () {
-								syncFilterSnapTop();
-								scheduleFilterStuckCheck();
-							});
-						}
-						filterBar._syncStuck = checkFilterStuck;
-						checkFilterStuck();
+						bindFilterBarSticky(filterBar, section, infoEl);
 					}
 				}
 			}
@@ -1950,43 +2004,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					var gfxInfoEl = document.querySelector(".info");
 					if (gfxInfoEl) {
-						var gfxSnapRoot = section;
-
-						function gfxSyncFilterSnapTop() {
-							gfxSnapRoot.style.setProperty("--filter-bar-snap-top", gfxInfoEl.offsetHeight + "px");
-						}
-						gfxSyncFilterSnapTop();
-						window.addEventListener("resize", gfxSyncFilterSnapTop);
-
-						function gfxCheckFilterStuck() {
-							gfxSyncFilterSnapTop();
-							var rect = filterBar.getBoundingClientRect();
-							var stickyTop =
-								parseFloat(getComputedStyle(gfxSnapRoot).getPropertyValue("--filter-bar-snap-top")) ||
-								gfxInfoEl.offsetHeight;
-							var line = stickyTop + 1;
-							var stickHyst = 16;
-							var wasStuck = filterBar.classList.contains("is-stuck");
-							var stuck = wasStuck ? rect.top <= line + stickHyst : rect.top <= line;
-							filterBar.classList.toggle("is-stuck", stuck);
-						}
-						var gfxFilterStuckRaf = null;
-						function gfxScheduleFilterStuckCheck() {
-							if (gfxFilterStuckRaf != null) return;
-							gfxFilterStuckRaf = requestAnimationFrame(function () {
-								gfxFilterStuckRaf = null;
-								gfxCheckFilterStuck();
-							});
-						}
-						window.addEventListener("scroll", gfxScheduleFilterStuckCheck, { passive: true });
-						if (window.visualViewport) {
-							window.visualViewport.addEventListener("resize", function () {
-								gfxSyncFilterSnapTop();
-								gfxScheduleFilterStuckCheck();
-							});
-						}
-						filterBar._syncStuck = gfxCheckFilterStuck;
-						gfxCheckFilterStuck();
+						bindFilterBarSticky(filterBar, section, gfxInfoEl);
 					}
 				}
 			}
