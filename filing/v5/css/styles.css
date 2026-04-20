@@ -368,9 +368,8 @@ code {
 .page-content .info {
 	position: sticky;
 	top: 0;
-	/* Mobile (default): same stack level as .filter-bar.is-stuck (500); filter comes after
-	   .info in the DOM so the bar paints on top—dropdowns stay usable. Desktop: see ≤1080 /
-	   ≥1081 overrides below. */
+	/* Filter bar sits below this row when stuck (--filter-bar-snap-top); filter z-index > .info
+	   only matters during overlap while scrolling. See gallery.js checkFilterStuck. */
 	z-index: 500;
 	background-color: var(--color-bg);
 }
@@ -1745,19 +1744,47 @@ footer .caption {
 	/* FILTER BAR */
 	.filter-bar {
 		padding-bottom: var(--gap-section);
+		/* Reduce iOS/Android scroll anchoring jumps when dropdown height toggles */
+		overflow-anchor: none;
 	}
 
-	/* Same top inset as `.info .row` (16px) at all times — if padding only applied when .is-stuck,
-	   toggling sticky changed inset and caused a visible jump */
+	/* Same top inset as `.info .row` (16px); no vertical padding transition — daas.graphics pattern:
+	   animated padding + sticky toggling caused cumulative subpixel drift on mobile. */
 	.photo-content .filter-bar,
 	.work-content .filter-bar {
 		padding-top: 16px;
-		transition: padding-bottom 0.2s ease;
+		transition: none;
 	}
 
 	/* Above sticky .info (z-index 500) so the filter does not alternate paint order while is-stuck toggles. */
 	.filter-bar.is-stuck {
 		z-index: 501;
+	}
+
+	/* Explicit in-flow padding when stuck so row height matches collapsed state (daas.graphics). */
+	.photo-content .filter-bar.is-stuck,
+	.work-content .filter-bar.is-stuck {
+		padding-top: 16px;
+		padding-bottom: var(--gap-section);
+		box-sizing: border-box;
+		border-bottom: none;
+	}
+
+	.photo-content .filter-bar.is-stuck::after,
+	.work-content .filter-bar.is-stuck::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 0;
+		border-bottom: 1px dashed var(--color-border);
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.filter-bar.is-stuck:has(.filter-dropdown.is-open)::after {
+		display: none;
 	}
 
 	.filter-bar:has(.filter-dropdown.is-open) {

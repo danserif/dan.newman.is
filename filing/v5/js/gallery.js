@@ -1512,62 +1512,92 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			function scrollGridIntoViewAfterFilterTap() {
 				if (!filterChangeScrollEnabled) return;
-				/* Double rAF: layout after filter DOM / sticky state updates */
-				requestAnimationFrame(function () {
-					requestAnimationFrame(function () {
-						var gapPx = 16;
-						var infoNav = document.querySelector(".page-content .info");
-						var filterEl =
-							section.querySelector(".filter-bar") || workContent.querySelector(".filter-bar");
 
-						var anchor = null;
-						if (sectionType === "graphics") {
-							if (activeGraphicsProject) {
-								var ttl = grid.querySelectorAll(".work-grid-title");
-								for (var ti = 0; ti < ttl.length; ti++) {
-									if (ttl[ti].getAttribute("data-project") === activeGraphicsProject) {
-										anchor = ttl[ti];
-										break;
-									}
+				function measureAndScrollByFilterGeometry() {
+					var mobileScroll = window.matchMedia(FILTER_BAR_MOBILE_MQL).matches;
+					var gapPx = mobileScroll ? 12 : 16;
+					var titleBelowFilterPad = mobileScroll ? 10 : 14;
+					var minWantAnchorTopPx = mobileScroll ? 56 : 72;
+
+					if (filterBar && typeof filterBar._syncStuck === "function") {
+						filterBar._syncStuck();
+					}
+
+					var filterEl =
+						section.querySelector(".filter-bar") || workContent.querySelector(".filter-bar");
+					if (!filterEl) return;
+
+					/* After dropdown closes the trigger label height can change; flush layout before rects */
+					void filterEl.offsetHeight;
+
+					var anchor = null;
+					if (sectionType === "graphics") {
+						if (activeGraphicsProject) {
+							var ttl = grid.querySelectorAll(".work-grid-title");
+							for (var ti = 0; ti < ttl.length; ti++) {
+								if (ttl[ti].getAttribute("data-project") === activeGraphicsProject) {
+									anchor = ttl[ti];
+									break;
 								}
-							} else {
-								/* All: same scroll target as other filters — first project title (Klim…) */
-								anchor = grid.querySelector(".work-grid-title");
-							}
-						}
-						if (!anchor) {
-							var introSel = sectionType === "graphics" ? ".work-intro" : ".photo-intro";
-							anchor =
-								section.querySelector(introSel) || section.querySelector(".section-label") || grid;
-						}
-
-						var wantAnchorTop;
-						/* Extra air between sticky filter and project title (only title alignment) */
-						var titleBelowFilterPad = 14;
-						if (anchor && anchor.classList.contains("work-grid-title") && filterEl) {
-							var fr = filterEl.getBoundingClientRect();
-							wantAnchorTop = fr.bottom + gapPx + titleBelowFilterPad;
-							if (wantAnchorTop < gapPx + 48) {
-								var snap =
-									parseFloat(getComputedStyle(section).getPropertyValue("--filter-bar-snap-top")) ||
-									0;
-								wantAnchorTop =
-									snap +
-									Math.max(fr.height, filterEl.offsetHeight || 52) +
-									gapPx +
-									titleBelowFilterPad;
 							}
 						} else {
-							wantAnchorTop = (infoNav ? infoNav.getBoundingClientRect().bottom : 64) + gapPx;
+							anchor = grid.querySelector(".work-grid-title");
 						}
-						wantAnchorTop = Math.max(wantAnchorTop, 72);
+					}
+					if (!anchor) {
+						var introSel = sectionType === "graphics" ? ".work-intro" : ".photo-intro";
+						anchor =
+							section.querySelector(introSel) || section.querySelector(".section-label") || grid;
+					}
 
-						var anchorTop = anchor.getBoundingClientRect().top;
-						var delta = anchorTop - wantAnchorTop;
-						if (Math.abs(delta) < 4) return;
-						window.scrollBy({ top: delta, behavior: "smooth" });
+					var wantAnchorTop;
+					if (anchor.classList && anchor.classList.contains("work-grid-title") && filterEl) {
+						var fr = filterEl.getBoundingClientRect();
+						wantAnchorTop = fr.bottom + gapPx + titleBelowFilterPad;
+						if (wantAnchorTop < gapPx + 48) {
+							var snap =
+								parseFloat(getComputedStyle(section).getPropertyValue("--filter-bar-snap-top")) ||
+								0;
+							wantAnchorTop =
+								snap +
+								Math.max(fr.height, filterEl.offsetHeight || 52) +
+								gapPx +
+								titleBelowFilterPad;
+						}
+					} else {
+						var snapTop =
+							parseFloat(getComputedStyle(section).getPropertyValue("--filter-bar-snap-top")) ||
+							0;
+						wantAnchorTop = snapTop + gapPx + 48;
+					}
+					wantAnchorTop = Math.max(wantAnchorTop, minWantAnchorTopPx);
+
+					var anchorTop = anchor.getBoundingClientRect().top;
+					var delta = anchorTop - wantAnchorTop;
+					if (Math.abs(delta) < 4) return;
+					window.scrollBy({
+						top: delta,
+						behavior: mobileScroll ? "auto" : "smooth",
 					});
-				});
+					if (mobileScroll && filterBar && typeof filterBar._syncStuck === "function") {
+						requestAnimationFrame(function () {
+							filterBar._syncStuck();
+						});
+					}
+				}
+
+				/* Mobile: extra frame so sticky bar + dropdown label finish reflow (daas.graphics) */
+				if (window.matchMedia(FILTER_BAR_MOBILE_MQL).matches) {
+					requestAnimationFrame(function () {
+						requestAnimationFrame(function () {
+							requestAnimationFrame(measureAndScrollByFilterGeometry);
+						});
+					});
+				} else {
+					requestAnimationFrame(function () {
+						requestAnimationFrame(measureAndScrollByFilterGeometry);
+					});
+				}
 			}
 
 			const response = await fetch(jsonPath);
@@ -1807,7 +1837,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					});
 
 					var infoEl = document.querySelector(".info");
-					var isMobileLayout = window.matchMedia(FILTER_BAR_MOBILE_MQL);
 					if (infoEl) {
 						var snapRoot = section;
 
@@ -1818,26 +1847,17 @@ document.addEventListener("DOMContentLoaded", function () {
 						window.addEventListener("resize", syncFilterSnapTop);
 
 						function checkFilterStuck() {
+							/* daas.graphics: refresh snap every pass so CSS sticky top matches live .info height */
+							syncFilterSnapTop();
 							var rect = filterBar.getBoundingClientRect();
-							var mobile = isMobileLayout.matches;
-							/* Desktop: stick when bar reaches slot under nav. Mobile: viewport top handoff.
-							   Mobile needs a wider threshold + hysteresis: iOS viewport/chrome shifts and
-							   sticky layout feedback can otherwise toggle is-stuck multiple times per frame
-							   when scrolling up past the URL row. */
-							var stickyTop = mobile ? 0 : infoEl.offsetHeight;
-							var line = stickyTop + (mobile ? 6 : 1);
-							var stickHyst = mobile ? 48 : 16;
+							var stickyTop =
+								parseFloat(getComputedStyle(snapRoot).getPropertyValue("--filter-bar-snap-top")) ||
+								infoEl.offsetHeight;
+							var line = stickyTop + 1;
+							var stickHyst = 16;
 							var wasStuck = filterBar.classList.contains("is-stuck");
 							var stuck = wasStuck ? rect.top <= line + stickHyst : rect.top <= line;
 							filterBar.classList.toggle("is-stuck", stuck);
-
-							if (mobile) {
-								if (stuck) {
-									snapRoot.style.setProperty("--filter-bar-snap-top", "0px");
-								} else if (wasStuck && !stuck) {
-									syncFilterSnapTop();
-								}
-							}
 						}
 						var filterStuckRaf = null;
 						function scheduleFilterStuckCheck() {
@@ -1848,6 +1868,13 @@ document.addEventListener("DOMContentLoaded", function () {
 							});
 						}
 						window.addEventListener("scroll", scheduleFilterStuckCheck, { passive: true });
+						if (window.visualViewport) {
+							window.visualViewport.addEventListener("resize", function () {
+								syncFilterSnapTop();
+								scheduleFilterStuckCheck();
+							});
+						}
+						filterBar._syncStuck = checkFilterStuck;
 						checkFilterStuck();
 					}
 				}
@@ -1922,7 +1949,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					grid.parentNode.insertBefore(graphicsNoResultsMsg, grid.nextSibling);
 
 					var gfxInfoEl = document.querySelector(".info");
-					var gfxIsMobileLayout = window.matchMedia(FILTER_BAR_MOBILE_MQL);
 					if (gfxInfoEl) {
 						var gfxSnapRoot = section;
 
@@ -1933,22 +1959,16 @@ document.addEventListener("DOMContentLoaded", function () {
 						window.addEventListener("resize", gfxSyncFilterSnapTop);
 
 						function gfxCheckFilterStuck() {
+							gfxSyncFilterSnapTop();
 							var rect = filterBar.getBoundingClientRect();
-							var mobile = gfxIsMobileLayout.matches;
-							var stickyTop = mobile ? 0 : gfxInfoEl.offsetHeight;
-							var line = stickyTop + (mobile ? 6 : 1);
-							var stickHyst = mobile ? 48 : 16;
+							var stickyTop =
+								parseFloat(getComputedStyle(gfxSnapRoot).getPropertyValue("--filter-bar-snap-top")) ||
+								gfxInfoEl.offsetHeight;
+							var line = stickyTop + 1;
+							var stickHyst = 16;
 							var wasStuck = filterBar.classList.contains("is-stuck");
 							var stuck = wasStuck ? rect.top <= line + stickHyst : rect.top <= line;
 							filterBar.classList.toggle("is-stuck", stuck);
-
-							if (mobile) {
-								if (stuck) {
-									gfxSnapRoot.style.setProperty("--filter-bar-snap-top", "0px");
-								} else if (wasStuck && !stuck) {
-									gfxSyncFilterSnapTop();
-								}
-							}
 						}
 						var gfxFilterStuckRaf = null;
 						function gfxScheduleFilterStuckCheck() {
@@ -1959,6 +1979,13 @@ document.addEventListener("DOMContentLoaded", function () {
 							});
 						}
 						window.addEventListener("scroll", gfxScheduleFilterStuckCheck, { passive: true });
+						if (window.visualViewport) {
+							window.visualViewport.addEventListener("resize", function () {
+								gfxSyncFilterSnapTop();
+								gfxScheduleFilterStuckCheck();
+							});
+						}
+						filterBar._syncStuck = gfxCheckFilterStuck;
 						gfxCheckFilterStuck();
 					}
 				}
