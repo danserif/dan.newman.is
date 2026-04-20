@@ -135,6 +135,34 @@
 			window.addEventListener("scroll", checkStuck, { passive: true });
 			checkStuck();
 		}
+
+		// Designer: logo marquee — set exact loop width in px so the animation matches layout after
+		// fonts/images load (avoids subpixel seam) and keeps the composited strip size predictable.
+		var logoMarqueeTrack = document.querySelector(".logos-marquee-section .marquee-track");
+		if (logoMarqueeTrack) {
+			function measureLogoMarqueeLoop() {
+				var first = logoMarqueeTrack.querySelector("ul");
+				if (!first) return;
+				var cs = window.getComputedStyle(first);
+				var marginRight = parseFloat(cs.marginRight) || 0;
+				var w = first.getBoundingClientRect().width;
+				var loopPx = w + marginRight;
+				if (loopPx > 1) {
+					logoMarqueeTrack.style.setProperty("--marquee-loop", loopPx + "px");
+				}
+			}
+			measureLogoMarqueeLoop();
+			window.addEventListener("load", measureLogoMarqueeLoop);
+			window.addEventListener("resize", measureLogoMarqueeLoop);
+			if (document.fonts && document.fonts.ready) {
+				document.fonts.ready.then(measureLogoMarqueeLoop);
+			}
+			if (window.ResizeObserver) {
+				var ro = new ResizeObserver(measureLogoMarqueeLoop);
+				var firstUl = logoMarqueeTrack.querySelector("ul");
+				if (firstUl) ro.observe(firstUl);
+			}
+		}
 	}
 
 	if (document.readyState === "loading") {
