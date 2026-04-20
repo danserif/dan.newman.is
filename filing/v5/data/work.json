@@ -434,9 +434,9 @@
       "height": 840
     },
     {
-      "filename": "ll-form.png",
+      "filename": "ll-invite.png",
       "number": "LL-25",
-      "description": "Form (Waitlist)",
+      "description": "Invite (Authentication)",
       "columns": 3,
       "width": 1628,
       "height": 1396
