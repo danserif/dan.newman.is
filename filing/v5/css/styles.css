@@ -1248,6 +1248,23 @@ code {
 	position: relative;
 	border-top: 1px dashed var(--color-border);
 	border-bottom: 1px dashed var(--color-border);
+	/* Fade edges without pseudo-elements on top of the track (those clipped/covered logos). */
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent,
+		#000 80px,
+		#000 calc(100% - 80px),
+		transparent
+	);
+	mask-image: linear-gradient(
+		to right,
+		transparent,
+		#000 80px,
+		#000 calc(100% - 80px),
+		transparent
+	);
+	mask-repeat: no-repeat;
+	mask-size: 100% 100%;
 }
 
 .marquee-track {
@@ -1258,6 +1275,8 @@ code {
 	width: max-content;
 	white-space: nowrap;
 	animation: marquee-scroll 90s linear infinite;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 
 .marquee ul {
@@ -1294,27 +1313,6 @@ code {
 	}
 }
 
-.marquee::before,
-.marquee::after {
-	content: "";
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 80px;
-	pointer-events: none;
-	z-index: 1;
-}
-
-.marquee::before {
-	left: 0;
-	background: linear-gradient(to right, var(--color-bg) 0%, transparent 100%);
-}
-
-.marquee::after {
-	right: 0;
-	background: linear-gradient(to left, var(--color-bg) 0%, transparent 100%);
-}
-
 .logos-marquee-section {
 	display: flex;
 	flex-direction: column;
@@ -1349,6 +1347,8 @@ code {
 	align-items: center;
 	justify-content: center;
 	height: 60px;
+	/* Keeps light-mode `filter: invert()` paint inside the cell so overflow:hidden on .marquee does not clip SVG edges. */
+	isolation: isolate;
 }
 
 .logo-svg {
@@ -1706,16 +1706,24 @@ footer .caption {
 
 	.marquee {
 		margin-top: 0;
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 20px,
+			#000 calc(100% - 20px),
+			transparent
+		);
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			#000 20px,
+			#000 calc(100% - 20px),
+			transparent
+		);
 	}
 
 	.marquee ul {
 		padding: 12px 0;
-	}
-
-	.marquee::before,
-	.marquee::after {
-		display: block;
-		width: 20px;
 	}
 
 	/* SCROLL ANCHORS */
