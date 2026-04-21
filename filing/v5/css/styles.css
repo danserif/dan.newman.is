@@ -1575,6 +1575,10 @@ footer .caption {
 		margin-top: clamp(88px, 10vh, 200px);
 	}
 
+	.canonical-url-row {
+		text-transform: uppercase;
+	}
+
 	/* WORK / PHOTOS */
 	.work-intro,
 	.photo-intro {
