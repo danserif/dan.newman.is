@@ -467,12 +467,12 @@
       "height": 1228
     },
     {
-      "filename": "cs-colours.png",
+      "filename": "cs-assets.png",
       "number": "CS-02",
-      "description": "Colours (Primary)",
+      "description": "Brand Assets (Logotype / Mascot / Badge)",
       "columns": 3,
       "width": 1628,
-      "height": 796
+      "height": 916
     },
     {
       "filename": "cs-mascot-ppe.png",
