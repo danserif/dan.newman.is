@@ -360,6 +360,16 @@ document.addEventListener("DOMContentLoaded", function () {
 		paragraph.appendChild(slash);
 	}
 
+	/** Keep new tiles above the load-more sentinel (divider + row live at end of .work-grid / .photo-grid). */
+	function appendGalleryNode(container, node) {
+		const sent = container._insertBeforeLoadMore;
+		if (sent && sent.parentNode === container) {
+			container.insertBefore(node, sent);
+		} else {
+			container.appendChild(node);
+		}
+	}
+
 	// Full-width section title (graphics: type "title")
 	function renderGraphicsTitleItem(item, container) {
 		const wrap = document.createElement("div");
@@ -408,7 +418,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 		if (wrap.childNodes.length > 0) {
-			container.appendChild(wrap);
+			appendGalleryNode(container, wrap);
 		}
 	}
 
@@ -424,7 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			if (item.project) {
 				hr.setAttribute("data-project", item.project);
 			}
-			container.appendChild(hr);
+			appendGalleryNode(container, hr);
 			return;
 		}
 
@@ -484,7 +494,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 		workItem.appendChild(caption);
-		container.appendChild(workItem);
+		appendGalleryNode(container, workItem);
 	}
 
 	// =========================================================================
@@ -577,7 +587,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 		photoItem.appendChild(caption);
-		container.appendChild(photoItem);
+		appendGalleryNode(container, photoItem);
 	}
 
 	// =========================================================================
@@ -1477,8 +1487,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		workContent.appendChild(grid);
 
 		const divider = document.createElement("hr");
-		divider.className = "divider hidden";
-		workContent.appendChild(divider);
+		divider.className = "divider grid-footer-divider hidden";
+		divider.setAttribute("aria-hidden", "true");
 
 		const loadMoreRow = document.createElement("div");
 		loadMoreRow.className = "load-more-row";
@@ -1500,7 +1510,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		loadMoreRow.appendChild(loadMoreSep);
 		loadMoreRow.appendChild(loadMoreStatus);
 		loadMoreSep.classList.add("hidden");
-		workContent.appendChild(loadMoreRow);
+		grid.appendChild(divider);
+		grid.appendChild(loadMoreRow);
+		grid._insertBeforeLoadMore = divider;
 
 		let allItems = [];
 		let displayedCount = 0;
@@ -1793,10 +1805,35 @@ document.addEventListener("DOMContentLoaded", function () {
 				return false;
 			}
 
+			let initialGridPaintDone = false;
+
 			function syncLoadMoreButtonVisibility() {
 				const fullyLoaded = displayedCount >= allItems.length;
 				const noMoreMatchingImages = !remainingMatchingFilenameItemsExist();
-				loadMoreBtn.classList.toggle("hidden", fullyLoaded || noMoreMatchingImages);
+				const hideLoadMore = fullyLoaded || noMoreMatchingImages;
+				loadMoreBtn.classList.toggle("hidden", hideLoadMore);
+				/* Hide footer HR only when idle and the last row is already a JSON divider (no double line).
+				   After images/titles, keep the rule so "99 of 99" still matches the load-more layout. */
+				if (initialGridPaintDone) {
+					let prev = loadMoreRow.previousElementSibling;
+					if (prev === divider) {
+						prev = prev.previousElementSibling;
+					}
+					while (prev && getComputedStyle(prev).display === "none") {
+						prev = prev.previousElementSibling;
+					}
+					const afterProjectDivider =
+						Boolean(
+							prev &&
+								prev.classList &&
+								(prev.classList.contains("work-grid-divider") ||
+									prev.classList.contains("photo-grid-divider")),
+						);
+					const hideFooterRule = hideLoadMore && afterProjectDivider;
+					divider.classList.toggle("hidden", hideFooterRule);
+					loadMoreRow.classList.toggle("load-more-row--no-footer-rule", hideFooterRule);
+					loadMoreRow.classList.toggle("load-more-row--after-project-divider", hideFooterRule);
+				}
 			}
 
 			function sumBytesForDisplayedImages() {
@@ -1963,11 +2000,14 @@ document.addEventListener("DOMContentLoaded", function () {
 							el.style.display = visible ? "" : "none";
 						});
 					/* Section dividers sit between projects; when filtering, a trailing HR has no next
-					   title/images — hide unless something substantive still follows in the grid. */
+					   title/images — hide unless something substantive still follows in the grid.
+					   Skip load-more/footer nodes (they live inside .work-grid since the gallery refactor). */
 					if (proj) {
 						var ch = grid.children;
 						for (var ti = ch.length - 1; ti >= 0; ti--) {
 							var node = ch[ti];
+							if (node.classList.contains("load-more-row")) continue;
+							if (node.classList.contains("grid-footer-divider")) continue;
 							if (node.style.display === "none") continue;
 							if (!node.classList.contains("work-grid-divider")) break;
 							node.style.display = "none";
@@ -2161,7 +2201,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 				setupLazyLoading();
 
-				divider.classList.remove("hidden");
+				initialGridPaintDone = true;
 				updateLoadMoreStatus();
 				if (filterBar && filterBar._fireInitialFilter) {
 					filterBar._fireInitialFilter();

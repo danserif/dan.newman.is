@@ -696,10 +696,36 @@ code {
 	grid-column: span 4;
 }
 
-.work-grid>hr.work-grid-divider,
-.photo-grid>hr.photo-grid-divider {
+.work-grid > hr.work-grid-divider,
+.photo-grid > hr.photo-grid-divider {
 	grid-column: 1 / -1;
-	margin-bottom: calc(var(--gap-section) * 2);
+	margin: calc(var(--gap-section) * 5) 0;
+}
+
+/* Load-more HR: same clearance above the line as project dividers; keep the control row tight below */
+.work-grid > hr.grid-footer-divider,
+.photo-grid > hr.grid-footer-divider {
+	grid-column: 1 / -1;
+	margin-top: calc(var(--gap-section) * 5);
+	margin-bottom: 0;
+}
+
+.work-grid > .load-more-row,
+.photo-grid > .load-more-row {
+	grid-column: 1 / -1;
+	margin-top: calc(24px - var(--gap-flex));
+	padding: 0 0 var(--gap-section) 0;
+}
+
+.work-grid > .load-more-row.load-more-row--no-footer-rule,
+.photo-grid > .load-more-row.load-more-row--no-footer-rule {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.work-grid > .load-more-row.load-more-row--no-footer-rule.load-more-row--after-project-divider,
+.photo-grid > .load-more-row.load-more-row--no-footer-rule.load-more-row--after-project-divider {
+	margin-top: calc(24px - var(--gap-flex) - (var(--gap-section) * 5));
 }
 
 .work-grid-title,
@@ -1219,8 +1245,10 @@ code {
 
 .load-more-button:disabled,
 .load-more-button.hidden,
-.work-content>.divider.hidden,
-.photo-content>.divider.hidden {
+.work-content > hr.divider.hidden,
+.photo-content > hr.divider.hidden,
+.work-grid > hr.divider.hidden,
+.photo-grid > hr.divider.hidden {
 	display: none;
 }
 
@@ -1676,6 +1704,30 @@ footer .caption {
 	.work-item[data-columns],
 	.photo-item[data-columns] {
 		grid-column: span 1 !important;
+	}
+
+	/* Gallery: large divider / load-more gaps are desktop-only */
+	.work-grid > hr.work-grid-divider,
+	.photo-grid > hr.photo-grid-divider {
+		margin: var(--gap-section) 0;
+	}
+
+	.work-grid > hr.grid-footer-divider,
+	.photo-grid > hr.grid-footer-divider {
+		margin-top: var(--gap-section);
+		margin-bottom: 0;
+	}
+
+	.work-grid > .load-more-row,
+	.photo-grid > .load-more-row {
+		margin-top: calc(8px - var(--gap-flex));
+		padding: var(--gap-section) 0;
+	}
+
+	.work-grid > .load-more-row.load-more-row--no-footer-rule,
+	.photo-grid > .load-more-row.load-more-row--no-footer-rule {
+		margin-top: calc(8px - var(--gap-flex));
+		padding-top: 0;
 	}
 
 	/* LOGOS MARQUEE */
