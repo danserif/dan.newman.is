@@ -467,17 +467,17 @@
       "height": 1228
     },
     {
-      "filename": "cs-assets.png",
+      "filename": "cs-mascot-ppe.png",
       "number": "CS-02",
-      "description": "Brand Assets (Logotype / Mascot / Badge)",
+      "description": "Cosmo (Mascot / PPE)",
       "columns": 3,
       "width": 1628,
       "height": 916
     },
     {
-      "filename": "cs-mascot-ppe.png",
+      "filename": "cs-assets.png",
       "number": "CS-03",
-      "description": "Cosmo (Mascot / PPE)",
+      "description": "Brand Assets (Logotype / Mascot / Badge)",
       "columns": 3,
       "width": 1628,
       "height": 916
