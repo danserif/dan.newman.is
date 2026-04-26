@@ -565,7 +565,8 @@ code {
 }
 
 :is(.experience, .education)>.section-label,
-.awards>.section-label {
+.awards>.section-label,
+.quotes>.section-label {
 	padding-bottom: 0.65rem;
 }
 
@@ -577,7 +578,8 @@ code {
 .photo-samples,
 .experience,
 .education,
-.awards {
+.awards,
+.quotes {
 	display: flex;
 	flex-direction: column;
 	gap: var(--gap-section);
@@ -595,12 +597,14 @@ code {
 
 .experience,
 .education,
-.awards {
+.awards,
+.quotes {
 	margin-top: var(--gap-after-work);
 }
 
 .education,
-.awards {
+.awards,
+.quotes {
 	margin-top: calc(var(--gap-after-work) / 4);
 }
 
@@ -631,6 +635,11 @@ code {
 .education .divider,
 .awards .divider {
 	margin: 8px 0;
+}
+
+/* Same vertical rhythm as Awards (label → content): one section gap, no extra divider inset. */
+.quotes .divider {
+	margin: 0;
 }
 
 .work-label,
@@ -696,35 +705,35 @@ code {
 	grid-column: span 4;
 }
 
-.work-grid > hr.work-grid-divider,
-.photo-grid > hr.photo-grid-divider {
+.work-grid>hr.work-grid-divider,
+.photo-grid>hr.photo-grid-divider {
 	grid-column: 1 / -1;
 	margin: calc(var(--gap-section) * 5) 0;
 }
 
 /* Load-more HR: same clearance above the line as project dividers; keep the control row tight below */
-.work-grid > hr.grid-footer-divider,
-.photo-grid > hr.grid-footer-divider {
+.work-grid>hr.grid-footer-divider,
+.photo-grid>hr.grid-footer-divider {
 	grid-column: 1 / -1;
 	margin-top: calc(var(--gap-section) * 5);
 	margin-bottom: 0;
 }
 
-.work-grid > .load-more-row,
-.photo-grid > .load-more-row {
+.work-grid>.load-more-row,
+.photo-grid>.load-more-row {
 	grid-column: 1 / -1;
 	margin-top: calc(24px - var(--gap-flex));
 	padding: 0 0 var(--gap-section) 0;
 }
 
-.work-grid > .load-more-row.load-more-row--no-footer-rule,
-.photo-grid > .load-more-row.load-more-row--no-footer-rule {
+.work-grid>.load-more-row.load-more-row--no-footer-rule,
+.photo-grid>.load-more-row.load-more-row--no-footer-rule {
 	margin-top: 0;
 	padding-top: 0;
 }
 
-.work-grid > .load-more-row.load-more-row--no-footer-rule.load-more-row--after-project-divider,
-.photo-grid > .load-more-row.load-more-row--no-footer-rule.load-more-row--after-project-divider {
+.work-grid>.load-more-row.load-more-row--no-footer-rule.load-more-row--after-project-divider,
+.photo-grid>.load-more-row.load-more-row--no-footer-rule.load-more-row--after-project-divider {
 	margin-top: calc(24px - var(--gap-flex) - (var(--gap-section) * 5));
 }
 
@@ -1245,10 +1254,10 @@ code {
 
 .load-more-button:disabled,
 .load-more-button.hidden,
-.work-content > hr.divider.hidden,
-.photo-content > hr.divider.hidden,
-.work-grid > hr.divider.hidden,
-.photo-grid > hr.divider.hidden {
+.work-content>hr.divider.hidden,
+.photo-content>hr.divider.hidden,
+.work-grid>hr.divider.hidden,
+.photo-grid>hr.divider.hidden {
 	display: none;
 }
 
@@ -1411,6 +1420,168 @@ code {
 }
 
 /* ==========================================================================
+   QUOTES / TESTIMONIALS (designer)
+   ========================================================================== */
+
+.quotes-content {
+	display: flex;
+	gap: var(--gap-flex);
+	width: 100%;
+	flex-wrap: wrap;
+	/* Double the usual section gap below the HR (flex gap + this margin). */
+	margin-top: var(--gap-section);
+}
+
+.quote {
+	display: flex;
+	gap: var(--gap-flex);
+	flex: 1 1 calc(33.333% - var(--gap-flex) * 2 / 3);
+	min-width: 300px;
+}
+
+.quote-author-info {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-section);
+	flex-shrink: 0;
+	min-width: 200px;
+}
+
+@media only screen and (min-width: 2661px) {
+	.quotes .quote-author-info {
+		width: 150px;
+		min-width: 150px;
+		max-width: 150px;
+		flex-shrink: 0;
+	}
+}
+
+.quotes .author-image {
+	width: 100px;
+	height: 100px;
+	flex-shrink: 0;
+	max-width: 200px;
+	background-color: transparent;
+}
+
+.quotes .author-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 0;
+	display: block;
+}
+
+.quote-author {
+	font-size: 11px;
+	line-height: 1.5;
+}
+
+.quote-author p {
+	margin: 0;
+	color: var(--color-text);
+}
+
+.quote-author p:nth-child(2) {
+	color: var(--opacity-50);
+}
+
+.quote-author p:last-child {
+	color: var(--opacity-25);
+	margin-top: 4px;
+}
+
+.quote-text {
+	flex: 1;
+}
+
+@media only screen and (min-width: 1680px) {
+	.quote-text {
+		padding-right: 2rem;
+	}
+}
+
+.quote-text blockquote {
+	margin: 0;
+	padding: 0;
+	padding-left: var(--gap-flex);
+	border-left: 1px solid var(--color-border);
+	font-size: 15px;
+	line-height: 25px;
+	color: var(--opacity-90);
+	max-width: min(100%, 502px);
+}
+
+.quotes .quote-highlight {
+	background-color: color-mix(in srgb, var(--color-text) 14%, transparent);
+}
+
+:root.light-mode .quotes .quote-highlight {
+	background-color: color-mix(in srgb, var(--color-text) 9%, transparent);
+	color: inherit;
+}
+
+.quotes .quote-highlight {
+	color: inherit;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+}
+
+.quote-text blockquote p {
+	margin: 0;
+}
+
+.quote-text blockquote p:first-child {
+	text-indent: -0.5em;
+	padding-left: 0.5em;
+}
+
+.quote-text blockquote p+p {
+	margin-top: 15px;
+	padding-left: 0.5em;
+}
+
+/* Match daas.graphics @ max-width 1640px: stacked testimonials, each row = profile column + quote. */
+@media only screen and (max-width: 1640px) and (min-width: 1081px) {
+	.quotes-content {
+		flex-direction: column;
+		gap: 5rem;
+	}
+
+	.quote {
+		width: 100%;
+		flex: 1 1 100%;
+		max-width: 100%;
+		flex-direction: row;
+	}
+
+	.quote .quote-author-info {
+		order: 1;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-top: 0;
+		width: 150px;
+		min-width: 150px;
+		max-width: 150px;
+		flex-shrink: 0;
+	}
+
+	.quote .quote-text {
+		order: 2;
+	}
+
+	.quote .author-image {
+		width: 80px;
+		height: 80px;
+		flex-shrink: 0;
+	}
+
+	.quote .quote-text blockquote {
+		max-width: min(100%, 620px);
+	}
+}
+
+/* ==========================================================================
    SCROLL ANCHORS
    ========================================================================== */
 
@@ -1518,6 +1689,31 @@ footer .caption {
 	}
 }
 
+/* Mid viewports only (>1640): like daas ≤1960 — quote text above, author row below (does not override 1081–1640 row layout). */
+@media only screen and (max-width: 2660px) and (min-width: 1641px) {
+	.quote {
+		flex-direction: column;
+	}
+
+	.quote .quote-text {
+		order: 1;
+	}
+
+	.quote .quote-author-info {
+		order: 2;
+		margin-top: var(--gap-section);
+		flex-direction: row;
+		align-items: center;
+		gap: var(--gap-section);
+	}
+
+	.quote .author-image {
+		width: 80px;
+		height: 80px;
+		flex-shrink: 0;
+	}
+}
+
 /* ==========================================================================
    RESPONSIVE — NARROW DESKTOP (≤1640px)
    ========================================================================== */
@@ -1581,7 +1777,8 @@ footer .caption {
 	}
 
 	:is(.experience, .education)>.section-label,
-	.awards>.section-label {
+	.awards>.section-label,
+	.quotes>.section-label {
 		padding-bottom: 0.25rem;
 	}
 
@@ -1629,9 +1826,46 @@ footer .caption {
 
 	.experience,
 	.education,
-	.awards {
+	.awards,
+	.quotes {
 		padding-left: var(--padding-x);
 		padding-right: var(--padding-x);
+	}
+
+	.quotes-content {
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	.quote {
+		width: 100%;
+		flex: 1 1 100%;
+		max-width: 100%;
+		flex-direction: column;
+	}
+
+	.quote .quote-text {
+		order: 1;
+	}
+
+	.quote .quote-author-info {
+		order: 2;
+		margin-top: var(--gap-section);
+		flex-direction: row;
+		align-items: center;
+		gap: var(--gap-section);
+	}
+
+	.quote .author-image {
+		width: 80px;
+		height: 80px;
+		flex-shrink: 0;
+	}
+
+	.quote-text blockquote {
+		font-size: 14px;
+		line-height: 22px;
+		max-width: min(100%, 470px);
 	}
 
 	:is(.experience, .education) .row-group>.row,
@@ -1707,25 +1941,25 @@ footer .caption {
 	}
 
 	/* Gallery: large divider / load-more gaps are desktop-only */
-	.work-grid > hr.work-grid-divider,
-	.photo-grid > hr.photo-grid-divider {
+	.work-grid>hr.work-grid-divider,
+	.photo-grid>hr.photo-grid-divider {
 		margin: var(--gap-section) 0;
 	}
 
-	.work-grid > hr.grid-footer-divider,
-	.photo-grid > hr.grid-footer-divider {
+	.work-grid>hr.grid-footer-divider,
+	.photo-grid>hr.grid-footer-divider {
 		margin-top: var(--gap-section);
 		margin-bottom: 0;
 	}
 
-	.work-grid > .load-more-row,
-	.photo-grid > .load-more-row {
+	.work-grid>.load-more-row,
+	.photo-grid>.load-more-row {
 		margin-top: calc(8px - var(--gap-flex));
 		padding: var(--gap-section) 0;
 	}
 
-	.work-grid > .load-more-row.load-more-row--no-footer-rule,
-	.photo-grid > .load-more-row.load-more-row--no-footer-rule {
+	.work-grid>.load-more-row.load-more-row--no-footer-rule,
+	.photo-grid>.load-more-row.load-more-row--no-footer-rule {
 		margin-top: calc(8px - var(--gap-flex));
 		padding-top: 0;
 	}
