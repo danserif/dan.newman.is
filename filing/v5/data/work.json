@@ -816,7 +816,7 @@
     {
       "filename": "sl-team.png",
       "number": "SL-05",
-      "description": "Experience Team (Site / Team)",
+      "description": "Experience Team (Site)",
       "columns": 4,
       "width": 2184,
       "height": 840
@@ -832,7 +832,7 @@
     {
       "filename": "sl-poster.png",
       "number": "SL-07",
-      "description": "Experience Team (Poster / Team)",
+      "description": "Experience Team (Poster)",
       "columns": 2,
       "width": 1072,
       "height": 1540
