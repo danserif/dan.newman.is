@@ -605,7 +605,7 @@ code {
 .education,
 .awards,
 .quotes {
-	margin-top: calc(var(--gap-after-work) / 4);
+	margin-top: calc(var(--gap-after-work) / 2);
 }
 
 .work-intro,
@@ -1813,7 +1813,7 @@ footer .caption {
 
 	.work-samples,
 	.photo-samples {
-		margin-top: 4.5rem;
+		margin-top: 9rem;
 		padding-left: var(--padding-x);
 		padding-right: var(--padding-x);
 	}
@@ -1876,10 +1876,8 @@ footer .caption {
 		line-height: 20px;
 	}
 
-	.experience .row-group>.row.row--spacer {
-		grid-template-columns: 1fr;
-		row-gap: 4px;
-		width: 100%;
+	:is(.experience, .education, .awards) .row-group>.row.row--spacer {
+		display: none;
 	}
 
 	:is(.experience, .education) .row-group>.row:not(.row--spacer) {
