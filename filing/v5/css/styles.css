@@ -1513,18 +1513,12 @@ code {
 }
 
 .quotes .quote-highlight {
+	color: inherit;
 	background-color: color-mix(in srgb, var(--color-text) 14%, transparent);
 }
 
 :root.light-mode .quotes .quote-highlight {
 	background-color: color-mix(in srgb, var(--color-text) 9%, transparent);
-	color: inherit;
-}
-
-.quotes .quote-highlight {
-	color: inherit;
-	box-decoration-break: clone;
-	-webkit-box-decoration-break: clone;
 }
 
 .quote-text blockquote p {
@@ -1866,6 +1860,14 @@ footer .caption {
 		font-size: 14px;
 		line-height: 22px;
 		max-width: min(100%, 470px);
+	}
+
+	.quotes .quote-highlight {
+		background-color: color-mix(in srgb, var(--color-text) 14%, var(--color-bg));
+	}
+
+	:root.light-mode .quotes .quote-highlight {
+		background-color: color-mix(in srgb, var(--color-text) 9%, var(--color-bg));
 	}
 
 	:is(.experience, .education) .row-group>.row,
