@@ -63,11 +63,25 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
-	// Append text to a parent element, wrapping any "(...)" segments in a span with opacity-50,
-	// and "<Name/>"-style tokens so only "<" and "/>" use opacity-50 (inner name stays full opacity).
+	// Append text to a parent element, supporting:
+	// - "(...)" segments with opacity-50
+	// - "<Name/>" tokens where only "<" and "/>" are opacity-50
+	// - "~~...~~" segments rendered with strikethrough
 	function appendBracketStyledText(text, parent) {
 		if (!text) return;
 		const tagParts = text.split(/(<[^/]+\/>)/);
+		function appendParentheticalText(segmentText, target) {
+			const parts = segmentText.split(/(\([^)]*\))/);
+			parts.forEach(function (part) {
+				if (!part) return;
+				const span = document.createElement("span");
+				if (part.startsWith("(") && part.endsWith(")")) {
+					span.className = "opacity-50";
+				}
+				span.textContent = part;
+				target.appendChild(span);
+			});
+		}
 
 		tagParts.forEach(function (segment) {
 			if (!segment) return;
@@ -87,15 +101,17 @@ document.addEventListener("DOMContentLoaded", function () {
 				return;
 			}
 
-			const parts = segment.split(/(\([^)]*\))/);
-			parts.forEach(function (part) {
-				if (!part) return;
-				const span = document.createElement("span");
-				if (part.startsWith("(") && part.endsWith(")")) {
-					span.className = "opacity-50";
+			const strikeParts = segment.split(/(~~.+?~~)/);
+			strikeParts.forEach(function (strikePart) {
+				if (!strikePart) return;
+				const strikeMatch = strikePart.match(/^~~(.+?)~~$/);
+				if (strikeMatch) {
+					const deleted = document.createElement("del");
+					appendParentheticalText(strikeMatch[1], deleted);
+					parent.appendChild(deleted);
+					return;
 				}
-				span.textContent = part;
-				parent.appendChild(span);
+				appendParentheticalText(strikePart, parent);
 			});
 		});
 	}
