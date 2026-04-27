@@ -603,8 +603,7 @@ code {
 }
 
 .education,
-.awards,
-.quotes {
+.awards {
 	margin-top: calc(var(--gap-after-work) / 2);
 }
 
@@ -1518,7 +1517,7 @@ code {
 }
 
 :root.light-mode .quotes .quote-highlight {
-	background-color: color-mix(in srgb, var(--color-text) 9%, transparent);
+	background-color: color-mix(in srgb, var(--color-text) 6%, transparent);
 }
 
 .quote-text blockquote p {
@@ -1874,7 +1873,7 @@ footer .caption {
 	}
 
 	:root.light-mode .quotes .quote-highlight {
-		background-color: color-mix(in srgb, var(--color-text) 9%, var(--color-bg));
+		background-color: color-mix(in srgb, var(--color-text) 6%, var(--color-bg));
 	}
 
 	:is(.experience, .education) .row-group>.row,
