@@ -1513,11 +1513,11 @@ code {
 
 .quotes .quote-highlight {
 	color: inherit;
-	background-color: color-mix(in srgb, var(--color-text) 14%, transparent);
+	background-color: color-mix(in srgb, var(--color-text) 15%, transparent);
 }
 
 :root.light-mode .quotes .quote-highlight {
-	background-color: color-mix(in srgb, var(--color-text) 6%, transparent);
+	background-color: color-mix(in srgb, var(--color-text) 5%, transparent);
 }
 
 .quote-text blockquote p {
@@ -1869,11 +1869,11 @@ footer .caption {
 	}
 
 	.quotes .quote-highlight {
-		background-color: color-mix(in srgb, var(--color-text) 14%, var(--color-bg));
+		background-color: color-mix(in srgb, var(--color-text) 15%, var(--color-bg));
 	}
 
 	:root.light-mode .quotes .quote-highlight {
-		background-color: color-mix(in srgb, var(--color-text) 6%, var(--color-bg));
+		background-color: color-mix(in srgb, var(--color-text) 5%, var(--color-bg));
 	}
 
 	:is(.experience, .education) .row-group>.row,
