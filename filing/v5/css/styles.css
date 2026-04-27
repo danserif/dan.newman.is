@@ -1758,7 +1758,7 @@ footer .caption {
 @media only screen and (max-width: 1080px) {
 	:root {
 		--padding-x: 1.5rem;
-		--gap-after-work: 3rem;
+		--gap-after-work: 4rem;
 	}
 
 	/* UTILITIES */
@@ -1824,6 +1824,13 @@ footer .caption {
 	.quotes {
 		padding-left: var(--padding-x);
 		padding-right: var(--padding-x);
+	}
+
+	/* Increase separation between logos, quotes, and experience on mobile only. */
+	.logos-marquee-section,
+	.quotes,
+	.experience {
+		margin-top: calc(var(--gap-after-work) + 1rem);
 	}
 
 	.quotes-content {
