@@ -13,7 +13,8 @@
       "columns": 3,
       "width": 1628,
       "height": 1160,
-      "link": "https://klim.co.nz"
+      "link": "https://klim.co.nz",
+      "shared": true
     },
     {
       "filename": "k-soehne-specimen.png",
@@ -21,7 +22,8 @@
       "description": "Söhne (Specimen)",
       "columns": 2,
       "width": 1072,
-      "height": 1604
+      "height": 1604,
+      "shared": true
     },
     {
       "filename": "k-soehne-grid.png",
@@ -29,7 +31,8 @@
       "description": "Josef Müller-Brockmann (Homage)",
       "columns": 2,
       "width": 1072,
-      "height": 724
+      "height": 724,
+      "shared": true
     },
     {
       "filename": "k-untitled-serif.png",
@@ -37,7 +40,8 @@
       "description": "Untitled Serif (Cart)",
       "columns": 3,
       "width": 1628,
-      "height": 1028
+      "height": 1028,
+      "shared": true
     },
     {
       "filename": "k-untitled-sans.png",
@@ -45,7 +49,8 @@
       "description": "Untitled Sans (Specimen)",
       "columns": 2,
       "width": 1072,
-      "height": 1604
+      "height": 1604,
+      "shared": true
     },
     {
       "filename": "k-homepage.png",
@@ -53,7 +58,8 @@
       "description": "Homepage (Montage)",
       "columns": 2,
       "width": 1072,
-      "height": 636
+      "height": 636,
+      "shared": true
     },
     {
       "filename": "k-financier-specimen.png",
@@ -61,7 +67,8 @@
       "description": "Financier Display (Specimen)",
       "columns": 2,
       "width": 1072,
-      "height": 988
+      "height": 988,
+      "shared": true
     },
     {
       "filename": "k-financier-glyphs.png",
@@ -69,7 +76,8 @@
       "description": "Financier Display (Glyphs)",
       "columns": 2,
       "width": 1072,
-      "height": 724
+      "height": 724,
+      "shared": true
     },
     {
       "filename": "k-blog.png",
@@ -77,7 +85,8 @@
       "description": "70,471 words about letters...",
       "columns": 2,
       "width": 1072,
-      "height": 828
+      "height": 828,
+      "shared": true
     },
     {
       "filename": "k-heldane-text.png",
@@ -85,7 +94,8 @@
       "description": "Heldane Text (Cart)",
       "columns": 3,
       "width": 1628,
-      "height": 1028
+      "height": 1028,
+      "shared": true
     },
     {
       "filename": "k-heldane-display.png",
@@ -93,7 +103,8 @@
       "description": "Heldane Display (Specimen)",
       "columns": 2,
       "width": 1072,
-      "height": 1604
+      "height": 1604,
+      "shared": true
     },
     {
       "filename": "k-fonts-in-use.png",
@@ -101,7 +112,8 @@
       "description": "Fonts In Use (FIU)",
       "columns": 2,
       "width": 1072,
-      "height": 724
+      "height": 724,
+      "shared": true
     },
     {
       "filename": "k-custom-fonts.png",
@@ -109,7 +121,8 @@
       "description": "Custom Fonts (Menu)",
       "columns": 3,
       "width": 1628,
-      "height": 992
+      "height": 992,
+      "shared": true
     },
     {
       "filename": "k-pure-pakati.png",
@@ -117,7 +130,8 @@
       "description": "Pure Pākati (Specimen)",
       "columns": 2,
       "width": 1072,
-      "height": 1652
+      "height": 1652,
+      "shared": true
     },
     {
       "filename": "k-licence-agreement.png",
@@ -125,7 +139,8 @@
       "description": "Desktop Font Licence Agreement",
       "columns": 2,
       "width": 1072,
-      "height": 724
+      "height": 724,
+      "shared": true
     },
     {
       "filename": "k-geograph.png",
@@ -133,7 +148,8 @@
       "description": "Geograph (Specimen)",
       "columns": 3,
       "width": 1628,
-      "height": 1192
+      "height": 1192,
+      "shared": true
     },
     {
       "filename": "k-menu.jpg",
@@ -141,7 +157,8 @@
       "description": "Menu",
       "columns": 3,
       "width": 1628,
-      "height": 1028
+      "height": 1028,
+      "shared": true
     },
     {
       "divider": true
@@ -158,7 +175,8 @@
       "description": "Logo + ASCII Maze (S)",
       "columns": 2,
       "width": 1072,
-      "height": 772
+      "height": 772,
+      "shared": false
     },
     {
       "filename": "es-icon.png",
@@ -166,7 +184,8 @@
       "description": "→× (Icon)",
       "columns": 1,
       "width": 1032,
-      "height": 1032
+      "height": 1032,
+      "shared": false
     },
     {
       "filename": "es-cover-front.png",
@@ -174,7 +193,8 @@
       "description": "Front Cover + ASCII Maze (L)",
       "columns": 2,
       "width": 1072,
-      "height": 1624
+      "height": 1624,
+      "shared": true
     },
     {
       "filename": "es-logotype.png",
@@ -182,7 +202,8 @@
       "description": "→× (Logotype)",
       "columns": 2,
       "width": 1072,
-      "height": 516
+      "height": 516,
+      "shared": false
     },
     {
       "filename": "es-mockup.jpg",
@@ -190,7 +211,8 @@
       "description": "Book Cover (Mockup) ",
       "columns": 3,
       "width": 1628,
-      "height": 996
+      "height": 996,
+      "shared": true
     },
     {
       "filename": "es-mark.png",
@@ -198,7 +220,8 @@
       "description": "ES (Mark)",
       "columns": 1,
       "width": 1032,
-      "height": 1032
+      "height": 1032,
+      "shared": false
     },
     {
       "filename": "es-cover-back.png",
@@ -206,7 +229,8 @@
       "description": "Back Cover",
       "columns": 2,
       "width": 1072,
-      "height": 1624
+      "height": 1624,
+      "shared": true
     },
     {
       "filename": "es-graphic.png",
@@ -214,7 +238,8 @@
       "description": "Enter Startup (Graphic)",
       "columns": 3,
       "width": 1628,
-      "height": 864
+      "height": 864,
+      "shared": true
     },
     {
       "filename": "es-tshirts.jpg",
@@ -222,7 +247,8 @@
       "description": "T-Shirts",
       "columns": 4,
       "width": 2184,
-      "height": 1228
+      "height": 1228,
+      "shared": false
     },
     {
       "divider": true
@@ -239,7 +265,8 @@
       "description": "{∞} (Mark)",
       "columns": 1,
       "width": 1032,
-      "height": 1032
+      "height": 1032,
+      "shared": false
     },
     {
       "filename": "ll-c-mark-specification.png",
@@ -247,7 +274,8 @@
       "description": "Company: Loophole Labs (Mark Specification)",
       "columns": 3,
       "width": 1628,
-      "height": 856
+      "height": 856,
+      "shared": false
     },
     {
       "filename": "ll-tote-bag.jpg",
@@ -255,7 +283,8 @@
       "description": "Tote Bag (B-01)",
       "columns": 2,
       "width": 1072,
-      "height": 1256
+      "height": 1256,
+      "shared": false
     },
     {
       "filename": "ll-team.png",
@@ -263,7 +292,8 @@
       "description": "humans.txt",
       "columns": 2,
       "width": 1072,
-      "height": 604
+      "height": 604,
+      "shared": false
     },
     {
       "filename": "ll-diagram-pods.png",
@@ -271,7 +301,8 @@
       "description": "Diagram (Pods)",
       "columns": 2,
       "width": 1072,
-      "height": 724
+      "height": 724,
+      "shared": false
     },
     {
       "filename": "ll-terminal.png",
@@ -279,7 +310,8 @@
       "description": "Terminal (Mockup)",
       "columns": 2,
       "width": 1072,
-      "height": 956
+      "height": 956,
+      "shared": false
     },
     {
       "filename": "ll-authentication.png",
@@ -287,14 +319,16 @@
       "description": "Authentication (Sign Up)",
       "columns": 2,
       "width": 1072,
-      "height": 1406
+      "height": 1406,
+      "shared": false
     },
     {
       "filename": "ll-p-mark.png",
       "number": "LL-08",
       "description": "/~\\ (Mark)",
       "width": 1032,
-      "height": 1032
+      "height": 1032,
+      "shared": false
     },
     {
       "filename": "ll-p-mark-specification.png",
@@ -302,7 +336,8 @@
       "description": "Product: Architect (Mark Specification)",
       "columns": 3,
       "width": 1628,
-      "height": 856
+      "height": 856,
+      "shared": false
     },
     {
       "filename": "ll-blog-migrations.png",
@@ -310,7 +345,8 @@
       "description": "Blog Illustration (Migrations)",
       "columns": 2,
       "width": 1072,
-      "height": 604
+      "height": 604,
+      "shared": false
     },
     {
       "filename": "ll-sigil-marketing.png",
@@ -318,7 +354,8 @@
       "description": "Sigil Design System (Marketing)",
       "columns": 3,
       "width": 1628,
-      "height": 976
+      "height": 976,
+      "shared": false
     },
     {
       "filename": "ll-sigil-product.png",
@@ -326,7 +363,8 @@
       "description": "Sigil Design System (Product)",
       "columns": 4,
       "width": 2184,
-      "height": 1292
+      "height": 1292,
+      "shared": false
     },
     {
       "filename": "ll-homepage.png",
@@ -335,7 +373,8 @@
       "columns": 3,
       "width": 1628,
       "height": 976,
-      "link": "https://loopholelabs.io"
+      "link": "https://loopholelabs.io",
+      "shared": false
     },
     {
       "filename": "ll-wizard.png",
@@ -343,7 +382,8 @@
       "description": "Archibald (Mascot)",
       "columns": 1,
       "width": 774,
-      "height": 1374
+      "height": 1374,
+      "shared": true
     },
     {
       "filename": "ll-sigil-graphic.png",
@@ -351,7 +391,8 @@
       "description": "Sigil Design System (Graphic)",
       "columns": 2,
       "width": 1072,
-      "height": 604
+      "height": 604,
+      "shared": false
     },
     {
       "filename": "ll-glyph-faces.png",
@@ -359,7 +400,8 @@
       "description": "{*_*} ¦^_^¦ [°…°] \\~_~/ (Glyph Faces)",
       "columns": 3,
       "width": 1628,
-      "height": 916
+      "height": 916,
+      "shared": true
     },
     {
       "filename": "ll-logo-specifications.png",
@@ -367,7 +409,8 @@
       "description": "{∞} + /~\\ (Logo Specifications)",
       "columns": 2,
       "width": 1072,
-      "height": 672
+      "height": 672,
+      "shared": false
     },
     {
       "filename": "ll-stickers.png",
@@ -375,7 +418,8 @@
       "description": "Stickers",
       "columns": 2,
       "width": 1072,
-      "height": 600
+      "height": 600,
+      "shared": false
     },
     {
       "filename": "ll-diagram-spot.png",
@@ -383,7 +427,8 @@
       "description": "Diagram (On Demand → Spot)",
       "columns": 2,
       "width": 1072,
-      "height": 724
+      "height": 724,
+      "shared": false
     },
     {
       "filename": "ll-og-image.png",
@@ -391,7 +436,8 @@
       "description": "OpenGraph Image",
       "columns": 2,
       "width": 1072,
-      "height": 560
+      "height": 560,
+      "shared": false
     },
     {
       "filename": "ll-tshirts.jpg",
@@ -399,7 +445,8 @@
       "description": "T-Shirts",
       "columns": 3,
       "width": 1628,
-      "height": 912
+      "height": 912,
+      "shared": true
     },
     {
       "filename": "ll-tshirt-ascii.png",
@@ -407,7 +454,8 @@
       "description": "T-Shirt Graphic (ASCII)",
       "columns": 2,
       "width": 1072,
-      "height": 676
+      "height": 676,
+      "shared": false
     },
     {
       "filename": "ll-card.png",
@@ -415,7 +463,8 @@
       "description": "Business Card",
       "columns": 1,
       "width": 774,
-      "height": 1302
+      "height": 1302,
+      "shared": true
     },
     {
       "filename": "ll-sigil-mark.png",
@@ -423,7 +472,8 @@
       "description": "¦S¦ (Mark)",
       "columns": 1,
       "width": 1032,
-      "height": 1032
+      "height": 1032,
+      "shared": false
     },
     {
       "filename": "ll-diagram-xdp.png",
@@ -431,7 +481,8 @@
       "description": "Diagram (XDP)",
       "columns": 2,
       "width": 1072,
-      "height": 840
+      "height": 840,
+      "shared": false
     },
     {
       "filename": "ll-invite.png",
@@ -439,7 +490,8 @@
       "description": "Invite (Authentication)",
       "columns": 3,
       "width": 1628,
-      "height": 1556
+      "height": 1556,
+      "shared": false
     },
     {
       "filename": "ll-footer.png",
@@ -447,7 +499,8 @@
       "description": "Footer",
       "columns": 4,
       "width": 2184,
-      "height": 1224
+      "height": 1224,
+      "shared": false
     },
     {
       "divider": true
@@ -464,7 +517,8 @@
       "description": "Logo (Blueprint)",
       "columns": 4,
       "width": 2184,
-      "height": 1228
+      "height": 1228,
+      "shared": true
     },
     {
       "filename": "cs-mascot-ppe.png",
@@ -472,7 +526,8 @@
       "description": "Cosmo (Mascot / PPE)",
       "columns": 3,
       "width": 1628,
-      "height": 916
+      "height": 916,
+      "shared": true
     },
     {
       "filename": "cs-assets.png",
@@ -480,7 +535,8 @@
       "description": "Brand Assets (Logotype / Mascot / Badge)",
       "columns": 3,
       "width": 1628,
-      "height": 916
+      "height": 916,
+      "shared": false
     },
     {
       "filename": "cs-card.png",
@@ -488,7 +544,8 @@
       "description": "Business Card",
       "columns": 2,
       "width": 1072,
-      "height": 800
+      "height": 800,
+      "shared": false
     },
     {
       "filename": "cs-footer.png",
@@ -496,7 +553,8 @@
       "description": "Footer",
       "columns": 3,
       "width": 1628,
-      "height": 1148
+      "height": 1148,
+      "shared": true
     },
     {
       "filename": "cs-keychain.jpg",
@@ -504,7 +562,8 @@
       "description": "Keychain (Mockup)",
       "columns": 3,
       "width": 1628,
-      "height": 916
+      "height": 916,
+      "shared": true
     },
     {
       "filename": "cs-colours-extended.png",
@@ -512,7 +571,8 @@
       "description": "Colours (Extended)",
       "columns": 2,
       "width": 1072,
-      "height": 516
+      "height": 516,
+      "shared": true
     },
     {
       "filename": "cs-typography.png",
@@ -520,7 +580,8 @@
       "description": "Typography (Specimen)",
       "columns": 4,
       "width": 2184,
-      "height": 1228
+      "height": 1228,
+      "shared": true
     },
     {
       "filename": "cs-badges.png",
@@ -528,7 +589,8 @@
       "description": "Badges (Built by +IMPAC)",
       "columns": 2,
       "width": 1072,
-      "height": 772
+      "height": 772,
+      "shared": true
     },
     {
       "filename": "cs-header.png",
@@ -536,7 +598,8 @@
       "description": "Homepage (Header)",
       "columns": 3,
       "width": 1628,
-      "height": 1132
+      "height": 1132,
+      "shared": false
     },
     {
       "filename": "cs-mascot.png",
@@ -544,7 +607,8 @@
       "description": "Cosmo (Mascot)",
       "columns": 1,
       "width": 1032,
-      "height": 1032
+      "height": 1032,
+      "shared": true
     },
     {
       "filename": "cs-icon.png",
@@ -552,7 +616,8 @@
       "description": "Icon (Favicon)",
       "columns": 1,
       "width": 1032,
-      "height": 1032
+      "height": 1032,
+      "shared": true
     },
     {
       "filename": "cs-tshirts.jpg",
@@ -560,7 +625,8 @@
       "description": "T-Shirts",
       "columns": 4,
       "width": 2184,
-      "height": 1228
+      "height": 1228,
+      "shared": true
     },
     {
       "filename": "cs-poster.png",
@@ -568,7 +634,8 @@
       "description": "Poster",
       "columns": 3,
       "width": 1628,
-      "height": 2040
+      "height": 2040,
+      "shared": true
     },
     {
       "filename": "cs-embroidery.jpg",
@@ -576,7 +643,8 @@
       "description": "Badges (Embroidery)",
       "columns": 2,
       "width": 1072,
-      "height": 904
+      "height": 904,
+      "shared": true
     },
     {
       "divider": true
@@ -593,7 +661,8 @@
       "description": "Logs. Looogs. Loooooogs. (Ad)",
       "columns": 1,
       "width": 1032,
-      "height": 1032
+      "height": 1032,
+      "shared": true
     },
     {
       "filename": "ax-homepage.png",
@@ -602,7 +671,8 @@
       "columns": 3,
       "width": 1628,
       "height": 1232,
-      "link": "https://axiom.co"
+      "link": "https://axiom.co",
+      "shared": true
     },
     {
       "filename": "ax-blog-elements.png",
@@ -610,7 +680,8 @@
       "description": "Blog Illustration (Elements) ",
       "columns": 2,
       "width": 1072,
-      "height": 648
+      "height": 648,
+      "shared": true
     },
     {
       "filename": "ax-collateral.png",
@@ -618,7 +689,8 @@
       "description": "Sales & Marketing (Collateral)",
       "columns": 2,
       "width": 1072,
-      "height": 1016
+      "height": 1016,
+      "shared": true
     },
     {
       "filename": "ax-dashboard.png",
@@ -626,7 +698,8 @@
       "description": "Diagram (Dashboard) ",
       "columns": 2,
       "width": 1072,
-      "height": 880
+      "height": 880,
+      "shared": true
     },
     {
       "filename": "ax-tshirts.jpg",
@@ -634,7 +707,8 @@
       "description": "T-Shirts (AX-02)",
       "columns": 3,
       "width": 1628,
-      "height": 916
+      "height": 916,
+      "shared": true
     },
     {
       "filename": "ax-blog-post.png",
@@ -642,7 +716,8 @@
       "description": "Blog Post (Monitoring)",
       "columns": 2,
       "width": 1072,
-      "height": 1108
+      "height": 1108,
+      "shared": true
     },
     {
       "filename": "ax-invite.png",
@@ -650,7 +725,8 @@
       "description": "Axiom + AWS (Party Invite)",
       "columns": 2,
       "width": 1072,
-      "height": 964
+      "height": 964,
+      "shared": false
     },
     {
       "filename": "ax-design-system.png",
@@ -658,7 +734,8 @@
       "description": "Axe (Design System)",
       "columns": 3,
       "width": 1628,
-      "height": 2116
+      "height": 2116,
+      "shared": true
     },
     {
       "filename": "ax-calculator.png",
@@ -666,7 +743,8 @@
       "description": "Savings Calculator",
       "columns": 2,
       "width": 1072,
-      "height": 696
+      "height": 696,
+      "shared": true
     },
     {
       "filename": "ax-skateboard.jpg",
@@ -674,7 +752,8 @@
       "description": "Skateboard (SK8-02) # POP AN O11Y",
       "columns": 2,
       "width": 1072,
-      "height": 1340
+      "height": 1340,
+      "shared": true
     },
     {
       "filename": "ax-advertisement.png",
@@ -682,7 +761,8 @@
       "description": "THIS IS AN AXIOM AD → → →",
       "columns": 2,
       "width": 1072,
-      "height": 1072
+      "height": 1072,
+      "shared": true
     },
     {
       "filename": "ax-cards.jpg",
@@ -690,7 +770,8 @@
       "description": "Business Cards",
       "columns": 2,
       "width": 1072,
-      "height": 748
+      "height": 748,
+      "shared": true
     },
     {
       "filename": "ax-blog-compliance.png",
@@ -698,7 +779,8 @@
       "description": "Blog Illustration (Compliance)",
       "columns": 2,
       "width": 1072,
-      "height": 648
+      "height": 648,
+      "shared": true
     },
     {
       "filename": "ax-lols.png",
@@ -706,7 +788,8 @@
       "description": "Live. Laugh. Log. (Ad)",
       "columns": 1,
       "width": 1032,
-      "height": 1032
+      "height": 1032,
+      "shared": false
     },
     {
       "filename": "ax-remote.png",
@@ -714,7 +797,8 @@
       "description": "<Designed/> and Engineered() globally.",
       "columns": 2,
       "width": 1072,
-      "height": 660
+      "height": 660,
+      "shared": true
     },
     {
       "filename": "ax-footer.png",
@@ -722,7 +806,8 @@
       "description": "Footer (Mobile)",
       "columns": 2,
       "width": 1072,
-      "height": 1988
+      "height": 1988,
+      "shared": false
     },
     {
       "filename": "ax-hot-sauce.jpg",
@@ -730,7 +815,8 @@
       "description": "Hot Sauce (Mockup)",
       "columns": 2,
       "width": 1072,
-      "height": 1296
+      "height": 1296,
+      "shared": true
     },
     {
       "filename": "ax-label.png",
@@ -738,7 +824,8 @@
       "description": "Hot Sauce (Label)",
       "columns": 3,
       "width": 1628,
-      "height": 912
+      "height": 912,
+      "shared": true
     },
     {
       "filename": "ax-testimonial.png",
@@ -746,7 +833,8 @@
       "description": "Testimonial (Hapn)",
       "columns": 2,
       "width": 1072,
-      "height": 1364
+      "height": 1364,
+      "shared": true
     },
     {
       "filename": "ax-s3-bucket.png",
@@ -754,7 +842,8 @@
       "description": "AWS S3 Bucket (Diagram)",
       "columns": 2,
       "width": 1072,
-      "height": 652
+      "height": 652,
+      "shared": false
     },
     {
       "filename": "ax-dropdown.png",
@@ -762,7 +851,8 @@
       "description": "Dropdown Menu (Customers)",
       "columns": 3,
       "width": 1628,
-      "height": 832
+      "height": 832,
+      "shared": true
     },
     {
       "filename": "ax-stickers.png",
@@ -770,7 +860,8 @@
       "description": "Stickers",
       "columns": 3,
       "width": 1628,
-      "height": 912
+      "height": 912,
+      "shared": true
     },
     {
       "divider": true
@@ -787,7 +878,8 @@
       "description": "Site (Mobile)",
       "columns": 3,
       "width": 1628,
-      "height": 872
+      "height": 872,
+      "shared": false
     },
     {
       "filename": "sl-design.png",
@@ -795,7 +887,8 @@
       "description": "Site (Design)",
       "columns": 2,
       "width": 1072,
-      "height": 772
+      "height": 772,
+      "shared": false
     },
     {
       "filename": "sl-acc.png",
@@ -803,7 +896,8 @@
       "description": "ACC (Case Study)",
       "columns": 3,
       "width": 1628,
-      "height": 1308
+      "height": 1308,
+      "shared": false
     },
     {
       "filename": "sl-work.png",
@@ -811,7 +905,8 @@
       "description": "Site (Work)",
       "columns": 2,
       "width": 1072,
-      "height": 772
+      "height": 772,
+      "shared": false
     },
     {
       "filename": "sl-team.png",
@@ -819,7 +914,8 @@
       "description": "Experience Team (Site)",
       "columns": 4,
       "width": 2184,
-      "height": 840
+      "height": 840,
+      "shared": true
     },
     {
       "filename": "sl-lic.jpg",
@@ -827,7 +923,8 @@
       "description": "Sales Document (LIC)",
       "columns": 2,
       "width": 1072,
-      "height": 756
+      "height": 756,
+      "shared": true
     },
     {
       "filename": "sl-poster.png",
@@ -835,7 +932,8 @@
       "description": "Experience Team (Poster)",
       "columns": 2,
       "width": 1072,
-      "height": 1540
+      "height": 1540,
+      "shared": true
     },
     {
       "filename": "sl-liam.jpg",
@@ -843,7 +941,8 @@
       "description": "~~People~~ Horses of Springload (Liam Johnston)",
       "columns": 2,
       "width": 1072,
-      "height": 1072
+      "height": 1072,
+      "shared": true
     },
     {
       "divider": true
@@ -860,7 +959,8 @@
       "description": "Business Cards",
       "columns": 3,
       "width": 1628,
-      "height": 1264
+      "height": 1264,
+      "shared": true
     },
     {
       "filename": "kx-homepage.png",
@@ -868,7 +968,8 @@
       "description": "Homepage",
       "columns": 2,
       "width": 1072,
-      "height": 756
+      "height": 756,
+      "shared": true
     },
     {
       "filename": "kx-conservation-data.png",
@@ -876,7 +977,8 @@
       "description": "New Zealand Department of Conservation (Geospatial Data)",
       "columns": 3,
       "width": 1628,
-      "height": 1116
+      "height": 1116,
+      "shared": true
     },
     {
       "filename": "kx-pricing.png",
@@ -884,7 +986,8 @@
       "description": "Pricing",
       "columns": 2,
       "width": 1072,
-      "height": 756
+      "height": 756,
+      "shared": true
     },
     {
       "filename": "kx-export.png",
@@ -892,7 +995,8 @@
       "description": "Export Options (UI)",
       "columns": 2,
       "width": 1072,
-      "height": 756
+      "height": 756,
+      "shared": true
     },
     {
       "filename": "kx-help.png",
@@ -900,7 +1004,8 @@
       "description": "Help (Documentation)",
       "columns": 3,
       "width": 1628,
-      "height": 1072
+      "height": 1072,
+      "shared": true
     },
     {
       "filename": "kx-offices.png",
@@ -908,7 +1013,8 @@
       "description": "Offices (Map Component)",
       "columns": 2,
       "width": 1072,
-      "height": 560
+      "height": 560,
+      "shared": true
     },
     {
       "filename": "kx-posters.jpg",
@@ -916,7 +1022,8 @@
       "description": "Posters (WLG / AKL)",
       "columns": 3,
       "width": 1628,
-      "height": 1288
+      "height": 1288,
+      "shared": true
     }
   ]
 }
