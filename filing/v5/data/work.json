@@ -864,6 +864,69 @@
       "shared": true
     },
     {
+      "filename": "ax-apl.png",
+      "number": "AX-24",
+      "description": "Axiom Processing Language (APL)",
+      "columns": 3,
+      "width": 1628,
+      "height": 884,
+      "shared": true
+    },
+    {
+      "filename": "ax-flows.png",
+      "number": "AX-25",
+      "description": "Observability + Security (Routes)",
+      "columns": 2,
+      "width": 1072,
+      "height": 1072,
+      "shared": true
+    },
+    {
+      "filename": "ax-query.png",
+      "number": "AX-26",
+      "description": "Diagram (Query)",
+      "columns": 3,
+      "width": 1628,
+      "height": 1192,
+      "shared": true
+    },
+    {
+      "filename": "ax-pricing.png",
+      "number": "AX-27",
+      "description": "Pricing (Card)",
+      "columns": 2,
+      "width": 1072,
+      "height": 692,
+      "shared": false
+    },
+    {
+      "filename": "ax-ads.png",
+      "number": "AX-28",
+      "description": "Advertisements",
+      "columns": 2,
+      "width": 1072,
+      "height": 736,
+      "shared": false
+    },
+    {
+      "filename": "ax-booth.png",
+      "number": "AX-29",
+      "description": "Conference Booth (Mockup)",
+      "columns": 4,
+      "width": 2184,
+      "height": 1350,
+      "shared": true
+    },
+    {
+      "filename": "ax-blueprint.png",
+      "number": "AX-30",
+      "description": "Blueprint (UI)",
+      "columns": 4,
+      "width": 2184,
+      "height": 1160,
+      "shared": true
+    },
+    {
       "divider": true
     },
     {
