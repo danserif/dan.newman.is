@@ -423,7 +423,7 @@
     },
     {
       "filename": "ll-diagram-spot.png",
-      "number": "LL-18",
+      "number": "LL-19",
       "description": "Diagram (On Demand → Spot)",
       "columns": 2,
       "width": 1072,
@@ -432,7 +432,7 @@
     },
     {
       "filename": "ll-og-image.png",
-      "number": "LL-19",
+      "number": "LL-20",
       "description": "OpenGraph Image",
       "columns": 2,
       "width": 1072,
@@ -441,7 +441,7 @@
     },
     {
       "filename": "ll-tshirts.jpg",
-      "number": "LL-20",
+      "number": "LL-21",
       "description": "T-Shirts",
       "columns": 3,
       "width": 1628,
@@ -450,7 +450,7 @@
     },
     {
       "filename": "ll-tshirt-ascii.png",
-      "number": "LL-21",
+      "number": "LL-22",
       "description": "T-Shirt Graphic (ASCII)",
       "columns": 2,
       "width": 1072,
@@ -459,7 +459,7 @@
     },
     {
       "filename": "ll-card.png",
-      "number": "LL-22",
+      "number": "LL-23",
       "description": "Business Card",
       "columns": 1,
       "width": 774,
@@ -467,8 +467,44 @@
       "shared": true
     },
     {
+      "filename": "ll-console-graphic.png",
+      "number": "LL-24",
+      "description": "/~\\ Console: Graphic (0.1)",
+      "columns": 2,
+      "width": 1072,
+      "height": 676,
+      "shared": false
+    },
+    {
+      "filename": "ll-console-ui.png",
+      "number": "LL-25",
+      "description": "/~\\ Console: UI (WIP)",
+      "columns": 4,
+      "width": 2184,
+      "height": 1756,
+      "shared": true
+    },
+    {
+      "filename": "ll-cluster-setup.png",
+      "number": "LL-26",
+      "description": "Cluster Setup (Modal)",
+      "columns": 2,
+      "width": 1072,
+      "height": 740,
+      "shared": false
+    },
+    {
+      "filename": "ll-nvidia.png",
+      "number": "LL-27",
+      "description": "NVIDIA (ASCII)",
+      "columns": 2,
+      "width": 1072,
+      "height": 740,
+      "shared": false
+    },
+    {
       "filename": "ll-sigil-mark.png",
-      "number": "LL-23",
+      "number": "LL-28",
       "description": "¦S¦ (Mark)",
       "columns": 1,
       "width": 1032,
@@ -477,7 +513,7 @@
     },
     {
       "filename": "ll-diagram-xdp.png",
-      "number": "LL-24",
+      "number": "LL-29",
       "description": "Diagram (XDP)",
       "columns": 2,
       "width": 1072,
@@ -486,7 +522,7 @@
     },
     {
       "filename": "ll-invite.png",
-      "number": "LL-25",
+      "number": "LL-30",
       "description": "Invite (Authentication)",
       "columns": 3,
       "width": 1628,
@@ -495,7 +531,7 @@
     },
     {
       "filename": "ll-footer.png",
-      "number": "LL-26",
+      "number": "LL-31",
       "description": "Footer",
       "columns": 4,
       "width": 2184,
@@ -911,7 +947,7 @@
     {
       "filename": "ax-booth.png",
       "number": "AX-29",
-      "description": "Conference Booth (Mockup)",
+      "description": "Conference Booth + Plinth (Mockup)",
       "columns": 4,
       "width": 2184,
       "height": 1350,
