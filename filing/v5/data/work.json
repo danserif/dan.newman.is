@@ -545,7 +545,7 @@
       "columns": 4,
       "width": 2184,
       "height": 1350,
-      "shared": true
+      "shared": false
     },
     {
       "filename": "ll-o-mark.png",
