@@ -449,9 +449,9 @@
       "shared": true
     },
     {
-      "filename": "ll-tshirt-ascii.png",
+      "filename": "ll-ascii-loophole.png",
       "number": "LL-22",
-      "description": "T-Shirt Graphic (ASCII)",
+      "description": "Loophole Labs (ASCII)",
       "columns": 2,
       "width": 1072,
       "height": 676,
@@ -467,9 +467,9 @@
       "shared": true
     },
     {
-      "filename": "ll-console-graphic.png",
+      "filename": "ll-ascii-architect.png",
       "number": "LL-24",
-      "description": "/~\\ Console: Graphic (0.1)",
+      "description": "Architect (ASCII)",
       "columns": 2,
       "width": 1072,
       "height": 676,
@@ -494,8 +494,43 @@
       "shared": false
     },
     {
-      "filename": "ll-nvidia.png",
+      "filename": "ll-console-graphic.png",
       "number": "LL-27",
+      "description": "/~\\ Console: Graphic (0.1)",
+      "columns": 2,
+      "width": 1072,
+      "height": 676,
+      "shared": false
+    },
+    {
+      "filename": "ll-booth.png",
+      "number": "LL-28",
+      "description": "Conference Booth + Plinth (Mockup)",
+      "columns": 4,
+      "width": 2184,
+      "height": 1350,
+      "shared": true
+    },
+    {
+      "filename": "ll-o-mark.png",
+      "number": "LL-29",
+      "description": "[-] (Mark)",
+      "width": 1032,
+      "height": 1032,
+      "shared": false
+    },
+    {
+      "filename": "ll-o-mark-specification.png",
+      "number": "LL-30",
+      "description": "Open Source (Mark Specification)",
+      "columns": 3,
+      "width": 1628,
+      "height": 856,
+      "shared": false
+    },
+    {
+      "filename": "ll-nvidia.png",
+      "number": "LL-31",
       "description": "NVIDIA (ASCII)",
       "columns": 2,
       "width": 1072,
@@ -504,7 +539,7 @@
     },
     {
       "filename": "ll-sigil-mark.png",
-      "number": "LL-28",
+      "number": "LL-32",
       "description": "¦S¦ (Mark)",
       "columns": 1,
       "width": 1032,
@@ -513,7 +548,7 @@
     },
     {
       "filename": "ll-diagram-xdp.png",
-      "number": "LL-29",
+      "number": "LL-33",
       "description": "Diagram (XDP)",
       "columns": 2,
       "width": 1072,
@@ -522,7 +557,7 @@
     },
     {
       "filename": "ll-invite.png",
-      "number": "LL-30",
+      "number": "LL-34",
       "description": "Invite (Authentication)",
       "columns": 3,
       "width": 1628,
@@ -531,7 +566,7 @@
     },
     {
       "filename": "ll-footer.png",
-      "number": "LL-31",
+      "number": "LL-35",
       "description": "Footer",
       "columns": 4,
       "width": 2184,
@@ -589,7 +624,7 @@
       "description": "Footer",
       "columns": 3,
       "width": 1628,
-      "height": 1148,
+      "height": 1196,
       "shared": true
     },
     {
