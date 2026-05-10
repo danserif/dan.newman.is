@@ -820,6 +820,45 @@ code {
 	text-transform: uppercase;
 }
 
+.work-info-block {
+	grid-column: 1 / -1;
+	justify-self: start;
+	width: 100%;
+	max-width: 640px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+}
+
+.work-info-credits,
+.work-info-details {
+	display: flex;
+	flex-direction: column;
+}
+
+.work-info-details {
+	gap: 4px;
+}
+
+/* Match 16px between credits and details: extra space after first credit row (e.g. Client) */
+.work-info-credits {
+	gap: 0;
+}
+
+.work-info-credits > .work-info-line + .work-info-line {
+	margin-top: 4px;
+}
+
+.work-info-credits > .work-info-line:first-child + .work-info-line {
+	margin-top: 16px;
+}
+
+.work-info-credits + .work-info-details {
+	margin-top: 16px;
+}
+
 /* WORK / PHOTO IMAGES */
 
 .work-image-frame,
@@ -875,6 +914,7 @@ code {
 .work-number,
 .work-description,
 .work-filename,
+.work-info-line,
 .photo-caption,
 .photo-text,
 .photo-number,
@@ -926,7 +966,8 @@ code {
 }
 
 .work-filename,
-.photo-filename {
+.photo-filename,
+.work-info-line {
 	color: var(--color-text);
 	margin: 0;
 }
@@ -1710,6 +1751,10 @@ footer .caption {
 		max-width: 560px;
 	}
 
+	.work-info-block {
+		max-width: 560px;
+	}
+
 	.work-grid-title .work-title-line,
 	.work-grid-title .work-description,
 	.work-grid-title .work-link,
@@ -1851,6 +1896,10 @@ footer .caption {
 
 	.work-grid-title,
 	.photo-grid-title {
+		max-width: 550px;
+	}
+
+	.work-info-block {
 		max-width: 550px;
 	}
 
@@ -2180,7 +2229,7 @@ footer .caption {
 
 	/* INFO */
 	.info {
-		margin-top: 88px;
+		margin-top: 80px;
 	}
 
 	.row {
