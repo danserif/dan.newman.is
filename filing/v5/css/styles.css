@@ -1516,7 +1516,8 @@ code {
 .quote {
 	display: flex;
 	gap: var(--gap-flex);
-	flex: 1 1 calc(33.333% - var(--gap-flex) * 2 / 3);
+	/* flex-grow 0: last row with fewer than 3 quotes stays column-aligned; don’t stretch to fill the row. */
+	flex: 0 1 calc(33.333% - var(--gap-flex) * 2 / 3);
 	min-width: 300px;
 }
 
