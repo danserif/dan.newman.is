@@ -382,18 +382,8 @@ code {
 
 .profile-image img {
 	width: 100%;
-	max-width: 1200px;
+	max-width: 1400px;
 	height: auto;
-}
-
-/* Yellow accent (lime): multiply with the page colour. */
-:root.accent-bg:not(.light-mode) .profile-image img {
-	mix-blend-mode: multiply;
-}
-
-/* Blue accent (light + accent): screen with the page colour. */
-:root.light-mode.accent-bg .profile-image img {
-	mix-blend-mode: screen;
 }
 
 .profile-text {
@@ -404,6 +394,10 @@ code {
 
 .profile-text p+p {
 	margin-top: 0.15em;
+}
+
+.profile .row-group {
+	margin-top: clamp(2rem, 12vmin, 8rem);
 }
 
 .page-content .info {
@@ -477,12 +471,12 @@ code {
 	min-height: 1em;
 }
 
-.awards .row-group {
+:is(.awards, .profile) .row-group {
 	display: flex;
 	flex-direction: column;
 }
 
-.awards .row-group>.row {
+:is(.awards, .profile) .row-group>.row {
 	width: 100%;
 	justify-content: start;
 	column-gap: 0;
@@ -491,17 +485,20 @@ code {
 	align-items: baseline;
 }
 
-.awards .row-group>.row .row-organization {
+:is(.awards, .profile) .row-group>.row .row-organization,
+:is(.awards, .profile) .row-group>.row .row-label {
 	width: 100%;
 	min-width: 0;
 }
 
-.awards .row-group>.row .row-award {
+:is(.awards, .profile) .row-group>.row .row-award,
+:is(.awards, .profile) .row-group>.row .row-detail {
 	max-width: 100%;
 	min-width: 0;
 }
 
-.awards .row-group>.row .row-award sup {
+:is(.awards, .profile) .row-group>.row .row-award sup,
+:is(.awards, .profile) .row-group>.row .row-detail sup {
 	font-size: 0.7em;
 	line-height: 0;
 }
@@ -847,15 +844,15 @@ code {
 	gap: 0;
 }
 
-.work-info-credits > .work-info-line + .work-info-line {
+.work-info-credits>.work-info-line+.work-info-line {
 	margin-top: 4px;
 }
 
-.work-info-credits > .work-info-line:first-child + .work-info-line {
+.work-info-credits>.work-info-line:first-child+.work-info-line {
 	margin-top: 16px;
 }
 
-.work-info-credits + .work-info-details {
+.work-info-credits+.work-info-details {
 	margin-top: 16px;
 }
 
@@ -1860,8 +1857,20 @@ footer .caption {
 
 	:is(.experience, .education)>.section-label,
 	.awards>.section-label,
-	.quotes>.section-label {
-		padding-bottom: 0.25rem;
+	.quotes>.section-label,
+	.profile>.section-label,
+	.work-samples>.section-label,
+	.photo-samples>.section-label {
+		padding-bottom: 0rem;
+	}
+
+	.work-samples>.section-label:first-child,
+	.photo-samples>.section-label:first-child {
+		padding-bottom: 0;
+	}
+
+	section>.section-label+hr.divider {
+		margin: 0;
 	}
 
 	/* HEADER */
@@ -1880,6 +1889,10 @@ footer .caption {
 	/* INFO */
 	.info {
 		margin-top: clamp(88px, 10vh, 200px);
+	}
+
+	.profile .row-group {
+		margin-top: 2rem;
 	}
 
 	/* WORK / PHOTOS */
@@ -1905,7 +1918,7 @@ footer .caption {
 
 	.work-samples,
 	.photo-samples {
-		margin-top: 9rem;
+		margin-top: 3.25rem;
 		padding-left: var(--padding-x);
 		padding-right: var(--padding-x);
 	}
@@ -1970,7 +1983,7 @@ footer .caption {
 	}
 
 	:is(.experience, .education) .row-group>.row,
-	.awards .row-group>.row {
+	:is(.awards, .profile) .row-group>.row {
 		font-size: 12px;
 		line-height: 20px;
 	}
@@ -2023,7 +2036,7 @@ footer .caption {
 		margin-inline-start: 0;
 	}
 
-	.awards .row-group>.row {
+	:is(.awards, .profile) .row-group>.row {
 		grid-template-columns: 1fr;
 		row-gap: 0;
 		width: 100%;
@@ -2053,7 +2066,7 @@ footer .caption {
 
 	.work-grid>.load-more-row,
 	.photo-grid>.load-more-row {
-		margin-top: calc(8px - var(--gap-flex));
+		margin-top: calc(4px - var(--gap-flex));
 		padding: var(--gap-section) 0;
 	}
 
@@ -2067,10 +2080,6 @@ footer .caption {
 	.logos-marquee-section {
 		padding: 1.5rem;
 		margin-top: var(--gap-after-work);
-	}
-
-	.logos-marquee-section .marquee {
-		margin-top: 8px;
 	}
 
 	.logos-marquee-section .marquee ul {
