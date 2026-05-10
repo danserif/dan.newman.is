@@ -365,6 +365,47 @@ code {
 	box-sizing: border-box;
 }
 
+/* Profile photo block (home + inner pages): align with .info / footer; works nested under .page-content. */
+.page .profile {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-section);
+	max-width: var(--max-width);
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: clamp(7.5rem, 24vmin, 360px);
+	padding-bottom: clamp(1.25rem, 4vmin, 60px);
+	padding-inline: var(--padding-x);
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.profile-image img {
+	width: 100%;
+	max-width: 1200px;
+	height: auto;
+}
+
+/* Yellow accent (lime): multiply with the page colour. */
+:root.accent-bg:not(.light-mode) .profile-image img {
+	mix-blend-mode: multiply;
+}
+
+/* Blue accent (light + accent): screen with the page colour. */
+:root.light-mode.accent-bg .profile-image img {
+	mix-blend-mode: screen;
+}
+
+.profile-text {
+	font-size: 12px;
+	line-height: 22px;
+	color: var(--opacity-90);
+}
+
+.profile-text p+p {
+	margin-top: 0.15em;
+}
+
 .page-content .info {
 	position: sticky;
 	top: 0;
@@ -566,7 +607,8 @@ code {
 
 :is(.experience, .education)>.section-label,
 .awards>.section-label,
-.quotes>.section-label {
+.quotes>.section-label,
+.profile>.section-label {
 	padding-bottom: 0.65rem;
 }
 
@@ -637,7 +679,8 @@ code {
 }
 
 /* Same vertical rhythm as Awards (label → content): one section gap, no extra divider inset. */
-.quotes .divider {
+.quotes .divider,
+.profile .divider {
 	margin: 0;
 }
 
@@ -1424,7 +1467,8 @@ code {
 
 .quotes-content {
 	display: flex;
-	gap: var(--gap-flex);
+	column-gap: var(--gap-flex);
+	row-gap: 7rem;
 	width: 100%;
 	flex-wrap: wrap;
 	/* Double the usual section gap below the HR (flex gap + this margin). */
