@@ -1,8 +1,21 @@
 /* ==========================================================================
-   V5 — BASE
+   V5 — styles.css
+   FILE MAP (rough DOM / site order; shared gallery CSS grouped once)
+   — 1. Base: fonts, tokens, reset, utilities, a11y
+   — 2. Home (/): body.home main.info, .profile + .home profile image/type
+   — 3. Shared layout: .page, header, logo, footer, arrow, mode links
+   — 4. Inner pages: .info (sticky), .row + designer Experience/Education/Awards/Profile grids
+   — 5. Section chrome: .section-label, work + photo section shells, intros, content
+   — 6. Scroll anchors: #work, #photos
+   — 7. Galleries: grids, items, images, captions, filter bar, load more
+   — 8. Designer (/a/designer): logos marquee, quotes
+   — 9. Global UI: letter D overlay, NZ time + clock overlay
+   — 10. Responsive: ≤2660, ≤1640, ≤1080, ≤640
    ========================================================================== */
 
-/* FONTS */
+/* ==========================================================================
+   1. BASE — FONTS
+   ========================================================================== */
 
 @font-face {
 	font-family: "Berkeley Mono";
@@ -41,7 +54,7 @@
 }
 
 /* ==========================================================================
-   CUSTOM PROPERTIES
+   1. BASE — CUSTOM PROPERTIES
    ========================================================================== */
 
 :root {
@@ -107,7 +120,7 @@
 }
 
 /* ==========================================================================
-   RESET
+   1. BASE — RESET
    ========================================================================== */
 
 *,
@@ -187,7 +200,7 @@ a:hover {
 a.underline {
 	text-decoration: underline;
 	text-underline-position: from-font;
-	text-underline-offset: 1px;
+	text-underline-offset: 3px;
 	text-decoration-skip-ink: auto;
 }
 
@@ -229,7 +242,7 @@ code {
 }
 
 /* ==========================================================================
-   UTILITIES
+   1. BASE — UTILITIES
    ========================================================================== */
 
 .mono {
@@ -295,7 +308,7 @@ code {
 }
 
 /* ==========================================================================
-   ACCESSIBILITY
+   1. BASE — ACCESSIBILITY
    ========================================================================== */
 
 *:focus-visible {
@@ -304,7 +317,7 @@ code {
 }
 
 /* ==========================================================================
-   PAGE LAYOUT
+   3. SHARED LAYOUT — PAGE SHELL
    ========================================================================== */
 
 .page {
@@ -318,7 +331,7 @@ code {
 }
 
 /* ==========================================================================
-   HEADER
+   3. SHARED LAYOUT — HEADER + LOGO
    ========================================================================== */
 
 .page>header {
@@ -354,7 +367,7 @@ code {
 }
 
 /* ==========================================================================
-   INFO
+   4. INNER PAGES — INFO (URL row) + HOME (/) OVERRIDES
    ========================================================================== */
 
 .info {
@@ -365,7 +378,13 @@ code {
 	box-sizing: border-box;
 }
 
-/* Profile photo block (home + inner pages): align with .info / footer; works nested under .page-content. */
+/* 2. HOME (/) — tighter gap under profile than default `.info` (inner pages keep large top inset). */
+body.home main.info {
+	margin-top: clamp(72px, 12vh, 220px);
+	padding-bottom: clamp(1.25rem, 4vmin, 60px);
+}
+
+/* 2. HOME + designer profile — photo block aligns with .info / footer (works under .page-content). */
 .page .profile {
 	display: flex;
 	flex-direction: column;
@@ -386,14 +405,172 @@ code {
 	height: auto;
 }
 
+.home .profile-image {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.home .profile-image img {
+	display: block;
+	max-width: 640px;
+	width: 100%;
+	height: auto;
+	mix-blend-mode: normal;
+}
+
+@media only screen and (min-width: 641px) {
+	.home .profile-image img {
+		max-width: 960px;
+	}
+}
+
+/* Large viewports: cap image height with svh so photo + h1/h2 can fit in view; width:auto lets the image shrink when height binds. */
+@media only screen and (min-width: 1081px) {
+	.home .profile-image img {
+		width: auto;
+		max-width: min(100%, 1280px);
+		max-height: calc(100vh - 32rem);
+		max-height: calc(100svh - clamp(26rem, 38svh, 36rem));
+	}
+}
+
+/* ~1660px-wide laptops often sit here; reserve enough for header + profile chrome + h1/h2 + divider */
+@media only screen and (min-width: 1641px) {
+	.home .profile-image img {
+		max-width: min(100%, 1540px);
+		max-height: calc(100vh - 38rem);
+		max-height: calc(100svh - clamp(31rem, 46svh, 35rem));
+	}
+}
+
+@media only screen and (min-width: 2661px) {
+	.home .profile-image img {
+		max-width: min(100%, 1680px);
+		max-height: calc(100vh - 34rem);
+		max-height: calc(100svh - clamp(30rem, 42svh, 35rem));
+	}
+}
+
+.home .profile {
+	padding-top: clamp(3rem, 9vmin, 120px);
+	padding-bottom: 0;
+	gap: clamp(2.5rem, 8vmin, 6rem);
+}
+
+/* Yellow / lime accent (dark): black fills only space to the right of the photo; image still multiplies on #AAFF00. */
+:root.accent-bg:not(.light-mode) .home .profile-image {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+}
+
+:root.accent-bg:not(.light-mode) .home .profile-image img {
+	flex-shrink: 0;
+	mix-blend-mode: multiply;
+}
+
+:root.accent-bg:not(.light-mode) .home .profile-image::after {
+	content: "";
+	flex: 1 1 auto;
+	min-width: 0;
+	background-color: var(--color-text);
+}
+
+/* Light homepage, white page only: black plate behind portrait (preview); blue accent theme unchanged. */
+:root.light-mode:not(.accent-bg) .home .profile-image {
+	background-color: var(--color-text);
+	isolation: isolate;
+}
+
+:root.light-mode.accent-bg .home .profile-image img {
+	mix-blend-mode: screen;
+}
+
 .profile-text {
 	font-size: 12px;
 	line-height: 22px;
 	color: var(--opacity-90);
 }
 
+/* Homepage profile headline scale — h1 + h2 share one size/line per breakpoint. */
+.home .profile-text {
+	--home-profile-headline-size: 1.375rem;
+	--home-profile-headline-leading: 1.75rem;
+}
+
+@media only screen and (min-width: 640px) {
+	.home .profile-text {
+		--home-profile-headline-size: 1.625rem;
+		--home-profile-headline-leading: 2rem;
+	}
+}
+
+@media only screen and (min-width: 900px) {
+	.home .profile-text {
+		--home-profile-headline-size: 2rem;
+		--home-profile-headline-leading: 2.5rem;
+	}
+}
+
+@media only screen and (min-width: 1081px) {
+	.home .profile-text {
+		--home-profile-headline-size: 2.5rem;
+		--home-profile-headline-leading: 3rem;
+	}
+}
+
+@media only screen and (min-width: 1641px) {
+	.home .profile-text {
+		--home-profile-headline-size: 2.5rem;
+		--home-profile-headline-leading: 3rem;
+	}
+}
+
+@media only screen and (min-width: 2661px) {
+	.home .profile-text {
+		--home-profile-headline-size: 3rem;
+		--home-profile-headline-leading: 3.5rem;
+	}
+}
+
+.home .profile-text h1,
+.home .profile-text h2 {
+	margin: 0;
+	display: inline;
+	font-weight: inherit;
+	font-size: var(--home-profile-headline-size);
+	line-height: var(--home-profile-headline-leading);
+}
+
+.home .profile-text h1::after {
+	content: " ";
+}
+
+/* Space below profile strapline (no hr): spacer after inline h2 (mobile); caption p margin on desktop. */
+.home .profile-text h2::after {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	margin-bottom: 0.65rem;
+}
+
+@media only screen and (min-width: 1081px) {
+	.home .profile-text h2::after {
+		display: none;
+	}
+
+	.home .profile-text h2+p.desktop-only {
+		margin-top: 1.35rem;
+	}
+}
+
 .profile-text p+p {
 	margin-top: 0.15em;
+}
+
+.info .row>p {
+	margin: 0;
 }
 
 .profile .row-group {
@@ -422,6 +599,7 @@ code {
 	border-bottom: 1px dashed var(--color-border);
 }
 
+/* 4. INNER — Designer (/a/designer): Experience + Education row layout */
 :is(.experience, .education) .row-group {
 	display: flex;
 	flex-direction: column;
@@ -471,6 +649,7 @@ code {
 	min-height: 1em;
 }
 
+/* 4. INNER — Designer: Awards + Profile (about) row layout */
 :is(.awards, .profile) .row-group {
 	display: flex;
 	flex-direction: column;
@@ -532,10 +711,6 @@ code {
 	opacity: 1;
 }
 
-.page a:hover {
-	opacity: 0.5;
-}
-
 .color-hex {
 	cursor: pointer;
 }
@@ -552,7 +727,7 @@ code {
 	color: var(--opacity-50);
 }
 
-/* HEADER LINKS */
+/* 4. INNER — sticky header nav (mode, contact, follow, NZ time, letter D) */
 
 .header-links {
 	position: absolute;
@@ -582,7 +757,8 @@ code {
 	pointer-events: auto;
 }
 
-.header-links li:last-child {
+/* Pull the clock away from Mode / Contact / Follow (not tied to :last-child so a trailing e.g. D trigger stays tight). */
+.header-links li.header-time {
 	margin-left: 80px;
 }
 
@@ -591,7 +767,7 @@ code {
 }
 
 /* ==========================================================================
-   SECTION LABEL
+   5. SECTION CHROME — LABELS
    ========================================================================== */
 
 .section-label {
@@ -610,7 +786,7 @@ code {
 }
 
 /* ==========================================================================
-   WORK / PHOTO SECTIONS
+   5. SECTION CHROME — PORTFOLIO + PHOTOS (/a/designer, /a/photographer)
    ========================================================================== */
 
 .work-samples,
@@ -681,16 +857,6 @@ code {
 	margin: 0;
 }
 
-.work-label,
-.photo-label {
-	font-family: "Berkeley Mono", monospace;
-	font-size: 11px;
-	line-height: normal;
-	text-transform: uppercase;
-	color: var(--opacity-25);
-	margin: 0;
-}
-
 .work-content {
 	max-width: 100%;
 }
@@ -703,7 +869,15 @@ code {
 	overflow: visible;
 }
 
-/* WORK / PHOTO GRID */
+/* 6. SCROLL ANCHORS — in-page #work / #photos (designer + photographer) */
+#work,
+#photos {
+	scroll-margin-top: 60px;
+}
+
+/* ==========================================================================
+   7. GALLERIES — GRIDS + ITEMS
+   ========================================================================== */
 
 .work-grid,
 .photo-grid {
@@ -856,7 +1030,7 @@ code {
 	margin-top: 16px;
 }
 
-/* WORK / PHOTO IMAGES */
+/* 7. GALLERIES — image frames + lazy load */
 
 .work-image-frame,
 .photo-image-frame {
@@ -903,7 +1077,7 @@ code {
 	opacity: 1;
 }
 
-/* WORK / PHOTO CAPTIONS */
+/* 7. GALLERIES — captions + links */
 
 .work-caption,
 .work-text,
@@ -991,7 +1165,7 @@ code {
 	opacity: 1;
 }
 
-/* PHOTO-SPECIFIC CAPTIONS */
+/* 7. GALLERIES — photo-only meta line */
 
 .photo-meta {
 	font-family: "Berkeley Mono", monospace;
@@ -1000,7 +1174,7 @@ code {
 	color: var(--opacity-50);
 }
 
-/* FILTER BAR */
+/* 7. GALLERIES — filter bar (work + photos) */
 
 .filter-bar {
 	position: relative;
@@ -1283,7 +1457,7 @@ code {
 }
 
 /* ==========================================================================
-   LOAD MORE
+   7. GALLERIES — LOAD MORE
    ========================================================================== */
 
 .load-more-row {
@@ -1342,7 +1516,7 @@ code {
 }
 
 /* ==========================================================================
-   LOGOS MARQUEE
+   8. DESIGNER — CLIENTS / LOGOS MARQUEE
    ========================================================================== */
 
 .marquee-column {
@@ -1500,7 +1674,7 @@ code {
 }
 
 /* ==========================================================================
-   QUOTES / TESTIMONIALS (designer)
+   8. DESIGNER — QUOTES / TESTIMONIALS
    ========================================================================== */
 
 .quotes-content {
@@ -1658,16 +1832,7 @@ code {
 }
 
 /* ==========================================================================
-   SCROLL ANCHORS
-   ========================================================================== */
-
-#work,
-#photos {
-	scroll-margin-top: 60px;
-}
-
-/* ==========================================================================
-   FOOTER
+   3. SHARED LAYOUT — FOOTER
    ========================================================================== */
 
 footer {
@@ -1692,10 +1857,19 @@ footer .caption {
 	color: var(--opacity-90);
 }
 
+/* Homepage only: extra space above footer (inner pages use default `footer` padding). */
+.home>footer {
+	padding-top: 168px;
+}
+
 .arrow {
 	font-size: 22px;
 	padding-top: 4rem;
 	padding-bottom: 2rem;
+}
+
+.home .arrow {
+	padding-top: 0;
 }
 
 .arrow a {
@@ -1712,8 +1886,178 @@ footer .caption {
 	color: var(--opacity-50);
 }
 
+/* 9. GLOBAL UI — letter D overlay (home + inner pages; same placement idea as daas.graphics) */
+.letter-d-overlay-trigger {
+	background: none;
+	border: none;
+	color: inherit;
+	font: inherit;
+	line-height: inherit;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	text-align: inherit;
+	display: inline;
+}
+
+.letter-d-overlay-trigger:hover {
+	opacity: 0.85;
+}
+
+.letter-d-overlay {
+	position: fixed;
+	inset: 0;
+	/* Below #clock-overlay so the time overlay wins when both are relevant. */
+	z-index: 99990;
+	overflow: hidden;
+	background: transparent;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	cursor: pointer;
+	transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.letter-d-overlay.is-visible {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+}
+
+.letter-d-overlay-item {
+	position: absolute;
+	pointer-events: none;
+	user-select: none;
+	display: block;
+	line-height: 0;
+	color: var(--color-text);
+	opacity: 1;
+}
+
+.letter-d-overlay-item svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.letter-d-overlay {
+		transition: none;
+	}
+}
+
+/* 9. GLOBAL UI — NZ time link + analog clock overlay (clock.js) */
+#nz-time-link {
+	cursor: pointer;
+	transition: opacity 0.2s ease;
+}
+
+#nz-time-link:hover {
+	opacity: 0.5;
+}
+
+#clock-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--color-bg);
+	opacity: 0;
+	pointer-events: none;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#clock-overlay.is-open {
+	opacity: 1;
+	pointer-events: auto;
+	visibility: visible;
+}
+
+#clock-svg {
+	width: min(560px, 85vmin);
+	height: min(560px, 85vmin);
+}
+
+@media (max-width: 1640px) {
+	#clock-svg {
+		width: min(392px, 59.5vmin);
+		height: min(392px, 59.5vmin);
+	}
+
+	#clock-svg .clock-numeral {
+		font-size: 10px;
+	}
+
+	#clock-svg .clock-tz {
+		font-size: 4px;
+	}
+}
+
+@media (max-width: 600px) {
+	#clock-svg {
+		width: 70vmin;
+		height: 70vmin;
+	}
+}
+
+#clock-svg .clock-marker {
+	stroke: var(--color-text);
+	stroke-width: 0.8;
+	opacity: 0.75;
+}
+
+#clock-svg .clock-marker-hour {
+	stroke-width: 0.8;
+}
+
+#clock-svg .clock-numeral {
+	fill: var(--color-text);
+	font-family: "Die Grotesk A", sans-serif;
+	font-size: 12px;
+	text-anchor: middle;
+	dominant-baseline: central;
+}
+
+#clock-svg .clock-logo {
+	fill: var(--color-text);
+}
+
+#clock-svg .clock-tz {
+	fill: var(--color-text);
+	font-family: "Berkeley Mono", monospace;
+	font-size: 5px;
+	text-anchor: middle;
+	dominant-baseline: hanging;
+	opacity: 0.75;
+}
+
+#clock-svg .clock-hand-hour {
+	stroke: var(--color-text);
+	stroke-width: 3.5;
+	stroke-linecap: round;
+}
+
+#clock-svg .clock-hand-minute {
+	stroke: var(--color-text);
+	stroke-width: 2.5;
+	stroke-linecap: round;
+}
+
+#clock-svg .clock-hand-second {
+	stroke: var(--color-accent);
+	stroke-width: 1.2;
+	stroke-linecap: round;
+}
+
+#clock-svg .clock-cap {
+	fill: var(--color-accent);
+}
+
 /* ==========================================================================
-   RESPONSIVE — WIDE DESKTOP (≤2660px)
+   10. RESPONSIVE — WIDE DESKTOP (≤2660px)
    ========================================================================== */
 
 @media only screen and (max-width: 2660px) {
@@ -1795,7 +2139,7 @@ footer .caption {
 }
 
 /* ==========================================================================
-   RESPONSIVE — NARROW DESKTOP (≤1640px)
+   10. RESPONSIVE — NARROW DESKTOP (≤1640px)
    ========================================================================== */
 
 @media only screen and (max-width: 1640px) {
@@ -1826,7 +2170,8 @@ footer .caption {
 	}
 
 	/* HEADER LINKS */
-	.header-time {
+	.header-time,
+	.header-letter-d {
 		display: none;
 	}
 
@@ -1838,7 +2183,7 @@ footer .caption {
 }
 
 /* ==========================================================================
-   RESPONSIVE — MOBILE (≤1080px)
+   10. RESPONSIVE — MOBILE (≤1080px)
    ========================================================================== */
 
 @media only screen and (max-width: 1080px) {
@@ -1890,6 +2235,10 @@ footer .caption {
 	/* INFO */
 	.info {
 		margin-top: clamp(88px, 10vh, 200px);
+	}
+
+	body.home main.info {
+		margin-top: clamp(40px, 7vh, 120px);
 	}
 
 	.profile .row-group {
@@ -2135,6 +2484,10 @@ footer .caption {
 		padding-bottom: 32px;
 	}
 
+	.home>footer {
+		padding-top: 5rem;
+	}
+
 	/* FILTER BAR */
 	.filter-bar {
 		padding-bottom: var(--gap-section);
@@ -2222,7 +2575,7 @@ footer .caption {
 }
 
 /* ==========================================================================
-   RESPONSIVE — SMALL MOBILE (≤640px)
+   10. RESPONSIVE — SMALL MOBILE (≤640px)
    ========================================================================== */
 
 @media only screen and (max-width: 640px) {
@@ -2232,14 +2585,13 @@ footer .caption {
 		--filter-bar-mobile-label-width: 100px;
 	}
 
-	/* HEADER */
-	.page>header {
-		padding-top: 48px;
-	}
-
 	/* INFO */
 	.info {
 		margin-top: 80px;
+	}
+
+	body.home main.info {
+		margin-top: 48px;
 	}
 
 	.row {
@@ -2274,132 +2626,3 @@ footer .caption {
 		font-size: 12px;
 	}
 }
-
-/* ==========================================================================
-   CLOCK OVERLAY
-   ========================================================================== */
-
-#nz-time-link {
-	cursor: pointer;
-	transition: opacity 0.2s ease;
-}
-
-#nz-time-link:hover {
-	opacity: 0.5;
-}
-
-#clock-overlay {
-	position: fixed;
-	inset: 0;
-	z-index: 9999;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: var(--color-bg);
-	opacity: 0;
-	pointer-events: none;
-	visibility: hidden;
-	transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-#clock-overlay.is-open {
-	opacity: 1;
-	pointer-events: auto;
-	visibility: visible;
-}
-
-#clock-svg {
-	width: min(560px, 85vmin);
-	height: min(560px, 85vmin);
-}
-
-@media (max-width: 1640px) {
-	#clock-svg {
-		width: min(392px, 59.5vmin);
-		height: min(392px, 59.5vmin);
-	}
-
-	#clock-svg .clock-numeral {
-		font-size: 10px;
-	}
-
-	#clock-svg .clock-tz {
-		font-size: 4px;
-	}
-}
-
-@media (max-width: 600px) {
-	#clock-svg {
-		width: 70vmin;
-		height: 70vmin;
-	}
-}
-
-#clock-svg .clock-marker {
-	stroke: var(--color-text);
-	stroke-width: 0.8;
-	opacity: 0.75;
-}
-
-#clock-svg .clock-marker-hour {
-	stroke-width: 0.8;
-}
-
-#clock-svg .clock-numeral {
-	fill: var(--color-text);
-	font-family: "Die Grotesk A", sans-serif;
-	font-size: 12px;
-	text-anchor: middle;
-	dominant-baseline: central;
-}
-
-#clock-svg .clock-logo {
-	fill: var(--color-text);
-}
-
-#clock-svg .clock-tz {
-	fill: var(--color-text);
-	font-family: "Berkeley Mono", monospace;
-	font-size: 5px;
-	text-anchor: middle;
-	dominant-baseline: hanging;
-	opacity: 0.75;
-}
-
-#clock-svg .clock-hand-hour {
-	stroke: var(--color-text);
-	stroke-width: 3.5;
-	stroke-linecap: round;
-}
-
-#clock-svg .clock-hand-minute {
-	stroke: var(--color-text);
-	stroke-width: 2.5;
-	stroke-linecap: round;
-}
-
-#clock-svg .clock-hand-second {
-	stroke: var(--color-accent);
-	stroke-width: 1.2;
-	stroke-linecap: round;
-}
-
-#clock-svg .clock-cap {
-	fill: var(--color-accent);
-}
-
-/*#clock-overlay.clock-idle #clock-svg .clock-hand-second {
-	stroke: #666666;
-}
-
-#clock-overlay.clock-idle #clock-svg .clock-cap {
-	fill: #666666;
-}
-
-.light-mode #clock-overlay.clock-idle #clock-svg .clock-hand-second {
-	stroke: #cccccc;
-}
-
-.light-mode #clock-overlay.clock-idle #clock-svg .clock-cap {
-	fill: #cccccc;
-}*/
