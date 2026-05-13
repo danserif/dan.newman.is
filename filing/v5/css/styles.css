@@ -430,7 +430,7 @@ body.home main.info {
 		width: auto;
 		max-width: min(100%, 1280px);
 		max-height: calc(100vh - 32rem);
-		max-height: calc(100svh - clamp(26rem, 38svh, 36rem));
+		max-height: calc(100svh - clamp(28rem, 38svh, 36rem));
 	}
 }
 
@@ -476,12 +476,13 @@ body.home main.info {
 	background-color: var(--color-text);
 }
 
-/* Light homepage, white page only: black plate behind portrait (preview); blue accent theme unchanged. */
+/* Light homepage, white page only: local blue plate + isolation; accent blue theme uses full-page bg instead. */
 :root.light-mode:not(.accent-bg) .home .profile-image {
-	background-color: var(--color-text);
+	background-color: var(--color-accent);
 	isolation: isolate;
 }
 
+:root.light-mode:not(.accent-bg) .home .profile-image img,
 :root.light-mode.accent-bg .home .profile-image img {
 	mix-blend-mode: screen;
 }
@@ -514,8 +515,8 @@ body.home main.info {
 
 @media only screen and (min-width: 1081px) {
 	.home .profile-text {
-		--home-profile-headline-size: 2.5rem;
-		--home-profile-headline-leading: 3rem;
+		--home-profile-headline-size: 2.25rem;
+		--home-profile-headline-leading: 2.75rem;
 	}
 }
 
