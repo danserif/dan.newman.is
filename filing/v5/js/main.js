@@ -401,6 +401,122 @@
 
 			letterDLoadSvg();
 		}
+
+		// Photographer (/a/photographer): camera reference overlay (GF1 / X100VI)
+		var cameraOverlay = document.getElementById("camera-overlay");
+		var cameraOpenLinks = document.querySelectorAll(".camera-overlay[data-camera]");
+		var cameraDialog = cameraOverlay ? cameraOverlay.querySelector(".camera-overlay-dialog") : null;
+		var cameraImgDark = cameraOverlay ? cameraOverlay.querySelector(".camera-overlay-img--dark") : null;
+		var cameraImgLight = cameraOverlay ? cameraOverlay.querySelector(".camera-overlay-img--light") : null;
+		if (cameraOverlay && cameraOpenLinks.length && cameraDialog && cameraImgDark && cameraImgLight) {
+			var CAMERA_IMG_DIR = "/filing/v5/images/cameras/";
+			var camerasByDataId = {
+				"01": { stem: "GF1", alt: "Panasonic Lumix GF1" },
+				"02": { stem: "X100VI", alt: "Fujifilm X100VI" },
+			};
+
+			function cameraOverlayIsOpen() {
+				return cameraOverlay.classList.contains("is-open");
+			}
+
+			function cameraOverlaySyncThemeFromPage() {
+				cameraOverlay.classList.toggle("light-mode", root.classList.contains("light-mode"));
+				cameraOverlay.classList.toggle("accent-bg", root.classList.contains("accent-bg"));
+			}
+
+			function cameraOverlayCycleTheme() {
+				var light = cameraOverlay.classList.contains("light-mode");
+				var accent = cameraOverlay.classList.contains("accent-bg");
+				if (!light && !accent) {
+					cameraOverlay.classList.add("light-mode");
+				} else if (light && !accent) {
+					cameraOverlay.classList.remove("light-mode");
+					cameraOverlay.classList.add("accent-bg");
+				} else if (!light && accent) {
+					cameraOverlay.classList.add("light-mode");
+				} else {
+					cameraOverlay.classList.remove("light-mode");
+					cameraOverlay.classList.remove("accent-bg");
+				}
+			}
+
+			function cameraOverlayShow(camId) {
+				var cam = camerasByDataId[camId];
+				if (!cam) return;
+				cameraImgDark.src = CAMERA_IMG_DIR + cam.stem + "-BLK.png";
+				cameraImgLight.src = CAMERA_IMG_DIR + cam.stem + "-WHT.png";
+				cameraImgDark.alt = cam.alt;
+				cameraImgLight.alt = cam.alt;
+				cameraOverlaySyncThemeFromPage();
+				cameraOverlay.classList.add("is-open");
+				cameraOverlay.setAttribute("aria-hidden", "false");
+			}
+
+			function cameraOverlayHide() {
+				if (!cameraOverlayIsOpen()) return;
+				cameraOverlay.classList.remove("is-open");
+				cameraOverlay.classList.remove("light-mode");
+				cameraOverlay.classList.remove("accent-bg");
+				cameraOverlay.setAttribute("aria-hidden", "true");
+			}
+
+			for (var ci = 0; ci < cameraOpenLinks.length; ci++) {
+				cameraOpenLinks[ci].addEventListener("click", function (e) {
+					var id = this.getAttribute("data-camera");
+					if (!id) return;
+					e.preventDefault();
+					cameraOverlayShow(id);
+				});
+			}
+
+			cameraDialog.addEventListener("click", function () {
+				cameraOverlayHide();
+			});
+
+			cameraOverlay.addEventListener("click", function (e) {
+				if (e.target === cameraOverlay) cameraOverlayHide();
+			});
+
+			document.addEventListener(
+				"keydown",
+				function (e) {
+					if (!cameraOverlayIsOpen()) return;
+					if ((e.key !== "m" && e.key !== "M") || e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+					if (!colorKeyboardTargetOk()) return;
+					e.preventDefault();
+					e.stopImmediatePropagation();
+					cameraOverlayCycleTheme();
+				},
+				true
+			);
+
+			document.addEventListener(
+				"click",
+				function (e) {
+					if (!cameraOverlayIsOpen()) return;
+					var t = e.target;
+					if (!t || !t.closest) return;
+					if (t.closest(".mode-dark")) {
+						e.preventDefault();
+						e.stopPropagation();
+						cameraOverlay.classList.remove("light-mode");
+						cameraOverlay.classList.remove("accent-bg");
+					} else if (t.closest(".mode-light")) {
+						e.preventDefault();
+						e.stopPropagation();
+						cameraOverlay.classList.add("light-mode");
+						cameraOverlay.classList.remove("accent-bg");
+					}
+				},
+				true
+			);
+
+			document.addEventListener("keydown", function (e) {
+				if (e.key === "Escape" && cameraOverlayIsOpen()) {
+					cameraOverlayHide();
+				}
+			});
+		}
 	}
 
 	if (document.readyState === "loading") {
