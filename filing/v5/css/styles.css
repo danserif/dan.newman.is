@@ -9,7 +9,7 @@
    — 6. Scroll anchors: #work, #photos
    — 7. Galleries: grids, items, images, captions, filter bar, load more
    — 8. Designer (/a/designer): logos marquee, quotes
-   — 9. Global UI: letter D overlay, NZ time + clock overlay
+   — 9. Global UI: letter D overlay, camera overlay, NZ time + clock overlay
    — 10. Responsive: ≤2660, ≤1640, ≤1080, ≤640
    ========================================================================== */
 
@@ -81,6 +81,7 @@
 	--sticky-frost-solid-pct: 90%;
 	--sticky-frost-blur: 10px;
 	--sticky-frost-saturate: 155%;
+	--link-hover-opacity: 0.5;
 }
 
 :root.light-mode {
@@ -191,13 +192,24 @@ ol {
 a {
 	color: inherit;
 	text-decoration: inherit;
+	cursor: pointer;
+}
+
+a * {
+	cursor: inherit;
 }
 
 a:hover {
-	opacity: 0.5;
+	opacity: var(--link-hover-opacity);
 }
 
-a.underline {
+/* Opacity utilities use their own opacity/color; reset so parent `a:hover` opacity dims the whole link evenly. */
+a:hover :is(.opacity-15, .opacity-25, .opacity-35, .opacity-50, .opacity-75, .opacity-90) {
+	opacity: 1;
+}
+
+a.underline,
+.underline {
 	text-decoration: underline;
 	text-underline-position: from-font;
 	text-underline-offset: 3px;
@@ -378,28 +390,47 @@ code {
 	box-sizing: border-box;
 }
 
-/* 2. HOME (/) — tighter gap under profile than default `.info` (inner pages keep large top inset). */
+/* Home (/) — tighter gap under profile than default `.info` (inner pages keep large top inset). */
 body.home main.info {
 	margin-top: clamp(72px, 12vh, 220px);
 	padding-bottom: clamp(1.25rem, 4vmin, 60px);
 }
 
-/* 2. HOME + designer profile — photo block aligns with .info / footer (works under .page-content). */
-.page .profile {
+/* Default `.profile` / `.llms` shell (designer): stacks label / content under `.page-content`. */
+.page :is(.profile, .llms) {
 	display: flex;
 	flex-direction: column;
 	gap: var(--gap-section);
 	max-width: var(--max-width);
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: clamp(7.5rem, 24vmin, 360px);
 	padding-bottom: clamp(1.25rem, 4vmin, 60px);
 	padding-inline: var(--padding-x);
 	width: 100%;
 	box-sizing: border-box;
 }
 
+.page .profile {
+	padding-top: clamp(7.5rem, 24vmin, 360px);
+}
+
+.page .llms {
+	margin-top: clamp(2rem, 12vmin, 8rem);
+	padding-top: 0;
+}
+
+/* Profile photo: default (inner pages). Home (/) overrides in `.home .profile-image img` below. */
+.profile-image {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.page .profile-image {
+	margin-top: 12px;
+}
+
 .profile-image img {
+	display: block;
 	width: 100%;
 	max-width: 1400px;
 	height: auto;
@@ -412,7 +443,7 @@ body.home main.info {
 
 .home .profile-image img {
 	display: block;
-	max-width: 640px;
+	max-width: 720px;
 	width: 100%;
 	height: auto;
 	mix-blend-mode: normal;
@@ -420,7 +451,7 @@ body.home main.info {
 
 @media only screen and (min-width: 641px) {
 	.home .profile-image img {
-		max-width: 960px;
+		max-width: 1040px;
 	}
 }
 
@@ -428,36 +459,36 @@ body.home main.info {
 @media only screen and (min-width: 1081px) {
 	.home .profile-image img {
 		width: auto;
-		max-width: min(100%, 1280px);
-		max-height: calc(100vh - 32rem);
-		max-height: calc(100svh - clamp(28rem, 38svh, 36rem));
+		max-width: min(100%, 1400px);
+		max-height: calc(100vh - 28rem);
+		max-height: calc(100svh - clamp(25rem, 34svh, 32rem));
 	}
 }
 
 /* ~1660px-wide laptops often sit here; reserve enough for header + profile chrome + h1/h2 + divider */
 @media only screen and (min-width: 1641px) {
 	.home .profile-image img {
-		max-width: min(100%, 1540px);
-		max-height: calc(100vh - 38rem);
-		max-height: calc(100svh - clamp(31rem, 46svh, 35rem));
+		max-width: min(100%, 1680px);
+		max-height: calc(100vh - 34rem);
+		max-height: calc(100svh - clamp(28rem, 42svh, 32rem));
 	}
 }
 
 @media only screen and (min-width: 2661px) {
 	.home .profile-image img {
-		max-width: min(100%, 1680px);
-		max-height: calc(100vh - 34rem);
-		max-height: calc(100svh - clamp(30rem, 42svh, 35rem));
+		max-width: min(100%, 1840px);
+		max-height: calc(100vh - 30rem);
+		max-height: calc(100svh - clamp(27rem, 38svh, 32rem));
 	}
 }
 
 .home .profile {
-	padding-top: clamp(3rem, 9vmin, 120px);
+	padding-top: clamp(2rem, 6vmin, 80px);
 	padding-bottom: 0;
-	gap: clamp(2.5rem, 8vmin, 6rem);
+	gap: clamp(1.75rem, 5.5vmin, 4.5rem);
 }
 
-/* Yellow / lime accent (dark): black fills only space to the right of the photo; image still multiplies on #AAFF00. */
+/* Lime accent (dark): flex row + black extension; multiply on the img only. */
 :root.accent-bg:not(.light-mode) .home .profile-image {
 	display: flex;
 	flex-direction: row;
@@ -476,12 +507,14 @@ body.home main.info {
 	background-color: var(--color-text);
 }
 
-/* Light homepage, white page only: black plate behind portrait; no blend (accent themes unchanged). */
-:root.light-mode:not(.accent-bg) .home .profile-image {
+/* Light mode, white page only: black plate behind portrait (full width of .profile-image). */
+:root.light-mode:not(.accent-bg) .home .profile-image,
+:root.light-mode:not(.accent-bg) .page .profile-image {
 	background-color: var(--color-text);
 	isolation: isolate;
 }
 
+/* Blue page (light + accent-bg): screen on the img only. */
 :root.light-mode.accent-bg .home .profile-image img {
 	mix-blend-mode: screen;
 }
@@ -490,6 +523,22 @@ body.home main.info {
 	font-size: 12px;
 	line-height: 22px;
 	color: var(--opacity-90);
+}
+
+.bio-text {
+	font-size: 15px;
+	line-height: 25px;
+	color: var(--opacity-90);
+}
+
+.page .llms .bio-text {
+	margin-top: 12px;
+	max-width: 880px;
+}
+
+.bio-text .social-links {
+	font-size: 12px;
+	line-height: 20px;
 }
 
 /* Homepage profile headline scale — h1 + h2 share one size/line per breakpoint. */
@@ -542,6 +591,21 @@ body.home main.info {
 	line-height: var(--home-profile-headline-leading);
 }
 
+/* Full stops after strapline links: no underline; same dim as link when link is hovered. */
+.home .profile-text h2 span.accent {
+	text-decoration: none;
+}
+
+.home .profile-text h2 a:hover+span.accent {
+	opacity: var(--link-hover-opacity);
+}
+
+/* Photo credit link: hover dims the whole anchor (incl. full stop inside the <a>). */
+.home .profile-text p.desktop-only a.opacity-25:hover {
+	opacity: 0.5;
+	color: var(--opacity-25);
+}
+
 .home .profile-text h1::after {
 	content: " ";
 }
@@ -567,6 +631,14 @@ body.home main.info {
 
 .profile-text p+p {
 	margin-top: 0.15em;
+}
+
+.bio-text p {
+	margin: 0;
+}
+
+.bio-text p+p {
+	margin-top: 15px;
 }
 
 .info .row>p {
@@ -781,7 +853,8 @@ body.home main.info {
 :is(.experience, .education)>.section-label,
 .awards>.section-label,
 .quotes>.section-label,
-.profile>.section-label {
+.profile>.section-label,
+.llms>.section-label {
 	padding-bottom: 0.65rem;
 }
 
@@ -853,7 +926,8 @@ body.home main.info {
 
 /* Same vertical rhythm as Awards (label → content): one section gap, no extra divider inset. */
 .quotes .divider,
-.profile .divider {
+.profile .divider,
+.llms .divider {
 	margin: 0;
 }
 
@@ -1946,6 +2020,159 @@ footer .caption {
 	}
 }
 
+/* 9. GLOBAL UI — camera image overlay (photographer page) */
+.camera-overlay-root {
+	position: fixed;
+	inset: 0;
+	z-index: 99995;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	/* Theme tokens scoped to the overlay only (see main.js: M + Dark/Light while open). */
+	--color-bg: #000000;
+	--color-text: #ffffff;
+	--color-accent: #aaff00;
+	--color-border: #1a1a1a;
+	--opacity-15: rgba(255, 255, 255, 0.15);
+	--opacity-25: rgba(255, 255, 255, 0.25);
+	--opacity-50: rgba(255, 255, 255, 0.5);
+	--opacity-75: rgba(255, 255, 255, 0.75);
+	--opacity-90: rgba(255, 255, 255, 0.9);
+	background: var(--color-bg);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.25s ease;
+}
+
+.camera-overlay-root.light-mode:not(.accent-bg) {
+	--color-bg: #ffffff;
+	--color-text: #000000;
+	--color-accent: #0044ff;
+	--color-border: #e5e5e5;
+	--opacity-15: rgba(0, 0, 0, 0.15);
+	--opacity-25: rgba(0, 0, 0, 0.25);
+	--opacity-50: rgba(0, 0, 0, 0.5);
+	--opacity-75: rgba(0, 0, 0, 0.75);
+	--opacity-90: rgba(0, 0, 0, 0.9);
+}
+
+.camera-overlay-root.accent-bg:not(.light-mode) {
+	--color-bg: #aaff00;
+	--color-text: #000000;
+	--color-accent: #000000;
+	--color-border: rgba(0, 0, 0, 0.15);
+	--opacity-15: rgba(0, 0, 0, 0.15);
+	--opacity-25: rgba(0, 0, 0, 0.25);
+	--opacity-50: rgba(0, 0, 0, 0.5);
+	--opacity-75: rgba(0, 0, 0, 0.75);
+	--opacity-90: rgba(0, 0, 0, 0.9);
+}
+
+.camera-overlay-root.light-mode.accent-bg {
+	--color-bg: #0044ff;
+	--color-text: #ffffff;
+	--color-accent: #ffffff;
+	--color-border: rgba(255, 255, 255, 0.15);
+	--opacity-15: rgba(255, 255, 255, 0.15);
+	--opacity-25: rgba(255, 255, 255, 0.25);
+	--opacity-50: rgba(255, 255, 255, 0.5);
+	--opacity-75: rgba(255, 255, 255, 0.75);
+	--opacity-90: rgba(255, 255, 255, 0.9);
+}
+
+.camera-overlay-root.is-open {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+}
+
+.camera-overlay-dialog {
+	position: relative;
+	max-width: min(92vw, 880px);
+	width: 100%;
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.camera-overlay-frame {
+	position: relative;
+	display: block;
+	line-height: 0;
+}
+
+.camera-overlay-stack {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.camera-overlay-img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: min(78vh, 880px);
+	object-fit: contain;
+	mix-blend-mode: normal;
+}
+
+.camera-overlay-img--light {
+	display: none;
+}
+
+/* White page only: light asset, normal blend */
+.camera-overlay-root.light-mode:not(.accent-bg) .camera-overlay-img--dark {
+	display: none;
+}
+
+.camera-overlay-root.light-mode:not(.accent-bg) .camera-overlay-img--light {
+	display: block;
+}
+
+/* Yellow (lime): light asset + multiply on page colour */
+.camera-overlay-root.accent-bg:not(.light-mode) .camera-overlay-img--dark {
+	display: none;
+}
+
+.camera-overlay-root.accent-bg:not(.light-mode) .camera-overlay-img--light {
+	display: block;
+	mix-blend-mode: multiply;
+}
+
+/* Blue: dark asset + screen on page colour */
+.camera-overlay-root.light-mode.accent-bg .camera-overlay-img--dark {
+	display: block;
+	mix-blend-mode: screen;
+}
+
+.camera-overlay-root.light-mode.accent-bg .camera-overlay-img--light {
+	display: none;
+}
+
+@media only screen and (min-width: 1641px) {
+	.camera-overlay-dialog {
+		max-width: min(calc(100vw - 48px), 1200px);
+		width: fit-content;
+	}
+
+	.camera-overlay-stack {
+		width: auto;
+	}
+
+	.camera-overlay-img {
+		width: auto;
+		max-width: min(100%, 1200px);
+		max-height: min(90vh, calc(100vh - 48px), 1200px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.camera-overlay-root {
+		transition: none;
+	}
+}
+
 /* 9. GLOBAL UI — NZ time link + analog clock overlay (clock.js) */
 #nz-time-link {
 	cursor: pointer;
@@ -2205,6 +2432,7 @@ footer .caption {
 	.awards>.section-label,
 	.quotes>.section-label,
 	.profile>.section-label,
+	.llms>.section-label,
 	.work-samples>.section-label,
 	.photo-samples>.section-label {
 		padding-bottom: 0rem;
@@ -2318,9 +2546,13 @@ footer .caption {
 		flex-shrink: 0;
 	}
 
-	.quote-text blockquote {
+	.quote-text blockquote,
+	.bio-text {
 		font-size: 14px;
 		line-height: 22px;
+	}
+
+	.quote-text blockquote {
 		max-width: min(100%, 470px);
 	}
 
