@@ -7,8 +7,6 @@
 
 	<title>Dan Newman. Professional Designer. Amateur Photographer.</title>
 
-	<!-- \m/ Thanks for looking at the code. Press M: to switch modes, C: to check the time, and D: to see the letter D. \m/ -->
-
 	<meta name="description"
 		content="Kia ora. Hello. I’m Dan (aka @danserif), a designer and photographer from Wellington, New Zealand." />
 	<meta name="author" content="Dan Newman" />
@@ -75,33 +73,54 @@
 	<script src="https://cdn.usefathom.com/script.js" data-site="NJPLLGHN" defer></script>
 </head>
 
+<!-- \m/ Thanks for looking at the code. Press M: to switch modes, C: to check the time, and D: to see the letter D. \m/ -->
+
 <body class="home page">
 
 	<!-- HEADER -->
-	<header>
-		<img class="logo" src="/filing/v5/assets/logo.svg" alt="DAN" width="110" height="82" />
-		<p class="logo-caption">
-			<span class="opacity-15">&#8985;</span> <span class="opacity-25">/logo.svg</span>
-			<span class="opacity-15">(Braun &amp; Dieter Rams Homage)</span>
-		</p>
-	</header>
-
-	<!-- PROFILE-->
-	<section class="profile">
+	<header class="profile">
 		<div class="profile-image">
-			<img src="/filing/v5/images/dan-newman.jpg" alt="Dan Newman" />
+			<div id="ascii-portraits"></div>
+			<script src="/filing/v5/js/ascii-portraits.js"></script>
+			<script>
+				(function () {
+					var root = document.documentElement;
+					function asciiModeFromRoot() {
+						var light = root.classList.contains("light-mode");
+						var accent = root.classList.contains("accent-bg");
+						if (accent && light) return "blue";
+						if (accent) return "lime";
+						if (light) return "light";
+						return "dark";
+					}
+					window.asciiPortrait = new AsciiPortrait(document.getElementById("ascii-portraits"), {
+						src: "/filing/v5/images/dan-newman.jpg",
+						mode: asciiModeFromRoot(),
+						// Density steps with layout breakpoints (≤1080 / 1081 / 1641 / 2661)
+						densityBreakpoints: [
+							{ minWidth: 2661, density: 400 },
+							{ minWidth: 1641, density: 300 },
+							{ minWidth: 1081, density: 200 },
+							{ minWidth: 0, density: 200 }
+						],
+						characters: " .:-=+*#%@" // default
+						// characters: " ·•+=#%@" // high contrast
+						// characters: " .,~:;=+*#$@" // denser midtones
+					});
+				})();
+			</script>
 		</div>
 		<div class="profile-text">
 			<h1 class="font-grotesk-a">Dan Newman.</h1>
-			<h2 class="font-grotesk-a opacity-50"><a href="/a/designer" class="accent underline">Professional Designer.</a>
-				<span class="no-break">Amateur Photographer.</span>
+			<h2 class="font-grotesk-a"><a href="/a/designer" class="accent underline">Professional Designer</a><span
+					class="accent">.</span> <span class="opacity-50">Amateur Photographer.</span>
 			</h2>
 			<p class="desktop-only"><span class="opacity-15">⌙</span> <span
-					class="opacity-25">/filing/images/dan-newman.jpg</span> <span class="opacity-15"> (335kb) //</span> <span
-					class="opacity-25">Photos by <a href="https://profilephotos.co.nz" target="_blank">Steve
-						Montgomery</a>.</span></p>
+					class="opacity-25">/filing/js/ascii-portraits.js</span> <span class="opacity-15"> //</span> <span
+					class="opacity-25">Photos by </span><a href="https://profilephotos.co.nz" target="_blank"
+					class="opacity-25">Steve Montgomery.</a></p>
 		</div>
-	</section>
+	</header>
 
 	<!-- INFO -->
 	<main class="info">
@@ -212,6 +231,11 @@
 
 	<!-- FOOTER -->
 	<footer>
+		<a href="/"><img class="logo" src="/filing/v5/assets/logo.svg" alt="DAN" width="110" height="82" /></a>
+		<p class="logo-caption">
+			<span class="opacity-15">&#8985;</span> <span class="opacity-25">/logo.svg</span>
+			<span class="opacity-15">(Braun &amp; Dieter Rams Homage)</span>
+		</p>
 		<p class="arrow"><a href="#top">&uarr;</a></p>
 		<p class="footer-meta">
 			<span class="opacity-25">E:</span> <a href="mailto:dan@newman.is"><span class="opacity-25">mailto:</span>

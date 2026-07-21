@@ -67,6 +67,13 @@
 				}
 			}
 
+			function asciiModeFromFlags(light, accentBg) {
+				if (accentBg && light) return "blue";
+				if (accentBg) return "lime";
+				if (light) return "light";
+				return "dark";
+			}
+
 			function setModeHome(light, accentBg) {
 				root.classList.toggle("light-mode", light);
 				root.classList.toggle("accent-bg", accentBg);
@@ -76,6 +83,9 @@
 				} catch (err) {}
 				updateActiveHex();
 				syncThemeColorMeta();
+				if (window.asciiPortrait && typeof window.asciiPortrait.setMode === "function") {
+					window.asciiPortrait.setMode(asciiModeFromFlags(light, accentBg));
+				}
 			}
 
 			updateActiveHex();
@@ -406,9 +416,19 @@
 		var cameraOverlay = document.getElementById("camera-overlay");
 		var cameraOpenLinks = document.querySelectorAll(".camera-overlay[data-camera]");
 		var cameraDialog = cameraOverlay ? cameraOverlay.querySelector(".camera-overlay-dialog") : null;
-		var cameraImgDark = cameraOverlay ? cameraOverlay.querySelector(".camera-overlay-img--dark") : null;
-		var cameraImgLight = cameraOverlay ? cameraOverlay.querySelector(".camera-overlay-img--light") : null;
-		if (cameraOverlay && cameraOpenLinks.length && cameraDialog && cameraImgDark && cameraImgLight) {
+		var cameraImgDark = cameraOverlay
+			? cameraOverlay.querySelector(".camera-overlay-img--dark")
+			: null;
+		var cameraImgLight = cameraOverlay
+			? cameraOverlay.querySelector(".camera-overlay-img--light")
+			: null;
+		if (
+			cameraOverlay &&
+			cameraOpenLinks.length &&
+			cameraDialog &&
+			cameraImgDark &&
+			cameraImgLight
+		) {
 			var CAMERA_IMG_DIR = "/filing/v5/images/cameras/";
 			var camerasByDataId = {
 				"01": { stem: "GF1", alt: "Panasonic Lumix GF1" },
@@ -481,13 +501,14 @@
 				"keydown",
 				function (e) {
 					if (!cameraOverlayIsOpen()) return;
-					if ((e.key !== "m" && e.key !== "M") || e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+					if ((e.key !== "m" && e.key !== "M") || e.repeat || e.ctrlKey || e.metaKey || e.altKey)
+						return;
 					if (!colorKeyboardTargetOk()) return;
 					e.preventDefault();
 					e.stopImmediatePropagation();
 					cameraOverlayCycleTheme();
 				},
-				true
+				true,
 			);
 
 			document.addEventListener(
@@ -508,7 +529,7 @@
 						cameraOverlay.classList.remove("accent-bg");
 					}
 				},
-				true
+				true,
 			);
 
 			document.addEventListener("keydown", function (e) {

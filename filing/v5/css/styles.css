@@ -61,6 +61,7 @@
 	--color-bg: #000000;
 	--color-text: #ffffff;
 	--color-accent: #aaff00;
+	--color-clock-accent: #aaff00;
 	--color-border: #1a1a1a;
 	--opacity-15: rgba(255, 255, 255, 0.15);
 	--opacity-25: rgba(255, 255, 255, 0.25);
@@ -88,6 +89,7 @@
 	--color-bg: #ffffff;
 	--color-text: #000000;
 	--color-accent: #0044FF;
+	--color-clock-accent: #0044FF;
 	--color-border: #e5e5e5;
 	--opacity-15: rgba(0, 0, 0, 0.15);
 	--opacity-25: rgba(0, 0, 0, 0.25);
@@ -100,6 +102,7 @@
 	--color-bg: #AAFF00;
 	--color-text: #000000;
 	--color-accent: #000000;
+	--color-clock-accent: #000000;
 	--color-border: rgba(0, 0, 0, 0.15);
 	--opacity-15: rgba(0, 0, 0, 0.15);
 	--opacity-25: rgba(0, 0, 0, 0.25);
@@ -112,6 +115,7 @@
 	--color-bg: #0044FF;
 	--color-text: #ffffff;
 	--color-accent: #ffffff;
+	--color-clock-accent: #ffffff;
 	--color-border: rgba(255, 255, 255, 0.15);
 	--opacity-15: rgba(255, 255, 255, 0.15);
 	--opacity-25: rgba(255, 255, 255, 0.25);
@@ -354,6 +358,12 @@ code {
 	box-sizing: border-box;
 }
 
+/* Home (/): profile is the page header — drop logo-header chrome. */
+.home>header.profile {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
 .logo {
 	width: 110px;
 	height: auto;
@@ -390,7 +400,12 @@ code {
 	box-sizing: border-box;
 }
 
-/* Home (/) — tighter gap under profile than default `.info` (inner pages keep large top inset). */
+/* Home (/) — tighter gap under profile than default `.info` (inner pages keep large top inset).
+   Accents: lime (dark) / blue (light); clock uses --color-clock-accent. */
+body.home {
+	overflow-x: clip;
+}
+
 body.home main.info {
 	margin-top: clamp(72px, 12vh, 220px);
 	padding-bottom: clamp(1.25rem, 4vmin, 60px);
@@ -419,7 +434,7 @@ body.home main.info {
 	padding-top: 0;
 }
 
-/* Profile photo: default (inner pages). Home (/) overrides in `.home .profile-image img` below. */
+/* Profile photo: default (inner pages). Home (/) uses #ascii-portraits below. */
 .profile-image {
 	width: 100%;
 	box-sizing: border-box;
@@ -436,87 +451,93 @@ body.home main.info {
 	height: auto;
 }
 
-.home .profile-image {
-	width: 100%;
-	box-sizing: border-box;
+/* Homepage portrait: bleeds through shell padding; content stays column-aligned. */
+.home .profile {
+	position: relative;
+	gap: 0;
+	min-height: 100vh;
+	min-height: 100svh;
 }
 
-.home .profile-image img {
+.home .profile-image {
+	box-sizing: border-box;
+	width: calc(100% + 2 * var(--padding-x));
+	margin-top: 0;
+	margin-left: calc(-1 * var(--padding-x));
+	margin-right: calc(-1 * var(--padding-x));
+}
+
+.home .profile-image #ascii-portraits {
 	display: block;
-	max-width: 720px;
+	flex-shrink: 0;
 	width: 100%;
 	height: auto;
-	mix-blend-mode: normal;
+	margin-inline-start: 0;
+	aspect-ratio: 2400 / 1550;
+	max-width: min(720px, 100%);
 }
 
-@media only screen and (min-width: 641px) {
-	.home .profile-image img {
-		max-width: 1040px;
+@media only screen and (max-width: 1080px) {
+	.home .profile {
+		min-height: 0;
+	}
+
+	.home .profile-image #ascii-portraits {
+		width: 90%;
+		max-width: 90%;
+		max-height: none;
 	}
 }
 
-/* Large viewports: cap image height with svh so photo + h1/h2 can fit in view; width:auto lets the image shrink when height binds. */
+/* Large viewports: taller portrait so image + text fill more of the fold. */
 @media only screen and (min-width: 1081px) {
-	.home .profile-image img {
+	.home .profile-image #ascii-portraits {
+		--ascii-max-h: calc(100svh - clamp(12rem, 16svh, 16rem));
 		width: auto;
-		max-width: min(100%, 1400px);
-		max-height: calc(100vh - 28rem);
-		max-height: calc(100svh - clamp(25rem, 34svh, 32rem));
+		max-height: var(--ascii-max-h);
+		max-width: min(100%, 1400px, calc(var(--ascii-max-h) * 2400 / 1550));
+	}
+
+	.home .profile-text {
+		padding-bottom: clamp(1.25rem, 3vmin, 2rem);
 	}
 }
 
-/* ~1660px-wide laptops often sit here; reserve enough for header + profile chrome + h1/h2 + divider */
 @media only screen and (min-width: 1641px) {
-	.home .profile-image img {
-		max-width: min(100%, 1680px);
-		max-height: calc(100vh - 34rem);
-		max-height: calc(100svh - clamp(28rem, 42svh, 32rem));
+	.home .profile-image #ascii-portraits {
+		--ascii-max-h: calc(100svh - clamp(12rem, 16svh, 16rem));
+		max-height: var(--ascii-max-h);
+		max-width: min(100%, 1760px, calc(var(--ascii-max-h) * 2400 / 1550));
+	}
+
+	.home .profile-text {
+		padding-top: clamp(1.25rem, 3.5vmin, 3rem);
+		padding-bottom: clamp(1.25rem, 3vmin, 2rem);
 	}
 }
 
 @media only screen and (min-width: 2661px) {
-	.home .profile-image img {
-		max-width: min(100%, 1840px);
-		max-height: calc(100vh - 30rem);
-		max-height: calc(100svh - clamp(27rem, 38svh, 32rem));
+	.home .profile-image #ascii-portraits {
+		--ascii-max-h: calc(100svh - clamp(11rem, 14svh, 14rem));
+		max-height: var(--ascii-max-h);
+		max-width: min(100%, 2000px, calc(var(--ascii-max-h) * 2400 / 1550));
 	}
 }
 
-.home .profile {
-	padding-top: clamp(2rem, 6vmin, 80px);
-	padding-bottom: 0;
-	gap: clamp(1.75rem, 5.5vmin, 4.5rem);
+/* Footer logo (home + inner pages). */
+.page footer .logo {
+	display: block;
 }
 
-/* Lime accent (dark): flex row + black extension; multiply on the img only. */
-:root.accent-bg:not(.light-mode) .home .profile-image {
-	display: flex;
-	flex-direction: row;
-	align-items: stretch;
+.page footer a:has(.logo) {
+	display: block;
+	width: fit-content;
 }
 
-:root.accent-bg:not(.light-mode) .home .profile-image img {
-	flex-shrink: 0;
-	mix-blend-mode: multiply;
-}
-
-:root.accent-bg:not(.light-mode) .home .profile-image::after {
-	content: "";
-	flex: 1 1 auto;
-	min-width: 0;
-	background-color: var(--color-text);
-}
-
-/* Light mode, white page only: black plate behind portrait (full width of .profile-image). */
-:root.light-mode:not(.accent-bg) .home .profile-image,
-:root.light-mode:not(.accent-bg) .page .profile-image {
+/* Light mode, white page: black plate behind designer profile photo (not home ASCII). */
+:root.light-mode:not(.accent-bg) .page:not(.home) .profile-image {
 	background-color: var(--color-text);
 	isolation: isolate;
-}
-
-/* Blue page (light + accent-bg): screen on the img only. */
-:root.light-mode.accent-bg .home .profile-image img {
-	mix-blend-mode: screen;
 }
 
 .profile-text {
@@ -541,10 +562,16 @@ body.home main.info {
 	line-height: 20px;
 }
 
-/* Homepage profile headline scale — h1 + h2 share one size/line per breakpoint. */
+/* Homepage profile text. */
 .home .profile-text {
 	--home-profile-headline-size: 1.375rem;
 	--home-profile-headline-leading: 1.75rem;
+	box-sizing: border-box;
+	flex: 0 1 auto;
+	width: calc(100% + 2 * var(--padding-x));
+	margin-left: calc(-1 * var(--padding-x));
+	margin-right: calc(-1 * var(--padding-x));
+	padding: clamp(1.75rem, 5.5vmin, 4.5rem) var(--padding-x) clamp(1.75rem, 5.5vmin, 4.5rem);
 }
 
 @media only screen and (min-width: 640px) {
@@ -1942,10 +1969,6 @@ footer .caption {
 	padding-bottom: 2rem;
 }
 
-.home .arrow {
-	padding-top: 0;
-}
-
 .arrow a {
 	color: inherit;
 	text-decoration: none;
@@ -2274,13 +2297,13 @@ footer .caption {
 }
 
 #clock-svg .clock-hand-second {
-	stroke: var(--color-accent);
+	stroke: var(--color-clock-accent);
 	stroke-width: 1.2;
 	stroke-linecap: round;
 }
 
 #clock-svg .clock-cap {
-	fill: var(--color-accent);
+	fill: var(--color-clock-accent);
 }
 
 /* ==========================================================================
