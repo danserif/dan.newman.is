@@ -482,6 +482,10 @@ body.home main.info {
 		min-height: 0;
 	}
 
+	.home .profile-image {
+		margin-top: 24px;
+	}
+
 	.home .profile-image #ascii-portraits {
 		width: 90%;
 		max-width: 90%;
