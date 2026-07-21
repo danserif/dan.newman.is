@@ -42,7 +42,11 @@
           ],
           characters: '', // custom ramp string; falls back to DEFAULT_RAMP
           hoverCells: 2, // base hover reach, in grid cells
-          introDuration: 1400 // ms for random glyph reveal on first load
+          introDuration: 1400, // ms for random glyph reveal on first load
+          idleBurstsPerSecond: 0.35, // ambient clustered glyph flickers
+          idleCells: 1, // cluster radius (smaller than hover)
+          idleSettleMin: 4,
+          idleSettleMax: 12
         },
         options
       );
@@ -197,8 +201,10 @@
       this.target = new Array(len);
       this.display = new Array(len);
       this.activation = new Array(len).fill(0);
+      this.trail = new Array(len).fill(0);
       this.noise = new Array(len);
       this.settle = new Array(len).fill(0);
+      this.liveCells = [];
       for (let i = 0; i < len; i++) this.noise[i] = Math.random();
       for (let i = 0; i < len; i++) {
         const r = data[i * 4], g = data[i * 4 + 1], b = data[i * 4 + 2];
@@ -207,8 +213,10 @@
         const ch = this.ramp[idx];
         this.target[i] = ch;
         this.display[i] = ch;
+        if (ch && ch !== ' ') this.liveCells.push(i);
       }
 
+      this._idleAcc = 0;
       this._startIntro();
     }
 
@@ -300,13 +308,69 @@
         this.rafId = requestAnimationFrame(tick);
         this._updateIntro();
         this._updateActivation();
+        this._updateIdle();
         this._draw();
       };
       this.rafId = requestAnimationFrame(tick);
     }
 
+    _updateIdle() {
+      if (!this._introDone || !this.target || !this.liveCells || !this.liveCells.length) return;
+      if (this._prefersReducedMotion()) return;
+      const rate = this.options.idleBurstsPerSecond;
+      if (!rate) return;
+
+      const now = performance.now();
+      if (!this._idleLast) this._idleLast = now;
+      const dt = Math.min(0.05, (now - this._idleLast) / 1000);
+      this._idleLast = now;
+      this._idleAcc = (this._idleAcc || 0) + rate * dt;
+
+      while (this._idleAcc >= 1) {
+        this._idleAcc -= 1;
+        this._sparkIdleCluster();
+      }
+
+      for (let i = 0; i < this.settle.length; i++) {
+        if (this.settle[i] <= 0) continue;
+        // Hover/cluster activation owns the glyph while hot; keep settle for the fade-out.
+        if (this.activation[i] > 0.04) continue;
+        this.settle[i]--;
+        if (this.settle[i] === 0) {
+          this.display[i] = this.target[i];
+        } else if (Math.random() < 0.55) {
+          this.display[i] = GLYPH_POOL[(Math.random() * GLYPH_POOL.length) | 0];
+        }
+      }
+    }
+
+    _sparkIdleCluster() {
+      const { gridCols, gridRows, target, display, noise, settle } = this;
+      const center = this.liveCells[(Math.random() * this.liveCells.length) | 0];
+      const col0 = center % gridCols;
+      const row0 = (center / gridCols) | 0;
+      const baseReach = (this.options.idleCells != null ? this.options.idleCells : 1) + 0.85;
+      const minS = this.options.idleSettleMin || 4;
+      const maxS = this.options.idleSettleMax || 12;
+      const reachPad = Math.ceil(baseReach * 1.6);
+
+      for (let row = Math.max(0, row0 - reachPad); row <= Math.min(gridRows - 1, row0 + reachPad); row++) {
+        for (let col = Math.max(0, col0 - reachPad); col <= Math.min(gridCols - 1, col0 + reachPad); col++) {
+          const idx = row * gridCols + col;
+          if (!target[idx] || target[idx] === ' ') continue;
+          const dx = col - col0;
+          const dy = row - row0;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const jaggedReach = baseReach * (0.4 + noise[idx] * 1.2);
+          if (dist > jaggedReach) continue;
+          display[idx] = GLYPH_POOL[(Math.random() * GLYPH_POOL.length) | 0];
+          settle[idx] = minS + ((Math.random() * (maxS - minS + 1)) | 0);
+        }
+      }
+    }
+
     _updateActivation() {
-      const { cellW, cellH, gridCols, gridRows, target, activation, display, mouse } = this;
+      const { cellW, cellH, gridCols, gridRows, target, activation, trail, display, mouse } = this;
       if (!target) return;
       // Let the intro own display values until glyphs have settled.
       if (!this._introDone) return;
@@ -323,6 +387,7 @@
           const near = dist <= jaggedReach;
           if (near) {
             activation[idx] = Math.min(1, activation[idx] + 0.35);
+            trail[idx] = 1;
           } else {
             activation[idx] *= 0.85;
           }
@@ -330,7 +395,7 @@
             if (Math.random() < activation[idx] * 0.6) {
               display[idx] = GLYPH_POOL[(Math.random() * GLYPH_POOL.length) | 0];
             }
-          } else {
+          } else if (!(this.settle && this.settle[idx] > 0)) {
             display[idx] = target[idx];
           }
         }
@@ -340,7 +405,7 @@
     _draw() {
       const ctx = this.ctx;
       if (!ctx || !this.display) return;
-      const { cellW, cellH, gridCols, gridRows, display, activation } = this;
+      const { cellW, cellH, gridCols, gridRows, display, activation, trail } = this;
       const c = MODE_COLORS[this.activeMode];
       ctx.clearRect(0, 0, gridCols * cellW, gridRows * cellH);
       ctx.font = `${this.fontSize}px "Berkeley Mono", monospace`;
@@ -351,8 +416,9 @@
           const idx = row * gridCols + col;
           const ch = display[idx];
           if (!ch || ch === ' ') continue;
-          const a = activation ? activation[idx] : 0;
-          ctx.fillStyle = a > 0.04 ? c.hover : c.fg;
+          const lit =
+            (activation && activation[idx] > 0.04) || (trail && trail[idx] > 0);
+          ctx.fillStyle = lit ? c.hover : c.fg;
           ctx.fillText(ch, col * cellW + cellW / 2, row * cellH + cellH / 2);
         }
       }
