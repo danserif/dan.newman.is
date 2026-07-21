@@ -2734,8 +2734,14 @@ footer .caption {
 		padding-bottom: 2rem;
 	}
 
+	/* Home: direct child of body. /a/ pages: nested in .page-content */
 	.page>footer {
 		padding-top: 60px;
+		padding-bottom: 32px;
+	}
+
+	.page-content>footer {
+		padding-top: 144px;
 		padding-bottom: 32px;
 	}
 
