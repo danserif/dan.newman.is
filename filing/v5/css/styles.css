@@ -366,13 +366,37 @@ code {
 	z-index: 500;
 	background-color: var(--color-bg);
 	margin-top: 0;
-	/* Top pad follows .page>header (64px / 48px mobile); 24px only at largest breakpoint. */
+	/* Top pad by viewport — stuck collapses on mid/ultra + mobile (see media queries). */
+	padding-top: 24px;
 	transition: padding-top 0.2s ease;
+}
+
+@media only screen and (max-width: 1640px) and (min-width: 1081px) {
+	.page>header.info {
+		padding-top: 32px;
+	}
+
+	.page>header.info.is-stuck {
+		padding-top: 16px;
+	}
+}
+
+@media only screen and (max-width: 2660px) and (min-width: 1641px) {
+	.page>header.info {
+		padding-top: 40px;
+	}
+
+	.page>header.info.is-stuck {
+		padding-top: 16px;
+	}
 }
 
 @media only screen and (min-width: 2661px) {
 	.page>header.info {
-		/* Tighter than the old logo header so the bar sits cleanly when stuck. */
+		padding-top: 48px;
+	}
+
+	.page>header.info.is-stuck {
 		padding-top: 24px;
 	}
 }
