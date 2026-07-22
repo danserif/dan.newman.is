@@ -384,10 +384,10 @@
 
     _hasCoolingMotion() {
       const a = this.activation;
-      const t = this.trail;
-      if (!a || !t) return false;
+      if (!a) return false;
+      // Trail is a persistent paint and must not keep the loop alive.
       for (let i = 0; i < a.length; i++) {
-        if (a[i] > 0.01 || t[i] > 0.01) return true;
+        if (a[i] > 0.01) return true;
       }
       return false;
     }
@@ -539,14 +539,12 @@
       if (!hovering && !this._hasCoolingMotion()) return false;
 
       if (!hovering) {
-        // Pointer left: decay only — no distance math.
+        // Pointer left: cool activation only. Trail stays painted (accent kept).
         for (let idx = 0; idx < activation.length; idx++) {
           if (target[idx] === ' ') continue;
-          if (activation[idx] <= 0 && trail[idx] <= 0) continue;
+          if (activation[idx] <= 0) continue;
           activation[idx] *= 0.85;
-          trail[idx] *= 0.88;
           if (activation[idx] < 0.001) activation[idx] = 0;
-          if (trail[idx] < 0.001) trail[idx] = 0;
           changed = true;
           if (activation[idx] > 0.04) {
             if (Math.random() < activation[idx] * 0.6) {
@@ -577,9 +575,7 @@
             trail[idx] = 1;
           } else {
             activation[idx] *= 0.85;
-            trail[idx] *= 0.88;
             if (activation[idx] < 0.001) activation[idx] = 0;
-            if (trail[idx] < 0.001) trail[idx] = 0;
           }
           changed = true;
           if (activation[idx] > 0.04) {
@@ -609,7 +605,7 @@
           const ch = display[idx];
           if (!ch || ch === ' ') continue;
           const lit =
-            (activation && activation[idx] > 0.04) || (trail && trail[idx] > 0.04);
+            (activation && activation[idx] > 0.04) || (trail && trail[idx] > 0);
           ctx.fillStyle = lit ? c.hover : c.fg;
           ctx.fillText(ch, col * cellW + cellW / 2, row * cellH + cellH / 2);
         }
