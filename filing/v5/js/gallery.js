@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Theme-aware images: tracks light variants that 404'd so we don't retry them
 	const lightImageMissing = new Set();
 
+	/** Shared fullscreen lightbox (one per page). */
+	var galleryLightboxApi = null;
+
 	function getThemedSrc(basePath, filename, shared) {
 		const isLight = document.documentElement.classList.contains("light-mode");
 		if (isLight && !shared && !lightImageMissing.has(basePath + filename)) {
@@ -37,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
 					img.src = newSrc;
 				}
 			});
+		if (galleryLightboxApi && typeof galleryLightboxApi.refreshTheme === "function") {
+			galleryLightboxApi.refreshTheme();
+		}
 	};
 
 	// Lazy loading with Intersection Observer
@@ -238,6 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		const img = document.createElement("img");
 		img.className = "photo-image";
 		img.dataset.src = basePath + filename;
+		img.dataset.filename = filename;
 		img.alt = altText || "";
 		img.loading = "lazy";
 
@@ -286,30 +293,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Build filename line <p> with ⌙, path, filename, and optional size
 	async function buildFilenameLine(displayPath, displayName, sizeUrl, className) {
-		const filename = document.createElement("p");
-		filename.className = className || "work-filename";
-
-		let sizeText = "";
+		const built = buildFilenameLineElement(displayPath, displayName, className);
 		if (sizeUrl) {
 			const fileSize = await getFileSize(sizeUrl);
 			if (fileSize) {
-				sizeText = ` (${fileSize}kb)`;
+				built.sizeSpan.textContent = " (" + fileSize + "kb)";
 			}
 		}
+		return built.el;
+	}
 
-		filename.innerHTML =
-			'<span class="opacity-15">&#8985;</span> ' +
-			'<span class="opacity-25">' +
-			displayPath +
-			"</span>" +
-			'<span class="opacity-25">' +
-			displayName +
-			"</span> " +
-			'<span class="opacity-15">' +
-			sizeText +
-			"</span>";
+	/** Sync filename caption line; size span can be filled later to avoid layout flash. */
+	function buildFilenameLineElement(displayPath, displayName, className) {
+		const filename = document.createElement("p");
+		filename.className = className || "work-filename";
 
-		return filename;
+		const corner = document.createElement("span");
+		corner.className = "opacity-15";
+		corner.innerHTML = "&#8985;";
+
+		const pathSpan = document.createElement("span");
+		pathSpan.className = "opacity-25";
+		pathSpan.textContent = displayPath;
+
+		const nameSpan = document.createElement("span");
+		nameSpan.className = "opacity-25";
+		nameSpan.textContent = displayName;
+
+		const sizeSpan = document.createElement("span");
+		sizeSpan.className = "opacity-15";
+
+		filename.appendChild(corner);
+		filename.appendChild(document.createTextNode(" "));
+		filename.appendChild(pathSpan);
+		filename.appendChild(nameSpan);
+		filename.appendChild(document.createTextNode(" "));
+		filename.appendChild(sizeSpan);
+
+		return { el: filename, sizeSpan: sizeSpan };
 	}
 
 	// Optional work item URL: normalized href + host/path for caption after [URL]
@@ -1317,12 +1338,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function assignWorkProjects(items) {
 		let proj = null;
+		let projDate = null;
 		for (let i = 0; i < items.length; i++) {
 			const it = items[i];
 			if (it.type === "title" && it.name) {
 				proj = it.name;
+				projDate = it.date || null;
 			}
 			it.project = proj;
+			it.projectDate = projDate;
 		}
 	}
 
@@ -1346,6 +1370,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		function fireFilter() {
 			onProjectChange(activeProject);
 		}
+
+		function selectProject(projectName) {
+			activeProject = projectName || null;
+			updateActiveStates();
+			bar.querySelectorAll(".filter-dropdown").forEach(function (d) {
+				if (typeof d.updateTriggerLabel === "function") {
+					d.updateTriggerLabel();
+				}
+			});
+			fireFilter();
+		}
+
+		bar._selectProject = selectProject;
 
 		function updateActiveStates() {
 			bar.querySelectorAll("[data-filter-project]").forEach(function (btn) {
@@ -1586,6 +1623,371 @@ document.addEventListener("DOMContentLoaded", function () {
 			fireFilter();
 		};
 		return bar;
+	}
+
+	// =========================================================================
+	// FULLSCREEN LIGHTBOX (work + photos)
+	// =========================================================================
+
+	function ensureGalleryLightbox() {
+		if (galleryLightboxApi) return galleryLightboxApi;
+
+		var root = document.createElement("div");
+		root.className = "gallery-lightbox";
+		root.id = "gallery-lightbox";
+		root.setAttribute("hidden", "");
+		root.setAttribute("aria-hidden", "true");
+		root.setAttribute("role", "dialog");
+		root.setAttribute("aria-modal", "true");
+		root.setAttribute("aria-label", "Image");
+
+		var projectEl = document.createElement("p");
+		projectEl.className = "gallery-lightbox-project font-berkeley";
+
+		var closeBtn = document.createElement("button");
+		closeBtn.type = "button";
+		closeBtn.className = "gallery-lightbox-close font-berkeley";
+		closeBtn.setAttribute("aria-label", "Close");
+		closeBtn.innerHTML =
+			'Close <span class="opacity-50">[</span>×<span class="opacity-50">]</span>';
+
+		var stage = document.createElement("div");
+		stage.className = "gallery-lightbox-stage";
+
+		var figure = document.createElement("div");
+		figure.className = "gallery-lightbox-figure";
+
+		var img = document.createElement("img");
+		img.className = "gallery-lightbox-image";
+		img.alt = "";
+
+		var hitPrev = document.createElement("button");
+		hitPrev.type = "button";
+		hitPrev.className = "gallery-lightbox-hit gallery-lightbox-hit--prev";
+		hitPrev.setAttribute("aria-label", "Previous");
+
+		var hitNext = document.createElement("button");
+		hitNext.type = "button";
+		hitNext.className = "gallery-lightbox-hit gallery-lightbox-hit--next";
+		hitNext.setAttribute("aria-label", "Next");
+
+		figure.appendChild(img);
+		figure.appendChild(hitPrev);
+		figure.appendChild(hitNext);
+		stage.appendChild(figure);
+
+		var meta = document.createElement("div");
+		meta.className = "gallery-lightbox-meta";
+
+		var countEl = document.createElement("p");
+		countEl.className = "gallery-lightbox-count font-berkeley";
+
+		root.appendChild(projectEl);
+		root.appendChild(closeBtn);
+		root.appendChild(stage);
+		root.appendChild(meta);
+		root.appendChild(countEl);
+		document.body.appendChild(root);
+
+		var state = {
+			open: false,
+			entries: [],
+			index: 0,
+			sectionType: "graphics",
+			imageBasePath: "/filing/v5/work/",
+			isThemed: true,
+		};
+
+		function entrySrc(entry) {
+			if (!entry || !entry.filename) return "";
+			if (state.isThemed) {
+				return getThemedSrc(state.imageBasePath, entry.filename, entry.shared === true);
+			}
+			return state.imageBasePath + entry.filename;
+		}
+
+		function renderMeta(entry) {
+			meta.replaceChildren();
+			if (!entry) return;
+
+			var caption = document.createElement("div");
+			caption.className = state.sectionType === "photos" ? "photo-caption" : "work-caption";
+
+			var label = entry.number != null && entry.number !== "" ? String(entry.number) : "";
+			var numberClass = state.sectionType === "photos" ? "photo-number" : "work-number";
+			var descClass = state.sectionType === "photos" ? "photo-description" : "work-description";
+			var metaLine = buildWorkTextLine(label, entry.description, numberClass, descClass);
+			if (metaLine && metaLine.childNodes.length > 0) {
+				caption.appendChild(metaLine);
+			}
+
+			if (entry.filename) {
+				var displayPath = state.sectionType === "photos" ? "/filing/v5/photos/" : "/filing/work/";
+				var sizeUrl = state.isThemed
+					? state.imageBasePath + "dark/" + entry.filename
+					: state.imageBasePath + entry.filename;
+				var fileClass = state.sectionType === "photos" ? "photo-filename" : "work-filename";
+				var built = buildFilenameLineElement(displayPath, entry.filename, fileClass);
+				caption.appendChild(built.el);
+
+				var metaToken = entry.filename;
+				built.sizeSpan.dataset.metaToken = metaToken;
+				getFileSize(sizeUrl).then(function (fileSize) {
+					if (!state.open) return;
+					if (built.sizeSpan.dataset.metaToken !== metaToken) return;
+					if (fileSize) {
+						built.sizeSpan.textContent = " (" + fileSize + "kb)";
+					}
+				});
+			}
+
+			meta.appendChild(caption);
+		}
+
+		function showIndex(i) {
+			if (!state.entries.length) return;
+			var n = state.entries.length;
+			state.index = ((i % n) + n) % n;
+			var entry = state.entries[state.index];
+
+			var title = state.sectionType === "photos" ? entry.category || "" : entry.project || "";
+			projectEl.replaceChildren();
+			if (!title) {
+				projectEl.classList.add("is-empty");
+			} else {
+				projectEl.classList.remove("is-empty");
+
+				var link = document.createElement("a");
+				link.href = "#";
+				link.className = "gallery-lightbox-project-link";
+
+				var nameSpan = document.createElement("span");
+				nameSpan.className = "gallery-lightbox-project-name";
+				nameSpan.textContent = title;
+				link.appendChild(nameSpan);
+
+				if (state.sectionType !== "photos" && entry.projectDate) {
+					link.appendChild(document.createTextNode(" "));
+					var dateSpan = document.createElement("span");
+					dateSpan.className = "opacity-75";
+					appendBracketStyledText(entry.projectDate, dateSpan);
+					link.appendChild(dateSpan);
+				}
+
+				link.addEventListener("click", function (e) {
+					e.preventDefault();
+					e.stopPropagation();
+					var navigate = state.onTitleNavigate;
+					close();
+					if (typeof navigate === "function") {
+						navigate(title);
+					}
+				});
+
+				projectEl.appendChild(link);
+			}
+
+			img.removeAttribute("data-base-path");
+			img.removeAttribute("data-filename");
+			img.removeAttribute("data-shared");
+			if (state.isThemed) {
+				img.dataset.basePath = state.imageBasePath;
+				img.dataset.filename = entry.filename;
+				img.dataset.shared = entry.shared === true ? "true" : "false";
+			}
+			img.src = entrySrc(entry);
+			img.alt = entry.description || entry.filename || "";
+
+			img.onerror = function () {
+				if (!state.isThemed || !entry.filename) return;
+				var darkSrc = state.imageBasePath + "dark/" + entry.filename;
+				if (!this.src.endsWith(darkSrc)) {
+					lightImageMissing.add(state.imageBasePath + entry.filename);
+					this.src = darkSrc;
+				}
+			};
+
+			renderMeta(entry);
+
+			countEl.replaceChildren();
+			countEl.className = "gallery-lightbox-count font-berkeley";
+
+			var navLine = document.createElement("span");
+			navLine.className = "gallery-lightbox-count-nav";
+
+			var prevLink = document.createElement("a");
+			prevLink.href = "#";
+			prevLink.className = "gallery-lightbox-count-arrow";
+			prevLink.setAttribute("aria-label", "Previous");
+			prevLink.textContent = "Previous";
+			prevLink.addEventListener("click", function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				step(-1);
+			});
+
+			var slash = document.createElement("span");
+			slash.className = "opacity-25";
+			slash.textContent = " / ";
+
+			var nextLink = document.createElement("a");
+			nextLink.href = "#";
+			nextLink.className = "gallery-lightbox-count-arrow";
+			nextLink.setAttribute("aria-label", "Next");
+			nextLink.textContent = "Next";
+			nextLink.addEventListener("click", function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				step(1);
+			});
+
+			navLine.appendChild(prevLink);
+			navLine.appendChild(slash);
+			navLine.appendChild(nextLink);
+			countEl.appendChild(navLine);
+
+			var singular = state.statusLabel || "Image";
+			var plural = singular + "s";
+			var label = n === 1 ? singular : plural;
+			var countLine = document.createElement("span");
+			countLine.className = "opacity-25";
+			countLine.textContent = state.index + 1 + " of " + n + " " + label;
+			countEl.appendChild(countLine);
+
+			var sizeSpan = document.createElement("span");
+			sizeSpan.className = "opacity-15";
+			countLine.appendChild(sizeSpan);
+
+			var sizeToken = String(n) + ":" + (state.entries[0] && state.entries[0].filename) + ":" +
+				(state.entries[n - 1] && state.entries[n - 1].filename);
+			countEl.dataset.sizeToken = sizeToken;
+
+			function applyTotalSize(sizeStr) {
+				if (!state.open || countEl.dataset.sizeToken !== sizeToken) return;
+				if (sizeStr) sizeSpan.textContent = " (" + sizeStr + ")";
+			}
+
+			if (state.cachedTotalSizeStr != null && state.cachedTotalSizeKey === sizeToken) {
+				applyTotalSize(state.cachedTotalSizeStr);
+			} else if (typeof state.getTotalSizeStr === "function") {
+				Promise.resolve(state.getTotalSizeStr(state.entries)).then(function (sizeStr) {
+					state.cachedTotalSizeKey = sizeToken;
+					state.cachedTotalSizeStr = sizeStr || null;
+					applyTotalSize(state.cachedTotalSizeStr);
+				});
+			} else {
+				Promise.all(
+					state.entries.map(function (ent) {
+						var url = state.isThemed
+							? state.imageBasePath + "dark/" + ent.filename
+							: state.imageBasePath + ent.filename;
+						return getFileSizeBytes(url);
+					}),
+				).then(function (sizes) {
+					var sum = 0;
+					var any = false;
+					for (var si = 0; si < sizes.length; si++) {
+						if (sizes[si] != null) {
+							sum += sizes[si];
+							any = true;
+						}
+					}
+					state.cachedTotalSizeKey = sizeToken;
+					state.cachedTotalSizeStr = any ? formatCompactDataSize(sum) : null;
+					applyTotalSize(state.cachedTotalSizeStr);
+				});
+			}
+		}
+
+		function open(entries, startIndex, opts) {
+			if (!entries || !entries.length) return;
+			state.entries = entries;
+			state.sectionType = opts.sectionType || "graphics";
+			state.imageBasePath = opts.imageBasePath || "/filing/v5/work/";
+			state.isThemed = opts.isThemed !== false;
+			state.statusLabel = opts.statusLabel || "Image";
+			state.onTitleNavigate =
+				typeof opts.onTitleNavigate === "function" ? opts.onTitleNavigate : null;
+			state.getTotalSizeStr =
+				typeof opts.getTotalSizeStr === "function" ? opts.getTotalSizeStr : null;
+			state.cachedTotalSizeStr = null;
+			state.cachedTotalSizeKey = null;
+			state.open = true;
+
+			root.removeAttribute("hidden");
+			root.classList.add("is-open");
+			root.setAttribute("aria-hidden", "false");
+			document.documentElement.classList.add("gallery-lightbox-open");
+
+			showIndex(startIndex || 0);
+			closeBtn.focus();
+		}
+
+		function close() {
+			if (!state.open) return;
+			state.open = false;
+			root.classList.remove("is-open");
+			root.setAttribute("aria-hidden", "true");
+			root.setAttribute("hidden", "");
+			document.documentElement.classList.remove("gallery-lightbox-open");
+			img.removeAttribute("src");
+			meta.replaceChildren();
+		}
+
+		function refreshTheme() {
+			if (!state.open || !state.isThemed) return;
+			var entry = state.entries[state.index];
+			if (!entry) return;
+			img.src = entrySrc(entry);
+		}
+
+		function step(delta) {
+			if (!state.open) return;
+			showIndex(state.index + delta);
+		}
+
+		closeBtn.addEventListener("click", function (e) {
+			e.stopPropagation();
+			close();
+		});
+		hitPrev.addEventListener("click", function (e) {
+			e.stopPropagation();
+			step(-1);
+		});
+		hitNext.addEventListener("click", function (e) {
+			e.stopPropagation();
+			step(1);
+		});
+		root.addEventListener("click", function () {
+			close();
+		});
+		figure.addEventListener("click", function (e) {
+			e.stopPropagation();
+		});
+
+		document.addEventListener("keydown", function (e) {
+			if (!state.open) return;
+			if (e.key === "Escape") {
+				e.preventDefault();
+				close();
+			} else if (e.key === "ArrowLeft") {
+				e.preventDefault();
+				step(-1);
+			} else if (e.key === "ArrowRight") {
+				e.preventDefault();
+				step(1);
+			}
+		});
+
+		galleryLightboxApi = {
+			open: open,
+			close: close,
+			refreshTheme: refreshTheme,
+			isOpen: function () {
+				return state.open;
+			},
+		};
+		return galleryLightboxApi;
 	}
 
 	// =========================================================================
@@ -1921,6 +2323,132 @@ document.addEventListener("DOMContentLoaded", function () {
 				return countGraphicsImagesMatchingInRange(items, proj, items.length);
 			}
 
+			const lightbox = ensureGalleryLightbox();
+
+			function getLightboxBrowseEntries() {
+				const out = [];
+				for (let i = 0; i < allItems.length; i++) {
+					const item = allItems[i];
+					if (!item.filename) continue;
+					if (sectionType === "photos" && isPhotoFilterActive(activePhotoFilter)) {
+						if (!itemMatchesPhotoFilter(item, activePhotoFilter)) continue;
+					}
+					if (sectionType === "graphics" && isGraphicsProjectFilterActive()) {
+						if (!itemMatchesGraphicsProject(item, activeGraphicsProject)) continue;
+					}
+					out.push(item);
+				}
+				return out;
+			}
+
+			function openLightboxForFilename(filename) {
+				if (!filename) return;
+				const entries = getLightboxBrowseEntries();
+				let start = -1;
+				for (let i = 0; i < entries.length; i++) {
+					if (entries[i].filename === filename) {
+						start = i;
+						break;
+					}
+				}
+
+				function navigateToTitle(title) {
+					if (!title || !filterBar) return;
+					if (sectionType === "graphics" && typeof filterBar._selectProject === "function") {
+						filterBar._selectProject(title);
+						return;
+					}
+					if (sectionType === "photos") {
+						var catBtns = filterBar.querySelectorAll("[data-filter-category]");
+						for (var ci = 0; ci < catBtns.length; ci++) {
+							if (catBtns[ci].getAttribute("data-filter-category") === title) {
+								catBtns[ci].click();
+								return;
+							}
+						}
+					}
+				}
+
+				var openOpts = {
+					sectionType: sectionType,
+					imageBasePath: imageBasePath,
+					isThemed: isThemed,
+					statusLabel: statusLabel,
+					onTitleNavigate: navigateToTitle,
+					getTotalSizeStr: function (entries) {
+						function sumFromCache() {
+							if (!imageBytesByIndex) return null;
+							var byName = {};
+							for (var i = 0; i < allItems.length; i++) {
+								if (!allItems[i].filename) continue;
+								if (imageBytesByIndex[i] != null) {
+									byName[allItems[i].filename] = imageBytesByIndex[i];
+								}
+							}
+							var sum = 0;
+							var any = false;
+							for (var j = 0; j < entries.length; j++) {
+								var b = byName[entries[j].filename];
+								if (b != null) {
+									sum += b;
+									any = true;
+								}
+							}
+							return any ? formatCompactDataSize(sum) : null;
+						}
+
+						var cached = sumFromCache();
+						if (cached) return Promise.resolve(cached);
+
+						return Promise.all(
+							entries.map(function (ent) {
+								var url = isThemed
+									? imageBasePath + "dark/" + ent.filename
+									: imageBasePath + ent.filename;
+								return getFileSizeBytes(url);
+							}),
+						).then(function (sizes) {
+							var sum = 0;
+							var any = false;
+							for (var si = 0; si < sizes.length; si++) {
+								if (sizes[si] != null) {
+									sum += sizes[si];
+									any = true;
+								}
+							}
+							return any ? formatCompactDataSize(sum) : null;
+						});
+					},
+				};
+
+				if (start < 0) {
+					const all = [];
+					for (let j = 0; j < allItems.length; j++) {
+						if (allItems[j].filename) all.push(allItems[j]);
+					}
+					for (let k = 0; k < all.length; k++) {
+						if (all[k].filename === filename) {
+							start = k;
+							break;
+						}
+					}
+					if (start < 0) return;
+					lightbox.open(all, start, openOpts);
+					return;
+				}
+				lightbox.open(entries, start, openOpts);
+			}
+
+			grid.addEventListener("click", function (e) {
+				const frame = e.target.closest(".work-image-frame, .photo-image-frame");
+				if (!frame || !grid.contains(frame)) return;
+				const thumb = frame.querySelector("img");
+				const filename = thumb && thumb.dataset.filename;
+				if (!filename) return;
+				e.preventDefault();
+				openLightboxForFilename(filename);
+			});
+
 			/** True if any not-yet-rendered row still has an image that counts for the current view (filters apply). */
 			function remainingMatchingFilenameItemsExist() {
 				for (let i = displayedCount; i < allItems.length; i++) {
@@ -2129,9 +2657,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				applyGraphicsProjectFilter = function () {
 					var proj = activeGraphicsProject;
 					grid
-						.querySelectorAll(
-							".work-item, .work-grid-title, .work-info-block, .work-grid-divider",
-						)
+						.querySelectorAll(".work-item, .work-grid-title, .work-info-block, .work-grid-divider")
 						.forEach(function (el) {
 							var dp = el.getAttribute("data-project");
 							var visible = !proj || dp === proj;

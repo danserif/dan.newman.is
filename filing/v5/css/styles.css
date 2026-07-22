@@ -1144,6 +1144,7 @@ body.home main.info {
 	background-color: #080808;
 	border: 1px solid #1D1D1D;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .work-image,
@@ -1159,6 +1160,12 @@ body.home main.info {
 .work-image.is-loaded,
 .photo-image.is-loaded {
 	opacity: 1;
+	transition: filter 0.3s ease, opacity 0.2s ease;
+}
+
+.work-image-frame:hover .work-image.is-loaded,
+.photo-image-frame:hover .photo-image.is-loaded {
+	opacity: 0.50;
 }
 
 #work .work-image {
@@ -1180,6 +1187,256 @@ body.home main.info {
 .work-item>a:hover,
 .photo-item>a:hover {
 	opacity: 1;
+}
+
+/* ==========================================================================
+   7b. GALLERY LIGHTBOX — fullscreen image viewer (designer + photographer)
+   ========================================================================== */
+
+.gallery-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 99985;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 72px var(--padding-x) 88px;
+	box-sizing: border-box;
+	background: var(--color-bg);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+	/* Overlay chrome: 11px default; 12px only above 2660px */
+	--gallery-lightbox-label-size: 11px;
+	--gallery-lightbox-label-line: 1.5;
+}
+
+.gallery-lightbox.is-open {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+}
+
+.gallery-lightbox[hidden] {
+	display: none;
+}
+
+.gallery-lightbox.is-open[hidden] {
+	display: flex;
+}
+
+html.gallery-lightbox-open,
+html.gallery-lightbox-open body {
+	overflow: hidden;
+}
+
+.gallery-lightbox-project {
+	position: absolute;
+	top: 24px;
+	left: var(--padding-x);
+	margin: 0;
+	font-size: var(--gallery-lightbox-label-size);
+	line-height: var(--gallery-lightbox-label-line);
+	color: var(--color-text);
+	max-width: min(50vw, 420px);
+	pointer-events: none;
+}
+
+.gallery-lightbox-project.is-empty {
+	display: none;
+}
+
+.gallery-lightbox-project-link {
+	pointer-events: auto;
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.gallery-lightbox-project-link:hover {
+	opacity: 0.7;
+}
+
+.gallery-lightbox-project-name {
+	text-transform: uppercase;
+}
+
+.gallery-lightbox-close {
+	position: absolute;
+	top: 24px;
+	right: var(--padding-x);
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	font-family: "Berkeley Mono", monospace;
+	font-size: var(--gallery-lightbox-label-size);
+	line-height: var(--gallery-lightbox-label-line);
+	color: var(--opacity-75);
+	cursor: pointer;
+	outline: none;
+	box-shadow: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.gallery-lightbox-close:hover {
+	color: var(--color-text);
+}
+
+.gallery-lightbox-close:focus,
+.gallery-lightbox-close:focus-visible,
+.gallery-lightbox-close:active {
+	outline: none;
+	box-shadow: none;
+	border: 0;
+}
+
+.gallery-lightbox-stage {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	max-width: 1600px;
+}
+
+.gallery-lightbox-figure {
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+	line-height: 0;
+}
+
+.gallery-lightbox-image {
+	display: block;
+	max-width: min(92vw, 1400px);
+	max-height: min(72vh, 900px);
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	box-sizing: border-box;
+	background-color: #080808;
+	border: 1px solid #1d1d1d;
+	user-select: none;
+	-webkit-user-drag: none;
+	pointer-events: none;
+}
+
+.light-mode .gallery-lightbox-image {
+	background-color: #f5f5f5;
+	border-color: #dddddd;
+}
+
+.gallery-lightbox-hit {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 50%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.gallery-lightbox-hit--prev {
+	left: 0;
+	cursor: w-resize;
+}
+
+.gallery-lightbox-hit--next {
+	right: 0;
+	cursor: e-resize;
+}
+
+.gallery-lightbox-meta {
+	position: absolute;
+	left: var(--padding-x);
+	bottom: 24px;
+	max-width: min(55vw, 520px);
+	pointer-events: none;
+}
+
+.gallery-lightbox-meta .work-caption,
+.gallery-lightbox-meta .photo-caption,
+.gallery-lightbox-meta .work-number,
+.gallery-lightbox-meta .photo-number,
+.gallery-lightbox-meta .work-description,
+.gallery-lightbox-meta .photo-description,
+.gallery-lightbox-meta .work-filename,
+.gallery-lightbox-meta .photo-filename {
+	font-size: var(--gallery-lightbox-label-size);
+	line-height: var(--gallery-lightbox-label-line);
+}
+
+.gallery-lightbox-meta .work-caption,
+.gallery-lightbox-meta .photo-caption {
+	margin-bottom: 0;
+}
+
+.gallery-lightbox-count {
+	position: absolute;
+	right: var(--padding-x);
+	bottom: 24px;
+	margin: 0;
+	font-size: var(--gallery-lightbox-label-size);
+	line-height: var(--gallery-lightbox-label-line);
+	pointer-events: none;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 0;
+}
+
+.gallery-lightbox-count-nav {
+	pointer-events: auto;
+}
+
+.gallery-lightbox-count-arrow {
+	color: var(--color-text);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.gallery-lightbox-count-arrow:hover {
+	opacity: 0.7;
+}
+
+@media only screen and (min-width: 2661px) {
+	.gallery-lightbox {
+		--gallery-lightbox-label-size: 12px;
+		--gallery-lightbox-label-line: 20px;
+	}
+}
+
+@media (max-width: 1080px) {
+	.gallery-lightbox {
+		padding: 64px var(--padding-x) 96px;
+	}
+
+	.gallery-lightbox-image {
+		max-width: 94vw;
+		max-height: 58vh;
+	}
+
+	.gallery-lightbox-meta {
+		max-width: calc(100% - 5rem);
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.gallery-lightbox-count {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gallery-lightbox {
+		transition: none;
+	}
 }
 
 /* 7. GALLERIES — captions + links */
