@@ -170,16 +170,6 @@
 			if (cycleColorModeFromKey) cycleColorModeFromKey();
 		});
 
-		// Sticky header (sub-pages with .header-links)
-		var info = document.querySelector(".info");
-		if (info && info.querySelector(".header-links")) {
-			function checkStuck() {
-				info.classList.toggle("is-stuck", info.getBoundingClientRect().top <= 0);
-			}
-			window.addEventListener("scroll", checkStuck, { passive: true });
-			checkStuck();
-		}
-
 		// Designer: logo marquee — set exact loop width in px so the animation matches layout after
 		// fonts/images load (avoids subpixel seam) and keeps the composited strip size predictable.
 		var logoMarqueeTrack = document.querySelector(".logos-marquee-section .marquee-track");
@@ -410,6 +400,36 @@
 			});
 
 			letterDLoadSvg();
+		}
+
+		// /a/ pages: collapse info-bar top padding only while sticky is engaged.
+		var infoBar = document.querySelector(".page > header.info");
+		if (infoBar) {
+			function syncInfoBarStuck() {
+				var wasStuck = infoBar.classList.contains("is-stuck");
+				/* Hysteresis avoids flicker when padding collapse shifts layout. */
+				var stuck = wasStuck ? window.scrollY > 1 : window.scrollY > 12;
+				if (stuck === wasStuck) return;
+				infoBar.classList.toggle("is-stuck", stuck);
+				/* Filter bars pin under the info bar — refresh snap after height change. */
+				var filterBars = document.querySelectorAll(".filter-bar");
+				for (var i = 0; i < filterBars.length; i++) {
+					if (typeof filterBars[i]._syncStuck === "function") {
+						filterBars[i]._syncStuck();
+					}
+				}
+			}
+			var infoStuckRaf = null;
+			function scheduleInfoBarStuck() {
+				if (infoStuckRaf != null) return;
+				infoStuckRaf = requestAnimationFrame(function () {
+					infoStuckRaf = null;
+					syncInfoBarStuck();
+				});
+			}
+			window.addEventListener("scroll", scheduleInfoBarStuck, { passive: true });
+			window.addEventListener("resize", scheduleInfoBarStuck);
+			syncInfoBarStuck();
 		}
 
 		// Photographer (/a/photographer): camera reference overlay (GF1 / X100VI)

@@ -1858,7 +1858,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			sizeSpan.className = "opacity-15";
 			countLine.appendChild(sizeSpan);
 
-			var sizeToken = String(n) + ":" + (state.entries[0] && state.entries[0].filename) + ":" +
+			var sizeToken =
+				String(n) +
+				":" +
+				(state.entries[0] && state.entries[0].filename) +
+				":" +
 				(state.entries[n - 1] && state.entries[n - 1].filename);
 			countEl.dataset.sizeToken = sizeToken;
 

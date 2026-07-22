@@ -4,7 +4,7 @@
    — 1. Base: fonts, tokens, reset, utilities, a11y
    — 2. Home (/): body.home main.info, .profile + .home profile image/type
    — 3. Shared layout: .page, header, logo, footer, arrow, mode links
-   — 4. Inner pages: .info (sticky), .row + designer Experience/Education/Awards/Profile grids
+   — 4. Inner pages: header.info (sticky), .row + designer Experience/Education/Awards/Profile grids
    — 5. Section chrome: .section-label, work + photo section shells, intros, content
    — 6. Scroll anchors: #work, #photos
    — 7. Galleries: grids, items, images, captions, filter bar, load more
@@ -358,6 +358,25 @@ code {
 	box-sizing: border-box;
 }
 
+/* /a/ pages: info bar is the sticky header (logo lives in the footer). */
+.page>header.info {
+	position: sticky;
+	top: 0;
+	/* Sticky URL row: above filter bar (490) so the filter slides under when scrolling — daas.graphics pattern. */
+	z-index: 500;
+	background-color: var(--color-bg);
+	margin-top: 0;
+	/* Top pad follows .page>header (64px / 48px mobile); 24px only at largest breakpoint. */
+	transition: padding-top 0.2s ease;
+}
+
+@media only screen and (min-width: 2661px) {
+	.page>header.info {
+		/* Tighter than the old logo header so the bar sits cleanly when stuck. */
+		padding-top: 24px;
+	}
+}
+
 /* Home (/): profile is the page header — drop logo-header chrome. */
 .home>header.profile {
 	padding-top: 0;
@@ -394,13 +413,13 @@ code {
 
 .info {
 	max-width: var(--max-width);
-	margin: clamp(160px, 24vh, 460px) auto 0;
+	margin: 0 auto;
 	padding: 0 var(--padding-x);
 	width: 100%;
 	box-sizing: border-box;
 }
 
-/* Home (/) — tighter gap under profile than default `.info` (inner pages keep large top inset).
+/* Home (/) — tighter gap under profile than default `.info`.
    Accents: lime (dark) / blue (light); clock uses --color-clock-accent. */
 body.home {
 	overflow-x: clip;
@@ -515,7 +534,7 @@ body.home main.info {
 	}
 
 	.home .profile-text {
-		padding-top: clamp(1.25rem, 3.5vmin, 3rem);
+		padding-top: clamp(0.5rem, 1.5vmin, 1.25rem);
 		padding-bottom: clamp(1.25rem, 3vmin, 2rem);
 	}
 }
@@ -575,7 +594,7 @@ body.home main.info {
 	width: calc(100% + 2 * var(--padding-x));
 	margin-left: calc(-1 * var(--padding-x));
 	margin-right: calc(-1 * var(--padding-x));
-	padding: clamp(1.75rem, 5.5vmin, 4.5rem) var(--padding-x) clamp(1.75rem, 5.5vmin, 4.5rem);
+	padding: clamp(0.75rem, 2.5vmin, 1.75rem) var(--padding-x) clamp(1.75rem, 5.5vmin, 4.5rem);
 }
 
 @media only screen and (min-width: 640px) {
@@ -680,13 +699,6 @@ body.home main.info {
 	margin-top: clamp(2rem, 12vmin, 8rem);
 }
 
-.page-content .info {
-	position: sticky;
-	top: 0;
-	/* Sticky URL row: above filter bar (490) so the filter slides under when scrolling — daas.graphics pattern. */
-	z-index: 500;
-	background-color: var(--color-bg);
-}
 
 .row {
 	display: grid;
@@ -832,18 +844,19 @@ body.home main.info {
 
 /* 4. INNER — sticky header nav (mode, contact, follow, NZ time, letter D) */
 
+.info>.row {
+	position: relative;
+}
+
 .header-links {
 	position: absolute;
-	right: var(--padding-x);
+	right: 0;
 	top: 50%;
 	transform: translateY(-50%);
 	font-family: "Berkeley Mono", monospace;
 	font-size: 12px;
 	line-height: 24px;
 	color: var(--opacity-50);
-	opacity: 0;
-	pointer-events: none;
-	transition: opacity 0.2s ease;
 }
 
 .header-links ul {
@@ -853,11 +866,6 @@ body.home main.info {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-}
-
-.info.is-stuck .header-links {
-	opacity: 1;
-	pointer-events: auto;
 }
 
 /* Pull the clock away from Mode / Contact / Follow (not tied to :last-child so a trailing e.g. D trigger stays tight). */
@@ -911,7 +919,20 @@ body.home main.info {
 
 .work-samples,
 .photo-samples {
-	margin-top: 120px;
+	margin-top: 0;
+}
+
+/* First screen: About sits at the bottom of the viewport; projects start below. CSS-only — no JS flash. */
+.about-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	gap: var(--gap-section);
+	box-sizing: border-box;
+	/* 100svh minus sticky info bar (~5.5rem), section top pad, and bottom inset (~6rem). */
+	min-height: calc(100svh - 5.5rem - var(--gap-section) - 6rem);
+	/* Space between About and projects (was on the intro). */
+	margin-bottom: 12rem;
 }
 
 .experience,
@@ -934,16 +955,16 @@ body.home main.info {
 	font-size: 24px;
 	line-height: 32px;
 	color: var(--opacity-90);
-	margin-bottom: 12rem;
+	margin-bottom: 0;
 }
 
-.work-intro p,
-.photo-intro p {
+.work-intro :is(p, h1, h2),
+.photo-intro :is(p, h1, h2) {
 	margin-bottom: 32px;
 }
 
-.work-intro p:last-child,
-.photo-intro p:last-child {
+.work-intro :is(p, h1, h2):last-child,
+.photo-intro :is(p, h1, h2):last-child {
 	margin-bottom: 0;
 }
 
@@ -1340,6 +1361,20 @@ html.gallery-lightbox-open body {
 	background: transparent;
 	cursor: pointer;
 	z-index: 1;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-tap-highlight-color: transparent;
+	outline: none;
+	box-shadow: none;
+	touch-action: manipulation;
+}
+
+.gallery-lightbox-hit:focus,
+.gallery-lightbox-hit:focus-visible,
+.gallery-lightbox-hit:active {
+	outline: none;
+	box-shadow: none;
+	background: transparent;
 }
 
 .gallery-lightbox-hit--prev {
@@ -1409,6 +1444,12 @@ html.gallery-lightbox-open body {
 	.gallery-lightbox {
 		--gallery-lightbox-label-size: 12px;
 		--gallery-lightbox-label-line: 20px;
+	}
+
+	.gallery-lightbox-meta .work-caption,
+	.gallery-lightbox-meta .photo-caption,
+	.gallery-lightbox-count {
+		gap: 2px;
 	}
 }
 
@@ -1649,7 +1690,7 @@ html.gallery-lightbox-open body {
 
 /* Wide desktop: full-bleed under URL row, filter under nav, dropdown flush to bar */
 @media only screen and (min-width: 1081px) {
-	.page-content .info {
+	.page>header.info {
 		z-index: 510;
 	}
 
@@ -1659,13 +1700,14 @@ html.gallery-lightbox-open body {
 		max-width: none;
 		margin-left: calc(-1 * var(--padding-x));
 		margin-right: calc(-1 * var(--padding-x));
-		padding: 16px var(--padding-x) 18px;
+		/* Keep top padding = resting so type doesn’t bump when the bar snaps under the URL row. */
+		padding: calc(var(--gap-section) - 2px) var(--padding-x) 18px;
 		z-index: 490;
 		border-bottom: none;
 	}
 
 	.work-content .filter-bar.is-stuck {
-		padding-top: 12px;
+		padding-top: calc((var(--gap-section) - 2px) - 4px);
 	}
 
 	.filter-bar.is-stuck::after {
@@ -2600,6 +2642,9 @@ footer .caption {
 		grid-template-columns: minmax(0, 630px) minmax(0, 630px);
 		font-size: 18px;
 		line-height: 26px;
+	}
+
+	.about-content {
 		margin-bottom: 11rem;
 	}
 
@@ -2681,7 +2726,13 @@ footer .caption {
 
 	.work-samples,
 	.photo-samples {
-		margin-top: 80px;
+		margin-top: 160px;
+	}
+
+	.about-content {
+		min-height: 0;
+		justify-content: flex-start;
+		margin-bottom: 11rem;
 	}
 
 	.work-grid,
@@ -2727,12 +2778,14 @@ footer .caption {
 	.profile>.section-label,
 	.llms>.section-label,
 	.work-samples>.section-label,
-	.photo-samples>.section-label {
+	.photo-samples>.section-label,
+	.about-content>.section-label {
 		padding-bottom: 0rem;
 	}
 
 	.work-samples>.section-label:first-child,
-	.photo-samples>.section-label:first-child {
+	.photo-samples>.section-label:first-child,
+	.about-content>.section-label:first-child {
 		padding-bottom: 0;
 	}
 
@@ -2745,6 +2798,11 @@ footer .caption {
 		padding-top: 48px;
 	}
 
+	/* Collapse info-bar top pad only while sticky is engaged (mobile). */
+	.page>header.info.is-stuck {
+		padding-top: 0;
+	}
+
 	.logo {
 		width: 80px;
 	}
@@ -2754,10 +2812,6 @@ footer .caption {
 	}
 
 	/* INFO */
-	.info {
-		margin-top: clamp(88px, 10vh, 200px);
-	}
-
 	body.home main.info {
 		margin-top: clamp(40px, 7vh, 120px);
 	}
@@ -2789,7 +2843,7 @@ footer .caption {
 
 	.work-samples,
 	.photo-samples {
-		margin-top: 3.25rem;
+		margin-top: 6.5rem;
 		padding-left: var(--padding-x);
 		padding-right: var(--padding-x);
 	}
@@ -3117,10 +3171,6 @@ footer .caption {
 	}
 
 	/* INFO */
-	.info {
-		margin-top: 80px;
-	}
-
 	body.home main.info {
 		margin-top: 48px;
 	}
@@ -3138,8 +3188,8 @@ footer .caption {
 		line-height: 22px;
 	}
 
-	.work-intro p,
-	.photo-intro p {
+	.work-intro :is(p, h1, h2),
+	.photo-intro :is(p, h1, h2) {
 		margin-bottom: 16px;
 	}
 
