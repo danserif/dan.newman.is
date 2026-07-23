@@ -1251,7 +1251,12 @@ body.home main.info {
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
-	transition: opacity 0.3s ease, visibility 0.3s ease;
+	transition:
+		opacity 0.3s ease,
+		visibility 0.3s ease,
+		background-color 0.35s ease,
+		color 0.35s ease;
+	color: var(--color-text);
 	/* Overlay chrome: 11px default; 12px only above 2660px */
 	--gallery-lightbox-label-size: 11px;
 	--gallery-lightbox-label-line: 1.5;
@@ -1380,6 +1385,19 @@ html.gallery-lightbox-open body {
 .light-mode .gallery-lightbox-image {
 	background-color: #f5f5f5;
 	border-color: #dddddd;
+}
+
+.gallery-lightbox.is-ambient .gallery-lightbox-image {
+	background-color: transparent;
+	border-color: var(--color-border);
+}
+
+.gallery-lightbox.is-ambient.gallery-lightbox--tone-light .gallery-lightbox-image {
+	background-color: rgba(0, 0, 0, 0.03);
+}
+
+.gallery-lightbox.is-ambient.gallery-lightbox--tone-dark .gallery-lightbox-image {
+	background-color: rgba(255, 255, 255, 0.03);
 }
 
 .gallery-lightbox-hit {

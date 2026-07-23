@@ -16,6 +16,130 @@ document.addEventListener("DOMContentLoaded", function () {
 	/** Shared fullscreen lightbox (one per page). */
 	var galleryLightboxApi = null;
 
+	/** Average image colours keyed by src (photos lightbox ambient bg). */
+	var lightboxColorCache = Object.create(null);
+
+	function clampByte(n) {
+		return Math.max(0, Math.min(255, Math.round(n)));
+	}
+
+	function rgbToHex(r, g, b) {
+		return (
+			"#" +
+			((1 << 24) + (clampByte(r) << 16) + (clampByte(g) << 8) + clampByte(b))
+				.toString(16)
+				.slice(1)
+		);
+	}
+
+	/** Multiply RGB toward black (0.1 = 10% darker). Preset bgColor skips this. */
+	function darkenCssColor(value, amount) {
+		var rgb = parseCssColor(value);
+		if (!rgb) return value;
+		var f = 1 - amount;
+		return rgbToHex(rgb.r * f, rgb.g * f, rgb.b * f);
+	}
+
+	function parseCssColor(value) {
+		if (!value || typeof value !== "string") return null;
+		var s = value.trim();
+		var hex = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(s);
+		if (hex) {
+			var h = hex[1];
+			if (h.length === 3) {
+				return {
+					r: parseInt(h.charAt(0) + h.charAt(0), 16),
+					g: parseInt(h.charAt(1) + h.charAt(1), 16),
+					b: parseInt(h.charAt(2) + h.charAt(2), 16),
+				};
+			}
+			return {
+				r: parseInt(h.slice(0, 2), 16),
+				g: parseInt(h.slice(2, 4), 16),
+				b: parseInt(h.slice(4, 6), 16),
+			};
+		}
+		var rgb = /^rgba?\(\s*([0-9.]+)\s*,\s*([0-9.]+)\s*,\s*([0-9.]+)/i.exec(s);
+		if (rgb) {
+			return {
+				r: clampByte(Number(rgb[1])),
+				g: clampByte(Number(rgb[2])),
+				b: clampByte(Number(rgb[3])),
+			};
+		}
+		return null;
+	}
+
+	function relativeLuminance(r, g, b) {
+		function channel(c) {
+			var s = c / 255;
+			return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+		}
+		return 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
+	}
+
+	function extractAverageColor(imageEl) {
+		if (!imageEl || !imageEl.naturalWidth) return null;
+		// Modal colour of a thin border ring. Full-frame mode picks large centre
+		// artwork; a border mean picks artwork cropped to one edge. Edge + mode
+		// keeps the solid surround when it still owns most of the perimeter.
+		var size = 48;
+		var inset = 3;
+		var step = 16;
+		var canvas = document.createElement("canvas");
+		canvas.width = size;
+		canvas.height = size;
+		var ctx = canvas.getContext("2d", { willReadFrequently: true });
+		if (!ctx) return null;
+		try {
+			ctx.drawImage(imageEl, 0, 0, size, size);
+			var data = ctx.getImageData(0, 0, size, size).data;
+			var buckets = Object.create(null);
+			var bestKey = null;
+			var bestCount = 0;
+
+			function addPixel(x, y, weight) {
+				var i = (y * size + x) * 4;
+				if (data[i + 3] < 128) return;
+				var rq = Math.min(255, Math.floor(data[i] / step) * step);
+				var gq = Math.min(255, Math.floor(data[i + 1] / step) * step);
+				var bq = Math.min(255, Math.floor(data[i + 2] / step) * step);
+				var key = rq + "," + gq + "," + bq;
+				var bucket = buckets[key];
+				if (!bucket) {
+					bucket = buckets[key] = { r: 0, g: 0, b: 0, n: 0 };
+				}
+				var w = weight || 1;
+				bucket.r += data[i] * w;
+				bucket.g += data[i + 1] * w;
+				bucket.b += data[i + 2] * w;
+				bucket.n += w;
+				if (bucket.n > bestCount) {
+					bestCount = bucket.n;
+					bestKey = key;
+				}
+			}
+
+			for (var y = 0; y < size; y++) {
+				for (var x = 0; x < size; x++) {
+					var onEdge = x < inset || y < inset || x >= size - inset || y >= size - inset;
+					if (!onEdge) continue;
+					// Corners are almost always the solid field — weight them up
+					// so one cropped edge of artwork can't outvote the surround.
+					var inCorner =
+						(x < inset || x >= size - inset) && (y < inset || y >= size - inset);
+					addPixel(x, y, inCorner ? 3 : 1);
+				}
+			}
+
+			if (!bestKey || !bestCount) return null;
+			var winner = buckets[bestKey];
+			return rgbToHex(winner.r / winner.n, winner.g / winner.n, winner.b / winner.n);
+		} catch (err) {
+			return null;
+		}
+	}
+
 	function getThemedSrc(basePath, filename, shared) {
 		const isLight = document.documentElement.classList.contains("light-mode");
 		if (isLight && !shared && !lightImageMissing.has(basePath + filename)) {
@@ -1696,7 +1820,105 @@ document.addEventListener("DOMContentLoaded", function () {
 			sectionType: "graphics",
 			imageBasePath: "/filing/v5/work/",
 			isThemed: true,
+			matchImageBackground: false,
+			ambientToken: 0,
 		};
+
+		var ambientColorKeys = [
+			"--color-bg",
+			"--color-text",
+			"--color-border",
+			"--opacity-15",
+			"--opacity-25",
+			"--opacity-50",
+			"--opacity-75",
+			"--opacity-90",
+		];
+
+		function clearAmbientBackground() {
+			root.classList.remove(
+				"is-ambient",
+				"gallery-lightbox--tone-dark",
+				"gallery-lightbox--tone-light",
+			);
+			for (var i = 0; i < ambientColorKeys.length; i++) {
+				root.style.removeProperty(ambientColorKeys[i]);
+			}
+		}
+
+		function applyAmbientBackground(colorValue) {
+			var rgb = parseCssColor(colorValue);
+			if (!rgb) {
+				clearAmbientBackground();
+				return;
+			}
+			var hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+			var isDark = relativeLuminance(rgb.r, rgb.g, rgb.b) < 0.45;
+			var textRgb = isDark ? "255, 255, 255" : "0, 0, 0";
+
+			root.style.setProperty("--color-bg", hex);
+			root.style.setProperty("--color-text", isDark ? "#ffffff" : "#000000");
+			// Soft frame: ambient bg mixed toward text so the border is a tint, not grey
+			var borderMix = isDark ? 0.14 : 0.12;
+			var borderRgb = {
+				r: rgb.r + (isDark ? 255 - rgb.r : 0 - rgb.r) * borderMix,
+				g: rgb.g + (isDark ? 255 - rgb.g : 0 - rgb.g) * borderMix,
+				b: rgb.b + (isDark ? 255 - rgb.b : 0 - rgb.b) * borderMix,
+			};
+			root.style.setProperty("--color-border", rgbToHex(borderRgb.r, borderRgb.g, borderRgb.b));
+			root.style.setProperty("--opacity-15", "rgba(" + textRgb + ", 0.15)");
+			root.style.setProperty("--opacity-25", "rgba(" + textRgb + ", 0.25)");
+			root.style.setProperty("--opacity-50", "rgba(" + textRgb + ", 0.5)");
+			root.style.setProperty("--opacity-75", "rgba(" + textRgb + ", 0.75)");
+			root.style.setProperty("--opacity-90", "rgba(" + textRgb + ", 0.9)");
+
+			root.classList.add("is-ambient");
+			root.classList.toggle("gallery-lightbox--tone-dark", isDark);
+			root.classList.toggle("gallery-lightbox--tone-light", !isDark);
+		}
+
+		function syncAmbientBackground(entry) {
+			state.ambientToken += 1;
+			var token = state.ambientToken;
+
+			if (!state.matchImageBackground || !entry) {
+				clearAmbientBackground();
+				return;
+			}
+
+			var preset = entry.bgColor || entry.lightboxBg || null;
+			if (preset) {
+				applyAmbientBackground(preset);
+				return;
+			}
+
+			var cacheKey = entrySrc(entry);
+			if (cacheKey && lightboxColorCache[cacheKey]) {
+				applyAmbientBackground(lightboxColorCache[cacheKey]);
+				return;
+			}
+
+			function sampleFromImage() {
+				if (!state.open || token !== state.ambientToken) return;
+				var color = extractAverageColor(img);
+				if (!color) return;
+				var adjusted = darkenCssColor(color, 0.1);
+				var key = img.currentSrc || img.src || cacheKey;
+				if (key) lightboxColorCache[key] = adjusted;
+				if (cacheKey) lightboxColorCache[cacheKey] = adjusted;
+				applyAmbientBackground(adjusted);
+			}
+
+			if (typeof img.decode === "function") {
+				img.decode().then(sampleFromImage).catch(function () {
+					if (img.complete && img.naturalWidth) sampleFromImage();
+				});
+			} else if (img.complete && img.naturalWidth) {
+				sampleFromImage();
+			} else {
+				img.addEventListener("load", sampleFromImage, { once: true });
+			}
+		}
 
 		function entrySrc(entry) {
 			if (!entry || !entry.filename) return "";
@@ -1807,6 +2029,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				}
 			};
 
+			syncAmbientBackground(entry);
+
 			renderMeta(entry);
 
 			countEl.replaceChildren();
@@ -1909,6 +2133,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			state.sectionType = opts.sectionType || "graphics";
 			state.imageBasePath = opts.imageBasePath || "/filing/v5/work/";
 			state.isThemed = opts.isThemed !== false;
+			state.matchImageBackground = opts.matchImageBackground !== false;
 			state.statusLabel = opts.statusLabel || "Image";
 			state.onTitleNavigate =
 				typeof opts.onTitleNavigate === "function" ? opts.onTitleNavigate : null;
@@ -1930,6 +2155,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		function close() {
 			if (!state.open) return;
 			state.open = false;
+			state.ambientToken += 1;
+			clearAmbientBackground();
 			root.classList.remove("is-open");
 			root.setAttribute("aria-hidden", "true");
 			root.setAttribute("hidden", "");
@@ -1943,6 +2170,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			var entry = state.entries[state.index];
 			if (!entry) return;
 			img.src = entrySrc(entry);
+			syncAmbientBackground(entry);
 		}
 
 		function step(delta) {

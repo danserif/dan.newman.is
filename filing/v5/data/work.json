@@ -10,6 +10,7 @@
       "filename": "k-mobile-montage.png",
       "number": "K-01",
       "description": "Mobile (Montage)",
+      "bgColor": "#1E1E1E",
       "columns": 3,
       "width": 1628,
       "height": 1160,
