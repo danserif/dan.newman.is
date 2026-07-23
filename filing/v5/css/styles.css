@@ -1254,8 +1254,8 @@ body.home main.info {
 	transition:
 		opacity 0.3s ease,
 		visibility 0.3s ease,
-		background-color 0.35s ease,
-		color 0.35s ease;
+		background-color 0.45s ease-out,
+		color 0.45s ease-out;
 	color: var(--color-text);
 	/* Overlay chrome: 11px default; 12px only above 2660px */
 	--gallery-lightbox-label-size: 11px;
@@ -2666,6 +2666,15 @@ footer .caption {
 
 #clock-svg .clock-cap {
 	fill: var(--color-clock-accent);
+}
+
+/* /a/ pages: second hand + cap use muted gray (home keeps accent). */
+body.page:not(.home) {
+	--color-clock-accent: #666666;
+}
+
+:root.light-mode body.page:not(.home) {
+	--color-clock-accent: #cccccc;
 }
 
 /* ==========================================================================

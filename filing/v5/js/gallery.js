@@ -140,6 +140,45 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
+	function cacheAmbientColor(adjusted, keys) {
+		if (!adjusted || !keys) return;
+		for (var i = 0; i < keys.length; i++) {
+			if (keys[i]) lightboxColorCache[keys[i]] = adjusted;
+		}
+	}
+
+	function warmLightboxColorCache(img) {
+		if (!img || !img.complete || !img.naturalWidth) return;
+		var color = extractAverageColor(img);
+		if (!color) return;
+		var adjusted = darkenCssColor(color, 0.1);
+		var keys = [img.currentSrc || img.src];
+		if (img.dataset.basePath && img.dataset.filename) {
+			var shared = img.dataset.shared === "true";
+			keys.push(getThemedSrc(img.dataset.basePath, img.dataset.filename, shared));
+			keys.push(img.dataset.basePath + "dark/" + img.dataset.filename);
+			keys.push(img.dataset.basePath + img.dataset.filename);
+		} else if (img.dataset.filename && img.dataset.src) {
+			keys.push(img.dataset.src);
+		} else if (img.dataset.filename) {
+			/* Photos: src is already the cache key once loaded */
+		}
+		cacheAmbientColor(adjusted, keys);
+	}
+
+	function findGridPreviewImage(filename) {
+		if (!filename) return null;
+		var nodes = document.querySelectorAll(
+			"img.work-image[data-filename], img.photo-image[data-filename]",
+		);
+		for (var i = 0; i < nodes.length; i++) {
+			var candidate = nodes[i];
+			if (candidate.dataset.filename !== filename) continue;
+			if (candidate.complete && candidate.naturalWidth) return candidate;
+		}
+		return null;
+	}
+
 	function getThemedSrc(basePath, filename, shared) {
 		const isLight = document.documentElement.classList.contains("light-mode");
 		if (isLight && !shared && !lightImageMissing.has(basePath + filename)) {
@@ -180,6 +219,17 @@ document.addEventListener("DOMContentLoaded", function () {
 							img.src = img.dataset.src;
 							img.removeAttribute("data-src");
 							observer.unobserve(img);
+							if (img.complete && img.naturalWidth) {
+								warmLightboxColorCache(img);
+							} else {
+								img.addEventListener(
+									"load",
+									function () {
+										warmLightboxColorCache(img);
+									},
+									{ once: true },
+								);
+							}
 						}
 					}
 				});
@@ -1898,15 +1948,23 @@ document.addEventListener("DOMContentLoaded", function () {
 				return;
 			}
 
+			function applySampled(color, extraKeys) {
+				if (!color) return false;
+				var adjusted = darkenCssColor(color, 0.1);
+				cacheAmbientColor(adjusted, [cacheKey, img.currentSrc || img.src].concat(extraKeys || []));
+				applyAmbientBackground(adjusted);
+				return true;
+			}
+
+			// Prefer the already-decoded grid thumb so open/nav doesn't wait on lightbox decode.
+			var preview = findGridPreviewImage(entry.filename);
+			if (preview && applySampled(extractAverageColor(preview), [preview.currentSrc || preview.src])) {
+				return;
+			}
+
 			function sampleFromImage() {
 				if (!state.open || token !== state.ambientToken) return;
-				var color = extractAverageColor(img);
-				if (!color) return;
-				var adjusted = darkenCssColor(color, 0.1);
-				var key = img.currentSrc || img.src || cacheKey;
-				if (key) lightboxColorCache[key] = adjusted;
-				if (cacheKey) lightboxColorCache[cacheKey] = adjusted;
-				applyAmbientBackground(adjusted);
+				applySampled(extractAverageColor(img));
 			}
 
 			if (typeof img.decode === "function") {
