@@ -344,6 +344,7 @@
       "filename": "ll-tote-bag.jpg",
       "number": "LL-03",
       "description": "Tote Bag (B-01)",
+      "bgColor": "#B9B9B9",
       "columns": 2,
       "width": 1072,
       "height": 1256,
