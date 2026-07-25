@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>D@N5C1I (APP)</title>
+
+	<meta name="description" content="Turn any image into an animated ASCII canvas." />
+	<meta name="author" content="Dan Newman" />
+	<meta name="copyright" content="Copyright Dan Newman, 2026" />
+
+	<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "WebApplication",
+				"name": "Danscii",
+				"url": "https://dan.newman.is/building/danscii/",
+				"author": { "@type": "Person", "name": "Dan Newman" }
+			}
+		</script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+	<link rel="canonical" href="https://dan.newman.is/building/danscii/" />
+
+	<script>
+		(function () {
+			try {
+				var savedMode = localStorage.getItem("colorMode");
+				if (savedMode === "light") document.documentElement.classList.add("light-mode");
+			} catch (e) { }
+		})();
+	</script>
+
+	<link rel="stylesheet" href="/filing/v5/css/styles.css" />
+	<link rel="stylesheet" href="/building/danscii/danscii.css" />
+	<link rel="preload" href="/filing/v5/fonts/berkeley-mono-regular.woff2" as="font" type="font/woff2" crossorigin />
+	<link rel="preload" href="/filing/v5/fonts/die-grotesk-a-regular.woff2" as="font" type="font/woff2" crossorigin />
+
+	<link rel="icon" type="image/svg+xml" href="/filing/v5/icons/icon.svg">
+	<link rel="icon" type="image/png" href="/filing/v5/icons/icon.png" sizes="1024x1024" />
+	<link rel="icon" type="image/png" href="/filing/v5/icons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="/filing/v5/icons/favicon-32x32.png" sizes="32x32" />
+	<link rel="apple-touch-icon" href="/filing/v5/icons/apple-touch-icon.png" sizes="180x180" />
+	<link rel="mask-icon" href="/filing/v5/icons/safari-pinned-tab.svg" color="#000000" />
+
+	<meta name="theme-color" content="#000000" />
+
+	<meta property="og:title" content="D@N5C1I (APP)" />
+	<meta property="og:description" content="Turn any image into an animated ASCII canvas." />
+	<meta property="og:url" content="https://dan.newman.is/building/danscii/" />
+	<meta property="og:image" content="https://dan.newman.is/filing/v5/images/opengraph-image-danscii.jpg" />
+	<meta property="og:site_name" content="dan.newman.is" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="D@N5C1I (APP)" />
+	<meta name="twitter:description" content="Turn any image into an animated ASCII canvas." />
+	<meta name="twitter:image" content="https://dan.newman.is/filing/v5/images/opengraph-image-danscii.jpg" />
+	<meta name="twitter:site" content="@danserif" />
+
+	<script src="https://cdn.usefathom.com/script.js" data-site="NJPLLGHN" defer></script>
+</head>
+
+<!-- \m/ Thanks for looking at the code. Press M: to switch modes, C: to check the time, and D: to see the letter D. \m/ -->
+
+<body class="page danscii-page" id="top">
+
+	<!-- HEADER -->
+	<header class="info">
+		<div class="row">
+			<span class="label"><span class="opacity-25">&gt; https://</span></span>
+			<span class=""><a href="/">dan.newman.is</a> <span class="opacity-50"><span class="opacity-15">/</span> building
+					<span class="opacity-15">/</span> danscii <span class="opacity-15">/</span></span></span>
+			<nav class="header-links desktop-only">
+				<ul>
+					<li><span class="opacity-25">Mode:</span>
+						<a href="#" class="mode-dark">Dark</a> <span class="opacity-25">/</span>
+						<a href="#" class="mode-light">Light</a>
+					</li>
+					<li><span class="opacity-25">Contact:</span>
+						<a href="mailto:dan@newman.is">Email</a>
+					</li>
+					<li><span class="opacity-25">Follow:</span>
+						<a href="https://linkedin.com/in/danserif" target="_blank">LinkedIn</a> <span class="opacity-25">/</span>
+						<a href="https://twitter.com/danserif" target="_blank">Twitter</a>
+					</li>
+					<li class="header-time"><span class="opacity-25">&#9719;</span>
+						<a href="#" id="nz-time-link"><span id="nz-time"></span></a> <span class="opacity-25" id="nz-tz"></span>
+					</li>
+					<li class="header-letter-d">
+						<button type="button" class="letter-d-overlay-trigger"> <span class="opacity-25">U+0044</span></button>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<div class="page-content">
+
+		<section class="danscii-app" id="danscii">
+			<div class="danscii-intro">
+				<h1><span class="opacity-15">$</span> <span id="danscii-title" class="danscii-title-glitch"
+						aria-label="D@N5C1I">D@N5C1I</span> <span class="opacity-25">(APP)</span></h1>
+				<p class="font-grotesk-a">Turn any image into an animated ASCII canvas.</p>
+				<p class="font-berkeley opacity-50">Upload your file <span class="opacity-25">(.png or .jpg)</span> and tweak
+					the settings, then download <span class="opacity-25">[danscii.zip]</span> for your own site.</p>
+			</div>
+
+			<!-- DANSCII LAB -->
+			<div class="danscii-lab">
+
+				<!-- PREVIEW -->
+				<div class="danscii-preview-col">
+					<div class="danscii-preview-wrap">
+						<div id="danscii-preview"></div>
+					</div>
+				</div>
+
+				<!-- CONTROLS -->
+				<form class="danscii-controls font-berkeley" id="danscii-controls" onsubmit="return false;">
+					<div class="danscii-controls-main">
+						<h3 class="section-label">Controls <span class="opacity-15">/</span> Settings</h3>
+						<div class="danscii-field">
+							<label for="danscii-file">File <span class="opacity-50">(.png <span class="opacity-25">/</span> .jpg, max
+									5&nbsp;MB)</span></label>
+							<input type="file" id="danscii-file" name="file" accept=".png,.jpg,.jpeg,image/png,image/jpeg" />
+							<p class="danscii-file-error" id="danscii-file-error" hidden></p>
+						</div>
+						<div class="danscii-field">
+							<span class="danscii-field-label" id="charactersLabel">Characters</span>
+							<div class="danscii-select danscii-characters-select" id="charactersSelect">
+								<div class="danscii-select-trigger" id="charactersSelectTrigger">
+									<span class="danscii-select-value" id="charactersSelectValue">
+										<span class="danscii-option-label">Blocks</span>
+										<span class="danscii-option-chars opacity-25"> .:░▒▓█</span>
+									</span>
+									<input type="text" id="charactersCustom" name="charactersCustom" class="danscii-characters-custom"
+										spellcheck="false" placeholder="Type your own characters…" hidden aria-label="Custom characters" />
+									<button type="button" class="danscii-color-caret" id="charactersSelectCaret" aria-haspopup="listbox"
+										aria-expanded="false" aria-labelledby="charactersLabel">
+										<span class="danscii-select-caret" aria-hidden="true">▾</span>
+									</button>
+								</div>
+								<ul class="danscii-select-list" id="charactersSelectList" role="listbox" hidden
+									aria-labelledby="charactersLabel">
+									<li role="option" data-value="more" aria-selected="false">
+										<span class="danscii-option-label">More</span>
+										<span class="danscii-option-chars opacity-25">
+											.'`^",:;Il!i~+?]{|/trnuvczXYUJCLQ0mwqdbkho*#MW&amp;8%B@$</span>
+									</li>
+									<li role="option" data-value="less" aria-selected="false">
+										<span class="danscii-option-label">Less</span>
+										<span class="danscii-option-chars opacity-25"> ·•+=#%@</span>
+									</li>
+									<li role="option" data-value="dense" aria-selected="false">
+										<span class="danscii-option-label">Geometric</span>
+										<span class="danscii-option-chars opacity-25"> .·°∙•◦▪▫▮■◆●◉</span>
+									</li>
+									<li role="option" data-value="numbers" aria-selected="false">
+										<span class="danscii-option-label">Numbers</span>
+										<span class="danscii-option-chars opacity-25"> .,:;!~-+1234567890</span>
+									</li>
+									<li role="option" data-value="letters" aria-selected="false">
+										<span class="danscii-option-label">Letters</span>
+										<span class="danscii-option-chars opacity-25"> .,:;!~-+abcdefghijklmnopqrstuvwxyz</span>
+									</li>
+									<li role="option" data-value="blocks" class="is-active" aria-selected="true">
+										<span class="danscii-option-label">Blocks</span>
+										<span class="danscii-option-chars opacity-25"> .:░▒▓█</span>
+									</li>
+									<li class="danscii-select-divider" role="presentation"></li>
+									<li role="option" data-value="custom" aria-selected="false">
+										<span class="danscii-option-label">Custom</span>
+									</li>
+								</ul>
+								<select id="charactersPreset" name="charactersPreset" class="danscii-select-native" tabindex="-1"
+									aria-hidden="true">
+									<option value="more">More</option>
+									<option value="less">Less</option>
+									<option value="dense">Geometric</option>
+									<option value="numbers">Numbers</option>
+									<option value="letters">Letters</option>
+									<option value="blocks" selected>Blocks</option>
+									<option value="custom">Custom</option>
+								</select>
+							</div>
+							<p class="danscii-field-note opacity-25" id="charactersCustomNote" hidden>Add more glyphs for greater
+								detail.</p>
+						</div>
+						<div class="danscii-sliders-row">
+							<div class="danscii-field">
+								<label for="density">Density <span class="opacity-50" id="density-val">120</span></label>
+								<input type="range" id="density" name="density" min="40" max="320" step="10" value="120" />
+							</div>
+							<div class="danscii-field">
+								<label for="threshold">Threshold <span class="opacity-50" id="threshold-val">0</span></label>
+								<input type="range" id="threshold" name="threshold" min="0" max="70" step="5" value="0" />
+							</div>
+						</div>
+
+						<div class="danscii-field">
+							<div class="danscii-colors" role="group" aria-label="Glyph, hover, and background colours">
+								<div class="danscii-color-row">
+									<span class="danscii-field-label" id="colorFgLabel">Glyphs Colour</span>
+									<div class="danscii-select danscii-color-select" id="colorFgSelect">
+										<div class="danscii-select-trigger" id="colorFgTrigger">
+											<span class="danscii-color-chip" id="colorFgChip" aria-hidden="true"></span>
+											<span class="danscii-select-value" id="colorFgValue">#FFFFFF</span>
+											<input type="text" id="colorFgCustom" name="colorFgCustom" class="danscii-color-custom"
+												spellcheck="false" maxlength="7" placeholder="#RRGGBB" hidden
+												aria-label="Custom glyphs colour" />
+											<button type="button" class="danscii-color-caret" id="colorFgCaret" aria-haspopup="listbox"
+												aria-expanded="false" aria-labelledby="colorFgLabel">
+												<span class="danscii-select-caret" aria-hidden="true">▾</span>
+											</button>
+										</div>
+										<ul class="danscii-select-list" id="colorFgList" role="listbox" hidden
+											aria-labelledby="colorFgLabel">
+											<li role="option" data-value="#000000" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#000000"></span>Black
+											</li>
+											<li role="option" data-value="#ffffff" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ffffff"></span>White
+											</li>
+											<li class="danscii-select-group" role="presentation">Primary</li>
+											<li role="option" data-value="#ff0000" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ff0000"></span>Red
+											</li>
+											<li role="option" data-value="#0044ff" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#0044ff"></span>Blue
+											</li>
+											<li role="option" data-value="#00aa00" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#00aa00"></span>Green
+											</li>
+											<li role="option" data-value="#ffdd00" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ffdd00"></span>Yellow
+											</li>
+											<li role="option" data-value="#ff7700" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ff7700"></span>Orange
+											</li>
+											<li role="option" data-value="#8800ff" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#8800ff"></span>Purple
+											</li>
+											<li role="option" data-value="#ff3d9a" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ff3d9a"></span>Pink
+											</li>
+											<li class="danscii-select-divider" role="presentation"></li>
+											<li role="option" data-value="custom" aria-selected="false">Custom</li>
+										</ul>
+										<input type="hidden" id="colorFg" name="colorFg" value="#ffffff" />
+									</div>
+								</div>
+
+								<div class="danscii-color-row">
+									<span class="danscii-field-label" id="colorHoverLabel">Hover Colour</span>
+									<div class="danscii-select danscii-color-select" id="colorHoverSelect">
+										<div class="danscii-select-trigger" id="colorHoverTrigger">
+											<span class="danscii-color-chip" id="colorHoverChip" aria-hidden="true"></span>
+											<span class="danscii-select-value" id="colorHoverValue">#FFDD00</span>
+											<input type="text" id="colorHoverCustom" name="colorHoverCustom" class="danscii-color-custom"
+												spellcheck="false" maxlength="7" placeholder="#RRGGBB" hidden
+												aria-label="Custom hover colour" />
+											<button type="button" class="danscii-color-caret" id="colorHoverCaret" aria-haspopup="listbox"
+												aria-expanded="false" aria-labelledby="colorHoverLabel">
+												<span class="danscii-select-caret" aria-hidden="true">▾</span>
+											</button>
+										</div>
+										<ul class="danscii-select-list" id="colorHoverList" role="listbox" hidden
+											aria-labelledby="colorHoverLabel">
+											<li role="option" data-value="#000000" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#000000"></span>Black
+											</li>
+											<li role="option" data-value="#ffffff" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ffffff"></span>White
+											</li>
+											<li class="danscii-select-group" role="presentation">Primary</li>
+											<li role="option" data-value="#ff0000" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ff0000"></span>Red
+											</li>
+											<li role="option" data-value="#0044ff" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#0044ff"></span>Blue
+											</li>
+											<li role="option" data-value="#00aa00" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#00aa00"></span>Green
+											</li>
+											<li role="option" data-value="#ffdd00" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ffdd00"></span>Yellow
+											</li>
+											<li role="option" data-value="#ff7700" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ff7700"></span>Orange
+											</li>
+											<li role="option" data-value="#8800ff" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#8800ff"></span>Purple
+											</li>
+											<li role="option" data-value="#ff3d9a" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ff3d9a"></span>Pink
+											</li>
+											<li class="danscii-select-divider" role="presentation"></li>
+											<li role="option" data-value="custom" aria-selected="false">Custom</li>
+										</ul>
+										<input type="hidden" id="colorHover" name="colorHover" value="#ffdd00" />
+									</div>
+								</div>
+
+								<div class="danscii-color-row">
+									<span class="danscii-field-label" id="colorBgLabel">Background Colour</span>
+									<div class="danscii-select danscii-color-select" id="colorBgSelect">
+										<div class="danscii-select-trigger" id="colorBgTrigger">
+											<span class="danscii-color-chip" id="colorBgChip" aria-hidden="true"></span>
+											<span class="danscii-select-value" id="colorBgValue">#000000</span>
+											<input type="text" id="colorBgCustom" name="colorBgCustom" class="danscii-color-custom"
+												spellcheck="false" maxlength="7" placeholder="#RRGGBB" hidden
+												aria-label="Custom background colour" />
+											<button type="button" class="danscii-color-caret" id="colorBgCaret" aria-haspopup="listbox"
+												aria-expanded="false" aria-labelledby="colorBgLabel">
+												<span class="danscii-select-caret" aria-hidden="true">▾</span>
+											</button>
+										</div>
+										<ul class="danscii-select-list" id="colorBgList" role="listbox" hidden
+											aria-labelledby="colorBgLabel">
+											<li role="option" data-value="#000000" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#000000"></span>Black
+											</li>
+											<li role="option" data-value="#ffffff" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ffffff"></span>White
+											</li>
+											<li class="danscii-select-group" role="presentation">Primary</li>
+											<li role="option" data-value="#ff0000" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ff0000"></span>Red
+											</li>
+											<li role="option" data-value="#0044ff" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#0044ff"></span>Blue
+											</li>
+											<li role="option" data-value="#00aa00" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#00aa00"></span>Green
+											</li>
+											<li role="option" data-value="#ffdd00" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ffdd00"></span>Yellow
+											</li>
+											<li role="option" data-value="#ff7700" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ff7700"></span>Orange
+											</li>
+											<li role="option" data-value="#8800ff" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#8800ff"></span>Purple
+											</li>
+											<li role="option" data-value="#ff3d9a" aria-selected="false">
+												<span class="danscii-color-chip" style="--chip:#ff3d9a"></span>Pink
+											</li>
+											<li class="danscii-select-divider" role="presentation"></li>
+											<li role="option" data-value="custom" aria-selected="false">Custom</li>
+										</ul>
+										<input type="hidden" id="colorBg" name="colorBg" value="#000000" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="danscii-hover-row">
+							<div class="danscii-field">
+								<span class="danscii-field-label">Hover trail</span>
+								<div class="danscii-toggle" role="group" aria-label="Hover trail">
+									<label class="danscii-toggle-option">
+										<input type="radio" name="persistHover" value="1" checked />
+										<span>Keep</span>
+									</label>
+									<label class="danscii-toggle-option">
+										<input type="radio" name="persistHover" value="0" />
+										<span>Fade</span>
+									</label>
+								</div>
+							</div>
+
+							<div class="danscii-field">
+								<span class="danscii-field-label">Hover size</span>
+								<div class="danscii-toggle" role="group" aria-label="Hover size">
+									<label class="danscii-toggle-option">
+										<input type="radio" name="hoverCells" value="2" />
+										<span>Small</span>
+									</label>
+									<label class="danscii-toggle-option">
+										<input type="radio" name="hoverCells" value="4" checked />
+										<span>Medium</span>
+									</label>
+									<label class="danscii-toggle-option">
+										<input type="radio" name="hoverCells" value="6" />
+										<span>Large</span>
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<hr class="divider danscii-actions-divider" />
+
+						<div class="danscii-actions">
+							<button type="button" class="danscii-btn danscii-btn-primary" id="danscii-download">Download
+								danscii.zip</button>
+							<button type="button" class="danscii-btn" id="danscii-export">Export .png</button>
+							<button type="button" class="danscii-btn-link opacity-25" id="danscii-reset">⌙ <span
+									class="underline">Reset settings</span></button>
+						</div>
+					</div>
+
+					<!-- DETAILS / CREDITS -->
+					<div class="danscii-meta">
+						<h3 class="section-label">Details <span class="opacity-15">/</span> Summary</h3>
+						<dl class="danscii-status font-berkeley" aria-live="polite"></dl>
+						<h3 class="section-label">Credits <span class="opacity-15">/</span> Instructions</h3>
+						<p class="danscii-hint opacity-50"><span class="font-berkeley opacity-75">D@N5C1I</span> was built by <a
+								href="https://dan.newman.is/" class="underline">Dan Newman</a> <span class="opacity-25">(me)</span>
+							using Cursor and Claude Code / Design.</p>
+						<p class="danscii-hint opacity-50">The download is a
+							folder <span class="opacity-25">[danscii.zip]</span> with your settings in a <span
+								class="opacity-25">[index.html]</span> file alongside the image
+							you chose. When you open the file on your computer, a temporary image chooser is required to preview your
+							ASCII. You can delete that section when adding the files to your site, and you’re free to customise <span
+								class="font-berkeley opacity-75">D@N5C1I</span> as needed.
+						</p>
+						<p class="danscii-hint opacity-50">If you use <span class="font-berkeley opacity-75">D@N5C1I</span>,
+							please credit me and link to <a href="https://dan.newman.is/building/danscii/"
+								class="underline">dan.newman.is/building/danscii</a> <span class="opacity-25">—</span> thanks!
+							<span class="opacity-25">\m/</span>
+						</p>
+					</div>
+
+				</form>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer>
+			<a href="/"><img class="logo" src="/filing/v5/assets/logo.svg" alt="DAN" width="110" height="82" /></a>
+			<p class="logo-caption">
+				<span class="opacity-15">&#8985;</span> <span class="opacity-25">/logo.svg</span>
+				<span class="opacity-15">(Braun &amp; Dieter Rams Homage)</span>
+			</p>
+			<p class="arrow"><a href="#top">&uarr;</a></p>
+			<p class="footer-meta">
+				<span class="opacity-25">E:</span> <a href="mailto:dan@newman.is"><span class="opacity-25">mailto:</span>
+					<span class="opacity-50">dan</span> <span class="opacity-25">[at]</span> <span
+						class="opacity-50">newman</span>
+					<span class="opacity-25">[dot]</span> <span class="opacity-50">is</span> <span
+						class="opacity-25">&rarr;</span></a> <br />
+				<span class="opacity-25">M:</span>
+				<a href="#" class="mode-dark">Dark</a> <span class="opacity-25">/</span>
+				<a href="#" class="mode-light">Light</a>&nbsp;&nbsp;&nbsp;<span class="opacity-25">V:</span> <span
+					class="opacity-50">5.0</span>
+				<span class="opacity-25">(WIP) /</span> <a href="/archiving/v4/" class="opacity-50">4.0</a>
+				<span class="opacity-25">(Archived)</span>
+			</p>
+			<p class="footer-credit">
+				<button type="button" class="letter-d-overlay-trigger">
+					Brought to you by the letter D <span class="opacity-25">(U+0044).</span>
+				</button><br />
+				<span class="opacity-25">Copyright &copy; 1982&mdash;2026.</span>
+			</p>
+		</footer>
+
+	</div>
+
+	<div class="letter-d-overlay" id="letter-d-overlay" aria-hidden="true"></div>
+
+	<script src="/filing/v5/js/danscii.js"></script>
+	<script src="/building/danscii/app.js"></script>
+	<script src="/filing/v5/js/main.js" defer></script>
+	<script src="/filing/v5/js/clock.js" defer></script>
+
+</body>
+
+</html>

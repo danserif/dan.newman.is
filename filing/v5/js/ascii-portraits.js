@@ -23,7 +23,7 @@
   const DEFAULT_RAMP =
     " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
   const GLYPH_POOL =
-    '@#%*+=-:.,;\'"^~<>[]{}()/\\|abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
+    '@#%*+=-:.,;\'"^~<>[]{}()/\\|abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789░▒▓█■▪▫'.split('');
 
   class AsciiPortrait {
     constructor(container, options = {}) {

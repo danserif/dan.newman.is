@@ -674,12 +674,6 @@ body.home main.info {
 	opacity: var(--link-hover-opacity);
 }
 
-/* Photo credit link: hover dims the whole anchor (incl. full stop inside the <a>). */
-.home .profile-text p.desktop-only a.opacity-25:hover {
-	opacity: 0.5;
-	color: var(--opacity-25);
-}
-
 .home .profile-text h1::after {
 	content: " ";
 }
@@ -848,6 +842,16 @@ body.home main.info {
 .page .opacity-90 {
 	color: var(--opacity-90);
 	opacity: 1;
+}
+
+/* Page opacity utils use color (opacity: 1); hover multiplies by --link-hover-opacity (= half). */
+.page a.opacity-15:hover,
+.page a.opacity-25:hover,
+.page a.opacity-35:hover,
+.page a.opacity-50:hover,
+.page a.opacity-75:hover,
+.page a.opacity-90:hover {
+	opacity: var(--link-hover-opacity);
 }
 
 .color-hex {
