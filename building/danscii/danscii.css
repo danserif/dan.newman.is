@@ -689,7 +689,7 @@
 
 @media only screen and (min-width: 2661px) {
 	.danscii-hint {
-		max-width: 80%;
+		max-width: 70%;
 	}
 }
 
@@ -715,7 +715,7 @@
 	}
 
 	.danscii-hint {
-		max-width: 80%;
+		max-width: 70%;
 	}
 
 	.danscii-intro p {
