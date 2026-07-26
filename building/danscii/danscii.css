@@ -193,10 +193,6 @@
 	cursor: pointer;
 }
 
-.danscii-color-select .danscii-select-trigger:hover {
-	opacity: 1;
-}
-
 .danscii-color-select .danscii-select-value,
 .danscii-field .danscii-color-select input[type="text"].danscii-color-custom {
 	flex: 1 1 7ch;
@@ -263,6 +259,61 @@
 	opacity: 0.75;
 }
 
+.danscii-settings-flow {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.75rem;
+	align-items: flex-start;
+}
+
+.danscii-settings-flow .danscii-characters-field {
+	flex: 1 1 14rem;
+	min-width: 0;
+	order: 1;
+}
+
+.danscii-settings-flow .danscii-ramp-field {
+	flex: 0 1 auto;
+	width: auto;
+	order: 2;
+}
+
+.danscii-settings-flow .danscii-glitch-field {
+	flex: 0 1 auto;
+	width: auto;
+	order: 8;
+}
+
+.danscii-settings-flow .danscii-row-break {
+	flex-basis: 100%;
+	width: 100%;
+	height: 0;
+	margin: 0;
+	order: 3;
+}
+
+.danscii-settings-flow .danscii-sliders-row {
+	flex: 1 1 100%;
+	order: 4;
+}
+
+.danscii-settings-flow .danscii-colors-field {
+	flex: 1 1 100%;
+	order: 5;
+}
+
+.danscii-settings-flow .danscii-hover-trail-field {
+	flex: 0 1 auto;
+	width: auto;
+	order: 6;
+}
+
+.danscii-settings-flow .danscii-hover-size-field {
+	flex: 0 1 auto;
+	width: auto;
+	order: 7;
+}
+
 .danscii-sliders-row {
 	display: flex;
 	flex-wrap: wrap;
@@ -275,23 +326,14 @@
 	min-width: 0;
 }
 
-.danscii-hover-row {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1rem 1.75rem;
-	align-items: flex-start;
-}
-
-.danscii-hover-row .danscii-field {
-	flex: 0 1 auto;
-	width: auto;
-}
-
 .danscii-toggle {
 	display: flex;
+	align-items: stretch;
 	gap: 0;
 	border: 1px solid var(--color-border);
 	width: fit-content;
+	min-height: 2.45rem;
+	box-sizing: border-box;
 }
 
 .danscii-toggle-option {
@@ -299,13 +341,17 @@
 	align-items: center;
 	gap: 0;
 	margin: 0;
-	padding: 0.45rem 0.75rem;
+	padding: 0.4rem 1.1rem;
+	box-sizing: border-box;
+	font: inherit;
+	line-height: 1.15;
 	opacity: 1;
 	text-transform: none;
 	letter-spacing: 0;
 	cursor: pointer;
 	border-right: 1px solid var(--color-border);
 	color: var(--opacity-50);
+	transition: opacity 0.2s ease;
 }
 
 .danscii-toggle-option:last-child {
@@ -321,6 +367,10 @@
 .danscii-toggle-option:has(input:checked) {
 	color: var(--color-text);
 	background: var(--opacity-15);
+}
+
+.danscii-toggle-option:hover {
+	opacity: 0.75;
 }
 
 .light-mode .danscii-toggle {
@@ -340,13 +390,24 @@
 	border-radius: 0;
 	color: var(--color-text);
 	font: inherit;
-	padding: 0.55rem 0.65rem;
+	padding: 0.4rem 0.65rem;
+}
+
+/* Opacity on file inputs shifts the filename text in WebKit — dim via color instead.
+   Border mix matches other controls’ opacity: 0.75 hover (border × 75% over page bg). */
+.danscii-field input[type="file"] {
+	transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.danscii-field input[type="file"]:hover {
+	color: var(--opacity-25);
+	border-color: color-mix(in srgb, var(--color-border) 75%, var(--color-bg));
 }
 
 /* Match file control height (outer pad + choose-file button + borders) */
 .danscii-field input[type="file"],
 .danscii-select-trigger {
-	min-height: 2.75rem;
+	min-height: 2.45rem;
 }
 
 /* Custom select — closed state matches text/file inputs; open list matches site filter menus */
@@ -363,7 +424,7 @@
 	width: 100%;
 	box-sizing: border-box;
 	margin: 0;
-	padding: 0.55rem 0.65rem;
+	padding: 0.4rem 0.65rem;
 	background: transparent;
 	border: 1px solid var(--color-border);
 	border-radius: 0;
@@ -485,10 +546,6 @@
 	overflow: hidden;
 }
 
-.danscii-characters-select .danscii-select-trigger:hover {
-	opacity: 1;
-}
-
 .danscii-characters-select .danscii-select-value,
 .danscii-field .danscii-characters-select input[type="text"].danscii-characters-custom {
 	flex: 1 1 auto;
@@ -548,18 +605,20 @@
 	-webkit-appearance: none;
 	appearance: none;
 	margin: 0 1.25rem 0 0;
-	padding: 0.35rem 0.65rem;
+	padding: 0.25rem 0.65rem;
 	border: 1px solid var(--color-border);
 	border-radius: 0;
 	background: transparent;
 	color: var(--color-text);
 	font: inherit;
 	cursor: pointer;
+	transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.danscii-field input[type="file"]::file-selector-button:hover,
-.danscii-field input[type="file"]::-webkit-file-upload-button:hover {
-	opacity: 0.7;
+.danscii-field input[type="file"]:hover::file-selector-button,
+.danscii-field input[type="file"]:hover::-webkit-file-upload-button {
+	color: var(--opacity-75);
+	border-color: color-mix(in srgb, var(--color-border) 75%, var(--color-bg));
 }
 
 .light-mode .danscii-field input[type="text"],
@@ -575,6 +634,12 @@
 .light-mode .danscii-field input[type="file"]::file-selector-button,
 .light-mode .danscii-field input[type="file"]::-webkit-file-upload-button {
 	border-color: #ddd;
+}
+
+.light-mode .danscii-field input[type="file"]:hover,
+.light-mode .danscii-field input[type="file"]:hover::file-selector-button,
+.light-mode .danscii-field input[type="file"]:hover::-webkit-file-upload-button {
+	border-color: color-mix(in srgb, #ddd 75%, var(--color-bg));
 }
 
 /* Range: thin track + square handle */
@@ -683,7 +748,7 @@
 
 .danscii-hint {
 	margin: 0;
-	font-size: 11px;
+	font-size: 12px;
 	line-height: 1.65;
 }
 
@@ -752,6 +817,7 @@
 @media only screen and (max-width: 640px) {
 	.danscii-hint {
 		max-width: none;
+		font-size: 11px;
 	}
 
 	.danscii-intro p {
@@ -762,5 +828,34 @@
 	.danscii-intro p+p {
 		font-size: 11px;
 		line-height: 17px;
+	}
+
+	/* Characters full width; Ramp + Glitch share the next row */
+	.danscii-settings-flow .danscii-characters-field {
+		flex: 1 1 100%;
+	}
+
+	.danscii-settings-flow .danscii-glitch-field {
+		order: 3;
+	}
+
+	.danscii-settings-flow .danscii-row-break {
+		order: 4;
+	}
+
+	.danscii-settings-flow .danscii-sliders-row {
+		order: 5;
+	}
+
+	.danscii-settings-flow .danscii-colors-field {
+		order: 6;
+	}
+
+	.danscii-settings-flow .danscii-hover-trail-field {
+		order: 7;
+	}
+
+	.danscii-settings-flow .danscii-hover-size-field {
+		order: 8;
 	}
 }

@@ -1,18 +1,23 @@
 (function () {
 	var DEFAULT_SRC = "/filing/v5/images/dan-newman.jpg";
 	var CHAR_PRESETS = {
-		more: " .'`^\",:;Il!i~+?]{|/trnuvczXYUJCLQ0mwqdbkho*#MW&8%B@$",
-		less: " ·•+=#%@",
+		more: " .'`^\",:;Il!i~+?]{|/trnuvczXYUJCLQ0mwqdbkho*#MW&8%B@$-",
+		less: " ·•+=#%@-",
+		dense: " .·°∙•◦▪▫▮■◆●◉·",
+		arrows: " .·→←↑↓↔↕↗↘↖↙▶◀▲▼<>-",
+		binary: " .01",
 		numbers: " .,:;!~-+1234567890",
 		letters: " .,:;!~-+abcdefghijklmnopqrstuvwxyz",
-		dense: " .·°∙•◦▪▫▮■◆●◉",
-		blocks: " .:░▒▓█",
+		random: " ´ˋˎˏʹʺʻʼʽʾʿ˟¸¨ˆ˜˘˚˙·°∘∙⋅⁚⁛⁜⁝⁞†‡-",
+		braille: " ⠁⠂⠄⡀⢀⠠⠐⠈⠃⠅⠆⠉⠊⠋⠍⠏⠙⠚⠛⠝⠟⠴⠶⠷⠼⠽⠾⠿⣿⠂",
+		blocks: " .:░▒▓█▯",
 	};
 	// Long starter ramp for Custom — edit freely once selected.
 	var CUSTOM_CHARS =
 		" .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$░▒▓█■▪▫◦•∙·°º";
 	var DEFAULT_PRESET = "blocks";
 	var DEFAULT_CHARS = CHAR_PRESETS.blocks;
+	var DEFAULT_IDLE_RATE = 0.8;
 	var MAX_FILE_BYTES = 5 * 1024 * 1024; // 5 MB
 	var MAX_FILE_LABEL = "5 MB";
 	var mount = document.getElementById("danscii-preview");
@@ -226,9 +231,15 @@
 		var label = "Blocks";
 		for (var i = 0; i < options.length; i++) {
 			var opt = options[i];
-			var active = opt.getAttribute("data-value") === value;
+			var key = opt.getAttribute("data-value");
+			var active = key === value;
 			opt.classList.toggle("is-active", active);
 			opt.setAttribute("aria-selected", active ? "true" : "false");
+			// Keep list previews in sync with CHAR_PRESETS (edit ramps in one place).
+			if (key && key !== "custom" && CHAR_PRESETS[key] != null) {
+				var charsEl = opt.querySelector(".danscii-option-chars");
+				if (charsEl) charsEl.textContent = CHAR_PRESETS[key];
+			}
 			if (active) {
 				var labelEl = opt.querySelector(".danscii-option-label");
 				label = labelEl ? labelEl.textContent.trim() : opt.textContent.trim();
@@ -287,6 +298,7 @@
 			characters: readCharacters(),
 			density: Number(form.density.value) || 120,
 			threshold: Number.isFinite(thr) ? Math.max(0, Math.min(70, thr)) : 0,
+			invert: !!(form.invert && form.invert.value === "1"),
 			fg: form.colorFg.value || COLOR_DEFAULTS.fg,
 			hover: form.colorHover.value || COLOR_DEFAULTS.hover,
 			bg: (form.colorBg && form.colorBg.value) || modeBackground(),
@@ -295,6 +307,7 @@
 				return n === 2 || n === 6 ? n : 4;
 			})(),
 			persistHover: !!(form.persistHover && form.persistHover.value === "1"),
+			glitch: !(form.glitch && form.glitch.value === "0"),
 		};
 	}
 
@@ -319,6 +332,7 @@
 		var c = readControls();
 		var rows = [
 			["Characters", c.characters],
+			["Ramp", c.invert ? "Reverse" : "Normal"],
 			["Glyphs Colour", formatHex(c.fg)],
 			["Hover Colour", formatHex(c.hover)],
 			["Background Colour", formatHex(c.bg)],
@@ -326,6 +340,7 @@
 			["Threshold", String(c.threshold)],
 			["Hover trail", c.persistHover ? "Keep" : "Fade"],
 			["Hover size", hoverSizeLabel(c.hoverCells)],
+			["Glitch", c.glitch ? "On" : "Off"],
 			["File", currentImageLabel],
 		];
 		statusEl.innerHTML = rows
@@ -377,9 +392,11 @@
 		density: controls.density,
 		densityBreakpoints: null,
 		threshold: controls.threshold,
+		invert: controls.invert,
 		characters: controls.characters,
 		hoverCells: controls.hoverCells,
 		persistHover: controls.persistHover,
+		idleBurstsPerSecond: controls.glitch ? DEFAULT_IDLE_RATE : 0,
 		fontFamily: '"Berkeley Mono", monospace',
 	});
 	// Re-measure after layout so density matches the real preview width.
@@ -399,9 +416,11 @@
 		art.setCharacters(c.characters);
 		art.setDensity(c.density);
 		art.setThreshold(c.threshold);
+		art.setInvert(c.invert);
 		art.setColors(c.fg, c.hover);
 		art.setHoverCells(c.hoverCells);
 		art.setPersistHover(c.persistHover);
+		art.setIdleBurstsPerSecond(c.glitch ? DEFAULT_IDLE_RATE : 0);
 		if (previewWrap) previewWrap.style.background = c.bg;
 		updateSettingsStatus();
 	}
@@ -611,6 +630,10 @@
 			bgUserSelected = false;
 			var resetColors = defaultColors();
 			syncColorInputs(resetColors.fg, resetColors.hover, resetColors.bg);
+			var invertRadios = form.querySelectorAll('input[name="invert"]');
+			for (var r = 0; r < invertRadios.length; r++) {
+				invertRadios[r].checked = invertRadios[r].value === "0";
+			}
 			var hoverRadios = form.querySelectorAll('input[name="hoverCells"]');
 			for (var h = 0; h < hoverRadios.length; h++) {
 				hoverRadios[h].checked = hoverRadios[h].value === "4";
@@ -618,6 +641,10 @@
 			var persistRadios = form.querySelectorAll('input[name="persistHover"]');
 			for (var i = 0; i < persistRadios.length; i++) {
 				persistRadios[i].checked = persistRadios[i].value === "1";
+			}
+			var glitchRadios = form.querySelectorAll('input[name="glitch"]');
+			for (var g = 0; g < glitchRadios.length; g++) {
+				glitchRadios[g].checked = glitchRadios[g].value === "1";
 			}
 			art.setSrc(DEFAULT_SRC);
 			applyControls();
@@ -780,9 +807,11 @@
 					"    density: " + Number(c.density) + ",",
 					"    densityBreakpoints: null,",
 					"    threshold: " + Number(c.threshold) + ",",
+					"    invert: " + (c.invert ? "true" : "false") + ",",
 					"    characters: " + JSON.stringify(chars) + ",",
 					"    hoverCells: " + Number(c.hoverCells) + ",",
 					"    persistHover: " + (c.persistHover ? "true" : "false") + ",",
+					"    idleBurstsPerSecond: " + (c.glitch ? DEFAULT_IDLE_RATE : 0) + ",",
 					"    fontFamily: '\"Berkeley Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',",
 					"    onImageError: showLocal,",
 					"    onImageReady: hideLocal",

@@ -44,13 +44,14 @@
 						{ minWidth: 0, density: 260 },
 					],
 					characters: "",
-					threshold: 0, // 0–100: collapse dark end to blank cells (fewer glyphs)
+					threshold: 0, // 0–100: collapse toward blank (dark end, or bright end if invert)
+					invert: false, // reverse character ramp (dense glyphs on dark areas)
 					fg: "", // optional custom glyph colour (overrides mode palette)
 					hover: "", // optional custom hover/trail colour
 					hoverCells: 4,
 					persistHover: true, // keep hover trail after pointer leaves; false = fade away
 					introDuration: 1400,
-					idleBurstsPerSecond: 0.35,
+					idleBurstsPerSecond: 0.8,
 					idleCells: 1,
 					idleSettleMin: 4,
 					idleSettleMax: 12,
@@ -82,7 +83,9 @@
 
 		get ramp() {
 			const r = this.options.characters;
-			return r && r.length >= 2 ? r : DEFAULT_RAMP;
+			const base = r && r.length >= 2 ? r : DEFAULT_RAMP;
+			if (!this.options.invert) return base;
+			return Array.from(base).reverse().join("");
 		}
 		get gridCols() {
 			return this.options.density || 180;
@@ -131,6 +134,14 @@
 		}
 		setCharacters(chars) {
 			this.options.characters = chars;
+			this._invalidateSizeCache();
+			this._buildGrid();
+			this._wake();
+		}
+		setInvert(invert) {
+			const next = !!invert;
+			if (this.options.invert === next) return;
+			this.options.invert = next;
 			this._invalidateSizeCache();
 			this._buildGrid();
 			this._wake();
@@ -190,6 +201,7 @@
 				hover: colors.hover,
 				density: this.options.density,
 				threshold: this.options.threshold,
+				invert: !!this.options.invert,
 				characters: this.options.characters || this.ramp,
 				hoverCells: this.options.hoverCells,
 				persistHover: !!this.options.persistHover,
@@ -415,14 +427,23 @@
 			this.liveCells = [];
 			for (let i = 0; i < len; i++) this.noise[i] = Math.random();
 			const ramp = this.ramp;
+			const invert = !!this.options.invert;
 			const thr = Math.max(0, Math.min(95, Number(this.options.threshold) || 0)) / 100;
 			for (let i = 0; i < len; i++) {
 				const r = data[i * 4],
 					g = data[i * 4 + 1],
 					b = data[i * 4 + 2];
 				const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-				// Collapse the dark end to blank so higher threshold = fewer glyphs.
-				const t = thr > 0 ? (lum <= thr ? 0 : (lum - thr) / (1 - thr)) : lum;
+				// Collapse toward blank: dark end normally, bright end when ramp is reversed.
+				let t = lum;
+				if (thr > 0) {
+					if (invert) {
+						const cut = 1 - thr;
+						t = lum >= cut ? 1 : lum / cut;
+					} else {
+						t = lum <= thr ? 0 : (lum - thr) / (1 - thr);
+					}
+				}
 				const idx = Math.min(ramp.length - 1, Math.floor(t * ramp.length));
 				const ch = ramp[idx];
 				this.target[i] = ch;
