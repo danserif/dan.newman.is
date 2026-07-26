@@ -692,9 +692,73 @@ body.home main.info {
 		display: none;
 	}
 
-	.home .profile-text h2+p.desktop-only {
+	.home .profile-text h2+.ascii-credit-row {
 		margin-top: 1.35rem;
 	}
+}
+
+/* Homepage credit + ASCII ramp samples stacked (desktop ≥1081px; .desktop-only hides ≤1080px). */
+.home .ascii-credit-row {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.55rem;
+}
+
+@media only screen and (max-width: 1080px) {
+	.home .ascii-credit-row.desktop-only {
+		display: none;
+	}
+}
+
+.home .ascii-credit-row > p {
+	margin: 0;
+}
+
+.home .ascii-ramp-picker {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.55rem 0.85rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+	font-size: inherit;
+	line-height: inherit;
+	letter-spacing: 0.06em;
+	user-select: none;
+}
+
+.home .ascii-ramp-picker-mark {
+	margin: 0;
+	padding: 0;
+	color: var(--opacity-15);
+	cursor: default;
+	letter-spacing: 0;
+}
+
+/* Same hover model as .page a.opacity-*: tinted color at rest, opacity multiplies on hover. */
+.home .ascii-ramp-picker [role="option"] {
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	color: color-mix(in srgb, var(--color-text) 40%, transparent);
+	opacity: 1;
+	transition: opacity 0.2s ease;
+}
+
+.home .ascii-ramp-picker [role="option"].is-active {
+	color: var(--opacity-75);
+}
+
+.home .ascii-ramp-picker [role="option"]:hover {
+	opacity: var(--link-hover-opacity);
+}
+
+.home .ascii-ramp-picker [role="option"]:focus,
+.home .ascii-ramp-picker [role="option"]:focus-visible {
+	outline: none;
 }
 
 .profile-text p+p {

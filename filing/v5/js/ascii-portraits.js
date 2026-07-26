@@ -59,6 +59,7 @@
       this._dirty = true;
       this._lastW = 0;
       this._lastH = 0;
+      this._baseHoverCells = this.options.hoverCells;
       this._syncDensityFromViewport();
       this._buildDom();
       this._bindLifecycle();
@@ -95,7 +96,19 @@
       this._wake();
     }
     setCharacters(chars) {
+      if (chars === this.options.characters) return;
       this.options.characters = chars;
+      // Keep current glyphs for a short settle scramble into the new ramp.
+      const prevDisplay = this.display;
+      this._pendingRampTransition =
+        this._introDone &&
+        prevDisplay &&
+        prevDisplay.length &&
+        !this._prefersReducedMotion()
+          ? prevDisplay.slice()
+          : null;
+      // Size/density may be unchanged — force remap so the new ramp applies.
+      this._lastW = 0;
       this._buildGrid();
       this._wake();
     }
@@ -121,15 +134,17 @@
         return b.minWidth - a.minWidth;
       });
       const w = window.innerWidth;
-      let next = sorted[sorted.length - 1].density;
+      let match = sorted[sorted.length - 1];
       for (let i = 0; i < sorted.length; i++) {
         if (w >= sorted[i].minWidth) {
-          next = sorted[i].density;
+          match = sorted[i];
           break;
         }
       }
-      if (next === this.options.density) return false;
-      this.options.density = next;
+      this.options.hoverCells =
+        match.hoverCells != null ? match.hoverCells : this._baseHoverCells;
+      if (match.density == null || match.density === this.options.density) return false;
+      this.options.density = match.density;
       return true;
     }
 
@@ -280,7 +295,33 @@
 
       this._idleAcc = 0;
       this._dirty = true;
-      this._startIntro();
+
+      const prev = this._pendingRampTransition;
+      this._pendingRampTransition = null;
+      if (prev && prev.length === len && this._introDone) {
+        for (let i = 0; i < len; i++) this.display[i] = prev[i];
+        this._seedRampTransition();
+      } else {
+        this._startIntro();
+      }
+    }
+
+    _seedRampTransition() {
+      const len = this.target.length;
+      for (let i = 0; i < len; i++) {
+        const next = this.target[i];
+        const prev = this.display[i];
+        // Keep the current ramp on screen; settle ticks scramble, then land on `next`.
+        if (next === prev) {
+          if (next && next !== ' ' && Math.random() < 0.18) {
+            this.settle[i] = 10 + ((Math.random() * 14) | 0);
+          }
+          continue;
+        }
+        this.display[i] = prev;
+        this.settle[i] = 14 + ((Math.random() * 22) | 0);
+      }
+      this._dirty = true;
     }
 
     _prefersReducedMotion() {
@@ -470,22 +511,23 @@
     }
 
     _updateIdle() {
-      if (!this._introDone || !this.target || !this.liveCells || !this.liveCells.length) return false;
+      if (!this._introDone || !this.target || !this.settle) return false;
       if (this._prefersReducedMotion()) return false;
-      const rate = this.options.idleBurstsPerSecond;
-      if (!rate) return false;
 
       let changed = false;
-      const now = performance.now();
-      if (!this._idleLast) this._idleLast = now;
-      const dt = Math.min(0.05, (now - this._idleLast) / 1000);
-      this._idleLast = now;
-      this._idleAcc = (this._idleAcc || 0) + rate * dt;
+      const rate = this.options.idleBurstsPerSecond;
+      if (rate && this.liveCells && this.liveCells.length) {
+        const now = performance.now();
+        if (!this._idleLast) this._idleLast = now;
+        const dt = Math.min(0.05, (now - this._idleLast) / 1000);
+        this._idleLast = now;
+        this._idleAcc = (this._idleAcc || 0) + rate * dt;
 
-      while (this._idleAcc >= 1) {
-        this._idleAcc -= 1;
-        this._sparkIdleCluster();
-        changed = true;
+        while (this._idleAcc >= 1) {
+          this._idleAcc -= 1;
+          this._sparkIdleCluster();
+          changed = true;
+        }
       }
 
       for (let i = 0; i < this.settle.length; i++) {

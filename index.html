@@ -81,9 +81,19 @@
 	<header class="profile">
 		<div class="profile-image">
 			<div id="ascii-portraits"></div>
-			<script src="/filing/v5/js/ascii-portraits.js"></script>
+			<script src="/filing/v5/js/ascii-portraits.js?v=20260726-no-ramp-accent"></script>
 			<script>
 				(function () {
+					var HOME_RAMPS = {
+						blocks: " .:░▒▓█▯",
+						binary: " .01",
+						arrows: " .·→←↑↓↔↕↗↘↖↙▶◀▲▼<>-",
+						dense: " .·°∙•◦▪▫▮■◆●◉·",
+						numbers: " .,:;!~-+1234567890",
+						letters: " .,:;!~-+abcdefghijklmnopqrstuvwxyz",
+						random: " ´ˋˎˏʹʺʻʼʽʾʿ˟¸¨ˆ˜˘˚˙·°∘∙⋅⁚⁛⁜⁝⁞†‡-"
+					};
+					var DEFAULT_RAMP_KEY = "blocks";
 					var root = document.documentElement;
 					function asciiModeFromRoot() {
 						var light = root.classList.contains("light-mode");
@@ -98,13 +108,14 @@
 						mode: asciiModeFromRoot(),
 						// Density steps with layout breakpoints (≤1080 / 1081 / 1641 / 2661)
 						densityBreakpoints: [
-							{ minWidth: 2661, density: 400 },
+							{ minWidth: 2661, density: 400, hoverCells: 5 },
 							{ minWidth: 1641, density: 300 },
 							{ minWidth: 1081, density: 200 },
 							{ minWidth: 0, density: 200 }
 						],
-						characters: " .:░▒▓█" // blocks
+						characters: HOME_RAMPS[DEFAULT_RAMP_KEY]
 					});
+					window.__homeAsciiRamps = HOME_RAMPS;
 				})();
 			</script>
 		</div>
@@ -117,12 +128,74 @@
 					class="accent">.</span> <a href="/a/photographer" class="accent underline no-break">Amateur
 					Photographer</a><span class="accent">.</span>
 			</h2>-->
-			<p class="desktop-only">
-				<span class="opacity-15">⌙</span> <span class="opacity-25">/filing/js/ascii-portraits.js</span> <span
-					class="opacity-15">//</span> <span class="opacity-50">Made with </span><a href="/building/danscii/"
-					class="opacity-75">D@N5C1I,</a> <span class="opacity-50">photos by
-				</span><a href="https://profilephotos.co.nz" target="_blank" class="opacity-75">Steve Montgomery.</a>
-			</p>
+			<div class="ascii-credit-row desktop-only">
+				<p>
+					<span class="opacity-15">~</span> <span class="opacity-25">/filing/js/ascii-portraits.js</span> <span
+						class="opacity-15">//</span> <span class="opacity-50">Made with </span><a href="/building/danscii/"
+						class="opacity-75">D@N5C1I.</a> <span class="opacity-50">Photos by
+					</span><a href="https://profilephotos.co.nz" target="_blank" class="opacity-75">Steve Montgomery.</a>
+				</p>
+				<ul id="ascii-ramp-picker" class="ascii-ramp-picker" role="listbox" aria-label="ASCII character ramp">
+					<li class="ascii-ramp-picker-mark" aria-hidden="true">&gt;</li>
+					<li role="option" data-ramp="blocks" class="is-active" aria-selected="true" tabindex="0" aria-label="Blocks">
+						░▒▓█</li>
+					<li role="option" data-ramp="binary" aria-selected="false" tabindex="-1" aria-label="Binary">0101</li>
+					<li role="option" data-ramp="arrows" aria-selected="false" tabindex="-1" aria-label="Arrows">→←▲▼</li>
+					<li role="option" data-ramp="letters" aria-selected="false" tabindex="-1" aria-label="Letters">ABCD</li>
+					<li role="option" data-ramp="dense" aria-selected="false" tabindex="-1" aria-label="Geometric">▪▮■◆</li>
+					<li role="option" data-ramp="numbers" aria-selected="false" tabindex="-1" aria-label="Numbers">1234</li>
+					<li role="option" data-ramp="random" aria-selected="false" tabindex="-1" aria-label="Random">•-;+</li>
+				</ul>
+			</div>
+			<script>
+				(function () {
+					var HOME_RAMPS = window.__homeAsciiRamps;
+					var picker = document.getElementById("ascii-ramp-picker");
+					if (!HOME_RAMPS || !picker) return;
+
+					function setActiveRamp(key) {
+						var ramp = HOME_RAMPS[key];
+						if (!ramp || !window.asciiPortrait) return;
+						window.asciiPortrait.setCharacters(ramp);
+						var options = picker.querySelectorAll('[role="option"]');
+						for (var i = 0; i < options.length; i++) {
+							var opt = options[i];
+							var active = opt.getAttribute("data-ramp") === key;
+							opt.classList.toggle("is-active", active);
+							opt.setAttribute("aria-selected", active ? "true" : "false");
+							opt.tabIndex = active ? 0 : -1;
+						}
+					}
+
+					picker.addEventListener("click", function (e) {
+						var opt = e.target.closest('[role="option"]');
+						if (!opt || !picker.contains(opt)) return;
+						setActiveRamp(opt.getAttribute("data-ramp"));
+						if (opt.blur) opt.blur();
+					});
+
+					picker.addEventListener("keydown", function (e) {
+						var options = Array.prototype.slice.call(picker.querySelectorAll('[role="option"]'));
+						if (!options.length) return;
+						var current = picker.querySelector('[role="option"][aria-selected="true"]') || options[0];
+						var idx = options.indexOf(current);
+						var next = -1;
+						if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (idx + 1) % options.length;
+						else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (idx - 1 + options.length) % options.length;
+						else if (e.key === "Home") next = 0;
+						else if (e.key === "End") next = options.length - 1;
+						else if (e.key === "Enter" || e.key === " ") {
+							e.preventDefault();
+							setActiveRamp(current.getAttribute("data-ramp"));
+							return;
+						}
+						if (next < 0) return;
+						e.preventDefault();
+						setActiveRamp(options[next].getAttribute("data-ramp"));
+						options[next].focus();
+					});
+				})();
+			</script>
 		</div>
 	</header>
 
