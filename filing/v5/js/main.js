@@ -402,6 +402,67 @@
 			letterDLoadSvg();
 		}
 
+		// Inner pages: if URL breadcrumbs overflow on mobile, hide "> https://" and
+		// left-align the path. If still tight and the mid segment is longer than "...",
+		// collapse it (skip short mids like "a" on /a/ pages).
+		var sitePath = document.querySelector(".page > header.info .site-path");
+		var sitePathRow = sitePath ? sitePath.closest(".row") : null;
+		var sitePathMid = sitePath ? sitePath.querySelector(".site-path-mid") : null;
+		if (sitePath && sitePathRow) {
+			var sitePathMidFull = sitePathMid ? (sitePathMid.textContent || "").trim() : "";
+			var sitePathMobileMql = window.matchMedia("(max-width: 1080px)");
+			var sitePathRaf = null;
+			var sitePathSyncing = false;
+
+			function sitePathOverflows() {
+				return sitePath.scrollWidth > sitePath.clientWidth + 1;
+			}
+
+			function syncSitePathCompact() {
+				if (sitePathMid) {
+					sitePathMid.textContent = sitePathMidFull;
+					sitePathMid.removeAttribute("title");
+				}
+				sitePathRow.classList.remove("is-path-compact");
+				if (!sitePathMobileMql.matches) return;
+
+				sitePathSyncing = true;
+				if (sitePathOverflows()) {
+					sitePathRow.classList.add("is-path-compact");
+					if (sitePathMid && sitePathMidFull.length > 3 && sitePathOverflows()) {
+						sitePathMid.textContent = "...";
+						sitePathMid.setAttribute("title", sitePathMidFull);
+					}
+				}
+				requestAnimationFrame(function () {
+					sitePathSyncing = false;
+				});
+			}
+
+			function scheduleSitePathCompact() {
+				if (sitePathSyncing) return;
+				if (sitePathRaf != null) return;
+				sitePathRaf = requestAnimationFrame(function () {
+					sitePathRaf = null;
+					syncSitePathCompact();
+				});
+			}
+
+			if (typeof ResizeObserver === "function") {
+				new ResizeObserver(scheduleSitePathCompact).observe(sitePathRow);
+			}
+			window.addEventListener("resize", scheduleSitePathCompact);
+			if (sitePathMobileMql.addEventListener) {
+				sitePathMobileMql.addEventListener("change", scheduleSitePathCompact);
+			} else if (sitePathMobileMql.addListener) {
+				sitePathMobileMql.addListener(scheduleSitePathCompact);
+			}
+			if (document.fonts && document.fonts.ready) {
+				document.fonts.ready.then(scheduleSitePathCompact);
+			}
+			syncSitePathCompact();
+		}
+
 		// /a/ pages: collapse info-bar top padding only while sticky is engaged.
 		var infoBar = document.querySelector(".page > header.info");
 		if (infoBar) {

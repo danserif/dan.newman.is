@@ -940,6 +940,22 @@ body.home main.info {
 	position: relative;
 }
 
+/* URL breadcrumbs: keep on one line so mid-segment can collapse to … when tight. */
+.page>header.info .site-path {
+	min-width: 0;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+/* Mobile overflow: drop "> https://" and let the path sit flush left. */
+.page>header.info .row.is-path-compact {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.page>header.info .row.is-path-compact>.label {
+	display: none;
+}
+
 .header-links {
 	position: absolute;
 	right: 0;

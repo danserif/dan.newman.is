@@ -296,7 +296,7 @@
 		var thr = Number(form.threshold && form.threshold.value);
 		return {
 			characters: readCharacters(),
-			density: Number(form.density.value) || 120,
+			density: Number(form.density.value) || 140,
 			threshold: Number.isFinite(thr) ? Math.max(0, Math.min(70, thr)) : 0,
 			invert: !!(form.invert && form.invert.value === "1"),
 			fg: form.colorFg.value || COLOR_DEFAULTS.fg,
@@ -356,9 +356,9 @@
 			// Preview is ~60% of the lab row before layout settles.
 			w = Math.round((window.innerWidth || 960) * 0.55);
 		}
-		// Map preview width → density (slider range 40–320, step 10).
-		var d = Math.round(w / 9 / 10) * 10;
-		return Math.max(40, Math.min(320, d));
+		// Map preview width → density (slider range 80–320, step 10).
+		var d = Math.round(w / 7 / 10) * 10;
+		return Math.max(80, Math.min(320, d));
 	}
 
 	function setDensityControl(density) {
