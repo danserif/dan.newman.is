@@ -264,7 +264,8 @@
 		charactersPreset.value = value;
 		if (charactersCustom) {
 			if (value === "custom") {
-				var current = charactersCustom.value.trim();
+				// Do not trim — leading/trailing spaces are valid empty glyphs in the ramp.
+				var current = charactersCustom.value;
 				var isPresetRamp = false;
 				for (var presetKey in CHAR_PRESETS) {
 					if (CHAR_PRESETS[presetKey] === current) {
@@ -286,7 +287,8 @@
 	function readCharacters() {
 		var preset = charactersPreset ? charactersPreset.value : DEFAULT_PRESET;
 		if (preset === "custom") {
-			var custom = (charactersCustom && charactersCustom.value.trim()) || "";
+			// Preserve spaces — they map to empty/light cells in the ASCII ramp.
+			var custom = (charactersCustom && charactersCustom.value) || "";
 			return custom.length >= 2 ? custom : CUSTOM_CHARS;
 		}
 		return CHAR_PRESETS[preset] || DEFAULT_CHARS;
