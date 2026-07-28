@@ -304,6 +304,7 @@
 			fg: form.colorFg.value || COLOR_DEFAULTS.fg,
 			hover: form.colorHover.value || COLOR_DEFAULTS.hover,
 			bg: (form.colorBg && form.colorBg.value) || modeBackground(),
+			hoverEnabled: !(form.hoverEnabled && form.hoverEnabled.value === "0"),
 			hoverCells: (function () {
 				var n = Number(form.hoverCells && form.hoverCells.value);
 				return n === 2 || n === 6 ? n : 4;
@@ -314,9 +315,9 @@
 	}
 
 	function hoverSizeLabel(n) {
-		if (n <= 2) return "Small";
-		if (n >= 6) return "Large";
-		return "Medium";
+		if (n <= 2) return "S";
+		if (n >= 6) return "L";
+		return "M";
 	}
 
 	var currentImageLabel = "dan-newman.jpg";
@@ -340,6 +341,7 @@
 			["Background Colour", formatHex(c.bg)],
 			["Density", String(c.density)],
 			["Threshold", String(c.threshold)],
+			["Hover", c.hoverEnabled ? "On" : "Off"],
 			["Hover trail", c.persistHover ? "Keep" : "Fade"],
 			["Hover size", hoverSizeLabel(c.hoverCells)],
 			["Glitch", c.glitch ? "On" : "Off"],
@@ -396,7 +398,7 @@
 		threshold: controls.threshold,
 		invert: controls.invert,
 		characters: controls.characters,
-		hoverCells: controls.hoverCells,
+		hoverCells: controls.hoverEnabled ? controls.hoverCells : 0,
 		persistHover: controls.persistHover,
 		idleBurstsPerSecond: controls.glitch ? DEFAULT_IDLE_RATE : 0,
 		fontFamily: '"Berkeley Mono", monospace',
@@ -420,7 +422,7 @@
 		art.setThreshold(c.threshold);
 		art.setInvert(c.invert);
 		art.setColors(c.fg, c.hover);
-		art.setHoverCells(c.hoverCells);
+		art.setHoverCells(c.hoverEnabled ? c.hoverCells : 0);
 		art.setPersistHover(c.persistHover);
 		art.setIdleBurstsPerSecond(c.glitch ? DEFAULT_IDLE_RATE : 0);
 		if (previewWrap) previewWrap.style.background = c.bg;
@@ -636,6 +638,10 @@
 			for (var r = 0; r < invertRadios.length; r++) {
 				invertRadios[r].checked = invertRadios[r].value === "0";
 			}
+			var hoverEnabledRadios = form.querySelectorAll('input[name="hoverEnabled"]');
+			for (var he = 0; he < hoverEnabledRadios.length; he++) {
+				hoverEnabledRadios[he].checked = hoverEnabledRadios[he].value === "1";
+			}
 			var hoverRadios = form.querySelectorAll('input[name="hoverCells"]');
 			for (var h = 0; h < hoverRadios.length; h++) {
 				hoverRadios[h].checked = hoverRadios[h].value === "4";
@@ -811,7 +817,7 @@
 					"    threshold: " + Number(c.threshold) + ",",
 					"    invert: " + (c.invert ? "true" : "false") + ",",
 					"    characters: " + JSON.stringify(chars) + ",",
-					"    hoverCells: " + Number(c.hoverCells) + ",",
+					"    hoverCells: " + Number(c.hoverEnabled ? c.hoverCells : 0) + ",",
 					"    persistHover: " + (c.persistHover ? "true" : "false") + ",",
 					"    idleBurstsPerSecond: " + (c.glitch ? DEFAULT_IDLE_RATE : 0) + ",",
 					"    fontFamily: '\"Berkeley Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',",

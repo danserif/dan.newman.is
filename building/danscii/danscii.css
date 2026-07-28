@@ -287,7 +287,7 @@
 .danscii-settings-flow .danscii-glitch-field {
 	flex: 0 1 auto;
 	width: auto;
-	order: 7;
+	order: 8;
 }
 
 .danscii-settings-flow .danscii-sliders-row {
@@ -300,16 +300,22 @@
 	order: 4;
 }
 
-.danscii-settings-flow .danscii-hover-trail-field {
+.danscii-settings-flow .danscii-hover-field {
 	flex: 0 1 auto;
 	width: auto;
 	order: 5;
 }
 
-.danscii-settings-flow .danscii-hover-size-field {
+.danscii-settings-flow .danscii-hover-trail-field {
 	flex: 0 1 auto;
 	width: auto;
 	order: 6;
+}
+
+.danscii-settings-flow .danscii-hover-size-field {
+	flex: 0 1 auto;
+	width: auto;
+	order: 7;
 }
 
 .danscii-sliders-row {
@@ -370,10 +376,6 @@
 
 .danscii-toggle-option:hover {
 	opacity: 0.75;
-}
-
-.danscii-label-short {
-	display: none;
 }
 
 .light-mode .danscii-toggle {
@@ -848,7 +850,7 @@
 		line-height: 17px;
 	}
 
-	/* Even two-column rhythm: Ramp|Glitch, Density|Threshold, Glyphs|Hover, Trail|Size */
+	/* Even two-column rhythm: Ramp|Glitch, Density|Threshold, Hover|Trail, Size */
 	.danscii-controls-main {
 		--danscii-col-gap: 1rem;
 	}
@@ -869,16 +871,21 @@
 		order: 5;
 	}
 
-	.danscii-settings-flow .danscii-hover-trail-field {
+	.danscii-settings-flow .danscii-hover-field {
 		order: 6;
 	}
 
-	.danscii-settings-flow .danscii-hover-size-field {
+	.danscii-settings-flow .danscii-hover-trail-field {
 		order: 7;
+	}
+
+	.danscii-settings-flow .danscii-hover-size-field {
+		order: 8;
 	}
 
 	.danscii-settings-flow .danscii-ramp-field,
 	.danscii-settings-flow .danscii-glitch-field,
+	.danscii-settings-flow .danscii-hover-field,
 	.danscii-settings-flow .danscii-hover-trail-field,
 	.danscii-settings-flow .danscii-hover-size-field {
 		flex: 1 1 calc(50% - 0.5rem);
@@ -888,6 +895,7 @@
 
 	.danscii-settings-flow .danscii-ramp-field .danscii-toggle,
 	.danscii-settings-flow .danscii-glitch-field .danscii-toggle,
+	.danscii-settings-flow .danscii-hover-field .danscii-toggle,
 	.danscii-settings-flow .danscii-hover-trail-field .danscii-toggle,
 	.danscii-settings-flow .danscii-hover-size-field .danscii-toggle {
 		width: 100%;
@@ -895,20 +903,13 @@
 
 	.danscii-settings-flow .danscii-ramp-field .danscii-toggle-option,
 	.danscii-settings-flow .danscii-glitch-field .danscii-toggle-option,
+	.danscii-settings-flow .danscii-hover-field .danscii-toggle-option,
 	.danscii-settings-flow .danscii-hover-trail-field .danscii-toggle-option,
 	.danscii-settings-flow .danscii-hover-size-field .danscii-toggle-option {
 		flex: 1;
 		justify-content: center;
 		padding-left: 0.45rem;
 		padding-right: 0.45rem;
-	}
-
-	.danscii-hover-size-field .danscii-label-full {
-		display: none;
-	}
-
-	.danscii-hover-size-field .danscii-label-short {
-		display: inline;
 	}
 
 	.danscii-sliders-row .danscii-field {
