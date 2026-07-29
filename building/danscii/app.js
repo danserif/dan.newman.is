@@ -23,6 +23,8 @@
 	var mount = document.getElementById("danscii-preview");
 	var form = document.getElementById("danscii-controls");
 	var fileInput = document.getElementById("danscii-file");
+	var fileTrigger = document.getElementById("danscii-file-trigger");
+	var fileNameEl = document.getElementById("danscii-file-name");
 	var fileErrorEl = document.getElementById("danscii-file-error");
 	var charactersPreset = document.getElementById("charactersPreset");
 	var charactersCustom = document.getElementById("charactersCustom");
@@ -335,7 +337,7 @@
 		var c = readControls();
 		var rows = [
 			["Characters", c.characters],
-			["Ramp", c.invert ? "Reverse" : "Normal"],
+			["Order", c.invert ? "Invert" : "Default"],
 			["Glyphs Colour", formatHex(c.fg)],
 			["Hover Colour", formatHex(c.hover)],
 			["Background Colour", formatHex(c.bg)],
@@ -562,6 +564,10 @@
 		if (e.key === "Escape") closeAllSelects();
 	});
 
+	function setFileNameLabel(name) {
+		if (fileNameEl) fileNameEl.textContent = name || "dan-newman.jpg";
+	}
+
 	function setFileError(msg) {
 		if (!fileErrorEl) return;
 		if (msg) {
@@ -579,6 +585,12 @@
 		var okExt = /\.(png|jpe?g)$/.test(name);
 		var okType = type === "image/png" || type === "image/jpeg" || type === "";
 		return okExt && okType;
+	}
+
+	if (fileTrigger && fileInput) {
+		fileTrigger.addEventListener("click", function () {
+			fileInput.click();
+		});
 	}
 
 	if (fileInput) {
@@ -607,6 +619,7 @@
 			objectUrl = URL.createObjectURL(file);
 			currentImageFile = file;
 			currentImageLabel = file.name;
+			setFileNameLabel(currentImageLabel);
 			art.setSrc(objectUrl);
 			updateSettingsStatus();
 		});
@@ -624,6 +637,7 @@
 			if (fileInput) fileInput.value = "";
 			setFileError("");
 			currentImageLabel = "dan-newman.jpg";
+			setFileNameLabel(currentImageLabel);
 			if (charactersPreset) charactersPreset.value = DEFAULT_PRESET;
 			if (charactersCustom) charactersCustom.value = CUSTOM_CHARS;
 			syncCharactersSelectUi();

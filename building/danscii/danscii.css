@@ -279,15 +279,9 @@
 }
 
 .danscii-settings-flow .danscii-ramp-field {
-	flex: 0 1 auto;
+	flex: 0 0 auto;
 	width: auto;
 	order: 2;
-}
-
-.danscii-settings-flow .danscii-glitch-field {
-	flex: 0 1 auto;
-	width: auto;
-	order: 8;
 }
 
 .danscii-settings-flow .danscii-sliders-row {
@@ -301,21 +295,35 @@
 }
 
 .danscii-settings-flow .danscii-hover-field {
-	flex: 0 1 auto;
+	flex: 0 0 auto;
 	width: auto;
 	order: 5;
 }
 
 .danscii-settings-flow .danscii-hover-trail-field {
-	flex: 0 1 auto;
+	flex: 0 0 auto;
 	width: auto;
 	order: 6;
 }
 
 .danscii-settings-flow .danscii-hover-size-field {
-	flex: 0 1 auto;
+	flex: 0 0 auto;
 	width: auto;
 	order: 7;
+}
+
+.danscii-settings-flow .danscii-glitch-field {
+	flex: 0 0 auto;
+	width: auto;
+	order: 8;
+}
+
+.danscii-hover-size-field .danscii-label-full {
+	display: none;
+}
+
+.danscii-hover-size-field .danscii-label-short {
+	display: inline;
 }
 
 .danscii-sliders-row {
@@ -386,8 +394,7 @@
 	border-right-color: #ddd;
 }
 
-.danscii-field input[type="text"],
-.danscii-field input[type="file"] {
+.danscii-field input[type="text"] {
 	width: 100%;
 	box-sizing: border-box;
 	background: transparent;
@@ -398,19 +405,8 @@
 	padding: 0.4rem 0.65rem;
 }
 
-/* Opacity on file inputs shifts the filename text in WebKit — dim via color instead.
-   Border mix matches other controls’ opacity: 0.75 hover (border × 75% over page bg). */
-.danscii-field input[type="file"] {
-	transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.danscii-field input[type="file"]:hover {
-	color: var(--opacity-25);
-	border-color: color-mix(in srgb, var(--color-border) 75%, var(--color-bg));
-}
-
 /* Match file control height (outer pad + choose-file button + borders) */
-.danscii-field input[type="file"],
+.danscii-file-trigger,
 .danscii-select-trigger {
 	min-height: 2.45rem;
 }
@@ -528,8 +524,65 @@
 	border: 0;
 }
 
-/* Filename / “no file selected” label */
-.danscii-field input[type="file"] {
+.danscii-file-control {
+	position: relative;
+	width: 100%;
+}
+
+.danscii-file-input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.danscii-file-trigger {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0.4rem 0.65rem;
+	background: transparent;
+	border: 1px solid var(--color-border);
+	border-radius: 0;
+	color: var(--color-text);
+	font: inherit;
+	line-height: 1.15;
+	text-align: left;
+	cursor: pointer;
+	transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.danscii-file-trigger:hover {
+	opacity: 0.75;
+}
+
+.danscii-file-button {
+	flex: 0 0 auto;
+	padding: 0.25rem 0.65rem;
+	border: 1px solid var(--color-border);
+	color: var(--color-text);
+	transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.danscii-file-trigger:hover .danscii-file-button {
+	color: var(--opacity-75);
+	border-color: color-mix(in srgb, var(--color-border) 75%, var(--color-bg));
+}
+
+.danscii-file-name {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	color: var(--opacity-50);
 }
 
@@ -601,29 +654,8 @@
 	display: none;
 }
 
-.danscii-field input[type="file"]::file-selector-button,
-.danscii-field input[type="file"]::-webkit-file-upload-button {
-	-webkit-appearance: none;
-	appearance: none;
-	margin: 0 1.25rem 0 0;
-	padding: 0.25rem 0.65rem;
-	border: 1px solid var(--color-border);
-	border-radius: 0;
-	background: transparent;
-	color: var(--color-text);
-	font: inherit;
-	cursor: pointer;
-	transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.danscii-field input[type="file"]:hover::file-selector-button,
-.danscii-field input[type="file"]:hover::-webkit-file-upload-button {
-	color: var(--opacity-75);
-	border-color: color-mix(in srgb, var(--color-border) 75%, var(--color-bg));
-}
-
 .light-mode .danscii-field input[type="text"],
-.light-mode .danscii-field input[type="file"],
+.light-mode .danscii-file-trigger,
 .light-mode .danscii-select-trigger,
 .light-mode .danscii-color-caret {
 	border-color: #ddd;
@@ -633,14 +665,11 @@
 	border-color: #ddd;
 }
 
-.light-mode .danscii-field input[type="file"]::file-selector-button,
-.light-mode .danscii-field input[type="file"]::-webkit-file-upload-button {
+.light-mode .danscii-file-button {
 	border-color: #ddd;
 }
 
-.light-mode .danscii-field input[type="file"]:hover,
-.light-mode .danscii-field input[type="file"]:hover::file-selector-button,
-.light-mode .danscii-field input[type="file"]:hover::-webkit-file-upload-button {
+.light-mode .danscii-file-trigger:hover .danscii-file-button {
 	border-color: color-mix(in srgb, #ddd 75%, var(--color-bg));
 }
 
@@ -850,7 +879,7 @@
 		line-height: 17px;
 	}
 
-	/* Even two-column rhythm: Ramp|Glitch, Density|Threshold, Hover|Trail, Size */
+	/* Even two-column rhythm: Order|Glitch, Density|Threshold, Hover|Trail; Size full width */
 	.danscii-controls-main {
 		--danscii-col-gap: 1rem;
 	}
@@ -881,13 +910,13 @@
 
 	.danscii-settings-flow .danscii-hover-size-field {
 		order: 8;
+		flex: 1 1 100%;
 	}
 
 	.danscii-settings-flow .danscii-ramp-field,
 	.danscii-settings-flow .danscii-glitch-field,
 	.danscii-settings-flow .danscii-hover-field,
-	.danscii-settings-flow .danscii-hover-trail-field,
-	.danscii-settings-flow .danscii-hover-size-field {
+	.danscii-settings-flow .danscii-hover-trail-field {
 		flex: 1 1 calc(50% - 0.5rem);
 		min-width: 0;
 		width: auto;
@@ -910,6 +939,25 @@
 		justify-content: center;
 		padding-left: 0.45rem;
 		padding-right: 0.45rem;
+	}
+
+	/* Full-width size control: prefer words; fall back to S M L on very narrow screens */
+	.danscii-hover-size-field .danscii-label-full {
+		display: inline;
+	}
+
+	.danscii-hover-size-field .danscii-label-short {
+		display: none;
+	}
+
+	@media only screen and (max-width: 360px) {
+		.danscii-hover-size-field .danscii-label-full {
+			display: none;
+		}
+
+		.danscii-hover-size-field .danscii-label-short {
+			display: inline;
+		}
 	}
 
 	.danscii-sliders-row .danscii-field {
