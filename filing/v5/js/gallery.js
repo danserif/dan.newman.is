@@ -153,26 +153,36 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
+	/** Absolute or relative src belongs to a site-relative themed path. */
+	function srcMatchesPath(src, path) {
+		if (!src || !path) return false;
+		return src === path || src.endsWith(path) || src.indexOf(path) !== -1;
+	}
+
 	function warmLightboxColorCache(img) {
 		if (!img || !img.complete || !img.naturalWidth) return;
 		var color = extractAverageColor(img);
 		if (!color) return;
 		var adjusted = darkenCssColor(color, 0.1);
-		var keys = [img.currentSrc || img.src];
+		var src = img.currentSrc || img.src;
+		if (!src) return;
+		// Only key by the bitmap we actually sampled — never both light and dark.
+		var keys = [src];
 		if (img.dataset.basePath && img.dataset.filename) {
-			var shared = img.dataset.shared === "true";
-			keys.push(getThemedSrc(img.dataset.basePath, img.dataset.filename, shared));
-			keys.push(img.dataset.basePath + "dark/" + img.dataset.filename);
-			keys.push(img.dataset.basePath + img.dataset.filename);
+			var filename = img.dataset.filename;
+			var basePath = img.dataset.basePath;
+			if (src.indexOf("/light/" + filename) !== -1) {
+				keys.push(basePath + "light/" + filename);
+			} else if (src.indexOf("/dark/" + filename) !== -1) {
+				keys.push(basePath + "dark/" + filename);
+			}
 		} else if (img.dataset.filename && img.dataset.src) {
 			keys.push(img.dataset.src);
-		} else if (img.dataset.filename) {
-			/* Photos: src is already the cache key once loaded */
 		}
 		cacheAmbientColor(adjusted, keys);
 	}
 
-	function findGridPreviewImage(filename) {
+	function findGridPreviewImage(filename, requiredPath) {
 		if (!filename) return null;
 		var nodes = document.querySelectorAll(
 			"img.work-image[data-filename], img.photo-image[data-filename]",
@@ -180,7 +190,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		for (var i = 0; i < nodes.length; i++) {
 			var candidate = nodes[i];
 			if (candidate.dataset.filename !== filename) continue;
-			if (candidate.complete && candidate.naturalWidth) return candidate;
+			if (!candidate.complete || !candidate.naturalWidth) continue;
+			if (requiredPath) {
+				var candidateSrc = candidate.currentSrc || candidate.src;
+				if (!srcMatchesPath(candidateSrc, requiredPath)) continue;
+			}
+			return candidate;
 		}
 		return null;
 	}
@@ -775,7 +790,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		const workItem = document.createElement("div");
 		workItem.className = "work-item";
-		const columns = item.columns && [1, 2, 3, 4].includes(item.columns) ? item.columns : 1;
+		const columns = item.columns && [1, 2, 3, 4, 5].includes(item.columns) ? item.columns : 1;
 		workItem.setAttribute("data-columns", columns);
 		if (item.project) {
 			workItem.setAttribute("data-project", item.project);
@@ -868,7 +883,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	function renderPhotoItem(item, container, config) {
 		const photoItem = document.createElement("div");
 		photoItem.className = "photo-item";
-		const columns = item.columns && [1, 2, 3, 4].includes(item.columns) ? item.columns : 1;
+		const columns = item.columns && [1, 2, 3, 4, 5].includes(item.columns) ? item.columns : 1;
 		photoItem.setAttribute("data-columns", columns);
 
 		if (item.category) {
@@ -1954,23 +1969,29 @@ document.addEventListener("DOMContentLoaded", function () {
 				return;
 			}
 
-			function applySampled(color, extraKeys) {
+			function applySampled(color, cacheKeys) {
 				if (!color) return false;
 				var adjusted = darkenCssColor(color, 0.1);
-				cacheAmbientColor(adjusted, [cacheKey, img.currentSrc || img.src].concat(extraKeys || []));
+				cacheAmbientColor(adjusted, cacheKeys || []);
 				applyAmbientBackground(adjusted);
 				return true;
 			}
 
-			// Prefer the already-decoded grid thumb so open/nav doesn't wait on lightbox decode.
-			var preview = findGridPreviewImage(entry.filename);
-			if (preview && applySampled(extractAverageColor(preview), [preview.currentSrc || preview.src])) {
-				return;
+			// Prefer a grid thumb that already shows this theme (not a stale opposite variant).
+			var preview = findGridPreviewImage(entry.filename, cacheKey);
+			if (preview) {
+				var previewSrc = preview.currentSrc || preview.src;
+				if (applySampled(extractAverageColor(preview), [cacheKey, previewSrc])) {
+					return;
+				}
 			}
 
 			function sampleFromImage() {
 				if (!state.open || token !== state.ambientToken) return;
-				applySampled(extractAverageColor(img));
+				var sampledSrc = img.currentSrc || img.src;
+				var keys = [cacheKey];
+				if (sampledSrc && srcMatchesPath(sampledSrc, cacheKey)) keys.push(sampledSrc);
+				applySampled(extractAverageColor(img), keys);
 			}
 
 			if (typeof img.decode === "function") {
@@ -2233,6 +2254,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			if (!state.open || !state.isThemed) return;
 			var entry = state.entries[state.index];
 			if (!entry) return;
+			var base = state.imageBasePath;
+			var filename = entry.filename;
+			if (base && filename) {
+				delete lightboxColorCache[base + "light/" + filename];
+				delete lightboxColorCache[base + "dark/" + filename];
+				delete lightboxColorCache[base + filename];
+			}
 			img.src = entrySrc(entry);
 			syncAmbientBackground(entry);
 		}

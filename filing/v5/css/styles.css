@@ -1153,6 +1153,11 @@ body.home main.info {
 	grid-column: span 4;
 }
 
+.work-item[data-columns="5"],
+.photo-item[data-columns="5"] {
+	grid-column: span 5;
+}
+
 .work-grid>hr.work-grid-divider,
 .photo-grid>hr.photo-grid-divider {
 	grid-column: 1 / -1;
