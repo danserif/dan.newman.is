@@ -225,6 +225,12 @@
 	opacity: 0.5;
 }
 
+/* Hover off: dim the selected Keep/Fade and S/M/L labels (match hover colour). */
+.danscii-hover-trail-field.is-effect-off .danscii-toggle-option:has(input:checked),
+.danscii-hover-size-field.is-effect-off .danscii-toggle-option:has(input:checked) {
+	opacity: 0.5;
+}
+
 .danscii-field .danscii-color-select input[type="text"].danscii-color-custom:focus,
 .danscii-field .danscii-color-select input[type="text"].danscii-color-custom:focus-visible {
 	outline: none;

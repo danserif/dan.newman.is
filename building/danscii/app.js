@@ -465,8 +465,12 @@
 			colorFields.matrix &&
 			colorFields.matrix.select &&
 			colorFields.matrix.select.closest(".danscii-color-row");
+		var hoverTrailField = form.querySelector(".danscii-hover-trail-field");
+		var hoverSizeField = form.querySelector(".danscii-hover-size-field");
 		if (hoverRow) hoverRow.classList.toggle("is-effect-off", !c.hoverEnabled);
 		if (matrixRow) matrixRow.classList.toggle("is-effect-off", !c.matrix);
+		if (hoverTrailField) hoverTrailField.classList.toggle("is-effect-off", !c.hoverEnabled);
+		if (hoverSizeField) hoverSizeField.classList.toggle("is-effect-off", !c.hoverEnabled);
 	}
 
 	function applyControls() {
