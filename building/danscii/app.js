@@ -95,8 +95,24 @@
 			custom: document.getElementById("colorBgCustom"),
 			isCustom: false,
 		},
+		matrix: {
+			input: document.getElementById("colorMatrix"),
+			select: document.getElementById("colorMatrixSelect"),
+			trigger: document.getElementById("colorMatrixTrigger"),
+			caret: document.getElementById("colorMatrixCaret"),
+			list: document.getElementById("colorMatrixList"),
+			chip: document.getElementById("colorMatrixChip"),
+			valueEl: document.getElementById("colorMatrixValue"),
+			custom: document.getElementById("colorMatrixCustom"),
+			isCustom: false,
+		},
 	};
-	var COLOR_DEFAULTS = { fg: "#ffffff", hover: "#ffdd00", bg: "#000000" };
+	var COLOR_DEFAULTS = {
+		fg: "#ffffff",
+		hover: "#ffdd00",
+		bg: "#000000",
+		matrix: "#00aa00",
+	};
 	var CUSTOM_COLOR_DEFAULT = "#cccccc";
 	var previewWrap = document.querySelector(".danscii-preview-wrap");
 	// Until the user picks a background colour, follow the site light/dark mode.
@@ -116,7 +132,12 @@
 		var pool = PRIMARY_COLORS.slice();
 		var fg = pool.splice(Math.floor(Math.random() * pool.length), 1)[0];
 		var hover = pool[Math.floor(Math.random() * pool.length)];
-		return { fg: fg, hover: hover, bg: modeBackground() };
+		return {
+			fg: fg,
+			hover: hover,
+			bg: modeBackground(),
+			matrix: COLOR_DEFAULTS.matrix,
+		};
 	}
 
 	function normalizeHex(raw) {
@@ -194,10 +215,13 @@
 		}
 	}
 
-	function syncColorInputs(fg, hover, bg) {
+	function syncColorInputs(fg, hover, bg, matrix) {
 		syncColorField("fg", fg, { fromPreset: true });
 		syncColorField("hover", hover, { fromPreset: true });
 		syncColorField("bg", bg != null ? bg : modeBackground(), { fromPreset: true });
+		syncColorField("matrix", matrix != null ? matrix : COLOR_DEFAULTS.matrix, {
+			fromPreset: true,
+		});
 	}
 
 	function setColorFromOption(key, value) {
@@ -306,6 +330,8 @@
 			fg: form.colorFg.value || COLOR_DEFAULTS.fg,
 			hover: form.colorHover.value || COLOR_DEFAULTS.hover,
 			bg: (form.colorBg && form.colorBg.value) || modeBackground(),
+			matrixColor:
+				(form.colorMatrix && form.colorMatrix.value) || COLOR_DEFAULTS.matrix,
 			hoverEnabled: !(form.hoverEnabled && form.hoverEnabled.value === "0"),
 			hoverCells: (function () {
 				var n = Number(form.hoverCells && form.hoverCells.value);
@@ -313,6 +339,7 @@
 			})(),
 			persistHover: !!(form.persistHover && form.persistHover.value === "1"),
 			glitch: !(form.glitch && form.glitch.value === "0"),
+			matrix: !!(form.matrix && form.matrix.value === "1"),
 		};
 	}
 
@@ -340,6 +367,7 @@
 			["Order", c.invert ? "Invert" : "Default"],
 			["Glyphs Colour", formatHex(c.fg)],
 			["Hover Colour", formatHex(c.hover)],
+			["Matrix Colour", formatHex(c.matrixColor)],
 			["Background Colour", formatHex(c.bg)],
 			["Density", String(c.density)],
 			["Threshold", String(c.threshold)],
@@ -347,6 +375,7 @@
 			["Hover trail", c.persistHover ? "Keep" : "Fade"],
 			["Hover size", hoverSizeLabel(c.hoverCells)],
 			["Glitch", c.glitch ? "On" : "Off"],
+			["Matrix", c.matrix ? "On" : "Off"],
 			["File", currentImageLabel],
 		];
 		statusEl.innerHTML = rows
@@ -381,7 +410,7 @@
 	}
 
 	var defaults = defaultColors();
-	syncColorInputs(defaults.fg, defaults.hover, defaults.bg);
+	syncColorInputs(defaults.fg, defaults.hover, defaults.bg, defaults.matrix);
 	if (charactersPreset) charactersPreset.value = DEFAULT_PRESET;
 	if (charactersCustom) charactersCustom.value = CUSTOM_CHARS;
 	syncCharactersSelectUi();
@@ -403,6 +432,8 @@
 		hoverCells: controls.hoverEnabled ? controls.hoverCells : 0,
 		persistHover: controls.persistHover,
 		idleBurstsPerSecond: controls.glitch ? DEFAULT_IDLE_RATE : 0,
+		matrix: controls.matrix,
+		matrixColor: controls.matrixColor,
 		fontFamily: '"Berkeley Mono", monospace',
 	});
 	// Re-measure after layout so density matches the real preview width.
@@ -412,6 +443,19 @@
 		art.setDensity(d);
 		updateSettingsStatus();
 	});
+
+	function syncEffectColorOpacity(c) {
+		var hoverRow =
+			colorFields.hover &&
+			colorFields.hover.select &&
+			colorFields.hover.select.closest(".danscii-color-row");
+		var matrixRow =
+			colorFields.matrix &&
+			colorFields.matrix.select &&
+			colorFields.matrix.select.closest(".danscii-color-row");
+		if (hoverRow) hoverRow.classList.toggle("is-effect-off", !c.hoverEnabled);
+		if (matrixRow) matrixRow.classList.toggle("is-effect-off", !c.matrix);
+	}
 
 	function applyControls() {
 		var c = readControls();
@@ -423,11 +467,14 @@
 		art.setDensity(c.density);
 		art.setThreshold(c.threshold);
 		art.setInvert(c.invert);
-		art.setColors(c.fg, c.hover);
+		art.setColors(c.fg, c.hover, c.matrixColor);
 		art.setHoverCells(c.hoverEnabled ? c.hoverCells : 0);
 		art.setPersistHover(c.persistHover);
 		art.setIdleBurstsPerSecond(c.glitch ? DEFAULT_IDLE_RATE : 0);
+		if (typeof art.setMatrix === "function") art.setMatrix(c.matrix);
+		if (typeof art.setMatrixColor === "function") art.setMatrixColor(c.matrixColor);
 		if (previewWrap) previewWrap.style.background = c.bg;
+		syncEffectColorOpacity(c);
 		updateSettingsStatus();
 	}
 
@@ -495,7 +542,7 @@
 		}
 	}
 
-	["fg", "hover", "bg"].forEach(function (key) {
+	["fg", "hover", "bg", "matrix"].forEach(function (key) {
 		var field = colorFields[key];
 		if (!field || !field.select || !field.list) return;
 
@@ -647,7 +694,12 @@
 			setThresholdControl(0);
 			bgUserSelected = false;
 			var resetColors = defaultColors();
-			syncColorInputs(resetColors.fg, resetColors.hover, resetColors.bg);
+			syncColorInputs(
+				resetColors.fg,
+				resetColors.hover,
+				resetColors.bg,
+				resetColors.matrix,
+			);
 			var invertRadios = form.querySelectorAll('input[name="invert"]');
 			for (var r = 0; r < invertRadios.length; r++) {
 				invertRadios[r].checked = invertRadios[r].value === "0";
@@ -667,6 +719,10 @@
 			var glitchRadios = form.querySelectorAll('input[name="glitch"]');
 			for (var g = 0; g < glitchRadios.length; g++) {
 				glitchRadios[g].checked = glitchRadios[g].value === "1";
+			}
+			var matrixRadios = form.querySelectorAll('input[name="matrix"]');
+			for (var m = 0; m < matrixRadios.length; m++) {
+				matrixRadios[m].checked = matrixRadios[m].value === "0";
 			}
 			art.setSrc(DEFAULT_SRC);
 			applyControls();
@@ -834,6 +890,8 @@
 					"    hoverCells: " + Number(c.hoverEnabled ? c.hoverCells : 0) + ",",
 					"    persistHover: " + (c.persistHover ? "true" : "false") + ",",
 					"    idleBurstsPerSecond: " + (c.glitch ? DEFAULT_IDLE_RATE : 0) + ",",
+					"    matrix: " + (c.matrix ? "true" : "false") + ",",
+					"    matrixColor: '" + escapeAttr(c.matrixColor) + "',",
 					"    fontFamily: '\"Berkeley Mono\", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',",
 					"    onImageError: showLocal,",
 					"    onImageReady: hideLocal",

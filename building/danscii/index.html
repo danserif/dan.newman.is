@@ -245,6 +245,19 @@
 									</label>
 								</div>
 							</div>
+							<div class="danscii-field danscii-matrix-field">
+								<span class="danscii-field-label">Matrix</span>
+								<div class="danscii-toggle" role="group" aria-label="Matrix">
+									<label class="danscii-toggle-option">
+										<input type="radio" name="matrix" value="1" />
+										<span>On</span>
+									</label>
+									<label class="danscii-toggle-option">
+										<input type="radio" name="matrix" value="0" checked />
+										<span>Off</span>
+									</label>
+								</div>
+							</div>
 							<div class="danscii-sliders-row">
 								<div class="danscii-field">
 									<label for="density">Density <span class="opacity-50" id="density-val">140</span></label>
@@ -257,7 +270,7 @@
 							</div>
 
 							<div class="danscii-field danscii-colors-field">
-								<div class="danscii-colors" role="group" aria-label="Glyph, hover, and background colours">
+								<div class="danscii-colors" role="group" aria-label="Glyph, hover, matrix, and background colours">
 									<div class="danscii-color-row">
 										<span class="danscii-field-label" id="colorFgLabel">Glyphs Colour</span>
 										<div class="danscii-select danscii-color-select" id="colorFgSelect">
@@ -357,6 +370,57 @@
 												<li role="option" data-value="custom" aria-selected="false">Custom</li>
 											</ul>
 											<input type="hidden" id="colorHover" name="colorHover" value="#ffdd00" />
+										</div>
+									</div>
+
+									<div class="danscii-color-row is-effect-off">
+										<span class="danscii-field-label" id="colorMatrixLabel">Matrix Colour</span>
+										<div class="danscii-select danscii-color-select" id="colorMatrixSelect">
+											<div class="danscii-select-trigger" id="colorMatrixTrigger">
+												<span class="danscii-color-chip" id="colorMatrixChip" aria-hidden="true"></span>
+												<span class="danscii-select-value" id="colorMatrixValue">#00AA00</span>
+												<input type="text" id="colorMatrixCustom" name="colorMatrixCustom" class="danscii-color-custom"
+													spellcheck="false" maxlength="7" placeholder="#RRGGBB" hidden
+													aria-label="Custom matrix colour" />
+												<button type="button" class="danscii-color-caret" id="colorMatrixCaret" aria-haspopup="listbox"
+													aria-expanded="false" aria-labelledby="colorMatrixLabel">
+													<span class="danscii-select-caret" aria-hidden="true">▾</span>
+												</button>
+											</div>
+											<ul class="danscii-select-list" id="colorMatrixList" role="listbox" hidden
+												aria-labelledby="colorMatrixLabel">
+												<li role="option" data-value="#000000" aria-selected="false">
+													<span class="danscii-color-chip" style="--chip:#000000"></span>Black
+												</li>
+												<li role="option" data-value="#ffffff" aria-selected="false">
+													<span class="danscii-color-chip" style="--chip:#ffffff"></span>White
+												</li>
+												<li class="danscii-select-group" role="presentation">Primary</li>
+												<li role="option" data-value="#ff0000" aria-selected="false">
+													<span class="danscii-color-chip" style="--chip:#ff0000"></span>Red
+												</li>
+												<li role="option" data-value="#0044ff" aria-selected="false">
+													<span class="danscii-color-chip" style="--chip:#0044ff"></span>Blue
+												</li>
+												<li role="option" data-value="#00aa00" aria-selected="true">
+													<span class="danscii-color-chip" style="--chip:#00aa00"></span>Green
+												</li>
+												<li role="option" data-value="#ffdd00" aria-selected="false">
+													<span class="danscii-color-chip" style="--chip:#ffdd00"></span>Yellow
+												</li>
+												<li role="option" data-value="#ff7700" aria-selected="false">
+													<span class="danscii-color-chip" style="--chip:#ff7700"></span>Orange
+												</li>
+												<li role="option" data-value="#8800ff" aria-selected="false">
+													<span class="danscii-color-chip" style="--chip:#8800ff"></span>Purple
+												</li>
+												<li role="option" data-value="#ff3d9a" aria-selected="false">
+													<span class="danscii-color-chip" style="--chip:#ff3d9a"></span>Pink
+												</li>
+												<li class="danscii-select-divider" role="presentation"></li>
+												<li role="option" data-value="custom" aria-selected="false">Custom</li>
+											</ul>
+											<input type="hidden" id="colorMatrix" name="colorMatrix" value="#00aa00" />
 										</div>
 									</div>
 
@@ -467,8 +531,8 @@
 							<button type="button" class="danscii-btn danscii-btn-primary" id="danscii-download">Download
 								danscii.zip</button>
 							<button type="button" class="danscii-btn" id="danscii-export">Export .png</button>
-							<button type="button" class="danscii-btn-link" id="danscii-reset"><span
-									class="opacity-15">⌙</span> <span class="underline opacity-25">Reset settings</span></button>
+							<button type="button" class="danscii-btn-link" id="danscii-reset"><span class="opacity-15">⌙</span> <span
+									class="underline opacity-25">Reset settings</span></button>
 						</div>
 					</div>
 
@@ -489,8 +553,9 @@
 							free to customise the code as needed. Have fun!
 						</p>
 						<p class="danscii-hint opacity-50">If you use <span class="font-berkeley opacity-75">D@N5C1I</span>,
-							please credit me and link to <a href="https://dan.newman.is/building/danscii/"
-								class="underline">dan.newman.is/building/danscii</a> <span class="opacity-25">—</span> thanks!
+							please credit me <span class="opacity-25">/</span> link to <a
+								href="https://dan.newman.is/building/danscii/" class="underline">dan.newman.is/building/danscii</a>
+							<span class="opacity-25">—</span> thanks!
 							<span class="opacity-25">\m/</span>
 						</p>
 					</div>
