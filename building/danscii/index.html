@@ -249,11 +249,11 @@
 								<span class="danscii-field-label">Matrix</span>
 								<div class="danscii-toggle" role="group" aria-label="Matrix">
 									<label class="danscii-toggle-option">
-										<input type="radio" name="matrix" value="1" />
+										<input type="radio" name="matrix" value="1" checked />
 										<span>On</span>
 									</label>
 									<label class="danscii-toggle-option">
-										<input type="radio" name="matrix" value="0" checked />
+										<input type="radio" name="matrix" value="0" />
 										<span>Off</span>
 									</label>
 								</div>
@@ -266,6 +266,10 @@
 								<div class="danscii-field">
 									<label for="threshold">Threshold <span class="opacity-50" id="threshold-val">0</span></label>
 									<input type="range" id="threshold" name="threshold" min="0" max="70" step="5" value="0" />
+								</div>
+								<div class="danscii-field">
+									<label for="contrast">Contrast <span class="opacity-50" id="contrast-val">0</span></label>
+									<input type="range" id="contrast" name="contrast" min="0" max="100" step="5" value="0" />
 								</div>
 							</div>
 
@@ -373,12 +377,12 @@
 										</div>
 									</div>
 
-									<div class="danscii-color-row is-effect-off">
+									<div class="danscii-color-row">
 										<span class="danscii-field-label" id="colorMatrixLabel">Matrix Colour</span>
 										<div class="danscii-select danscii-color-select" id="colorMatrixSelect">
 											<div class="danscii-select-trigger" id="colorMatrixTrigger">
 												<span class="danscii-color-chip" id="colorMatrixChip" aria-hidden="true"></span>
-												<span class="danscii-select-value" id="colorMatrixValue">#00AA00</span>
+												<span class="danscii-select-value" id="colorMatrixValue">#FFFFFF</span>
 												<input type="text" id="colorMatrixCustom" name="colorMatrixCustom" class="danscii-color-custom"
 													spellcheck="false" maxlength="7" placeholder="#RRGGBB" hidden
 													aria-label="Custom matrix colour" />
@@ -392,7 +396,7 @@
 												<li role="option" data-value="#000000" aria-selected="false">
 													<span class="danscii-color-chip" style="--chip:#000000"></span>Black
 												</li>
-												<li role="option" data-value="#ffffff" aria-selected="false">
+												<li role="option" data-value="#ffffff" aria-selected="true">
 													<span class="danscii-color-chip" style="--chip:#ffffff"></span>White
 												</li>
 												<li class="danscii-select-group" role="presentation">Primary</li>
@@ -402,7 +406,7 @@
 												<li role="option" data-value="#0044ff" aria-selected="false">
 													<span class="danscii-color-chip" style="--chip:#0044ff"></span>Blue
 												</li>
-												<li role="option" data-value="#00aa00" aria-selected="true">
+												<li role="option" data-value="#00aa00" aria-selected="false">
 													<span class="danscii-color-chip" style="--chip:#00aa00"></span>Green
 												</li>
 												<li role="option" data-value="#ffdd00" aria-selected="false">
@@ -420,7 +424,7 @@
 												<li class="danscii-select-divider" role="presentation"></li>
 												<li role="option" data-value="custom" aria-selected="false">Custom</li>
 											</ul>
-											<input type="hidden" id="colorMatrix" name="colorMatrix" value="#00aa00" />
+											<input type="hidden" id="colorMatrix" name="colorMatrix" value="#ffffff" />
 										</div>
 									</div>
 

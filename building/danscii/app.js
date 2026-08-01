@@ -111,7 +111,7 @@
 		fg: "#ffffff",
 		hover: "#ffdd00",
 		bg: "#000000",
-		matrix: "#00aa00",
+		matrix: "#ffffff",
 	};
 	var CUSTOM_COLOR_DEFAULT = "#cccccc";
 	var previewWrap = document.querySelector(".danscii-preview-wrap");
@@ -136,7 +136,7 @@
 			fg: fg,
 			hover: hover,
 			bg: modeBackground(),
-			matrix: COLOR_DEFAULTS.matrix,
+			matrix: fg,
 		};
 	}
 
@@ -322,10 +322,12 @@
 
 	function readControls() {
 		var thr = Number(form.threshold && form.threshold.value);
+		var contrast = Number(form.contrast && form.contrast.value);
 		return {
 			characters: readCharacters(),
 			density: Number(form.density.value) || 140,
 			threshold: Number.isFinite(thr) ? Math.max(0, Math.min(70, thr)) : 0,
+			contrast: Number.isFinite(contrast) ? Math.max(0, Math.min(100, contrast)) : 0,
 			invert: !!(form.invert && form.invert.value === "1"),
 			fg: form.colorFg.value || COLOR_DEFAULTS.fg,
 			hover: form.colorHover.value || COLOR_DEFAULTS.hover,
@@ -363,20 +365,21 @@
 		if (!statusEl) return;
 		var c = readControls();
 		var rows = [
+			["File", currentImageLabel],
 			["Characters", c.characters],
 			["Order", c.invert ? "Invert" : "Default"],
+			["Density", String(c.density)],
+			["Threshold", String(c.threshold)],
+			["Contrast", String(c.contrast)],
 			["Glyphs Colour", formatHex(c.fg)],
 			["Hover Colour", formatHex(c.hover)],
 			["Matrix Colour", formatHex(c.matrixColor)],
 			["Background Colour", formatHex(c.bg)],
-			["Density", String(c.density)],
-			["Threshold", String(c.threshold)],
 			["Hover", c.hoverEnabled ? "On" : "Off"],
 			["Hover trail", c.persistHover ? "Keep" : "Fade"],
 			["Hover size", hoverSizeLabel(c.hoverCells)],
 			["Glitch", c.glitch ? "On" : "Off"],
 			["Matrix", c.matrix ? "On" : "Off"],
-			["File", currentImageLabel],
 		];
 		statusEl.innerHTML = rows
 			.map(function (row) {
@@ -409,6 +412,13 @@
 		if (label) label.textContent = String(v);
 	}
 
+	function setContrastControl(n) {
+		var v = Number.isFinite(n) ? Math.max(0, Math.min(100, n)) : 0;
+		if (form.contrast) form.contrast.value = String(v);
+		var label = document.getElementById("contrast-val");
+		if (label) label.textContent = String(v);
+	}
+
 	var defaults = defaultColors();
 	syncColorInputs(defaults.fg, defaults.hover, defaults.bg, defaults.matrix);
 	if (charactersPreset) charactersPreset.value = DEFAULT_PRESET;
@@ -417,6 +427,7 @@
 	syncCharactersCustomVisibility();
 	setDensityControl(densityForPageSize());
 	setThresholdControl(0);
+	setContrastControl(0);
 
 	var controls = readControls();
 	var art = new Danscii(mount, {
@@ -427,6 +438,7 @@
 		density: controls.density,
 		densityBreakpoints: null,
 		threshold: controls.threshold,
+		contrast: controls.contrast,
 		invert: controls.invert,
 		characters: controls.characters,
 		hoverCells: controls.hoverEnabled ? controls.hoverCells : 0,
@@ -461,11 +473,14 @@
 		var c = readControls();
 		var densityLabel = document.getElementById("density-val");
 		var thresholdLabel = document.getElementById("threshold-val");
+		var contrastLabel = document.getElementById("contrast-val");
 		if (densityLabel) densityLabel.textContent = String(c.density);
 		if (thresholdLabel) thresholdLabel.textContent = String(c.threshold);
+		if (contrastLabel) contrastLabel.textContent = String(c.contrast);
 		art.setCharacters(c.characters);
 		art.setDensity(c.density);
 		art.setThreshold(c.threshold);
+		if (typeof art.setContrast === "function") art.setContrast(c.contrast);
 		art.setInvert(c.invert);
 		art.setColors(c.fg, c.hover, c.matrixColor);
 		art.setHoverCells(c.hoverEnabled ? c.hoverCells : 0);
@@ -692,6 +707,7 @@
 			closeAllSelects();
 			setDensityControl(densityForPageSize());
 			setThresholdControl(0);
+			setContrastControl(0);
 			bgUserSelected = false;
 			var resetColors = defaultColors();
 			syncColorInputs(
@@ -722,7 +738,7 @@
 			}
 			var matrixRadios = form.querySelectorAll('input[name="matrix"]');
 			for (var m = 0; m < matrixRadios.length; m++) {
-				matrixRadios[m].checked = matrixRadios[m].value === "0";
+				matrixRadios[m].checked = matrixRadios[m].value === "1";
 			}
 			art.setSrc(DEFAULT_SRC);
 			applyControls();
@@ -885,6 +901,7 @@
 					"    density: " + Number(c.density) + ",",
 					"    densityBreakpoints: null,",
 					"    threshold: " + Number(c.threshold) + ",",
+					"    contrast: " + Number(c.contrast) + ",",
 					"    invert: " + (c.invert ? "true" : "false") + ",",
 					"    characters: " + JSON.stringify(chars) + ",",
 					"    hoverCells: " + Number(c.hoverEnabled ? c.hoverCells : 0) + ",",
@@ -1246,4 +1263,62 @@
 	ensureModuleSource().catch(function () {});
 	applyControls();
 	startTitleGlitch();
+
+	// Mobile sticky preview under the info bar — skip when the frame is nearly viewport-tall.
+	var previewSnapLab = document.querySelector(".danscii-lab");
+	var previewSnapInfo = document.querySelector(".page > header.info");
+	var previewCol = document.querySelector(".danscii-preview-col");
+	var previewStickyMq =
+		typeof window.matchMedia === "function"
+			? window.matchMedia("(max-width: 640px)")
+			: null;
+	// Leave a little room for controls; sticky only when the frame is clearly shorter.
+	var PREVIEW_STICKY_TALL_RATIO = 0.85;
+
+	function syncPreviewSticky() {
+		if (!previewSnapLab || !previewSnapInfo || !previewCol) return;
+
+		var navH = previewSnapInfo.offsetHeight;
+		previewSnapLab.style.setProperty("--danscii-preview-snap-top", navH + "px");
+
+		var mobile = previewStickyMq ? previewStickyMq.matches : window.innerWidth <= 640;
+		if (!mobile) {
+			previewCol.classList.remove("is-preview-tall");
+			return;
+		}
+
+		// Measure the frame only (ignore sticky padding-top when active).
+		var frameEl = previewWrap || previewCol;
+		var frameH = frameEl.offsetHeight;
+		var available = Math.max(0, window.innerHeight - navH - 8);
+		var tall = available > 0 && frameH >= available * PREVIEW_STICKY_TALL_RATIO;
+		previewCol.classList.toggle("is-preview-tall", tall);
+	}
+
+	var previewStickyRaf = null;
+	function schedulePreviewSticky() {
+		if (previewStickyRaf != null) return;
+		previewStickyRaf = requestAnimationFrame(function () {
+			previewStickyRaf = null;
+			syncPreviewSticky();
+		});
+	}
+
+	syncPreviewSticky();
+	window.addEventListener("resize", schedulePreviewSticky);
+	window.addEventListener("scroll", schedulePreviewSticky, { passive: true });
+	if (previewStickyMq) {
+		if (typeof previewStickyMq.addEventListener === "function") {
+			previewStickyMq.addEventListener("change", schedulePreviewSticky);
+		} else if (typeof previewStickyMq.addListener === "function") {
+			previewStickyMq.addListener(schedulePreviewSticky);
+		}
+	}
+	if (typeof ResizeObserver !== "undefined") {
+		var previewStickyRo = new ResizeObserver(schedulePreviewSticky);
+		if (previewSnapInfo) previewStickyRo.observe(previewSnapInfo);
+		if (previewWrap) previewStickyRo.observe(previewWrap);
+		else if (previewCol) previewStickyRo.observe(previewCol);
+		if (mount) previewStickyRo.observe(mount);
+	}
 })();

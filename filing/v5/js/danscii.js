@@ -11,7 +11,8 @@
  *       fg: '#f2f2ef',
  *       hover: '#aaff00',
  *       density: 180,
- *       threshold: 0
+ *       threshold: 0,
+ *       contrast: 0
  *     });
  *     art.setSrc('other.jpg');
  *   <\/script>
@@ -45,6 +46,7 @@
 					],
 					characters: "",
 					threshold: 0, // 0–100: collapse toward blank (dark end, or bright end if invert)
+					contrast: 0, // 0–100: local contrast / edge punch (0 = none)
 					invert: false, // reverse character ramp (dense glyphs on dark areas)
 					fg: "", // optional custom glyph colour (overrides mode palette)
 					hover: "", // optional custom hover/trail colour
@@ -141,6 +143,13 @@
 			this._buildGrid();
 			this._wake();
 		}
+		setContrast(n) {
+			const v = Number(n);
+			this.options.contrast = Number.isFinite(v) ? Math.max(0, Math.min(100, v)) : 0;
+			this._invalidateSizeCache();
+			this._buildGrid();
+			this._wake();
+		}
 		setCharacters(chars) {
 			this.options.characters = chars;
 			this._invalidateSizeCache();
@@ -227,6 +236,7 @@
 				matrixColor: colors.matrix,
 				density: this.options.density,
 				threshold: this.options.threshold,
+				contrast: this.options.contrast,
 				invert: !!this.options.invert,
 				characters: this.options.characters || this.ramp,
 				hoverCells: this.options.hoverCells,
@@ -457,11 +467,40 @@
 			const ramp = this.ramp;
 			const invert = !!this.options.invert;
 			const thr = Math.max(0, Math.min(95, Number(this.options.threshold) || 0)) / 100;
+			// Local contrast (unsharp): boosts edges/detail without globally crushing ends
+			// the way Threshold does.
+			const contrastAmt = Math.max(0, Math.min(100, Number(this.options.contrast) || 0)) / 100;
+			const lums = new Float32Array(len);
 			for (let i = 0; i < len; i++) {
 				const r = data[i * 4],
 					g = data[i * 4 + 1],
 					b = data[i * 4 + 2];
-				const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+				lums[i] = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+			}
+			const cols = dens;
+			const rows = this.gridRows;
+			for (let i = 0; i < len; i++) {
+				let lum = lums[i];
+				if (contrastAmt > 0) {
+					const x = i % cols;
+					const y = (i / cols) | 0;
+					let sum = 0;
+					let n = 0;
+					for (let dy = -1; dy <= 1; dy++) {
+						const yy = y + dy;
+						if (yy < 0 || yy >= rows) continue;
+						for (let dx = -1; dx <= 1; dx++) {
+							const xx = x + dx;
+							if (xx < 0 || xx >= cols) continue;
+							sum += lums[yy * cols + xx];
+							n++;
+						}
+					}
+					const blur = sum / n;
+					lum = lum + contrastAmt * 2.2 * (lum - blur);
+					if (lum < 0) lum = 0;
+					else if (lum > 1) lum = 1;
+				}
 				// Collapse toward blank: dark end normally, bright end when ramp is reversed.
 				let t = lum;
 				if (thr > 0) {

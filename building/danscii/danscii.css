@@ -75,7 +75,7 @@
 	grid-area: settings;
 	display: flex;
 	flex-direction: column;
-	gap: 4rem;
+	gap: 3.25rem;
 	min-width: 0;
 }
 
@@ -98,11 +98,11 @@
 }
 
 .danscii-meta .section-label {
-	margin: 0 0 0.75rem;
+	margin: 0 0 0.5rem;
 }
 
 .danscii-meta .danscii-status {
-	margin-bottom: 3.5rem;
+	margin-bottom: 2.75rem;
 }
 
 .danscii-meta .danscii-hint+.danscii-hint {
@@ -864,12 +864,34 @@
 }
 
 @media only screen and (max-width: 640px) {
+	/* Pin ASCII under the sticky URL bar unless the frame is nearly viewport-tall
+	   (.is-preview-tall toggled in app.js). Image edge masks UI — no bar below. */
+	.danscii-preview-col:not(.is-preview-tall) {
+		position: sticky;
+		top: var(--danscii-preview-snap-top, 0px);
+		z-index: 490;
+		background: var(--color-bg);
+		box-sizing: border-box;
+		/* 8px air under the nav, painted with the solid sticky background. */
+		padding-top: 8px;
+	}
+
+	.danscii-preview-col:not(.is-preview-tall) ~ .danscii-controls-main,
+	.danscii-preview-col:not(.is-preview-tall) ~ .danscii-meta {
+		position: relative;
+		z-index: 1;
+	}
+
 	.danscii-meta {
 		/* Match space above Details/Summary to space between status list and Credits.
 		   Lab row-gap already sits above meta — adjust so the totals are equal. */
 		--danscii-meta-gap: 2.25rem;
 		margin-top: calc(var(--danscii-meta-gap) - clamp(1.5rem, 3vw, 3rem));
 		padding-top: 0;
+	}
+
+	.danscii-meta .section-label {
+		margin-bottom: 0.65rem;
 	}
 
 	.danscii-meta .danscii-status {
@@ -891,7 +913,7 @@
 		line-height: 17px;
 	}
 
-	/* Even two-column rhythm: Order|Glitch, Density|Threshold, Hover|Trail; Size|Matrix */
+	/* Even two-column rhythm: Order|Glitch, Density|Threshold|Contrast, Hover|Trail; Size|Matrix */
 	.danscii-controls-main {
 		--danscii-col-gap: 1rem;
 	}
@@ -970,12 +992,14 @@
 	}
 
 	.danscii-sliders-row .danscii-field {
-		flex: 1 1 calc(50% - 0.5rem);
+		flex: 1 1 100%;
+		min-width: 0;
 		gap: 0.3rem;
 	}
 
 	.danscii-actions .danscii-btn {
-		flex: 1 1 calc(50% - (var(--danscii-col-gap, 1rem) / 2));
+		flex: 1 1 100%;
+		width: 100%;
 		min-width: 0;
 		box-sizing: border-box;
 		text-align: center;
