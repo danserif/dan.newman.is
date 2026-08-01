@@ -81,7 +81,7 @@
 	<header class="profile">
 		<div class="profile-image">
 			<div id="ascii-portraits"></div>
-			<script src="/filing/v5/js/ascii-portraits.js?v=20260726-no-ramp-accent"></script>
+			<script src="/filing/v5/js/ascii-portraits.js?v=20260802-matrix-fg"></script>
 			<script>
 				(function () {
 					var HOME_RAMPS = {
@@ -113,7 +113,8 @@
 							{ minWidth: 1081, density: 200 },
 							{ minWidth: 0, density: 200 }
 						],
-						characters: HOME_RAMPS[DEFAULT_RAMP_KEY]
+						characters: HOME_RAMPS[DEFAULT_RAMP_KEY],
+						matrix: true
 					});
 					window.__homeAsciiRamps = HOME_RAMPS;
 				})();

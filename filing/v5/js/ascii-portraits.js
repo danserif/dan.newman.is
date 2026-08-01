@@ -46,7 +46,9 @@
           idleBurstsPerSecond: 0.35, // ambient clustered glyph flickers
           idleCells: 1, // cluster radius (smaller than hover)
           idleSettleMin: 4,
-          idleSettleMax: 12
+          idleSettleMax: 12,
+          matrix: false, // cascading glyph rain through the ASCII
+          matrixColor: '' // optional rain colour (falls back to hover)
         },
         options
       );
@@ -111,6 +113,31 @@
       this._lastW = 0;
       this._buildGrid();
       this._wake();
+    }
+    setMatrix(on) {
+      const next = !!on;
+      if (this.options.matrix === next) {
+        if (next) this._wake();
+        return;
+      }
+      this.options.matrix = next;
+      if (next) this._initMatrixDrops();
+      else this._clearMatrix();
+      this._dirty = true;
+      this._wake();
+    }
+    setMatrixColor(color) {
+      this.options.matrixColor = color || '';
+      this._dirty = true;
+      this._wake();
+    }
+    getColors() {
+      const mode = MODE_COLORS[this.activeMode];
+      const fg = mode.fg;
+      const hover = mode.hover;
+      // Default matrix rain to glyph colour (override with matrixColor if set).
+      const matrix = this.options.matrixColor || fg;
+      return { fg: fg, hover: hover, matrix: matrix };
     }
     destroy() {
       this._stopLoop();
@@ -276,6 +303,7 @@
       this.display = new Array(len);
       this.activation = new Float32Array(len);
       this.trail = new Float32Array(len);
+      this.matrixHeat = new Float32Array(len);
       this.noise = new Float32Array(len);
       this.settle = new Int16Array(len);
       this.liveCells = [];
@@ -294,6 +322,8 @@
       }
 
       this._idleAcc = 0;
+      if (this.options.matrix) this._initMatrixDrops();
+      else this._matrixDrops = null;
       this._dirty = true;
 
       const prev = this._pendingRampTransition;
@@ -437,10 +467,130 @@
       if (!this._pageVisible || !this._visible) return false;
       if (!this.target) return false;
       if (!this._introDone) return true;
+      if (this.options.matrix && !this._prefersReducedMotion()) return true;
       if (this._hovering) return true;
       if (this._hasActiveSettle()) return true;
       if (this._hasCoolingMotion()) return true;
       return false;
+    }
+
+    _initMatrixDrops() {
+      if (!this.target || !this.gridCols || !this.gridRows) {
+        this._matrixDrops = [];
+        return;
+      }
+      const cols = this.gridCols;
+      const rows = this.gridRows;
+      const drops = [];
+      for (let col = 0; col < cols; col++) {
+        let hasGlyph = false;
+        for (let row = 0; row < rows; row++) {
+          const ch = this.target[row * cols + col];
+          if (ch && ch !== ' ') {
+            hasGlyph = true;
+            break;
+          }
+        }
+        if (!hasGlyph) continue;
+        if (Math.random() > 0.72) continue;
+        drops.push({
+          col: col,
+          y: Math.random() * (rows + 12) - 12,
+          speed: 1.6 + Math.random() * 2.8,
+          length: 6 + ((Math.random() * 12) | 0),
+          prevRow: -999
+        });
+      }
+      if (!drops.length) {
+        const step = Math.max(1, (cols / 12) | 0);
+        for (let col = 0; col < cols; col += step) {
+          drops.push({
+            col: col,
+            y: Math.random() * (rows + 8) - 8,
+            speed: 1.7 + Math.random() * 2.5,
+            length: 8 + ((Math.random() * 10) | 0),
+            prevRow: -999
+          });
+        }
+      }
+      this._matrixDrops = drops;
+      this._matrixLast = performance.now();
+      if (!this.matrixHeat || this.matrixHeat.length !== this.target.length) {
+        this.matrixHeat = new Float32Array(this.target.length);
+      } else {
+        this.matrixHeat.fill(0);
+      }
+    }
+
+    _clearMatrix() {
+      this._matrixDrops = null;
+      if (this.matrixHeat) this.matrixHeat.fill(0);
+      if (!this.display || !this.target) return;
+      for (let i = 0; i < this.display.length; i++) {
+        if (this.activation && this.activation[i] > 0.04) continue;
+        if (this.settle && this.settle[i] > 0) continue;
+        this.display[i] = this.target[i];
+      }
+    }
+
+    _updateMatrix() {
+      if (!this.options.matrix || !this._introDone || !this.target) return false;
+      if (this._prefersReducedMotion()) return false;
+      if (!this._matrixDrops || !this._matrixDrops.length) this._initMatrixDrops();
+      if (!this.matrixHeat || this.matrixHeat.length !== this.target.length) {
+        this.matrixHeat = new Float32Array(this.target.length);
+      }
+
+      const now = performance.now();
+      if (!this._matrixLast) this._matrixLast = now;
+      const dt = Math.min(0.05, (now - this._matrixLast) / 1000);
+      this._matrixLast = now;
+
+      const { gridCols, gridRows, target, display, matrixHeat } = this;
+      for (let i = 0; i < matrixHeat.length; i++) {
+        if (matrixHeat[i] <= 0) continue;
+        matrixHeat[i] *= 0.9;
+        if (matrixHeat[i] < 0.02) {
+          matrixHeat[i] = 0;
+          if (
+            !(this.activation && this.activation[i] > 0.04) &&
+            !(this.settle && this.settle[i] > 0)
+          ) {
+            display[i] = target[i];
+          }
+        }
+      }
+
+      const drops = this._matrixDrops;
+      for (let d = 0; d < drops.length; d++) {
+        const drop = drops[d];
+        drop.y += drop.speed * dt;
+        if (drop.y - drop.length > gridRows + 2) {
+          drop.y = -2 - Math.random() * 10;
+          drop.speed = 1.6 + Math.random() * 2.8;
+          drop.length = 6 + ((Math.random() * 12) | 0);
+          drop.prevRow = -999;
+          if (Math.random() < 0.35) {
+            const hop = ((Math.random() * 5) | 0) - 2;
+            drop.col = Math.max(0, Math.min(gridCols - 1, drop.col + hop));
+          }
+        }
+        const headRow = drop.y | 0;
+        const advanced = headRow !== drop.prevRow;
+        drop.prevRow = headRow;
+        for (let t = 0; t < drop.length; t++) {
+          const row = headRow - t;
+          if (row < 0 || row >= gridRows) continue;
+          const idx = row * gridCols + drop.col;
+          if (!target[idx] || target[idx] === ' ') continue;
+          const heat = t === 0 ? 1 : Math.max(0.12, 1 - t / drop.length);
+          if (heat >= matrixHeat[idx]) matrixHeat[idx] = heat;
+          if (advanced && (t === 0 || Math.random() < 0.18)) {
+            display[idx] = GLYPH_POOL[(Math.random() * GLYPH_POOL.length) | 0];
+          }
+        }
+      }
+      return true;
     }
 
     _wake() {
@@ -464,6 +614,7 @@
         if (this._updateIntro()) changed = true;
         if (this._updateActivation()) changed = true;
         if (this._updateIdle()) changed = true;
+        if (this._updateMatrix()) changed = true;
 
         if (changed || this._dirty) {
           this._draw();
@@ -534,6 +685,7 @@
         if (this.settle[i] <= 0) continue;
         // Hover/cluster activation owns the glyph while hot; keep settle for the fade-out.
         if (this.activation[i] > 0.04) continue;
+        if (this.matrixHeat && this.matrixHeat[i] > 0.04) continue;
         this.settle[i]--;
         changed = true;
         if (this.settle[i] === 0) {
@@ -592,7 +744,10 @@
             if (Math.random() < activation[idx] * 0.6) {
               display[idx] = GLYPH_POOL[(Math.random() * GLYPH_POOL.length) | 0];
             }
-          } else if (!(this.settle && this.settle[idx] > 0)) {
+          } else if (
+            !(this.settle && this.settle[idx] > 0) &&
+            !(this.matrixHeat && this.matrixHeat[idx] > 0.04)
+          ) {
             display[idx] = target[idx];
           }
         }
@@ -624,7 +779,10 @@
             if (Math.random() < activation[idx] * 0.6) {
               display[idx] = GLYPH_POOL[(Math.random() * GLYPH_POOL.length) | 0];
             }
-          } else if (!(this.settle && this.settle[idx] > 0)) {
+          } else if (
+            !(this.settle && this.settle[idx] > 0) &&
+            !(this.matrixHeat && this.matrixHeat[idx] > 0.04)
+          ) {
             display[idx] = target[idx];
           }
         }
@@ -635,8 +793,8 @@
     _draw() {
       const ctx = this.ctx;
       if (!ctx || !this.display) return;
-      const { cellW, cellH, gridCols, gridRows, display, activation, trail } = this;
-      const c = MODE_COLORS[this.activeMode];
+      const { cellW, cellH, gridCols, gridRows, display, activation, trail, matrixHeat } = this;
+      const c = this.getColors();
       ctx.clearRect(0, 0, gridCols * cellW, gridRows * cellH);
       ctx.font = `${this.fontSize}px "Berkeley Mono", monospace`;
       ctx.textBaseline = 'middle';
@@ -646,9 +804,10 @@
           const idx = row * gridCols + col;
           const ch = display[idx];
           if (!ch || ch === ' ') continue;
-          const lit =
+          const hoverLit =
             (activation && activation[idx] > 0.04) || (trail && trail[idx] > 0);
-          ctx.fillStyle = lit ? c.hover : c.fg;
+          const matrixLit = matrixHeat && matrixHeat[idx] > 0.04;
+          ctx.fillStyle = hoverLit ? c.hover : matrixLit ? c.matrix : c.fg;
           ctx.fillText(ch, col * cellW + cellW / 2, row * cellH + cellH / 2);
         }
       }
