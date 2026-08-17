@@ -1300,7 +1300,7 @@ body.home main.info {
 
 .work-image-frame:hover .work-image.is-loaded,
 .photo-image-frame:hover .photo-image.is-loaded {
-	opacity: 0.50;
+	opacity: 0.75;
 }
 
 #work .work-image {
