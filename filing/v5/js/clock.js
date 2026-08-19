@@ -168,6 +168,7 @@
 
 	function closeClock() {
 		overlay.classList.remove("is-open");
+		overlay.classList.remove("clock-no-transition");
 		if (clockRAF) {
 			cancelAnimationFrame(clockRAF);
 			clockRAF = null;
@@ -176,6 +177,19 @@
 			overlay.classList.remove("clock-idle");
 		}, 300);
 		resetIdle();
+	}
+
+	function snapOpenClock() {
+		overlay.classList.add("clock-no-transition");
+		if (!overlay.classList.contains("is-open")) openClock(true);
+	}
+
+	function releaseClockTransition() {
+		requestAnimationFrame(function () {
+			requestAnimationFrame(function () {
+				overlay.classList.remove("clock-no-transition");
+			});
+		});
 	}
 
 	overlay.addEventListener("click", function (e) {
@@ -232,4 +246,13 @@
 		document.addEventListener(evt, resetIdle, { passive: true });
 	});
 	resetIdle();
+
+	document.addEventListener("visibilitychange", function () {
+		if (document.hidden) {
+			snapOpenClock();
+		} else if (overlay.classList.contains("clock-no-transition")) {
+			snapOpenClock();
+			releaseClockTransition();
+		}
+	});
 })();
