@@ -1915,6 +1915,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			for (var i = 0; i < ambientColorKeys.length; i++) {
 				root.style.removeProperty(ambientColorKeys[i]);
 			}
+			root.style.removeProperty("background-color");
 		}
 
 		function applyAmbientBackground(colorValue) {
@@ -1928,6 +1929,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			var textRgb = isDark ? "255, 255, 255" : "0, 0, 0";
 
 			root.style.setProperty("--color-bg", hex);
+			root.style.backgroundColor = hex;
 			root.style.setProperty("--color-text", isDark ? "#ffffff" : "#000000");
 			// Soft frame: ambient bg mixed toward text so the border is a tint, not grey
 			var borderMix = isDark ? 0.14 : 0.12;
@@ -1986,23 +1988,27 @@ document.addEventListener("DOMContentLoaded", function () {
 				}
 			}
 
-			function sampleFromImage() {
-				if (!state.open || token !== state.ambientToken) return;
-				var sampledSrc = img.currentSrc || img.src;
-				var keys = [cacheKey];
-				if (sampledSrc && srcMatchesPath(sampledSrc, cacheKey)) keys.push(sampledSrc);
-				applySampled(extractAverageColor(img), keys);
+			function displayedSrcMatchesEntry() {
+				var displayed = img.currentSrc || img.src;
+				if (!displayed) return false;
+				if (cacheKey && srcMatchesPath(displayed, cacheKey)) return true;
+				return !!(entry.filename && displayed.indexOf(entry.filename) !== -1);
 			}
 
-			if (typeof img.decode === "function") {
-				img.decode().then(sampleFromImage).catch(function () {
-					if (img.complete && img.naturalWidth) sampleFromImage();
-				});
-			} else if (img.complete && img.naturalWidth) {
-				sampleFromImage();
-			} else {
-				img.addEventListener("load", sampleFromImage, { once: true });
+			function sampleFromImage() {
+				if (!state.open || token !== state.ambientToken) return;
+				if (!img.complete || !img.naturalWidth) return;
+				if (!displayedSrcMatchesEntry()) return;
+				var sampledSrc = img.currentSrc || img.src;
+				applySampled(extractAverageColor(img), [cacheKey, sampledSrc]);
 			}
+
+			if (displayedSrcMatchesEntry() && img.complete && img.naturalWidth) {
+				sampleFromImage();
+				return;
+			}
+
+			img.addEventListener("load", sampleFromImage, { once: true });
 		}
 
 		function entrySrc(entry) {

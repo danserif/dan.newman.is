@@ -1337,15 +1337,15 @@ body.home main.info {
 	justify-content: center;
 	padding: 72px var(--padding-x) 88px;
 	box-sizing: border-box;
-	background: var(--color-bg);
+	background-color: var(--color-bg);
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
 	transition:
 		opacity 0.3s ease,
 		visibility 0.3s ease,
-		background-color 0.45s ease-out,
-		color 0.45s ease-out;
+		background-color 1.15s ease,
+		color 0.7s ease;
 	color: var(--color-text);
 	/* Overlay chrome: 11px default; 12px only above 2660px */
 	--gallery-lightbox-label-size: 11px;
@@ -2676,6 +2676,10 @@ footer .caption {
 	opacity: 1;
 	pointer-events: auto;
 	visibility: visible;
+}
+
+#clock-overlay.clock-no-transition {
+	transition: none;
 }
 
 #clock-svg {
