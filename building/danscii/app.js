@@ -367,7 +367,7 @@
 		var c = readControls();
 		var rows = [
 			["File", currentImageLabel],
-			["View", c.base === "ascii" ? "ASCII" : "Image"],
+			["Mode", c.base === "ascii" ? "ASCII" : "Image"],
 			["Characters", c.characters],
 			["Order", c.invert ? "Invert" : "Default"],
 			["Density", String(c.density)],
