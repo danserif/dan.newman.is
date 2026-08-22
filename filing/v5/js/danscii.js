@@ -51,7 +51,9 @@
 					fg: "", // optional custom glyph colour (overrides mode palette)
 					hover: "", // optional custom hover/trail colour
 					hoverCells: 4,
+					hoverEnabled: true,
 					persistHover: true, // keep hover trail after pointer leaves; false = fade away
+					base: "ascii", // "ascii" | "image" — image rests on the photo; hover shows full ASCII plus the trail
 					introDuration: 1400,
 					idleBurstsPerSecond: 0.8,
 					idleCells: 1,
@@ -69,6 +71,7 @@
 			this._visible = true;
 			this._pageVisible = typeof document === "undefined" ? true : !document.hidden;
 			this._hovering = false;
+			this._photoAlpha = 1;
 			this._dirty = true;
 			this._lastW = 0;
 			this._lastH = 0;
@@ -106,6 +109,7 @@
 			}
 			this.options.src = src || "";
 			this._introDone = false;
+			this._resetImageReveal();
 			this._invalidateSizeCache();
 			this._loadImage();
 		}
@@ -166,12 +170,21 @@
 		}
 		setHoverCells(n) {
 			this.options.hoverCells = Number(n);
-			if (!(this.options.hoverCells > 0) && this.trail) {
-				this.trail.fill(0);
-				if (this.activation) this.activation.fill(0);
-				if (this.display && this.target) {
-					for (let i = 0; i < this.display.length; i++) {
-						if (!(this.settle && this.settle[i] > 0)) this.display[i] = this.target[i];
+			this._dirty = true;
+			this._wake();
+		}
+		setHoverEnabled(on) {
+			const next = !!on;
+			if (this.options.hoverEnabled === next) return;
+			this.options.hoverEnabled = next;
+			if (!next) {
+				if (this.trail) {
+					this.trail.fill(0);
+					if (this.activation) this.activation.fill(0);
+					if (this.display && this.target) {
+						for (let i = 0; i < this.display.length; i++) {
+							if (!(this.settle && this.settle[i] > 0)) this.display[i] = this.target[i];
+						}
 					}
 				}
 			}
@@ -182,6 +195,39 @@
 			this.options.persistHover = !!persist;
 			this._dirty = true;
 			this._wake();
+		}
+		setBase(base) {
+			const next = base === "image" ? "image" : "ascii";
+			if (this.options.base === next) return;
+			this.options.base = next;
+			this._resetImageReveal();
+			if (next === "image") {
+				this._introDone = true;
+				this.revealOrder = null;
+				if (this.trail) this.trail.fill(0);
+				if (this.activation) this.activation.fill(0);
+				if (this.display && this.target) {
+					for (let i = 0; i < this.display.length; i++) this.display[i] = this.target[i];
+				}
+			}
+			this._dirty = true;
+			this._wake();
+		}
+		_resetImageReveal() {
+			this._photoAlpha = 1;
+		}
+		_isImageBase() {
+			return this.options.base === "image";
+		}
+		_hoverOn() {
+			if (this.options.hoverEnabled === false) return false;
+			return Number(this.options.hoverCells) > 0;
+		}
+		_imageRevealed() {
+			return this._photoAlpha < 0.35;
+		}
+		_cellRevealed() {
+			return !this._isImageBase() || this._imageRevealed();
 		}
 		setIntroDuration(ms) {
 			this.options.introDuration = Number(ms);
@@ -240,7 +286,9 @@
 				invert: !!this.options.invert,
 				characters: this.options.characters || this.ramp,
 				hoverCells: this.options.hoverCells,
+				hoverEnabled: this._hoverOn(),
 				persistHover: !!this.options.persistHover,
+				base: this._isImageBase() ? "image" : "ascii",
 				introDuration: this.options.introDuration,
 				idleBurstsPerSecond: this.options.idleBurstsPerSecond,
 				idleCells: this.options.idleCells,
@@ -259,10 +307,12 @@
 			document.removeEventListener("visibilitychange", this._onVisibility);
 			if (this._io) this._io.disconnect();
 			if (this._ro) this._ro.disconnect();
-			this.canvas.removeEventListener("mousemove", this._onPointerMove);
-			this.canvas.removeEventListener("mouseleave", this._onPointerLeave);
-			this.canvas.removeEventListener("touchstart", this._onTouchMove);
-			this.canvas.removeEventListener("touchmove", this._onTouchMove);
+			if (this.container) {
+				this.container.removeEventListener("pointerdown", this._onPointerMove);
+				this.container.removeEventListener("pointerenter", this._onPointerMove);
+				this.container.removeEventListener("pointermove", this._onPointerMove);
+				this.container.removeEventListener("pointerleave", this._onPointerLeave);
+			}
 			this.container.innerHTML = "";
 		}
 
@@ -301,44 +351,67 @@
 		}
 
 		_buildDom() {
+			if (!this.container.style.position) this.container.style.position = "relative";
 			this.wrapper = document.createElement("div");
 			Object.assign(this.wrapper.style, {
 				position: "relative",
 				width: "100%",
-				height: "100%",
+				display: "block",
 				overflow: "hidden",
 				background: "transparent",
 			});
 			this.canvas = document.createElement("canvas");
 			this.canvas.style.display = "block";
 			this.canvas.style.width = "100%";
-			this.canvas.style.height = "100%";
+			this.canvas.style.height = "auto";
+			this.canvas.style.verticalAlign = "top";
 			this.wrapper.appendChild(this.canvas);
 			this.container.appendChild(this.wrapper);
 
 			this._onPointerMove = (e) => {
-				const rect = this.canvas.getBoundingClientRect();
+				const rect = this.container.getBoundingClientRect();
 				this.mouse.x = e.clientX - rect.left;
 				this.mouse.y = e.clientY - rect.top;
-				this._hovering = true;
-				this._dirty = true;
-				this._wake();
+				this._setHovering(true);
 			};
-			this._onPointerLeave = () => {
+			this._onPointerLeave = (e) => {
+				const x = e.clientX;
+				const y = e.clientY;
+				requestAnimationFrame(() => {
+					if (this._pointerStillInside(x, y)) {
+						this._setHovering(true);
+						return;
+					}
+					this._setHovering(false);
+				});
+			};
+			this.container.addEventListener("pointerdown", this._onPointerMove);
+			this.container.addEventListener("pointerenter", this._onPointerMove);
+			this.container.addEventListener("pointermove", this._onPointerMove);
+			this.container.addEventListener("pointerleave", this._onPointerLeave);
+		}
+
+		_pointerStillInside(x, y) {
+			if (!this.container) return false;
+			try {
+				if (this.container.matches(":hover")) return true;
+			} catch (err) {}
+			if (!Number.isFinite(x) || !Number.isFinite(y)) return false;
+			const el = document.elementFromPoint(x, y);
+			return !!(el && this.container.contains(el));
+		}
+
+		_setHovering(on) {
+			if (on) {
+				this._hovering = true;
+				this._visible = true;
+			} else {
+				this._hovering = false;
 				this.mouse.x = -9999;
 				this.mouse.y = -9999;
-				this._hovering = false;
-				this._dirty = true;
-				this._wake();
-			};
-			this._onTouchMove = (e) => {
-				const t = e.touches[0];
-				if (t) this._onPointerMove(t);
-			};
-			this.canvas.addEventListener("mousemove", this._onPointerMove);
-			this.canvas.addEventListener("mouseleave", this._onPointerLeave);
-			this.canvas.addEventListener("touchstart", this._onTouchMove, { passive: true });
-			this.canvas.addEventListener("touchmove", this._onTouchMove, { passive: true });
+			}
+			this._dirty = true;
+			this._wake();
 		}
 
 		_bindLifecycle() {
@@ -354,7 +427,7 @@
 					(entries) => {
 						const entry = entries[0];
 						this._visible = !!(entry && entry.isIntersecting);
-						if (this._visible) this._wake();
+						if (this._visible || this._hovering) this._wake();
 						else this._stopLoop();
 					},
 					{ root: null, threshold: 0.01 },
@@ -524,6 +597,11 @@
 			this._dirty = true;
 			this._startIntro();
 			this._emitImageReady();
+			if (this.wrapper && typeof this.wrapper.matches === "function") {
+				try {
+					if (this.wrapper.matches(":hover")) this._hovering = true;
+				} catch (e) {}
+			}
 		}
 
 		_prefersReducedMotion() {
@@ -547,6 +625,7 @@
 
 			const skip =
 				this._introDone ||
+				this._isImageBase() ||
 				this._prefersReducedMotion() ||
 				!this.options.introDuration ||
 				cells.length === 0;
@@ -635,14 +714,20 @@
 					if (this.trail[i] > 0.01) return true;
 				}
 			}
+			if (this._isImageBase() && this._photoAlpha < 0.99) {
+				return true;
+			}
 			return false;
 		}
 
 		_shouldAnimate() {
-			if (!this._pageVisible || !this._visible) return false;
+			if (!this._pageVisible) return false;
+			if (!this._visible && !this._hovering) return false;
 			if (!this.target) return false;
 			if (!this._introDone) return true;
-			if (this.options.matrix && !this._prefersReducedMotion()) return true;
+			if (this.options.matrix && !this._prefersReducedMotion()) {
+				if (!this._isImageBase() || this._imageRevealed()) return true;
+			}
 			if (this._hovering) return true;
 			if (this._hasActiveSettle()) return true;
 			if (this._hasCoolingMotion()) return true;
@@ -762,6 +847,7 @@
 					if (row < 0 || row >= gridRows) continue;
 					const idx = row * gridCols + drop.col;
 					if (!target[idx] || target[idx] === " ") continue;
+					if (!this._cellRevealed(idx)) continue;
 					const heat = t === 0 ? 1 : Math.max(0.12, 1 - t / drop.length);
 					if (heat >= matrixHeat[idx]) matrixHeat[idx] = heat;
 					// Scramble only when the head steps to a new row (not every frame).
@@ -774,7 +860,7 @@
 		}
 
 		_wake() {
-			if (!this._pageVisible || !this._visible) {
+			if (!this._pageVisible || (!this._visible && !this._hovering)) {
 				this._scheduleIdleWake();
 				return;
 			}
@@ -793,6 +879,7 @@
 				let changed = false;
 				if (this._updateIntro()) changed = true;
 				if (this._updateActivation()) changed = true;
+				if (this._updatePhotoCover()) changed = true;
 				if (this._updateIdle()) changed = true;
 				if (this._updateMatrix()) changed = true;
 
@@ -823,10 +910,12 @@
 			if (this._prefersReducedMotion()) return;
 			const rate = this.options.idleBurstsPerSecond;
 			if (!rate || !this._introDone) return;
+			if (this._isImageBase() && !this._imageRevealed()) return;
 			const delay = Math.max(200, (1000 / rate) * (0.7 + Math.random() * 0.6));
 			this._idleWakeTimer = setTimeout(() => {
 				this._idleWakeTimer = null;
 				if (!this._introDone || !this.liveCells || !this.liveCells.length) return;
+				if (this._isImageBase() && !this._imageRevealed()) return;
 				this._sparkIdleCluster();
 				this._dirty = true;
 				this._wake();
@@ -877,7 +966,17 @@
 
 		_sparkIdleCluster() {
 			const { gridCols, gridRows, target, display, noise, settle } = this;
-			const center = this.liveCells[(Math.random() * this.liveCells.length) | 0];
+			if (!this.liveCells || !this.liveCells.length) return;
+			let pool = this.liveCells;
+			if (this._isImageBase()) {
+				pool = [];
+				for (let i = 0; i < this.liveCells.length; i++) {
+					const idx = this.liveCells[i];
+					if (this._cellRevealed(idx)) pool.push(idx);
+				}
+				if (!pool.length) return;
+			}
+			const center = pool[(Math.random() * pool.length) | 0];
 			const col0 = center % gridCols;
 			const row0 = (center / gridCols) | 0;
 			const baseReach = (this.options.idleCells != null ? this.options.idleCells : 1) + 0.85;
@@ -897,6 +996,7 @@
 				) {
 					const idx = row * gridCols + col;
 					if (!target[idx] || target[idx] === " ") continue;
+					if (!this._cellRevealed(idx)) continue;
 					const dx = col - col0;
 					const dy = row - row0;
 					const dist = Math.sqrt(dx * dx + dy * dy);
@@ -906,6 +1006,26 @@
 					settle[idx] = minS + ((Math.random() * (maxS - minS + 1)) | 0);
 				}
 			}
+		}
+
+		_updatePhotoCover() {
+			if (!this._isImageBase()) return false;
+			const reduced = this._prefersReducedMotion();
+			let next = this._photoAlpha;
+
+			if (!this._hovering) {
+				if (next >= 1) return false;
+				next = reduced ? 1 : next + (1 - next) * 0.22 + 0.03;
+				if (next > 0.98) next = 1;
+			} else {
+				next = reduced ? 0 : next * 0.42;
+				if (next < 0.02) next = 0;
+			}
+
+			if (next === this._photoAlpha) return false;
+			this._photoAlpha = next;
+			if (next >= 1 && this.matrixHeat) this.matrixHeat.fill(0);
+			return true;
 		}
 
 		_updateActivation() {
@@ -948,9 +1068,9 @@
 				return changed;
 			}
 
-			// hoverCells 0 = hover effect off; otherwise brush radius in grid cells.
+			// hoverEnabled false / hoverCells 0 = hover effect off
 			const hoverCells = Number(this.options.hoverCells);
-			if (!(hoverCells > 0)) {
+			if (!this._hoverOn() || !(hoverCells > 0)) {
 				for (let idx = 0; idx < activation.length; idx++) {
 					if (target[idx] === " ") continue;
 					let cellChanged = false;
@@ -1029,8 +1149,18 @@
 			const ctx = this.ctx;
 			if (!ctx || !this.display) return;
 			const { cellW, cellH, gridCols, gridRows, display, activation, trail, matrixHeat } = this;
+			const cssW = gridCols * cellW;
+			const cssH = gridRows * cellH;
+			ctx.clearRect(0, 0, cssW, cssH);
+
+			const showPhoto = this._isImageBase() && this.img;
+			const photoAlpha = showPhoto ? this._photoAlpha : 0;
+			if (showPhoto && photoAlpha >= 0.99) {
+				ctx.drawImage(this.img, 0, 0, cssW, cssH);
+				return;
+			}
+
 			const c = this.getColors();
-			ctx.clearRect(0, 0, gridCols * cellW, gridRows * cellH);
 			ctx.font = `${this.fontSize}px ${this.options.fontFamily || "monospace"}`;
 			ctx.textBaseline = "middle";
 			ctx.textAlign = "center";
@@ -1045,6 +1175,12 @@
 					ctx.fillStyle = hoverLit ? c.hover : matrixLit ? c.matrix : c.fg;
 					ctx.fillText(ch, col * cellW + cellW / 2, row * cellH + cellH / 2);
 				}
+			}
+
+			if (showPhoto && photoAlpha > 0) {
+				ctx.globalAlpha = photoAlpha;
+				ctx.drawImage(this.img, 0, 0, cssW, cssH);
+				ctx.globalAlpha = 1;
 			}
 		}
 

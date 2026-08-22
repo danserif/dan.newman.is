@@ -122,21 +122,35 @@
 				<form class="danscii-controls font-berkeley" id="danscii-controls" onsubmit="return false;">
 					<div class="danscii-controls-main">
 						<h3 class="section-label">Controls <span class="opacity-15">/</span> Settings</h3>
-						<div class="danscii-field danscii-file-field">
-							<span class="danscii-field-label" id="fileLabel">File <span class="opacity-50">(.png <span
-										class="opacity-25">/</span> .jpg, max
-									5&nbsp;MB)</span></span>
-							<div class="danscii-file-control">
-								<input type="file" id="danscii-file" name="file" class="danscii-file-input"
-									accept=".png,.jpg,.jpeg,image/png,image/jpeg" aria-labelledby="fileLabel" />
-								<button type="button" class="danscii-file-trigger" id="danscii-file-trigger">
-									<span class="danscii-file-button">Choose</span>
-									<span class="danscii-file-name" id="danscii-file-name">dan-newman.jpg</span>
-								</button>
-							</div>
-							<p class="danscii-file-error" id="danscii-file-error" hidden></p>
-						</div>
 						<div class="danscii-settings-flow">
+							<div class="danscii-pair-row">
+								<div class="danscii-field danscii-file-field">
+									<span class="danscii-field-label" id="fileLabel">File <span class="opacity-50">(.png <span
+												class="opacity-25">/</span> .jpg, max
+											5&nbsp;MB)</span></span>
+									<div class="danscii-file-control">
+										<input type="file" id="danscii-file" name="file" class="danscii-file-input"
+											accept=".png,.jpg,.jpeg,image/png,image/jpeg" aria-labelledby="fileLabel" />
+										<button type="button" class="danscii-file-trigger" id="danscii-file-trigger">
+											<span class="danscii-file-button">Choose</span>
+											<span class="danscii-file-name" id="danscii-file-name">dan-newman.jpg</span>
+										</button>
+									</div>
+									<p class="danscii-file-error" id="danscii-file-error" hidden></p>
+								</div>
+								<div class="danscii-field danscii-base-field">
+									<span class="danscii-field-label">View</span>
+									<div class="danscii-toggle" role="group" aria-label="View">
+										<label class="danscii-toggle-option">
+											<input type="radio" name="base" value="ascii" checked />
+											<span>ASCII</span>
+										</label>
+										<label class="danscii-toggle-option">
+											<input type="radio" name="base" value="image" />
+											<span>Image</span>
+										</label>
+									</div>
+								</div>
 							<div class="danscii-field danscii-characters-field">
 								<span class="danscii-field-label" id="charactersLabel">Characters</span>
 								<div class="danscii-select danscii-characters-select" id="charactersSelect">
@@ -231,6 +245,7 @@
 										<span>Invert</span>
 									</label>
 								</div>
+							</div>
 							</div>
 							<div class="danscii-field danscii-glitch-field">
 								<span class="danscii-field-label">Glitch</span>

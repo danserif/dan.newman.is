@@ -334,6 +334,7 @@
 			bg: (form.colorBg && form.colorBg.value) || modeBackground(),
 			matrixColor:
 				(form.colorMatrix && form.colorMatrix.value) || COLOR_DEFAULTS.matrix,
+			base: form.base && form.base.value === "image" ? "image" : "ascii",
 			hoverEnabled: !(form.hoverEnabled && form.hoverEnabled.value === "0"),
 			hoverCells: (function () {
 				var n = Number(form.hoverCells && form.hoverCells.value);
@@ -366,6 +367,7 @@
 		var c = readControls();
 		var rows = [
 			["File", currentImageLabel],
+			["View", c.base === "ascii" ? "ASCII" : "Image"],
 			["Characters", c.characters],
 			["Order", c.invert ? "Invert" : "Default"],
 			["Density", String(c.density)],
@@ -441,8 +443,10 @@
 		contrast: controls.contrast,
 		invert: controls.invert,
 		characters: controls.characters,
-		hoverCells: controls.hoverEnabled ? controls.hoverCells : 0,
+		hoverEnabled: controls.hoverEnabled,
+		hoverCells: controls.hoverCells,
 		persistHover: controls.persistHover,
+		base: controls.base,
 		idleBurstsPerSecond: controls.glitch ? DEFAULT_IDLE_RATE : 0,
 		matrix: controls.matrix,
 		matrixColor: controls.matrixColor,
@@ -457,6 +461,12 @@
 	});
 
 	function syncEffectColorOpacity(c) {
+		var hoverOff = !c.hoverEnabled;
+		var imageView = c.base === "image";
+		var fgRow =
+			colorFields.fg &&
+			colorFields.fg.select &&
+			colorFields.fg.select.closest(".danscii-color-row");
 		var hoverRow =
 			colorFields.hover &&
 			colorFields.hover.select &&
@@ -467,10 +477,25 @@
 			colorFields.matrix.select.closest(".danscii-color-row");
 		var hoverTrailField = form.querySelector(".danscii-hover-trail-field");
 		var hoverSizeField = form.querySelector(".danscii-hover-size-field");
-		if (hoverRow) hoverRow.classList.toggle("is-effect-off", !c.hoverEnabled);
+		var glitchField = form.querySelector(".danscii-glitch-field");
+		var matrixField = form.querySelector(".danscii-matrix-field");
+		if (fgRow) fgRow.classList.toggle("is-effect-off", false);
+		if (hoverRow) hoverRow.classList.toggle("is-effect-off", hoverOff);
 		if (matrixRow) matrixRow.classList.toggle("is-effect-off", !c.matrix);
-		if (hoverTrailField) hoverTrailField.classList.toggle("is-effect-off", !c.hoverEnabled);
-		if (hoverSizeField) hoverSizeField.classList.toggle("is-effect-off", !c.hoverEnabled);
+		if (hoverTrailField) hoverTrailField.classList.toggle("is-effect-off", hoverOff);
+		if (hoverSizeField) hoverSizeField.classList.toggle("is-effect-off", hoverOff);
+		if (glitchField) glitchField.classList.toggle("is-effect-off", false);
+		if (matrixField) matrixField.classList.toggle("is-effect-off", false);
+		if (exportBtn) {
+			exportBtn.disabled = imageView;
+			if (c.base === "image") {
+				exportBtn.title = "Export is available in ASCII view.";
+				exportBtn.setAttribute("aria-disabled", "true");
+			} else {
+				exportBtn.removeAttribute("title");
+				exportBtn.removeAttribute("aria-disabled");
+			}
+		}
 	}
 
 	function applyControls() {
@@ -487,8 +512,10 @@
 		if (typeof art.setContrast === "function") art.setContrast(c.contrast);
 		art.setInvert(c.invert);
 		art.setColors(c.fg, c.hover, c.matrixColor);
-		art.setHoverCells(c.hoverEnabled ? c.hoverCells : 0);
+		art.setHoverEnabled(c.hoverEnabled);
+		art.setHoverCells(c.hoverCells);
 		art.setPersistHover(c.persistHover);
+		if (typeof art.setBase === "function") art.setBase(c.base);
 		art.setIdleBurstsPerSecond(c.glitch ? DEFAULT_IDLE_RATE : 0);
 		if (typeof art.setMatrix === "function") art.setMatrix(c.matrix);
 		if (typeof art.setMatrixColor === "function") art.setMatrixColor(c.matrixColor);
@@ -724,6 +751,10 @@
 			for (var r = 0; r < invertRadios.length; r++) {
 				invertRadios[r].checked = invertRadios[r].value === "0";
 			}
+			var baseRadios = form.querySelectorAll('input[name="base"]');
+			for (var b = 0; b < baseRadios.length; b++) {
+				baseRadios[b].checked = baseRadios[b].value === "ascii";
+			}
 			var hoverEnabledRadios = form.querySelectorAll('input[name="hoverEnabled"]');
 			for (var he = 0; he < hoverEnabledRadios.length; he++) {
 				hoverEnabledRadios[he].checked = hoverEnabledRadios[he].value === "1";
@@ -908,8 +939,10 @@
 					"    contrast: " + Number(c.contrast) + ",",
 					"    invert: " + (c.invert ? "true" : "false") + ",",
 					"    characters: " + JSON.stringify(chars) + ",",
-					"    hoverCells: " + Number(c.hoverEnabled ? c.hoverCells : 0) + ",",
+					"    hoverEnabled: " + (c.hoverEnabled ? "true" : "false") + ",",
+					"    hoverCells: " + Number(c.hoverCells) + ",",
 					"    persistHover: " + (c.persistHover ? "true" : "false") + ",",
+					"    base: '" + (c.base === "ascii" ? "ascii" : "image") + "',",
 					"    idleBurstsPerSecond: " + (c.glitch ? DEFAULT_IDLE_RATE : 0) + ",",
 					"    matrix: " + (c.matrix ? "true" : "false") + ",",
 					"    matrixColor: '" + escapeAttr(c.matrixColor) + "',",
@@ -1123,6 +1156,7 @@
 	if (exportBtn) {
 		exportBtn.addEventListener("click", function () {
 			var c = readControls();
+			if (c.base === "image") return;
 			var canvas = art.exportCanvas({ scale: 2, background: c.bg });
 			if (!canvas) return;
 			var base = String(currentImageLabel || "danscii")
@@ -1310,7 +1344,19 @@
 
 	syncPreviewSticky();
 	window.addEventListener("resize", schedulePreviewSticky);
-	window.addEventListener("scroll", schedulePreviewSticky, { passive: true });
+	window.addEventListener(
+		"scroll",
+		function () {
+			if (!previewSnapLab || !previewSnapInfo) return;
+			var mobile = previewStickyMq ? previewStickyMq.matches : window.innerWidth <= 640;
+			if (!mobile) return;
+			previewSnapLab.style.setProperty(
+				"--danscii-preview-snap-top",
+				previewSnapInfo.offsetHeight + "px",
+			);
+		},
+		{ passive: true },
+	);
 	if (previewStickyMq) {
 		if (typeof previewStickyMq.addEventListener === "function") {
 			previewStickyMq.addEventListener("change", schedulePreviewSticky);
