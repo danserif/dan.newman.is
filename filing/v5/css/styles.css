@@ -2762,12 +2762,12 @@ footer .caption {
 	fill: var(--color-clock-accent);
 }
 
-/* /a/ pages: second hand + cap use muted gray (home keeps accent). */
-body.page:not(.home) {
+/* Per-page second hand: set --color-clock-accent on body (unset = site accent). */
+body.designer-page {
 	--color-clock-accent: #666666;
 }
 
-:root.light-mode body.page:not(.home) {
+:root.light-mode body.designer-page {
 	--color-clock-accent: #cccccc;
 }
 

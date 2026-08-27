@@ -156,6 +156,18 @@
 		return String(hex || "").toUpperCase();
 	}
 
+	function clockAccentFallback() {
+		return isLightMode() ? "#cccccc" : "#666666";
+	}
+
+	function syncClockAccent(glyphHex) {
+		var hex = normalizeHex(glyphHex);
+		if (!hex || hex === "#000000" || hex === "#ffffff") {
+			hex = clockAccentFallback();
+		}
+		document.body.style.setProperty("--color-clock-accent", hex);
+	}
+
 	function closeAllSelects(except) {
 		var opens = form.querySelectorAll(".danscii-select.is-open");
 		for (var i = 0; i < opens.length; i++) {
@@ -452,6 +464,7 @@
 		matrixColor: controls.matrixColor,
 		fontFamily: '"Berkeley Mono", monospace',
 	});
+	syncClockAccent(controls.fg);
 	// Re-measure after layout so density matches the real preview width.
 	requestAnimationFrame(function () {
 		var d = densityForPageSize();
@@ -520,6 +533,7 @@
 		if (typeof art.setMatrix === "function") art.setMatrix(c.matrix);
 		if (typeof art.setMatrixColor === "function") art.setMatrixColor(c.matrixColor);
 		if (previewWrap) previewWrap.style.background = c.bg;
+		syncClockAccent(c.fg);
 		syncEffectColorOpacity(c);
 		updateSettingsStatus();
 	}
@@ -536,8 +550,13 @@
 		applyControls();
 	}
 
+	function onModeChange() {
+		syncClockAccent(colorFields.fg && colorFields.fg.input && colorFields.fg.input.value);
+		syncBgToMode();
+	}
+
 	if (typeof MutationObserver !== "undefined") {
-		var modeObserver = new MutationObserver(syncBgToMode);
+		var modeObserver = new MutationObserver(onModeChange);
 		modeObserver.observe(document.documentElement, {
 			attributes: true,
 			attributeFilter: ["class"],
