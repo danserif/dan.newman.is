@@ -752,6 +752,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			wrap.appendChild(line);
 		}
 
+		if (item.status) {
+			const statusLine = document.createElement("p");
+			statusLine.className = "work-text uppercase opacity-25";
+			appendBracketStyledText(item.status, statusLine);
+			wrap.appendChild(statusLine);
+		}
+
 		const linkEl = buildWorkLinkLine(item.link, item.linkDisplay);
 		if (linkEl) {
 			wrap.appendChild(linkEl);
@@ -1534,14 +1541,17 @@ document.addEventListener("DOMContentLoaded", function () {
 	function assignWorkProjects(items) {
 		let proj = null;
 		let projDate = null;
+		let projStatus = null;
 		for (let i = 0; i < items.length; i++) {
 			const it = items[i];
 			if (it.type === "title" && it.name) {
 				proj = it.name;
 				projDate = it.date || null;
+				projStatus = it.status || null;
 			}
 			it.project = proj;
 			it.projectDate = projDate;
+			it.projectStatus = projStatus;
 		}
 	}
 
@@ -2074,17 +2084,31 @@ document.addEventListener("DOMContentLoaded", function () {
 				link.href = "#";
 				link.className = "gallery-lightbox-project-link";
 
+				var lead = document.createElement("span");
+				if (state.sectionType !== "photos") {
+					lead.className = "no-break";
+				}
+
 				var nameSpan = document.createElement("span");
 				nameSpan.className = "gallery-lightbox-project-name";
 				nameSpan.textContent = title;
-				link.appendChild(nameSpan);
+				lead.appendChild(nameSpan);
 
 				if (state.sectionType !== "photos" && entry.projectDate) {
-					link.appendChild(document.createTextNode(" "));
+					lead.appendChild(document.createTextNode(" "));
 					var dateSpan = document.createElement("span");
 					dateSpan.className = "opacity-75";
 					appendBracketStyledText(entry.projectDate, dateSpan);
-					link.appendChild(dateSpan);
+					lead.appendChild(dateSpan);
+				}
+
+				link.appendChild(lead);
+
+				if (state.sectionType !== "photos" && entry.projectStatus) {
+					var statusSpan = document.createElement("span");
+					statusSpan.className = "gallery-lightbox-project-status no-break uppercase opacity-25";
+					appendBracketStyledText(entry.projectStatus, statusSpan);
+					link.appendChild(statusSpan);
 				}
 
 				link.addEventListener("click", function (e) {

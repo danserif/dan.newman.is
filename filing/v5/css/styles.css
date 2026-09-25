@@ -1394,6 +1394,10 @@ html.gallery-lightbox-open body {
 	cursor: pointer;
 }
 
+.gallery-lightbox-project-status {
+	display: block;
+}
+
 .gallery-lightbox-project-link:hover {
 	opacity: 0.7;
 }
@@ -1606,6 +1610,10 @@ html.gallery-lightbox-open body {
 	.gallery-lightbox-project {
 		/* Leave room for Close; 50vw was too tight for name + years */
 		max-width: calc(100% - 2 * var(--padding-x) - 5.5rem);
+	}
+
+	.gallery-lightbox-project-status {
+		display: none;
 	}
 
 	.gallery-lightbox-image {
