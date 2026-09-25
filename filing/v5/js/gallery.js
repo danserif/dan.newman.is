@@ -754,7 +754,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		if (item.status) {
 			const statusLine = document.createElement("p");
-			statusLine.className = "work-text uppercase opacity-25";
+			statusLine.className = "work-text work-status uppercase opacity-25";
 			appendBracketStyledText(item.status, statusLine);
 			wrap.appendChild(statusLine);
 		}

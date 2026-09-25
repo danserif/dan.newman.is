@@ -1214,6 +1214,7 @@ body.home main.info {
 }
 
 .work-grid-title .work-description,
+.work-grid-title .work-status,
 .photo-grid-title .photo-description {
 	font-size: 14px;
 }
@@ -2825,6 +2826,7 @@ body.designer-page {
 
 	.work-grid-title .work-title-line,
 	.work-grid-title .work-description,
+	.work-grid-title .work-status,
 	.work-grid-title .work-link,
 	.photo-grid-title .photo-title-line,
 	.photo-grid-title .photo-description,
@@ -3361,6 +3363,7 @@ body.designer-page {
 
 	.work-grid-title .work-title-line,
 	.work-grid-title .work-description,
+	.work-grid-title .work-status,
 	.work-grid-title .work-link,
 	.photo-grid-title .photo-title-line,
 	.photo-grid-title .photo-description,
