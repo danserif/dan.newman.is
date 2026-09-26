@@ -1351,6 +1351,7 @@ body.home main.info {
 	/* Overlay chrome: 11px default; 12px only above 2660px */
 	--gallery-lightbox-label-size: 11px;
 	--gallery-lightbox-label-line: 1.5;
+	--gallery-lightbox-stack-gap: 4px;
 }
 
 .gallery-lightbox.is-open {
@@ -1393,6 +1394,10 @@ html.gallery-lightbox-open body {
 	color: inherit;
 	text-decoration: none;
 	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--gallery-lightbox-stack-gap);
 }
 
 .gallery-lightbox-project-status {
@@ -1589,12 +1594,19 @@ html.gallery-lightbox-open body {
 	.gallery-lightbox {
 		--gallery-lightbox-label-size: 12px;
 		--gallery-lightbox-label-line: 20px;
+		--gallery-lightbox-stack-gap: 2px;
 	}
 
 	.gallery-lightbox-meta .work-caption,
 	.gallery-lightbox-meta .photo-caption,
 	.gallery-lightbox-count {
 		gap: 2px;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.gallery-lightbox-project-status {
+		display: none;
 	}
 }
 
@@ -1611,10 +1623,6 @@ html.gallery-lightbox-open body {
 	.gallery-lightbox-project {
 		/* Leave room for Close; 50vw was too tight for name + years */
 		max-width: calc(100% - 2 * var(--padding-x) - 5.5rem);
-	}
-
-	.gallery-lightbox-project-status {
-		display: none;
 	}
 
 	.gallery-lightbox-image {
