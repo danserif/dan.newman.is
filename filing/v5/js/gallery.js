@@ -32,9 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	function rgbToHex(r, g, b) {
 		return (
 			"#" +
-			((1 << 24) + (clampByte(r) << 16) + (clampByte(g) << 8) + clampByte(b))
-				.toString(16)
-				.slice(1)
+			((1 << 24) + (clampByte(r) << 16) + (clampByte(g) << 8) + clampByte(b)).toString(16).slice(1)
 		);
 	}
 
@@ -132,8 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					if (!onEdge) continue;
 					// Corners are almost always the solid field — weight them up
 					// so one cropped edge of artwork can't outvote the surround.
-					var inCorner =
-						(x < inset || x >= size - inset) && (y < inset || y >= size - inset);
+					var inCorner = (x < inset || x >= size - inset) && (y < inset || y >= size - inset);
 					addPixel(x, y, inCorner ? 3 : 1);
 				}
 			}
@@ -962,18 +959,18 @@ document.addEventListener("DOMContentLoaded", function () {
 		wrap.appendChild(prefix);
 
 		const a = document.createElement("a");
-		a.href = "https://daas.graphics";
+		a.href = "https://stedi.com";
 		a.target = "_blank";
 		a.rel = "noopener noreferrer";
 
 		const name = document.createElement("span");
 		name.className = "opacity-75";
-		name.textContent = "DaaS";
+		name.textContent = "Stedi";
 		a.appendChild(name);
 
 		const role = document.createElement("span");
 		role.className = "opacity-25";
-		role.textContent = " (Graphics)";
+		role.textContent = " (Designer)";
 		a.appendChild(role);
 
 		wrap.appendChild(a);
@@ -986,7 +983,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		const period = document.createElement("span");
 		period.className = "opacity-25";
-		period.textContent = "2025—Present";
+		period.textContent = "2026—Present";
 		wrap.appendChild(period);
 
 		return wrap;
