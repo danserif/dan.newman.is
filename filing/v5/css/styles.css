@@ -2704,18 +2704,10 @@ footer .caption {
 	height: min(560px, 85vmin);
 }
 
-@media (max-width: 1640px) {
+@media (max-width: 1800px) {
 	#clock-svg {
-		width: min(392px, 59.5vmin);
-		height: min(392px, 59.5vmin);
-	}
-
-	#clock-svg .clock-numeral {
-		font-size: 10px;
-	}
-
-	#clock-svg .clock-tz {
-		font-size: 4px;
+		width: min(420px, 63.75vmin);
+		height: min(420px, 63.75vmin);
 	}
 }
 
@@ -2755,6 +2747,16 @@ footer .caption {
 	text-anchor: middle;
 	dominant-baseline: hanging;
 	opacity: 0.75;
+}
+
+@media (max-width: 1800px) {
+	#clock-svg .clock-numeral {
+		font-size: 10px;
+	}
+
+	#clock-svg .clock-tz {
+		font-size: 4px;
+	}
 }
 
 #clock-svg .clock-hand-hour {
